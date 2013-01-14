@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("CEMSApp")]
+[assembly: AssemblyTitle("BusinessLogicLayer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("河北工业职业技术学院")]
-[assembly: AssemblyProduct("CEMSApp")]
-[assembly: AssemblyCopyright("Copyright © 李玮 2013")]
+[assembly: AssemblyCompany("微软中国")]
+[assembly: AssemblyProduct("BusinessLogicLayer")]
+[assembly: AssemblyCopyright("Copyright © 微软中国 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("44b7147b-a4e2-4378-86bf-0f686e0283fb")]
+[assembly: Guid("b98678fb-51c5-4aa4-848e-ef75ceee78fe")]
 
 // 程序集的版本信息由下面四个值组成:
 //
