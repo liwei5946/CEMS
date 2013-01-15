@@ -27,10 +27,13 @@ namespace CEMSApp.Login
         private void button1_Click(object sender, EventArgs e)
         {
             bool flag = false;
-            flag = login.isLogin(textBox1.Text, textBox2.Text);
+            flag = login.isLogin(username.Text, password.Text);
             if (flag)
             {
-                MessageBox.Show("登录成功！");
+                MainForm mainForm = new MainForm();
+                mainForm.Username = username.Text;
+                mainForm.Show();
+                this.Visible = false;
             }
             else
             {

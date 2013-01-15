@@ -59,5 +59,33 @@ namespace CEMSApp.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap cog_edit {
+            get {
+                object obj = ResourceManager.GetObject("cog_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap door_in {
+            get {
+                object obj = ResourceManager.GetObject("door_in", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap link_break {
+            get {
+                object obj = ResourceManager.GetObject("link_break", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap table_multiple {
+            get {
+                object obj = ResourceManager.GetObject("table_multiple", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -97,6 +97,18 @@
       <Name>BusinessLogicLayer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table_multiple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cog_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_break.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door_in.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
