@@ -53,5 +53,33 @@ namespace DataAccessLayer.Login
             
             return flag;
         }
+        /// <summary>
+        /// 查询登录用户的权限
+        /// </summary>
+        /// <param name="username">用户名</param>
+        /// <returns>权限值</returns>
+        public int getUserRight(string username)
+        {
+            int result = 0;//0代表普通用户，1代表管理员
+            try
+            {
+                //SELECT sys_sys.userright FROM sys_sys WHERE sys_sys.username='liwei'
+                string sql = string.Format("SELECT sys_sys.userright FROM sys_sys WHERE sys_sys.username='{0}'", username);
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    conn.Open();
+                    result = (int)command.ExecuteScalar();
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return result;
+        }
     }
 }

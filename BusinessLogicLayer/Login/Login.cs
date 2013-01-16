@@ -19,5 +19,12 @@ namespace BusinessLogicLayer.Login
             log.Debug("登录状态：" + flag);
             return flag;
         }
+        public int getUserRight(string username)
+        {
+            int result = 0;
+            result = ls.getUserRight(username);
+            log.Debug("用户" + username + "权限为：" + result);
+            return result;
+        }
     }
 }

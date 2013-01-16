@@ -36,16 +36,24 @@
             this.维修信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.故障管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.系统管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_SystemManage = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.systemTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.usernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.userrightLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -57,7 +65,7 @@
             this.维修信息管理ToolStripMenuItem,
             this.故障管理ToolStripMenuItem,
             this.查询报表ToolStripMenuItem,
-            this.系统管理ToolStripMenuItem,
+            this.ToolStripMenuItem_SystemManage,
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -100,13 +108,12 @@
             this.查询报表ToolStripMenuItem.Name = "查询报表ToolStripMenuItem";
             this.查询报表ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.查询报表ToolStripMenuItem.Text = "综合查询";
-            this.查询报表ToolStripMenuItem.Click += new System.EventHandler(this.查询报表ToolStripMenuItem_Click);
             // 
-            // 系统管理ToolStripMenuItem
+            // ToolStripMenuItem_SystemManage
             // 
-            this.系统管理ToolStripMenuItem.Name = "系统管理ToolStripMenuItem";
-            this.系统管理ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.系统管理ToolStripMenuItem.Text = "系统管理";
+            this.ToolStripMenuItem_SystemManage.Name = "ToolStripMenuItem_SystemManage";
+            this.ToolStripMenuItem_SystemManage.Size = new System.Drawing.Size(65, 20);
+            this.ToolStripMenuItem_SystemManage.Text = "系统管理";
             // 
             // 帮助ToolStripMenuItem
             // 
@@ -128,6 +135,7 @@
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripButton3,
+            this.toolStripSeparator1,
             this.toolStripButton4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
@@ -165,6 +173,11 @@
             this.toolStripButton3.Text = "故障登记";
             this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 51);
+            // 
             // toolStripButton4
             // 
             this.toolStripButton4.Image = global::CEMSApp.Properties.Resources.door_in;
@@ -174,12 +187,56 @@
             this.toolStripButton4.Size = new System.Drawing.Size(57, 48);
             this.toolStripButton4.Text = "退出系统";
             this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.systemTime,
+            this.toolStripSeparator2,
+            this.usernameLabel,
+            this.toolStripSeparator3,
+            this.userrightLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 519);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(779, 23);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // systemTime
+            // 
+            this.systemTime.Name = "systemTime";
+            this.systemTime.Size = new System.Drawing.Size(65, 18);
+            this.systemTime.Text = "系统时间：";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 23);
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(65, 18);
+            this.usernameLabel.Text = "当前用户：";
+            // 
+            // userrightLabel
+            // 
+            this.userrightLabel.Name = "userrightLabel";
+            this.userrightLabel.Size = new System.Drawing.Size(65, 18);
+            this.userrightLabel.Text = "用户角色：";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 542);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -189,10 +246,13 @@
             this.Text = "化工设备管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,7 +267,7 @@
         private System.Windows.Forms.ToolStripMenuItem 维修信息管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 故障管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查询报表ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 系统管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_SystemManage;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -215,6 +275,13 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel systemTime;
+        private System.Windows.Forms.ToolStripStatusLabel usernameLabel;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripStatusLabel userrightLabel;
 
     }
 }

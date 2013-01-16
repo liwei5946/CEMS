@@ -30,8 +30,11 @@ namespace CEMSApp.Login
             flag = login.isLogin(username.Text, password.Text);
             if (flag)
             {
+                int userRight = 0;
+                userRight = login.getUserRight(username.Text);
                 MainForm mainForm = new MainForm();
                 mainForm.Username = username.Text;
+                mainForm.UserRight = userRight;
                 mainForm.Show();
                 this.Visible = false;
             }
