@@ -49,8 +49,17 @@
             this.systemTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.usernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.userrightLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.userrightLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.设备登记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.配件台帐ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.销帐登记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据导入导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.配件数据导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -60,11 +69,12 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.设备信息管理ToolStripMenuItem,
-            this.维护信息管理ToolStripMenuItem,
             this.维护信息管理ToolStripMenuItem1,
             this.维修信息管理ToolStripMenuItem,
             this.故障管理ToolStripMenuItem,
+            this.维护信息管理ToolStripMenuItem,
             this.查询报表ToolStripMenuItem,
+            this.参数设置ToolStripMenuItem,
             this.ToolStripMenuItem_SystemManage,
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -75,6 +85,12 @@
             // 
             // 设备信息管理ToolStripMenuItem
             // 
+            this.设备信息管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.设备登记ToolStripMenuItem,
+            this.配件台帐ToolStripMenuItem,
+            this.销帐登记ToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.数据导入导出ToolStripMenuItem});
             this.设备信息管理ToolStripMenuItem.Name = "设备信息管理ToolStripMenuItem";
             this.设备信息管理ToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.设备信息管理ToolStripMenuItem.Text = "设备台帐管理";
@@ -82,8 +98,8 @@
             // 维护信息管理ToolStripMenuItem
             // 
             this.维护信息管理ToolStripMenuItem.Name = "维护信息管理ToolStripMenuItem";
-            this.维护信息管理ToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.维护信息管理ToolStripMenuItem.Text = "关键设备管理";
+            this.维护信息管理ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.维护信息管理ToolStripMenuItem.Text = "统计报表";
             // 
             // 维护信息管理ToolStripMenuItem1
             // 
@@ -126,7 +142,7 @@
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // toolStrip1
@@ -220,16 +236,73 @@
             this.usernameLabel.Size = new System.Drawing.Size(65, 18);
             this.usernameLabel.Text = "当前用户：";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
+            // 
             // userrightLabel
             // 
             this.userrightLabel.Name = "userrightLabel";
             this.userrightLabel.Size = new System.Drawing.Size(65, 18);
             this.userrightLabel.Text = "用户角色：";
             // 
-            // toolStripSeparator3
+            // 参数设置ToolStripMenuItem
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
+            this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
+            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.参数设置ToolStripMenuItem.Text = "参数设置";
+            // 
+            // 设备登记ToolStripMenuItem
+            // 
+            this.设备登记ToolStripMenuItem.Name = "设备登记ToolStripMenuItem";
+            this.设备登记ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.设备登记ToolStripMenuItem.Text = "设备台帐";
+            // 
+            // 配件台帐ToolStripMenuItem
+            // 
+            this.配件台帐ToolStripMenuItem.Name = "配件台帐ToolStripMenuItem";
+            this.配件台帐ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.配件台帐ToolStripMenuItem.Text = "配件台帐";
+            // 
+            // 销帐登记ToolStripMenuItem
+            // 
+            this.销帐登记ToolStripMenuItem.Name = "销帐登记ToolStripMenuItem";
+            this.销帐登记ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.销帐登记ToolStripMenuItem.Text = "销帐登记";
+            // 
+            // 数据导入导出ToolStripMenuItem
+            // 
+            this.数据导入导出ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.数据导入ToolStripMenuItem,
+            this.配件数据导入ToolStripMenuItem,
+            this.数据导出ToolStripMenuItem});
+            this.数据导入导出ToolStripMenuItem.Name = "数据导入导出ToolStripMenuItem";
+            this.数据导入导出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.数据导入导出ToolStripMenuItem.Text = "数据导入导出";
+            // 
+            // 数据导入ToolStripMenuItem
+            // 
+            this.数据导入ToolStripMenuItem.Name = "数据导入ToolStripMenuItem";
+            this.数据导入ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.数据导入ToolStripMenuItem.Text = "设备数据导入";
+            // 
+            // 配件数据导入ToolStripMenuItem
+            // 
+            this.配件数据导入ToolStripMenuItem.Name = "配件数据导入ToolStripMenuItem";
+            this.配件数据导入ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.配件数据导入ToolStripMenuItem.Text = "配件数据导入";
+            // 
+            // 数据导出ToolStripMenuItem
+            // 
+            this.数据导出ToolStripMenuItem.Name = "数据导出ToolStripMenuItem";
+            this.数据导出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.数据导出ToolStripMenuItem.Text = "数据导出";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // MainForm
             // 
@@ -282,6 +355,15 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripStatusLabel userrightLabel;
+        private System.Windows.Forms.ToolStripMenuItem 设备登记ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 配件台帐ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 销帐登记ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem 数据导入导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 数据导入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 配件数据导入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 数据导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 参数设置ToolStripMenuItem;
 
     }
 }

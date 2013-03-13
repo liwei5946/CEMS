@@ -1,2 +1,2 @@
-CEMS
+CEMS (Chemical Equipment Management System)
 ====
