@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
+//using System.Configuration;
 using Util;
 using log4net;
 

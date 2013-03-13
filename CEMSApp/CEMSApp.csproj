@@ -96,6 +96,10 @@
       <Project>{01EF71C7-3C28-4483-B190-15560D9100B8}</Project>
       <Name>BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{1BB82822-7744-4357-A409-CA68C483E0CD}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\table_multiple.png" />
@@ -114,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\table_gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
