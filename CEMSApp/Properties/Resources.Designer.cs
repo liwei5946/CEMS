@@ -81,6 +81,20 @@ namespace CEMSApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap settings {
+            get {
+                object obj = ResourceManager.GetObject("settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap table_gear {
+            get {
+                object obj = ResourceManager.GetObject("table_gear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap table_multiple {
             get {
                 object obj = ResourceManager.GetObject("table_multiple", resourceCulture);
