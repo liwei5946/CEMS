@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using Util;
 using log4net;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
@@ -15,8 +16,10 @@ namespace DataAccessLayer.Login
         ILog log = log4net.LogManager.GetLogger(typeof(LoginService));
         #region Private Members
         //从配置文件中读取数据库连接字符串
-        private readonly string connString = ConfigurationManager.ConnectionStrings["CEMSConnectionString"].ToString();
-        private readonly string dboOwner = ConfigurationManager.ConnectionStrings["DataBaseOwner"].ToString();
+        //private readonly string connString = ConfigurationManager.ConnectionStrings["CEMSConnectionString"].ToString();
+        //private readonly string dboOwner = ConfigurationManager.ConnectionStrings["DataBaseOwner"].ToString();
+        private readonly string connString = ConfigAppSettings.getDBConnString();
+        private readonly string dboOwner = ConfigAppSettings.getDBOwner();
         #endregion
         /// <summary>
         /// 判断能否登录
@@ -28,6 +31,7 @@ namespace DataAccessLayer.Login
         {
             bool flag = false;
             int result = 0;
+            log.Debug(dboOwner);
             log.Debug(connString);
             try
             {

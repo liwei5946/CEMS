@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DataAccessLayer.Login;
+using Util;
 using log4net;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]

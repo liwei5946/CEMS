@@ -2,7 +2,7 @@
 using System.Text;
 using System.Security.Cryptography;
 
-namespace BusinessLogicLayer
+namespace Util
 {
     /// <summary>
     /// 一个实现MD5散列字符串的类
