@@ -20,6 +20,7 @@ namespace CEMSApp.Login
     {
         BusinessLogicLayer.Login.Login login = new BusinessLogicLayer.Login.Login();
         ILog log = log4net.LogManager.GetLogger(typeof(Program));
+        //从配置文件中读取数据库接口信息
         private string baseip = ConfigAppSettings.GetValue("ipaddress");
         private string basename = ConfigAppSettings.GetValue("basename");
         private string baseuser = ConfigAppSettings.GetValue("user");
@@ -33,13 +34,13 @@ namespace CEMSApp.Login
         private void loginbutton_Click(object sender, EventArgs e)
         {
             bool flag = false;
-            //如果判断数据库接口信息有更改，则将新信息写入配置文件
+            //如果判断数据库接口信息有更改，则将新信息写入配置文件，并提示用户重启程序
             if(!(ipadd.Text == baseip && dbname.Text == basename && dbuser.Text == baseuser && dbpwd.Text == basepwd)){
                 ConfigAppSettings.SetValue("ipaddress", ipadd.Text);
                 ConfigAppSettings.SetValue("basename", dbname.Text);
                 ConfigAppSettings.SetValue("user", dbuser.Text);
                 ConfigAppSettings.SetValue("password", dbpwd.Text);
-                MessageBox.Show("您修改了数据库服务器连接参数，请重新启动程序！");
+                MessageBox.Show("您修改了数据库服务器连接参数，请重新启动本程序！");
                 Application.Exit();
             }
             flag = login.isLogin(username.Text, password.Text);
