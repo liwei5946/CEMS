@@ -21,7 +21,6 @@ namespace CEMSApp.Equipment
             this.WindowState = FormWindowState.Maximized;
 
             //数据格
-            
             grid1.BorderStyle = BorderStyle.FixedSingle;
             grid1.ColumnsCount = 3;
             grid1.FixedRows = 1;

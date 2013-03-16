@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     2013-3-16 18:16:32                           */
+/* Created on:     2013-3-16 22:48:59                           */
 /*==============================================================*/
 
 
@@ -211,7 +211,7 @@ go
 /* Table: eq_account                                            */
 /*==============================================================*/
 create table eq_account (
-   id                   int                  not null,
+   id                   int                  identity,
    isoff                bit                  null,
    asset                nvarchar(50)         null,
    eqname               nvarchar(50)         null,
