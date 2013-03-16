@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     2013-3-14 23:43:43                           */
+/* Created on:     2013-3-16 18:16:32                           */
 /*==============================================================*/
 
 
@@ -30,6 +30,20 @@ if exists (select 1
    where r.fkeyid = object_id('eq_account') and o.name = 'FK_EQ_ACCOU_REFERENCE_EQ_3D')
 alter table eq_account
    drop constraint FK_EQ_ACCOU_REFERENCE_EQ_3D
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('eq_account') and o.name = 'FK_EQ_ACCOU_REFERENCE_DEPARTME')
+alter table eq_account
+   drop constraint FK_EQ_ACCOU_REFERENCE_DEPARTME
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('department')
+            and   type = 'U')
+   drop table department
 go
 
 if exists (select 1
@@ -138,6 +152,38 @@ if exists (select 1
 go
 
 /*==============================================================*/
+/* Table: department                                            */
+/*==============================================================*/
+create table department (
+   id                   int                  identity,
+   departname           nvarchar(50)         null,
+   leader               nvarchar(50)         null,
+   constraint PK_DEPARTMENT primary key (id)
+)
+go
+
+declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   '部门表',
+   'user', @CurrentUser, 'table', 'department'
+go
+
+declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   '部门名称',
+   'user', @CurrentUser, 'table', 'department', 'column', 'departname'
+go
+
+declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   '部门负责人',
+   'user', @CurrentUser, 'table', 'department', 'column', 'leader'
+go
+
+/*==============================================================*/
 /* Table: eq_3d                                                 */
 /*==============================================================*/
 create table eq_3d (
@@ -165,13 +211,13 @@ go
 /* Table: eq_account                                            */
 /*==============================================================*/
 create table eq_account (
-   id                   int                  identity,
+   id                   int                  not null,
    isoff                bit                  null,
    asset                nvarchar(50)         null,
    eqname               nvarchar(50)         null,
    model                nvarchar(50)         null,
    specification        nvarchar(50)         null,
-   department           nvarchar(50)         null,
+   department           int                  null,
    weight               nvarchar(50)         null,
    brand                nvarchar(50)         null,
    manufacturer         nvarchar(50)         null,
@@ -233,6 +279,13 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    '设备规格',
    'user', @CurrentUser, 'table', 'eq_account', 'column', 'specification'
+go
+
+declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   '部门ID',
+   'user', @CurrentUser, 'table', 'eq_account', 'column', 'department'
 go
 
 declare @CurrentUser sysname
@@ -1062,5 +1115,10 @@ go
 alter table eq_account
    add constraint FK_EQ_ACCOU_REFERENCE_EQ_3D foreign key (three_dimensional)
       references eq_3d (id)
+go
+
+alter table eq_account
+   add constraint FK_EQ_ACCOU_REFERENCE_DEPARTME foreign key (department)
+      references department (id)
 go
 

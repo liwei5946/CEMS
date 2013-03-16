@@ -37,6 +37,8 @@
             this.list_department = new System.Windows.Forms.ListView();
             this.list_eqType = new System.Windows.Forms.ListView();
             this.grid1 = new SourceGrid.Grid();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.closeButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bigContainer)).BeginInit();
             this.bigContainer.Panel1.SuspendLayout();
@@ -52,8 +54,10 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addButton,
+            this.editButton,
+            this.toolStripSeparator1,
             this.delButton,
-            this.editButton});
+            this.closeButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(630, 35);
@@ -155,6 +159,20 @@
             this.grid1.TabStop = true;
             this.grid1.ToolTipText = "";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 35);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Image = global::CEMSApp.Properties.Resources.door_in;
+            this.closeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(33, 32);
+            this.closeButton.Text = "关闭";
+            this.closeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // AccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -191,5 +209,7 @@
         private SourceGrid.Grid grid1;
         private System.Windows.Forms.ListView list_department;
         private System.Windows.Forms.ListView list_eqType;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton closeButton;
     }
 }
