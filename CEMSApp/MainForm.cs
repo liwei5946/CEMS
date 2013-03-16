@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CEMSApp.Equipment;
 
 namespace CEMSApp
 {
@@ -43,6 +44,48 @@ namespace CEMSApp
 
         }
 
+        /// <summary>
+        /// 使打开的子窗体不影响父窗体的菜单栏
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainMenu_ItemAdded(object sender, ToolStripItemEventArgs e)
+        {
+            if (e.Item.Text.Length == 0)
+            {
+                e.Item.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// 打开子窗体，判断是否重复打开
+        /// 在使用MDI子窗体时，如果仅仅是使用 from.show() 代码，
+        /// 那么我们单击几次菜单，就会打开几个同样的子窗体。
+        /// 可以用这段代码防止这种情况。
+        /// 首先添加一个函数，这个函数用于检测指定的子窗体是否已经打开，
+        /// 如果打开则激活这个子窗体，否则返回false值。
+        /// </summary>
+        /// <param name="p_ChildrenFormText"></param>
+        /// <returns></returns>
+        private bool showChildrenForm(string p_ChildrenFormName)
+        {
+            int i;
+            //依次检测当前窗体的子窗体
+            for (i = 0; i < this.MdiChildren.Length; i++)
+            {
+                //判断当前子窗体的name属性值是否与传入的字符串值相同
+                if (this.MdiChildren[i].Name == p_ChildrenFormName)
+                {
+                    //如果值相同则表示此子窗体为想要调用的子窗体，激活此子窗体并返回true值
+                    this.MdiChildren[i].Activate();
+                    return true;
+                }
+            }
+            //如果没有相同的值则表示要调用的子窗体还没有被打开，返回false值
+            return false;
+        }
+
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             //在状态栏中显示当前系统时间
@@ -55,7 +98,7 @@ namespace CEMSApp
             if (userRight == 0)
             {
                 //普通用户，不显示“系统设置”菜单
-                menuStrip1.Items[6].Visible = false;
+                MainMenu.Items[6].Visible = false;
                 userrightLabel.Text += "普通用户";
             }
             else
@@ -64,6 +107,33 @@ namespace CEMSApp
             }
             
         }
+        /// <summary>
+        /// 设备台帐管理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void eqAccountMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("AccountForm"))
+            {
+                AccountForm eq_account = new AccountForm();
+                eq_account.MdiParent = this;
+                eq_account.Show();
+            }
+        }
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("AccountForm"))
+            {
+                AccountForm eq_account = new AccountForm();
+                eq_account.MdiParent = this;
+                eq_account.Show();
+            }
+        }
+
+        
+
+        
 
     }
 }

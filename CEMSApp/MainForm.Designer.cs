@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.设备信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.设备登记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eqAccountMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.配件台帐ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.销帐登记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -91,14 +91,14 @@
             this.usernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.userrightLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuStrip1.SuspendLayout();
+            this.MainMenu.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // MainMenu
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.设备信息管理ToolStripMenuItem,
             this.维护信息管理ToolStripMenuItem1,
             this.维修信息管理ToolStripMenuItem,
@@ -108,16 +108,17 @@
             this.参数设置ToolStripMenuItem,
             this.ToolStripMenuItem_SystemManage,
             this.帮助ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(779, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.MainMenu.Location = new System.Drawing.Point(0, 0);
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.Size = new System.Drawing.Size(779, 24);
+            this.MainMenu.TabIndex = 1;
+            this.MainMenu.Text = "menuStrip1";
+            this.MainMenu.ItemAdded += new System.Windows.Forms.ToolStripItemEventHandler(this.MainMenu_ItemAdded);
             // 
             // 设备信息管理ToolStripMenuItem
             // 
             this.设备信息管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.设备登记ToolStripMenuItem,
+            this.eqAccountMenuItem,
             this.配件台帐ToolStripMenuItem,
             this.销帐登记ToolStripMenuItem,
             this.toolStripSeparator4,
@@ -126,11 +127,12 @@
             this.设备信息管理ToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.设备信息管理ToolStripMenuItem.Text = "设备台帐管理";
             // 
-            // 设备登记ToolStripMenuItem
+            // eqAccountMenuItem
             // 
-            this.设备登记ToolStripMenuItem.Name = "设备登记ToolStripMenuItem";
-            this.设备登记ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.设备登记ToolStripMenuItem.Text = "设备台帐";
+            this.eqAccountMenuItem.Name = "eqAccountMenuItem";
+            this.eqAccountMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.eqAccountMenuItem.Text = "设备台帐";
+            this.eqAccountMenuItem.Click += new System.EventHandler(this.eqAccountMenuItem_Click);
             // 
             // 配件台帐ToolStripMenuItem
             // 
@@ -459,6 +461,7 @@
             this.toolStripButton1.Size = new System.Drawing.Size(57, 48);
             this.toolStripButton1.Text = "设备台帐";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton6
             // 
@@ -570,17 +573,17 @@
             this.ClientSize = new System.Drawing.Size(779, 542);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.MainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.MainMenu;
             this.Name = "MainForm";
             this.Text = "化工企业设备维护维修管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.MainMenu.ResumeLayout(false);
+            this.MainMenu.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -592,7 +595,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip MainMenu;
         private System.Windows.Forms.ToolStripMenuItem 设备信息管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 维护信息管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 维护信息管理ToolStripMenuItem1;
@@ -614,7 +617,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripStatusLabel userrightLabel;
-        private System.Windows.Forms.ToolStripMenuItem 设备登记ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eqAccountMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 配件台帐ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 销帐登记ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
