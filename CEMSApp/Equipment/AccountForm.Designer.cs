@@ -30,15 +30,15 @@
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.addButton = new System.Windows.Forms.ToolStripButton();
-            this.delButton = new System.Windows.Forms.ToolStripButton();
             this.editButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.delButton = new System.Windows.Forms.ToolStripButton();
+            this.closeButton = new System.Windows.Forms.ToolStripButton();
             this.bigContainer = new System.Windows.Forms.SplitContainer();
             this.leftContainer = new System.Windows.Forms.SplitContainer();
-            this.list_department = new System.Windows.Forms.ListView();
-            this.list_eqType = new System.Windows.Forms.ListView();
+            this.tree_department = new System.Windows.Forms.TreeView();
+            this.tree_eqType = new System.Windows.Forms.TreeView();
             this.grid1 = new SourceGrid.Grid();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.closeButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bigContainer)).BeginInit();
             this.bigContainer.Panel1.SuspendLayout();
@@ -74,6 +74,20 @@
             this.addButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // editButton
+            // 
+            this.editButton.Image = global::CEMSApp.Properties.Resources.pencil;
+            this.editButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(33, 32);
+            this.editButton.Text = "修改";
+            this.editButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 35);
+            // 
             // delButton
             // 
             this.delButton.Image = global::CEMSApp.Properties.Resources.delete1;
@@ -83,14 +97,14 @@
             this.delButton.Text = "删除";
             this.delButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // editButton
+            // closeButton
             // 
-            this.editButton.Image = global::CEMSApp.Properties.Resources.pencil;
-            this.editButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(33, 32);
-            this.editButton.Text = "修改";
-            this.editButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.closeButton.Image = global::CEMSApp.Properties.Resources.door_in;
+            this.closeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(33, 32);
+            this.closeButton.Text = "关闭";
+            this.closeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // bigContainer
             // 
@@ -119,32 +133,30 @@
             // 
             // leftContainer.Panel1
             // 
-            this.leftContainer.Panel1.Controls.Add(this.list_department);
+            this.leftContainer.Panel1.Controls.Add(this.tree_department);
             // 
             // leftContainer.Panel2
             // 
-            this.leftContainer.Panel2.Controls.Add(this.list_eqType);
+            this.leftContainer.Panel2.Controls.Add(this.tree_eqType);
             this.leftContainer.Size = new System.Drawing.Size(150, 409);
             this.leftContainer.SplitterDistance = 206;
             this.leftContainer.TabIndex = 0;
             // 
-            // list_department
+            // tree_department
             // 
-            this.list_department.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.list_department.Location = new System.Drawing.Point(0, 0);
-            this.list_department.Name = "list_department";
-            this.list_department.Size = new System.Drawing.Size(150, 206);
-            this.list_department.TabIndex = 0;
-            this.list_department.UseCompatibleStateImageBehavior = false;
+            this.tree_department.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tree_department.Location = new System.Drawing.Point(0, 0);
+            this.tree_department.Name = "tree_department";
+            this.tree_department.Size = new System.Drawing.Size(150, 206);
+            this.tree_department.TabIndex = 0;
             // 
-            // list_eqType
+            // tree_eqType
             // 
-            this.list_eqType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.list_eqType.Location = new System.Drawing.Point(0, 0);
-            this.list_eqType.Name = "list_eqType";
-            this.list_eqType.Size = new System.Drawing.Size(150, 199);
-            this.list_eqType.TabIndex = 0;
-            this.list_eqType.UseCompatibleStateImageBehavior = false;
+            this.tree_eqType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tree_eqType.Location = new System.Drawing.Point(0, 0);
+            this.tree_eqType.Name = "tree_eqType";
+            this.tree_eqType.Size = new System.Drawing.Size(150, 199);
+            this.tree_eqType.TabIndex = 0;
             // 
             // grid1
             // 
@@ -158,20 +170,6 @@
             this.grid1.TabIndex = 0;
             this.grid1.TabStop = true;
             this.grid1.ToolTipText = "";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 35);
-            // 
-            // closeButton
-            // 
-            this.closeButton.Image = global::CEMSApp.Properties.Resources.door_in;
-            this.closeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(33, 32);
-            this.closeButton.Text = "关闭";
-            this.closeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // AccountForm
             // 
@@ -207,9 +205,9 @@
         private System.Windows.Forms.SplitContainer bigContainer;
         private System.Windows.Forms.SplitContainer leftContainer;
         private SourceGrid.Grid grid1;
-        private System.Windows.Forms.ListView list_department;
-        private System.Windows.Forms.ListView list_eqType;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton closeButton;
+        private System.Windows.Forms.TreeView tree_department;
+        private System.Windows.Forms.TreeView tree_eqType;
     }
 }

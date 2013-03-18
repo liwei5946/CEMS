@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BusinessLogicLayer.Equipment;
 
 namespace CEMSApp.Equipment
 {
@@ -37,7 +38,14 @@ namespace CEMSApp.Equipment
             }
 
             grid1.AutoSizeCells();
-             
+
+            //处理department treeview显示
+            DataSet ds1=null,ds2=null; 
+            Account acc = new Account();
+            ds1 = acc.CreateDataSet_Department();
+            ds2 = acc.CreateDataSet_EquipmentType();
+            InitTree(tree_department, ds1, "所有部门", "id", "departname");
+            InitTree(tree_eqType, ds2, "所有设备类型", "id", "type_name");
 
         }
 
@@ -57,5 +65,22 @@ namespace CEMSApp.Equipment
             AccountAddForm addForm = new AccountAddForm();
             addForm.ShowDialog();
         }
+
+        private void InitTree(TreeView tv, DataSet ds, string rootText, string tnName, string tnText)
+        {
+            tv.Nodes.Clear();
+            TreeNode tn = new TreeNode(rootText);
+            tv.Nodes.Add(tn);
+            DataView dv = new DataView(ds.Tables[0]);//将DataTable存到DataView中，以便于筛选数据
+            foreach (DataRowView drv in dv)
+            {
+                tn = new TreeNode();
+                tn.Name = drv[tnName].ToString();//节点的name值，一般为数据库的id值
+                tn.Text = drv[tnText].ToString();//节点的Text，节点的文本显示
+                tv.Nodes[0].Nodes.Add(tn);
+            }
+            tv.ExpandAll();
+        }
+  
     }
 }
