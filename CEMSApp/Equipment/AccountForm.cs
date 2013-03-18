@@ -65,7 +65,14 @@ namespace CEMSApp.Equipment
             AccountAddForm addForm = new AccountAddForm();
             addForm.ShowDialog();
         }
-
+        /// <summary>
+        /// 初始化TreeView控件
+        /// </summary>
+        /// <param name="tv"></param>
+        /// <param name="ds"></param>
+        /// <param name="rootText"></param>
+        /// <param name="tnName"></param>
+        /// <param name="tnText"></param>
         private void InitTree(TreeView tv, DataSet ds, string rootText, string tnName, string tnText)
         {
             tv.Nodes.Clear();

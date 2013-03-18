@@ -52,7 +52,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.combo_eqType = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -64,9 +64,9 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.combo_depart = new System.Windows.Forms.ComboBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.combo_status = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -115,7 +115,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label21, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.combo_eqType, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox3, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBox4, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.textBox5, 1, 5);
@@ -127,9 +127,9 @@
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 1, 13);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker2, 1, 14);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker3, 1, 15);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox2, 1, 16);
+            this.tableLayoutPanel1.Controls.Add(this.combo_depart, 1, 16);
             this.tableLayoutPanel1.Controls.Add(this.textBox9, 1, 17);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox3, 1, 18);
+            this.tableLayoutPanel1.Controls.Add(this.combo_status, 1, 18);
             this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.numericUpDown2, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 19);
@@ -427,13 +427,14 @@
             this.textBox2.Size = new System.Drawing.Size(200, 21);
             this.textBox2.TabIndex = 1;
             // 
-            // comboBox1
+            // combo_eqType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(103, 51);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 20);
-            this.comboBox1.TabIndex = 2;
+            this.combo_eqType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_eqType.FormattingEnabled = true;
+            this.combo_eqType.Location = new System.Drawing.Point(103, 51);
+            this.combo_eqType.Name = "combo_eqType";
+            this.combo_eqType.Size = new System.Drawing.Size(200, 20);
+            this.combo_eqType.TabIndex = 2;
             // 
             // textBox3
             // 
@@ -512,13 +513,14 @@
             this.dateTimePicker3.Size = new System.Drawing.Size(200, 21);
             this.dateTimePicker3.TabIndex = 4;
             // 
-            // comboBox2
+            // combo_depart
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(103, 387);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 20);
-            this.comboBox2.TabIndex = 2;
+            this.combo_depart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_depart.FormattingEnabled = true;
+            this.combo_depart.Location = new System.Drawing.Point(103, 387);
+            this.combo_depart.Name = "combo_depart";
+            this.combo_depart.Size = new System.Drawing.Size(200, 20);
+            this.combo_depart.TabIndex = 2;
             // 
             // textBox9
             // 
@@ -527,13 +529,14 @@
             this.textBox9.Size = new System.Drawing.Size(200, 21);
             this.textBox9.TabIndex = 1;
             // 
-            // comboBox3
+            // combo_status
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(103, 435);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(200, 20);
-            this.comboBox3.TabIndex = 2;
+            this.combo_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_status.FormattingEnabled = true;
+            this.combo_status.Location = new System.Drawing.Point(103, 435);
+            this.combo_status.Name = "combo_status";
+            this.combo_status.Size = new System.Drawing.Size(200, 20);
+            this.combo_status.TabIndex = 2;
             // 
             // numericUpDown1
             // 
@@ -703,7 +706,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox combo_eqType;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
@@ -715,9 +718,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox combo_depart;
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox combo_status;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;

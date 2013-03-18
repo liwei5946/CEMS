@@ -9,7 +9,7 @@ using log4net;
 
 namespace DataAccessLayer.Equipment
 {
-    public class AccountService
+    public class AccountAddService
     {
         private DataSet ds;
         ILog log = log4net.LogManager.GetLogger(typeof(AccountService));
@@ -20,6 +20,34 @@ namespace DataAccessLayer.Equipment
         private readonly string connString = ConfigAppSettings.getDBConnString();
         private readonly string dboOwner = ConfigAppSettings.getDBOwner();
         #endregion
+        /// <summary>
+        /// 创建eq_type的DataSet
+        /// 查找eq_type表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet CreateDataSet_EquipmentType()
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                string sql = string.Format("SELECT * FROM eq_type");
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
         /// <summary>
         /// 创建department的DataSet
         /// 查找department表
@@ -50,16 +78,17 @@ namespace DataAccessLayer.Equipment
             return ds;
         }
         /// <summary>
-        /// 创建eq_type的DataSet
-        /// 查找eq_type表
+        /// 创建设备状态的DataSet
+        /// 查找eq_status表
         /// </summary>
+        /// <param name="ds"></param>
         /// <returns></returns>
-        public DataSet CreateDataSet_EquipmentType()
+        public DataSet CreateDataSet_Status()
         {
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT * FROM eq_type");
+                string sql = string.Format("SELECT * FROM eq_status");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
