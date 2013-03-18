@@ -50,25 +50,25 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.text_asset = new System.Windows.Forms.TextBox();
+            this.text_eqname = new System.Windows.Forms.TextBox();
             this.combo_eqType = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.text_model = new System.Windows.Forms.TextBox();
+            this.text_specification = new System.Windows.Forms.TextBox();
+            this.text_weight = new System.Windows.Forms.TextBox();
+            this.text_brand = new System.Windows.Forms.TextBox();
+            this.text_manufacturer = new System.Windows.Forms.TextBox();
+            this.text_supplier = new System.Windows.Forms.TextBox();
+            this.maskedText_value = new System.Windows.Forms.MaskedTextBox();
+            this.maskedText_power = new System.Windows.Forms.MaskedTextBox();
+            this.dateTime_manu_date = new System.Windows.Forms.DateTimePicker();
+            this.dateTime_produ_date = new System.Windows.Forms.DateTimePicker();
+            this.dateTime_filing_date = new System.Windows.Forms.DateTimePicker();
             this.combo_depart = new System.Windows.Forms.ComboBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.text_address = new System.Windows.Forms.TextBox();
             this.combo_status = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numeric_count = new System.Windows.Forms.NumericUpDown();
+            this.numeric_electromotor = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.text_uploadImg = new System.Windows.Forms.TextBox();
             this.button_uploadImg = new System.Windows.Forms.Button();
@@ -79,8 +79,8 @@
             this.ok = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_count)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_electromotor)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -112,25 +112,25 @@
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label21, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.text_asset, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.text_eqname, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.combo_eqType, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox4, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.textBox5, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.textBox6, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.textBox7, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.textBox8, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.maskedTextBox1, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.maskedTextBox4, 1, 12);
-            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 1, 13);
-            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker2, 1, 14);
-            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker3, 1, 15);
+            this.tableLayoutPanel1.Controls.Add(this.text_model, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.text_specification, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.text_weight, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.text_brand, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.text_manufacturer, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.text_supplier, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.maskedText_value, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.maskedText_power, 1, 12);
+            this.tableLayoutPanel1.Controls.Add(this.dateTime_manu_date, 1, 13);
+            this.tableLayoutPanel1.Controls.Add(this.dateTime_produ_date, 1, 14);
+            this.tableLayoutPanel1.Controls.Add(this.dateTime_filing_date, 1, 15);
             this.tableLayoutPanel1.Controls.Add(this.combo_depart, 1, 16);
-            this.tableLayoutPanel1.Controls.Add(this.textBox9, 1, 17);
+            this.tableLayoutPanel1.Controls.Add(this.text_address, 1, 17);
             this.tableLayoutPanel1.Controls.Add(this.combo_status, 1, 18);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 1, 10);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown2, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.numeric_count, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.numeric_electromotor, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 19);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 20);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 2);
@@ -412,19 +412,19 @@
             this.label21.Text = "设备类型：";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox1
+            // text_asset
             // 
-            this.textBox1.Location = new System.Drawing.Point(103, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 21);
-            this.textBox1.TabIndex = 1;
+            this.text_asset.Location = new System.Drawing.Point(103, 3);
+            this.text_asset.Name = "text_asset";
+            this.text_asset.Size = new System.Drawing.Size(200, 21);
+            this.text_asset.TabIndex = 1;
             // 
-            // textBox2
+            // text_eqname
             // 
-            this.textBox2.Location = new System.Drawing.Point(103, 27);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 21);
-            this.textBox2.TabIndex = 1;
+            this.text_eqname.Location = new System.Drawing.Point(103, 27);
+            this.text_eqname.Name = "text_eqname";
+            this.text_eqname.Size = new System.Drawing.Size(200, 21);
+            this.text_eqname.TabIndex = 1;
             // 
             // combo_eqType
             // 
@@ -435,82 +435,83 @@
             this.combo_eqType.Size = new System.Drawing.Size(200, 20);
             this.combo_eqType.TabIndex = 2;
             // 
-            // textBox3
+            // text_model
             // 
-            this.textBox3.Location = new System.Drawing.Point(103, 75);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 21);
-            this.textBox3.TabIndex = 1;
+            this.text_model.Location = new System.Drawing.Point(103, 75);
+            this.text_model.Name = "text_model";
+            this.text_model.Size = new System.Drawing.Size(200, 21);
+            this.text_model.TabIndex = 1;
             // 
-            // textBox4
+            // text_specification
             // 
-            this.textBox4.Location = new System.Drawing.Point(103, 99);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(200, 21);
-            this.textBox4.TabIndex = 1;
+            this.text_specification.Location = new System.Drawing.Point(103, 99);
+            this.text_specification.Name = "text_specification";
+            this.text_specification.Size = new System.Drawing.Size(200, 21);
+            this.text_specification.TabIndex = 1;
             // 
-            // textBox5
+            // text_weight
             // 
-            this.textBox5.Location = new System.Drawing.Point(103, 123);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(200, 21);
-            this.textBox5.TabIndex = 1;
+            this.text_weight.Location = new System.Drawing.Point(103, 123);
+            this.text_weight.Name = "text_weight";
+            this.text_weight.Size = new System.Drawing.Size(200, 21);
+            this.text_weight.TabIndex = 1;
             // 
-            // textBox6
+            // text_brand
             // 
-            this.textBox6.Location = new System.Drawing.Point(103, 147);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(200, 21);
-            this.textBox6.TabIndex = 1;
+            this.text_brand.Location = new System.Drawing.Point(103, 147);
+            this.text_brand.Name = "text_brand";
+            this.text_brand.Size = new System.Drawing.Size(200, 21);
+            this.text_brand.TabIndex = 1;
             // 
-            // textBox7
+            // text_manufacturer
             // 
-            this.textBox7.Location = new System.Drawing.Point(103, 171);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(200, 21);
-            this.textBox7.TabIndex = 1;
+            this.text_manufacturer.Location = new System.Drawing.Point(103, 171);
+            this.text_manufacturer.Name = "text_manufacturer";
+            this.text_manufacturer.Size = new System.Drawing.Size(200, 21);
+            this.text_manufacturer.TabIndex = 1;
             // 
-            // textBox8
+            // text_supplier
             // 
-            this.textBox8.Location = new System.Drawing.Point(103, 195);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(200, 21);
-            this.textBox8.TabIndex = 1;
+            this.text_supplier.Location = new System.Drawing.Point(103, 195);
+            this.text_supplier.Name = "text_supplier";
+            this.text_supplier.Size = new System.Drawing.Size(200, 21);
+            this.text_supplier.TabIndex = 1;
             // 
-            // maskedTextBox1
+            // maskedText_value
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(103, 219);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 21);
-            this.maskedTextBox1.TabIndex = 3;
+            this.maskedText_value.Location = new System.Drawing.Point(103, 219);
+            this.maskedText_value.Mask = "000000000.00";
+            this.maskedText_value.Name = "maskedText_value";
+            this.maskedText_value.Size = new System.Drawing.Size(100, 21);
+            this.maskedText_value.TabIndex = 3;
             // 
-            // maskedTextBox4
+            // maskedText_power
             // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(103, 291);
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(100, 21);
-            this.maskedTextBox4.TabIndex = 3;
+            this.maskedText_power.Location = new System.Drawing.Point(103, 291);
+            this.maskedText_power.Name = "maskedText_power";
+            this.maskedText_power.Size = new System.Drawing.Size(100, 21);
+            this.maskedText_power.TabIndex = 3;
             // 
-            // dateTimePicker1
+            // dateTime_manu_date
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(103, 315);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 21);
-            this.dateTimePicker1.TabIndex = 4;
+            this.dateTime_manu_date.Location = new System.Drawing.Point(103, 315);
+            this.dateTime_manu_date.Name = "dateTime_manu_date";
+            this.dateTime_manu_date.Size = new System.Drawing.Size(200, 21);
+            this.dateTime_manu_date.TabIndex = 4;
             // 
-            // dateTimePicker2
+            // dateTime_produ_date
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(103, 339);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 21);
-            this.dateTimePicker2.TabIndex = 4;
+            this.dateTime_produ_date.Location = new System.Drawing.Point(103, 339);
+            this.dateTime_produ_date.Name = "dateTime_produ_date";
+            this.dateTime_produ_date.Size = new System.Drawing.Size(200, 21);
+            this.dateTime_produ_date.TabIndex = 4;
             // 
-            // dateTimePicker3
+            // dateTime_filing_date
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(103, 363);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 21);
-            this.dateTimePicker3.TabIndex = 4;
+            this.dateTime_filing_date.Location = new System.Drawing.Point(103, 363);
+            this.dateTime_filing_date.Name = "dateTime_filing_date";
+            this.dateTime_filing_date.Size = new System.Drawing.Size(200, 21);
+            this.dateTime_filing_date.TabIndex = 4;
             // 
             // combo_depart
             // 
@@ -521,12 +522,12 @@
             this.combo_depart.Size = new System.Drawing.Size(200, 20);
             this.combo_depart.TabIndex = 2;
             // 
-            // textBox9
+            // text_address
             // 
-            this.textBox9.Location = new System.Drawing.Point(103, 411);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(200, 21);
-            this.textBox9.TabIndex = 1;
+            this.text_address.Location = new System.Drawing.Point(103, 411);
+            this.text_address.Name = "text_address";
+            this.text_address.Size = new System.Drawing.Size(200, 21);
+            this.text_address.TabIndex = 1;
             // 
             // combo_status
             // 
@@ -537,24 +538,24 @@
             this.combo_status.Size = new System.Drawing.Size(200, 20);
             this.combo_status.TabIndex = 2;
             // 
-            // numericUpDown1
+            // numeric_count
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(103, 243);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(100, 21);
-            this.numericUpDown1.TabIndex = 5;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numeric_count.Location = new System.Drawing.Point(103, 243);
+            this.numeric_count.Name = "numeric_count";
+            this.numeric_count.Size = new System.Drawing.Size(100, 21);
+            this.numeric_count.TabIndex = 5;
+            this.numeric_count.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // numericUpDown2
+            // numeric_electromotor
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(103, 267);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(100, 21);
-            this.numericUpDown2.TabIndex = 6;
+            this.numeric_electromotor.Location = new System.Drawing.Point(103, 267);
+            this.numeric_electromotor.Name = "numeric_electromotor";
+            this.numeric_electromotor.Size = new System.Drawing.Size(100, 21);
+            this.numeric_electromotor.TabIndex = 6;
             // 
             // tableLayoutPanel2
             // 
@@ -572,8 +573,10 @@
             // 
             // text_uploadImg
             // 
+            this.text_uploadImg.BackColor = System.Drawing.Color.White;
             this.text_uploadImg.Location = new System.Drawing.Point(3, 3);
             this.text_uploadImg.Name = "text_uploadImg";
+            this.text_uploadImg.ReadOnly = true;
             this.text_uploadImg.Size = new System.Drawing.Size(141, 21);
             this.text_uploadImg.TabIndex = 1;
             // 
@@ -603,8 +606,10 @@
             // 
             // text_upload3D
             // 
+            this.text_upload3D.BackColor = System.Drawing.Color.White;
             this.text_upload3D.Location = new System.Drawing.Point(3, 3);
             this.text_upload3D.Name = "text_upload3D";
+            this.text_upload3D.ReadOnly = true;
             this.text_upload3D.Size = new System.Drawing.Size(141, 21);
             this.text_upload3D.TabIndex = 1;
             // 
@@ -640,6 +645,7 @@
             this.ok.TabIndex = 0;
             this.ok.Text = "添加";
             this.ok.UseVisualStyleBackColor = true;
+            this.ok.Click += new System.EventHandler(this.ok_Click);
             // 
             // cancel
             // 
@@ -666,8 +672,8 @@
             this.Load += new System.EventHandler(this.AccountAddForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_count)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_electromotor)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -701,25 +707,25 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox text_asset;
+        private System.Windows.Forms.TextBox text_eqname;
         private System.Windows.Forms.ComboBox combo_eqType;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.TextBox text_model;
+        private System.Windows.Forms.TextBox text_specification;
+        private System.Windows.Forms.TextBox text_weight;
+        private System.Windows.Forms.TextBox text_brand;
+        private System.Windows.Forms.TextBox text_manufacturer;
+        private System.Windows.Forms.TextBox text_supplier;
+        private System.Windows.Forms.MaskedTextBox maskedText_value;
+        private System.Windows.Forms.MaskedTextBox maskedText_power;
+        private System.Windows.Forms.DateTimePicker dateTime_manu_date;
+        private System.Windows.Forms.DateTimePicker dateTime_produ_date;
+        private System.Windows.Forms.DateTimePicker dateTime_filing_date;
         private System.Windows.Forms.ComboBox combo_depart;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox text_address;
         private System.Windows.Forms.ComboBox combo_status;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numeric_count;
+        private System.Windows.Forms.NumericUpDown numeric_electromotor;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button button_uploadImg;
         private System.Windows.Forms.TextBox text_uploadImg;
