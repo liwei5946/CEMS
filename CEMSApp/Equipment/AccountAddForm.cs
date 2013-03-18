@@ -55,5 +55,40 @@ namespace CEMSApp.Equipment
                 cb.ValueMember = ValueMember;
             }
         }
+
+        private void button_uploadImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog1 = new OpenFileDialog();
+            fileDialog1.InitialDirectory = "d://";       // 默认打开的路径，可更改
+            fileDialog1.Filter = "图像文件 (*.jpg)|*.jpg";
+            fileDialog1.FilterIndex = 1;
+            fileDialog1.RestoreDirectory = true;
+            if (fileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                text_uploadImg.Text = fileDialog1.FileName;
+            }
+            else
+            {
+                text_uploadImg.Text = "";
+            } 
+        }
+
+        private void button_upload3D_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog1 = new OpenFileDialog();
+            fileDialog1.InitialDirectory = "d://";       // 默认打开的路径，可更改
+            fileDialog1.Filter = "三维模型文件 (*.obj)|*.obj";
+            fileDialog1.FilterIndex = 1;
+            fileDialog1.RestoreDirectory = true;
+            if (fileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                text_upload3D.Text = fileDialog1.FileName;
+            }
+            else
+            {
+                text_upload3D.Text = "";
+            } 
+
+        }
     }
 }

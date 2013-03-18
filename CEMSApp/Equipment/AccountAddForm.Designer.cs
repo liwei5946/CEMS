@@ -70,12 +70,11 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.text_uploadImg = new System.Windows.Forms.TextBox();
+            this.button_uploadImg = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.text_upload3D = new System.Windows.Forms.TextBox();
+            this.button_upload3D = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.ok = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
@@ -562,8 +561,8 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel2.Controls.Add(this.textBox10, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.text_uploadImg, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button_uploadImg, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(103, 459);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -571,29 +570,30 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(227, 26);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
-            // textBox10
+            // text_uploadImg
             // 
-            this.textBox10.Location = new System.Drawing.Point(3, 3);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(141, 21);
-            this.textBox10.TabIndex = 1;
+            this.text_uploadImg.Location = new System.Drawing.Point(3, 3);
+            this.text_uploadImg.Name = "text_uploadImg";
+            this.text_uploadImg.Size = new System.Drawing.Size(141, 21);
+            this.text_uploadImg.TabIndex = 1;
             // 
-            // button1
+            // button_uploadImg
             // 
-            this.button1.Location = new System.Drawing.Point(150, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 20);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "浏览...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_uploadImg.Location = new System.Drawing.Point(150, 3);
+            this.button_uploadImg.Name = "button_uploadImg";
+            this.button_uploadImg.Size = new System.Drawing.Size(65, 20);
+            this.button_uploadImg.TabIndex = 0;
+            this.button_uploadImg.Text = "浏览...";
+            this.button_uploadImg.UseVisualStyleBackColor = true;
+            this.button_uploadImg.Click += new System.EventHandler(this.button_uploadImg_Click);
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel3.Controls.Add(this.textBox11, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button2, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.text_upload3D, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.button_upload3D, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(103, 491);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -601,25 +601,22 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(227, 26);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
-            // textBox11
+            // text_upload3D
             // 
-            this.textBox11.Location = new System.Drawing.Point(3, 3);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(141, 21);
-            this.textBox11.TabIndex = 1;
+            this.text_upload3D.Location = new System.Drawing.Point(3, 3);
+            this.text_upload3D.Name = "text_upload3D";
+            this.text_upload3D.Size = new System.Drawing.Size(141, 21);
+            this.text_upload3D.TabIndex = 1;
             // 
-            // button2
+            // button_upload3D
             // 
-            this.button2.Location = new System.Drawing.Point(150, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 20);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "浏览...";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.button_upload3D.Location = new System.Drawing.Point(150, 3);
+            this.button_upload3D.Name = "button_upload3D";
+            this.button_upload3D.Size = new System.Drawing.Size(65, 20);
+            this.button_upload3D.TabIndex = 0;
+            this.button_upload3D.Text = "浏览...";
+            this.button_upload3D.UseVisualStyleBackColor = true;
+            this.button_upload3D.Click += new System.EventHandler(this.button_upload3D_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -723,13 +720,12 @@
         private System.Windows.Forms.ComboBox combo_status;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Button button_uploadImg;
+        private System.Windows.Forms.TextBox text_uploadImg;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox text_upload3D;
+        private System.Windows.Forms.Button button_upload3D;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button ok;
         private System.Windows.Forms.Button cancel;
