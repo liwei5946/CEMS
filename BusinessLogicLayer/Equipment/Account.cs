@@ -26,5 +26,13 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.CreateDataSet_EquipmentType();
         }
+        /// <summary>
+        /// 查找设备台帐信息
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryAccount()
+        {
+            return acc.queryAccount();
+        }
     }
 }

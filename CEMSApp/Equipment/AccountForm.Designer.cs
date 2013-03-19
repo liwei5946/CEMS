@@ -38,6 +38,7 @@
             this.leftContainer = new System.Windows.Forms.SplitContainer();
             this.tree_department = new System.Windows.Forms.TreeView();
             this.tree_eqType = new System.Windows.Forms.TreeView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grid1 = new SourceGrid.Grid();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bigContainer)).BeginInit();
@@ -48,6 +49,7 @@
             this.leftContainer.Panel1.SuspendLayout();
             this.leftContainer.Panel2.SuspendLayout();
             this.leftContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -119,6 +121,7 @@
             // 
             // bigContainer.Panel2
             // 
+            this.bigContainer.Panel2.Controls.Add(this.pictureBox1);
             this.bigContainer.Panel2.Controls.Add(this.grid1);
             this.bigContainer.Size = new System.Drawing.Size(630, 409);
             this.bigContainer.SplitterDistance = 150;
@@ -158,15 +161,22 @@
             this.tree_eqType.Size = new System.Drawing.Size(150, 199);
             this.tree_eqType.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(3, 210);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(376, 196);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // grid1
             // 
-            this.grid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid1.EnableSort = true;
             this.grid1.Location = new System.Drawing.Point(0, 0);
             this.grid1.Name = "grid1";
             this.grid1.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.grid1.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid1.Size = new System.Drawing.Size(476, 409);
+            this.grid1.Size = new System.Drawing.Size(352, 206);
             this.grid1.TabIndex = 0;
             this.grid1.TabStop = true;
             this.grid1.ToolTipText = "";
@@ -191,6 +201,7 @@
             this.leftContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.leftContainer)).EndInit();
             this.leftContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +220,6 @@
         private System.Windows.Forms.ToolStripButton closeButton;
         private System.Windows.Forms.TreeView tree_department;
         private System.Windows.Forms.TreeView tree_eqType;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

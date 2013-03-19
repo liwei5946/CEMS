@@ -77,5 +77,32 @@ namespace DataAccessLayer.Equipment
             }
             return ds;
         }
+        /// <summary>
+        /// 查找设备台帐信息
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryAccount()
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account");
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
     }
 }
