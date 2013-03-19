@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     2013-3-16 22:48:59                           */
+/* Created on:     2013-3-19 16:41:25                           */
 /*==============================================================*/
 
 
@@ -20,20 +20,6 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('eq_account') and o.name = 'FK_EQ_ACCOU_REFERENCE_EQ_PHOTO')
-alter table eq_account
-   drop constraint FK_EQ_ACCOU_REFERENCE_EQ_PHOTO
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('eq_account') and o.name = 'FK_EQ_ACCOU_REFERENCE_EQ_3D')
-alter table eq_account
-   drop constraint FK_EQ_ACCOU_REFERENCE_EQ_3D
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('eq_account') and o.name = 'FK_EQ_ACCOU_REFERENCE_DEPARTME')
 alter table eq_account
    drop constraint FK_EQ_ACCOU_REFERENCE_DEPARTME
@@ -48,23 +34,9 @@ go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('eq_3d')
-            and   type = 'U')
-   drop table eq_3d
-go
-
-if exists (select 1
-            from  sysobjects
            where  id = object_id('eq_account')
             and   type = 'U')
    drop table eq_account
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('eq_photo')
-            and   type = 'U')
-   drop table eq_photo
 go
 
 if exists (select 1
@@ -184,30 +156,6 @@ execute sp_addextendedproperty 'MS_Description',
 go
 
 /*==============================================================*/
-/* Table: eq_3d                                                 */
-/*==============================================================*/
-create table eq_3d (
-   id                   int                  identity,
-   threed               image                null,
-   constraint PK_EQ_3D primary key (id)
-)
-go
-
-declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   '三维图像表',
-   'user', @CurrentUser, 'table', 'eq_3d'
-go
-
-declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   '三维图形文件',
-   'user', @CurrentUser, 'table', 'eq_3d', 'column', 'threed'
-go
-
-/*==============================================================*/
 /* Table: eq_account                                            */
 /*==============================================================*/
 create table eq_account (
@@ -232,9 +180,9 @@ create table eq_account (
    status               int                  null,
    type                 int                  null,
    address              nvarchar(50)         null,
+   photo                image                null,
+   three_dimensional    image                null,
    parts                nvarchar(100)        null,
-   photo                int                  null,
-   three_dimensional    int                  null,
    constraint PK_EQ_ACCOUNT primary key nonclustered (id)
 )
 go
@@ -389,39 +337,22 @@ go
 declare @CurrentUser sysname
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '所用零件。以分号隔开，如：1;3;6(本字段暂封存不用)',
-   'user', @CurrentUser, 'table', 'eq_account', 'column', 'parts'
-go
-
-declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   '设备图片（平面）',
+   '设备图片',
    'user', @CurrentUser, 'table', 'eq_account', 'column', 'photo'
 go
 
 declare @CurrentUser sysname
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '设备图片（三维）',
+   '设备三维图文件',
    'user', @CurrentUser, 'table', 'eq_account', 'column', 'three_dimensional'
-go
-
-/*==============================================================*/
-/* Table: eq_photo                                              */
-/*==============================================================*/
-create table eq_photo (
-   id                   int                  identity,
-   photoimg             image                null,
-   constraint PK_EQ_PHOTO primary key (id)
-)
 go
 
 declare @CurrentUser sysname
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '设备图片表',
-   'user', @CurrentUser, 'table', 'eq_photo'
+   '所用零件。以分号隔开，如：1;3;6(本字段暂封存不用)',
+   'user', @CurrentUser, 'table', 'eq_account', 'column', 'parts'
 go
 
 /*==============================================================*/
@@ -1105,16 +1036,6 @@ go
 alter table eq_account
    add constraint FK_EQ_ACCOU_REFERENCE_EQ_TYPE foreign key (type)
       references eq_type (id)
-go
-
-alter table eq_account
-   add constraint FK_EQ_ACCOU_REFERENCE_EQ_PHOTO foreign key (photo)
-      references eq_photo (id)
-go
-
-alter table eq_account
-   add constraint FK_EQ_ACCOU_REFERENCE_EQ_3D foreign key (three_dimensional)
-      references eq_3d (id)
 go
 
 alter table eq_account

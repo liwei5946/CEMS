@@ -488,6 +488,7 @@
             // maskedText_power
             // 
             this.maskedText_power.Location = new System.Drawing.Point(103, 291);
+            this.maskedText_power.Mask = "000000000.00";
             this.maskedText_power.Name = "maskedText_power";
             this.maskedText_power.Size = new System.Drawing.Size(100, 21);
             this.maskedText_power.TabIndex = 3;
