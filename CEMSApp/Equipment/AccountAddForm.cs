@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BusinessLogicLayer.Equipment;
+using log4net;
 
 namespace CEMSApp.Equipment
 {
     public partial class AccountAddForm : ChildForm
     {
+        ILog log = log4net.LogManager.GetLogger(typeof(AccountAddForm));
         OpenFileDialog fileDialog_img = new OpenFileDialog();
         OpenFileDialog fileDialog_3d = new OpenFileDialog();
         public AccountAddForm()
@@ -96,7 +98,57 @@ namespace CEMSApp.Equipment
         {
             bool flag = false;
             AccountAdd aa = new AccountAdd();
-            flag = aa.addAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_manu_date.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, float.Parse(maskedText_value.Text), Convert.ToInt32(numeric_count.Value.ToString()), Convert.ToInt32(numeric_electromotor.Value.ToString()), float.Parse(maskedText_power.Text), Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_eqType.SelectedValue.ToString()), text_address.Text, aa.getFileBytes(fileDialog_img.FileName), aa.getFileBytes(fileDialog_3d.FileName));
+            float value,power;
+            byte[] img = new byte[] { 0 };
+            byte[] threeD = new byte[] { 0 };
+            int count,electromotor;
+            if (!maskedText_value.Text.Trim().Equals("."))
+            {
+                log.Debug(maskedText_value.Text);
+                value = float.Parse(maskedText_value.Text);
+            }
+            else
+            {
+                value = 0;
+            }
+            if (!maskedText_power.Text.Trim().Equals("."))
+            {
+               power= float.Parse(maskedText_power.Text);
+            }
+            else
+            {
+                power = 0;
+            }
+            if (!numeric_count.Value.ToString().Equals(""))
+            {
+                count = Convert.ToInt32(numeric_count.Value.ToString());
+            }
+            else
+            {
+                count = 1;
+            }
+            if (!numeric_electromotor.Value.ToString().Equals(""))
+            {
+                electromotor = Convert.ToInt32(numeric_electromotor.Value.ToString());
+            }
+            else
+            {
+                electromotor = 0;
+            }
+            if (!fileDialog_img.FileName.Equals(""))
+            {
+                img = aa.getFileBytes(fileDialog_img.FileName);
+            }
+            else
+            {
+                img = aa.getFileBytes("pic\\no_photo.gif");
+            }
+            if (!fileDialog_3d.FileName.Equals(""))
+            {
+                threeD = aa.getFileBytes(fileDialog_3d.FileName);
+            }
+            //flag = aa.addAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_manu_date.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, float.Parse(maskedText_value.Text), Convert.ToInt32(numeric_count.Value.ToString()), Convert.ToInt32(numeric_electromotor.Value.ToString()), float.Parse(maskedText_power.Text), Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_eqType.SelectedValue.ToString()), text_address.Text, aa.getFileBytes(fileDialog_img.FileName), aa.getFileBytes(fileDialog_3d.FileName));
+            flag = aa.addAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_manu_date.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, value, count, electromotor, power, Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_eqType.SelectedValue.ToString()), text_address.Text, img, threeD);
             if (flag)
             {
                 MessageBox.Show("数据添加成功！");
