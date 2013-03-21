@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BusinessLogicLayer.Equipment;
+using log4net;
 
 namespace CEMSApp.Equipment
 {
     public partial class AccountForm : ChildForm
     {
+        ILog log = log4net.LogManager.GetLogger(typeof(AccountForm));
         public AccountForm()
         {
             InitializeComponent();
@@ -21,7 +23,6 @@ namespace CEMSApp.Equipment
         private void AccountForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-
             //数据格
             /*
             grid1.BorderStyle = BorderStyle.FixedSingle;
@@ -53,7 +54,7 @@ namespace CEMSApp.Equipment
             //sourcegrid试验
             //BindSourceGrid(grid1, ds1.Tables[0]);
             DataSet ds_account = acc.queryAccount();
-            BindSourceGrid(grid1, ds_account.Tables[0], pictureBox1);
+            BindSourceGrid(grid1, ds_account.Tables[0]);
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -112,7 +113,7 @@ namespace CEMSApp.Equipment
             grid.Refresh();
         }
          */
-        public static void BindSourceGrid(SourceGrid.Grid grid, DataTable data, PictureBox pb)
+        public void BindSourceGrid(SourceGrid.Grid grid, DataTable data)
         {
             byte[] imagebytes = null;
             //Redim grid
@@ -125,29 +126,61 @@ namespace CEMSApp.Equipment
             grid[0, 1] = new SourceGrid.Cells.ColumnHeader("资产编号");
             grid[0, 2] = new SourceGrid.Cells.ColumnHeader("设备名称");
             grid[0, 3] = new SourceGrid.Cells.ColumnHeader("设备图片");
-            
-            for (int i = 0; i < data.Rows.Count; i++)
+
+            for (int i = 1; i < data.Rows.Count + 1; i++)
             {
                 //grid[i + grid.FixedRows, j] = new SourceGrid.Cells.Cell(data.Rows[i][j]);
                 //grid[i + grid.FixedRows, j].View =SourceGridView.NormalGridView;
                 grid.Rows.Insert(i);
-                grid[i, 0] = new SourceGrid.Cells.Cell(data.Rows[i][0], typeof(int));
-                grid[i, 1] = new SourceGrid.Cells.Cell(data.Rows[i][1], typeof(string));
-                grid[i, 2] = new SourceGrid.Cells.Cell(data.Rows[i][2], typeof(string));
-                using (DataTableReader reader = data.CreateDataReader())
-                {
-                    reader.Read();
-                    imagebytes = (byte[])reader.GetValue(3);
-                    
-                }
+                grid.Rows.SetHeight(i, 50);
+                grid[i, 0] = new SourceGrid.Cells.Cell(data.Rows[i - 1][0], typeof(int));
+                grid[i, 1] = new SourceGrid.Cells.Cell(data.Rows[i - 1][1], typeof(string));
+                grid[i, 2] = new SourceGrid.Cells.Cell(data.Rows[i - 1][2], typeof(string));
+                imagebytes = (byte[])data.Rows[i - 1][3];
                 MemoryStream ms = new MemoryStream(imagebytes);
                 Image img = Image.FromStream(ms);
-                pb.Image = img;
-                //((SourceGrid.Cells.Link)gridColumn.DataCell).Image = img;
+                //pb.Image = img;
                 grid[i, 3] = new SourceGrid.Cells.Image(img);
-                //grid[i, 3].Image = img;
+                //log.Debug(imagebytes);
+                grid[i, 0].Editor.EnableEdit = false;
+                grid[i, 1].Editor.EnableEdit = false;
+                grid[i, 2].Editor.EnableEdit = false;
+                grid[i, 3].Editor.EnableEdit = false;
+
             }
             grid.Refresh();
+        }
+        public static void BuildStandardSourceGrid(SourceGrid.Grid grid, string title, string[] headerCaption, int[] headerLengh)
+        {
+            DevAge.Drawing.BorderLine border = new DevAge.Drawing.BorderLine(Color.DarkKhaki, 1);
+            DevAge.Drawing.RectangleBorder cellBorder = new DevAge.Drawing.RectangleBorder(border, border);
+            grid.BorderStyle = BorderStyle.FixedSingle;
+            grid.BorderStyle = BorderStyle.FixedSingle;
+            grid.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                grid.Redim(1, 15);
+                grid.FixedRows = 1;
+            }
+            else
+            {
+                grid.Redim(2, 15);
+                grid.FixedRows = 2;
+                grid.Rows[0].Height = 25;
+            }
+            if (headerLengh != null && headerLengh.Length > 0)
+                BuildGridColumnWidth(grid, headerLengh);
+
+            grid.AutoStretchColumnsToFitWidth = true;
+            grid.Columns.StretchToFit();
+            grid.ClipboardMode = SourceGrid.ClipboardMode.Copy;
+        }
+        public static void BuildGridColumnWidth(SourceGrid.Grid Grid, int[] ColumnWidth)
+        {
+            for (int i = 0; i < ColumnWidth.Length; i++)
+            {
+                Grid.Columns[i].Width = ColumnWidth[i];
+            }
         }
 
     }
