@@ -39,7 +39,6 @@ namespace CEMSApp.Equipment
                 grid1[r, 1] = new SourceGrid.Cells.Cell(DateTime.Today, typeof(DateTime));
                 grid1[r, 2] = new SourceGrid.Cells.CheckBox(null, true);
             }
-
             grid1.AutoSizeCells();
              * */
 
@@ -85,12 +84,19 @@ namespace CEMSApp.Equipment
             }
             tv.ExpandAll();
         }
+        /// <summary>
+        /// 为SourceGrid绑定数据源
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="data"></param>
         public void BindSourceGrid(SourceGrid.Grid grid, DataTable data)
         {
             byte[] imagebytes = null;
             int[] ColumnWidth = new int[] { 40, 80, 100, 64 };
+            PopupMenu menuController = new PopupMenu();
             //Redim grid
             //grid.Redim(data.Rows.Count + grid.FixedRows, data.Columns.Count);
+            grid.SelectionMode = SourceGrid.GridSelectionMode.Row;
             grid.BorderStyle = BorderStyle.FixedSingle;
             grid.ColumnsCount = 4;
             grid.FixedRows = 1;
@@ -124,6 +130,11 @@ namespace CEMSApp.Equipment
                 grid[i, 1].Editor.EnableEdit = false;
                 grid[i, 2].Editor.EnableEdit = false;
                 grid[i, 3].Editor.EnableEdit = false;
+                //为表单添加右键选项
+                grid[i, 0].AddController(menuController);
+                grid[i, 1].AddController(menuController);
+                grid[i, 2].AddController(menuController);
+                grid[i, 3].AddController(menuController);
 
             }
             grid.Refresh();
@@ -136,5 +147,60 @@ namespace CEMSApp.Equipment
             }
         }
 
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+        }
+
+        private void delButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dr;
+            Boolean flag = false;
+            dr = MessageBox.Show("您确认删除序号为"+grid1[grid1.Selection.ActivePosition.Row, 0].ToString()+"的记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.Yes)
+            {
+                Account acc = new Account();
+                flag = acc.deleteAccountById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                if (flag)
+                {
+                    MessageBox.Show("删除成功！");
+                }
+                else
+                {
+                    MessageBox.Show("删除失败！");
+                }
+            }
+        }
+
+    }
+    /// <summary>
+    /// 右键控制项
+    /// </summary>
+    public class PopupMenu : SourceGrid.Cells.Controllers.ControllerBase
+    {
+        ContextMenu menu = new ContextMenu();
+        public PopupMenu()
+        {
+            menu.MenuItems.Add("修改", new EventHandler(Menu1_Click));
+            menu.MenuItems.Add("删除", new EventHandler(Menu2_Click));
+        }
+
+        public override void OnMouseUp(SourceGrid.CellContext sender, MouseEventArgs e)
+        {
+            base.OnMouseUp(sender, e);
+
+            if (e.Button == MouseButtons.Right)
+                menu.Show(sender.Grid, new Point(e.X, e.Y));
+        }
+
+        private void Menu1_Click(object sender, EventArgs e)
+        {
+            //TODO Your code here
+            MessageBox.Show("数据添加成功！");
+        }
+        private void Menu2_Click(object sender, EventArgs e)
+        {
+            //TODO Your code here
+        }
     }
 }

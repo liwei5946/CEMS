@@ -480,7 +480,7 @@
             // maskedText_value
             // 
             this.maskedText_value.Location = new System.Drawing.Point(103, 219);
-            this.maskedText_value.Mask = "000000000.00";
+            this.maskedText_value.Mask = "#.00";
             this.maskedText_value.Name = "maskedText_value";
             this.maskedText_value.Size = new System.Drawing.Size(100, 21);
             this.maskedText_value.TabIndex = 3;
@@ -488,7 +488,7 @@
             // maskedText_power
             // 
             this.maskedText_power.Location = new System.Drawing.Point(103, 291);
-            this.maskedText_power.Mask = "000000000.00";
+            this.maskedText_power.Mask = "#.00";
             this.maskedText_power.Name = "maskedText_power";
             this.maskedText_power.Size = new System.Drawing.Size(100, 21);
             this.maskedText_power.TabIndex = 3;

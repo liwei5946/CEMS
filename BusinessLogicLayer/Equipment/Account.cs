@@ -34,5 +34,14 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryAccount();
         }
+        /// <summary>
+        /// 删除制定ID的台帐信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteAccountById(string id)
+        {
+            return acc.deleteAccountById(id);
+        }
     }
 }

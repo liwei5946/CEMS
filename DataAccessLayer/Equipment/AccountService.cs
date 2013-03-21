@@ -104,5 +104,39 @@ namespace DataAccessLayer.Equipment
             }
             return ds;
         }
+        /// <summary>
+        /// 删除制定ID的台帐信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteAccountById(string id)
+        {
+            int result = 0;
+            try
+            {
+                string sql = string.Format("DELETE FROM eq_account WHERE id=" + id);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
     }
 }

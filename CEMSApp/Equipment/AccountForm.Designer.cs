@@ -82,6 +82,7 @@
             this.editButton.Size = new System.Drawing.Size(33, 32);
             this.editButton.Text = "修改";
             this.editButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -96,6 +97,7 @@
             this.delButton.Size = new System.Drawing.Size(33, 32);
             this.delButton.Text = "删除";
             this.delButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
             // 
             // closeButton
             // 
