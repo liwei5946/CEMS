@@ -54,6 +54,9 @@ namespace CEMSApp.Equipment
             //BindSourceGrid(grid1, ds1.Tables[0]);
             DataSet ds_account = acc.queryAccount();
             BindSourceGrid(grid1, ds_account.Tables[0]);
+            //grid1.Selection.ActivePosition.Row
+            grid1.Selection.SelectRow(1, true);
+            grid1.Selection.FocusFirstCell(true);
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -131,10 +134,10 @@ namespace CEMSApp.Equipment
                 grid[i, 2].Editor.EnableEdit = false;
                 grid[i, 3].Editor.EnableEdit = false;
                 //为表单添加右键选项
-                grid[i, 0].AddController(menuController);
-                grid[i, 1].AddController(menuController);
-                grid[i, 2].AddController(menuController);
-                grid[i, 3].AddController(menuController);
+                //grid[i, 0].AddController(menuController);
+                //grid[i, 1].AddController(menuController);
+                //grid[i, 2].AddController(menuController);
+                //grid[i, 3].AddController(menuController);
 
             }
             grid.Refresh();
@@ -149,7 +152,7 @@ namespace CEMSApp.Equipment
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                MessageBox.Show(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
         }
 
         private void delButton_Click(object sender, EventArgs e)
@@ -196,7 +199,7 @@ namespace CEMSApp.Equipment
         private void Menu1_Click(object sender, EventArgs e)
         {
             //TODO Your code here
-            MessageBox.Show("数据添加成功！");
+            //MessageBox.Show("数据添加成功！");
         }
         private void Menu2_Click(object sender, EventArgs e)
         {
