@@ -86,7 +86,7 @@ namespace DataAccessLayer.Equipment
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account");
+                string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -114,7 +114,7 @@ namespace DataAccessLayer.Equipment
             int result = 0;
             try
             {
-                string sql = string.Format("DELETE FROM eq_account WHERE id=" + id);
+                string sql = string.Format("UPDATE eq_account SET dr = 1 WHERE id=" + id);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
                     conn.Open();

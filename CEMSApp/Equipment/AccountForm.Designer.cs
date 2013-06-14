@@ -60,7 +60,7 @@
             this.closeButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(630, 35);
+            this.toolStrip1.Size = new System.Drawing.Size(630, 40);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -69,7 +69,7 @@
             this.addButton.Image = global::CEMSApp.Properties.Resources.add;
             this.addButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(33, 32);
+            this.addButton.Size = new System.Drawing.Size(36, 37);
             this.addButton.Text = "增加";
             this.addButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -79,7 +79,7 @@
             this.editButton.Image = global::CEMSApp.Properties.Resources.pencil;
             this.editButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(33, 32);
+            this.editButton.Size = new System.Drawing.Size(36, 37);
             this.editButton.Text = "修改";
             this.editButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
@@ -87,14 +87,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 35);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
             // delButton
             // 
             this.delButton.Image = global::CEMSApp.Properties.Resources.delete1;
             this.delButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.delButton.Name = "delButton";
-            this.delButton.Size = new System.Drawing.Size(33, 32);
+            this.delButton.Size = new System.Drawing.Size(36, 37);
             this.delButton.Text = "删除";
             this.delButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.delButton.Click += new System.EventHandler(this.delButton_Click);
@@ -104,7 +104,7 @@
             this.closeButton.Image = global::CEMSApp.Properties.Resources.door_in;
             this.closeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(33, 32);
+            this.closeButton.Size = new System.Drawing.Size(36, 37);
             this.closeButton.Text = "关闭";
             this.closeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -112,7 +112,7 @@
             // 
             this.bigContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bigContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.bigContainer.Location = new System.Drawing.Point(0, 35);
+            this.bigContainer.Location = new System.Drawing.Point(0, 40);
             this.bigContainer.Name = "bigContainer";
             // 
             // bigContainer.Panel1
@@ -122,7 +122,7 @@
             // bigContainer.Panel2
             // 
             this.bigContainer.Panel2.Controls.Add(this.grid1);
-            this.bigContainer.Size = new System.Drawing.Size(630, 409);
+            this.bigContainer.Size = new System.Drawing.Size(630, 404);
             this.bigContainer.SplitterDistance = 150;
             this.bigContainer.TabIndex = 1;
             // 
@@ -140,8 +140,8 @@
             // leftContainer.Panel2
             // 
             this.leftContainer.Panel2.Controls.Add(this.tree_eqType);
-            this.leftContainer.Size = new System.Drawing.Size(150, 409);
-            this.leftContainer.SplitterDistance = 206;
+            this.leftContainer.Size = new System.Drawing.Size(150, 404);
+            this.leftContainer.SplitterDistance = 203;
             this.leftContainer.TabIndex = 0;
             // 
             // tree_department
@@ -149,7 +149,7 @@
             this.tree_department.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tree_department.Location = new System.Drawing.Point(0, 0);
             this.tree_department.Name = "tree_department";
-            this.tree_department.Size = new System.Drawing.Size(150, 206);
+            this.tree_department.Size = new System.Drawing.Size(150, 203);
             this.tree_department.TabIndex = 0;
             // 
             // tree_eqType
@@ -157,7 +157,7 @@
             this.tree_eqType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tree_eqType.Location = new System.Drawing.Point(0, 0);
             this.tree_eqType.Name = "tree_eqType";
-            this.tree_eqType.Size = new System.Drawing.Size(150, 199);
+            this.tree_eqType.Size = new System.Drawing.Size(150, 197);
             this.tree_eqType.TabIndex = 0;
             // 
             // grid1
@@ -168,7 +168,7 @@
             this.grid1.Name = "grid1";
             this.grid1.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.grid1.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid1.Size = new System.Drawing.Size(476, 409);
+            this.grid1.Size = new System.Drawing.Size(476, 404);
             this.grid1.TabIndex = 0;
             this.grid1.TabStop = true;
             this.grid1.ToolTipText = "";

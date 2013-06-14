@@ -94,6 +94,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "取消";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pictureBox1
             // 
@@ -101,7 +102,7 @@
             this.pictureBox1.Image = global::CEMSApp.Properties.Resources.login;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(354, 218);
+            this.pictureBox1.Size = new System.Drawing.Size(354, 222);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
@@ -209,7 +210,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 218);
+            this.ClientSize = new System.Drawing.Size(354, 222);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pwd);
             this.Controls.Add(this.uname);

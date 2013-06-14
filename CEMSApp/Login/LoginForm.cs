@@ -63,6 +63,7 @@ namespace CEMSApp.Login
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             int height = this.Height;
+            log.Debug("窗体高度：" + height);
             //int width = this.Width;
             if (height == 250)
             {
@@ -103,6 +104,11 @@ namespace CEMSApp.Login
             dbuser.Text = baseuser;
             dbpwd.Text = basepwd;
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
 

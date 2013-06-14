@@ -152,7 +152,13 @@ namespace CEMSApp.Equipment
 
         private void editButton_Click(object sender, EventArgs e)
         {
-                MessageBox.Show(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+            try
+            {
+                 MessageBox.Show(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+            }catch(Exception mye){
+                log.Error(mye.Message);
+            }
+               
         }
 
         private void delButton_Click(object sender, EventArgs e)
