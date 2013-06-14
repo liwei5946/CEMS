@@ -19,7 +19,32 @@ namespace CEMSApp.Equipment
         {
             InitializeComponent();
         }
+        public struct ComboBoxItem<TKey, TValue>
+        {
+            private TKey key;
+            private TValue value;
 
+            public ComboBoxItem(TKey key, TValue value)
+            {
+                this.key = key;
+                this.value = value;
+            }
+
+            public TKey Key
+            {
+                get { return key; }
+            }
+
+            public TValue Value
+            {
+                get { return value; }
+            }
+
+            public override string ToString()
+            {
+                return Value.ToString();
+            }
+        }
         private void AccountForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
@@ -47,9 +72,12 @@ namespace CEMSApp.Equipment
             Account acc = new Account();
             ds1 = acc.CreateDataSet_Department();
             ds2 = acc.CreateDataSet_EquipmentType();
-            InitTree(tree_department, ds1, "所有部门", "id", "departname");
-            InitTree(tree_eqType, ds2, "所有设备类型", "id", "type_name");
-
+            //InitTree(tree_department, ds1, "所有部门", "id", "departname");
+           // InitTree(tree_eqType, ds2, "所有设备类型", "id", "type_name");
+            InitComboBox(depart_ComboBox, ds1, "id", "departname");
+            InitComboBox(equ_ComboBox, ds2, "id", "type_name");
+            //equ_ComboBox.ComboBox.Items.Insert(0, new ComboBoxItem<string, string>("0", "所有"));
+            //equ_ComboBox.ComboBox.Items.Add(new ComboBoxItem<string, string>("0", "所有"));
             //sourcegrid试验
             //BindSourceGrid(grid1, ds1.Tables[0]);
             DataSet ds_account = acc.queryAccount();
@@ -58,11 +86,36 @@ namespace CEMSApp.Equipment
             grid1.Selection.SelectRow(1, true);
             grid1.Selection.FocusFirstCell(true);
         }
-
+        /// <summary>
+        /// 初始化下拉列表
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <param name="ds"></param>
+        /// <param name="ValueMember">数据ID</param>
+        /// <param name="DisplayMember">数据显示项的列名</param>
+        private void InitComboBox(ToolStripComboBox cb, DataSet ds, string ValueMember, string DisplayMember)
+        {
+            if (ds != null)
+            {
+                cb.ComboBox.DataSource = ds.Tables[0];
+                cb.ComboBox.DisplayMember = DisplayMember;
+                cb.ComboBox.ValueMember = ValueMember;
+                //cb.ComboBox.Items.Insert(0, new ComboBoxItem<string, string>("0", "所有"));
+            }
+        }
         private void addButton_Click(object sender, EventArgs e)
         {
             AccountAddForm addForm = new AccountAddForm();
-            addForm.ShowDialog();
+            //addForm.ShowDialog();
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                //重新绑定DataGridView;
+                Account acc = new Account();
+                DataSet ds_account = acc.queryAccount();
+                BindSourceGrid(grid1, ds_account.Tables[0]);
+                grid1.Selection.SelectRow(1, true);
+                grid1.Selection.FocusFirstCell(true);
+            }
         }
         /// <summary>
         /// 初始化TreeView控件
@@ -97,9 +150,15 @@ namespace CEMSApp.Equipment
             byte[] imagebytes = null;
             int[] ColumnWidth = new int[] { 40, 80, 100, 64 };
             PopupMenu menuController = new PopupMenu();
+            if (grid.RowsCount > 0)
+            {
+                grid.Rows.RemoveRange(0, grid.RowsCount);
+            }
             //Redim grid
             //grid.Redim(data.Rows.Count + grid.FixedRows, data.Columns.Count);
-            grid.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            grid.SelectionMode = SourceGrid.GridSelectionMode.Row;//选行模式
+            grid.Selection.EnableMultiSelection = false; //行不允许多选
+            grid.EnableSort = false; //不允许排序
             grid.BorderStyle = BorderStyle.FixedSingle;
             grid.ColumnsCount = 4;
             grid.FixedRows = 1;
@@ -109,7 +168,8 @@ namespace CEMSApp.Equipment
             grid[0, 1] = new SourceGrid.Cells.ColumnHeader("资产编号");
             grid[0, 2] = new SourceGrid.Cells.ColumnHeader("设备名称");
             grid[0, 3] = new SourceGrid.Cells.ColumnHeader("设备图片");
-
+            //grid[0, 3].Column.Grid.EnableSort = false;
+            
             for (int i = 1; i < data.Rows.Count + 1; i++)
             {
                 //grid[i + grid.FixedRows, j] = new SourceGrid.Cells.Cell(data.Rows[i][j]);
@@ -120,7 +180,7 @@ namespace CEMSApp.Equipment
                 grid[i, 0] = new SourceGrid.Cells.Cell(data.Rows[i - 1][0], typeof(int));
                 grid[i, 1] = new SourceGrid.Cells.Cell(data.Rows[i - 1][1], typeof(string));
                 grid[i, 2] = new SourceGrid.Cells.Cell(data.Rows[i - 1][2], typeof(string));
-
+                
                 //将图片显示在单元格中
                 imagebytes = (byte[])data.Rows[i - 1][3];
                 MemoryStream ms = new MemoryStream(imagebytes);
@@ -165,20 +225,33 @@ namespace CEMSApp.Equipment
         {
             DialogResult dr;
             Boolean flag = false;
-            dr = MessageBox.Show("您确认删除序号为"+grid1[grid1.Selection.ActivePosition.Row, 0].ToString()+"的记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dr == DialogResult.Yes)
+            if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
-                Account acc = new Account();
-                flag = acc.deleteAccountById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
-                if (flag)
+                dr = MessageBox.Show("您确认删除序号为" + grid1[grid1.Selection.ActivePosition.Row, 0].ToString() + "的记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
                 {
-                    MessageBox.Show("删除成功！");
-                }
-                else
-                {
-                    MessageBox.Show("删除失败！");
+                    Account acc = new Account();
+                    flag = acc.deleteAccountById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    if (flag)
+                    {
+                        MessageBox.Show("删除成功！");
+                        DataSet ds_account = acc.queryAccount();
+                        BindSourceGrid(grid1, ds_account.Tables[0]);
+                        grid1.Selection.SelectRow(1, true);
+                        grid1.Selection.FocusFirstCell(true);
+                    }
+                    else
+                    {
+                        MessageBox.Show("删除失败！");
+                    }
                 }
             }
+            
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

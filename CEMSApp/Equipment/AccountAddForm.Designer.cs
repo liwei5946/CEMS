@@ -59,8 +59,6 @@
             this.text_brand = new System.Windows.Forms.TextBox();
             this.text_manufacturer = new System.Windows.Forms.TextBox();
             this.text_supplier = new System.Windows.Forms.TextBox();
-            this.maskedText_value = new System.Windows.Forms.MaskedTextBox();
-            this.maskedText_power = new System.Windows.Forms.MaskedTextBox();
             this.dateTime_manu_date = new System.Windows.Forms.DateTimePicker();
             this.dateTime_produ_date = new System.Windows.Forms.DateTimePicker();
             this.dateTime_filing_date = new System.Windows.Forms.DateTimePicker();
@@ -75,9 +73,11 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.text_upload3D = new System.Windows.Forms.TextBox();
             this.button_upload3D = new System.Windows.Forms.Button();
+            this.maskedText_value = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.ok = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
+            this.maskedText_power = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_electromotor)).BeginInit();
@@ -121,8 +121,6 @@
             this.tableLayoutPanel1.Controls.Add(this.text_brand, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.text_manufacturer, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.text_supplier, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.maskedText_value, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.maskedText_power, 1, 12);
             this.tableLayoutPanel1.Controls.Add(this.dateTime_manu_date, 1, 13);
             this.tableLayoutPanel1.Controls.Add(this.dateTime_produ_date, 1, 14);
             this.tableLayoutPanel1.Controls.Add(this.dateTime_filing_date, 1, 15);
@@ -133,6 +131,8 @@
             this.tableLayoutPanel1.Controls.Add(this.numeric_electromotor, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 19);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 20);
+            this.tableLayoutPanel1.Controls.Add(this.maskedText_value, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.maskedText_power, 1, 12);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 21;
@@ -477,22 +477,6 @@
             this.text_supplier.Size = new System.Drawing.Size(200, 21);
             this.text_supplier.TabIndex = 1;
             // 
-            // maskedText_value
-            // 
-            this.maskedText_value.Location = new System.Drawing.Point(103, 219);
-            this.maskedText_value.Mask = "#.00";
-            this.maskedText_value.Name = "maskedText_value";
-            this.maskedText_value.Size = new System.Drawing.Size(100, 21);
-            this.maskedText_value.TabIndex = 3;
-            // 
-            // maskedText_power
-            // 
-            this.maskedText_power.Location = new System.Drawing.Point(103, 291);
-            this.maskedText_power.Mask = "#.00";
-            this.maskedText_power.Name = "maskedText_power";
-            this.maskedText_power.Size = new System.Drawing.Size(100, 21);
-            this.maskedText_power.TabIndex = 3;
-            // 
             // dateTime_manu_date
             // 
             this.dateTime_manu_date.Location = new System.Drawing.Point(103, 315);
@@ -624,6 +608,14 @@
             this.button_upload3D.UseVisualStyleBackColor = true;
             this.button_upload3D.Click += new System.EventHandler(this.button_upload3D_Click);
             // 
+            // maskedText_value
+            // 
+            this.maskedText_value.Location = new System.Drawing.Point(103, 219);
+            this.maskedText_value.Name = "maskedText_value";
+            this.maskedText_value.Size = new System.Drawing.Size(100, 21);
+            this.maskedText_value.TabIndex = 8;
+            this.maskedText_value.Text = "0.00";
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -657,6 +649,14 @@
             this.cancel.Text = "取消";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
+            // 
+            // maskedText_power
+            // 
+            this.maskedText_power.Location = new System.Drawing.Point(103, 291);
+            this.maskedText_power.Name = "maskedText_power";
+            this.maskedText_power.Size = new System.Drawing.Size(100, 21);
+            this.maskedText_power.TabIndex = 9;
+            this.maskedText_power.Text = "0.00";
             // 
             // AccountAddForm
             // 
@@ -717,8 +717,6 @@
         private System.Windows.Forms.TextBox text_brand;
         private System.Windows.Forms.TextBox text_manufacturer;
         private System.Windows.Forms.TextBox text_supplier;
-        private System.Windows.Forms.MaskedTextBox maskedText_value;
-        private System.Windows.Forms.MaskedTextBox maskedText_power;
         private System.Windows.Forms.DateTimePicker dateTime_manu_date;
         private System.Windows.Forms.DateTimePicker dateTime_produ_date;
         private System.Windows.Forms.DateTimePicker dateTime_filing_date;
@@ -736,5 +734,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button ok;
         private System.Windows.Forms.Button cancel;
+        private System.Windows.Forms.TextBox maskedText_value;
+        private System.Windows.Forms.TextBox maskedText_power;
     }
 }

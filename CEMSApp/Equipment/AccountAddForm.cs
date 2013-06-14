@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using BusinessLogicLayer.Equipment;
 using log4net;
 
@@ -102,22 +103,28 @@ namespace CEMSApp.Equipment
             byte[] img = new byte[] { 0 };
             byte[] threeD = new byte[] { 0 };
             int count,electromotor;
-            if (!maskedText_value.Text.Trim().Equals("."))
+            if (Util.Tools.IsFloat(maskedText_value.Text))
             {
                 log.Debug(maskedText_value.Text);
                 value = float.Parse(maskedText_value.Text);
             }
             else
             {
-                value = 0;
+                MessageBox.Show("“设备单价”格式错误！");
+                maskedText_value.Focus();
+                maskedText_value.Text = "0.00";
+                return ;
             }
-            if (!maskedText_power.Text.Trim().Equals("."))
+            if (Util.Tools.IsFloat(maskedText_power.Text))
             {
                power= float.Parse(maskedText_power.Text);
             }
             else
             {
-                power = 0;
+                MessageBox.Show("“总功率”格式错误！");
+                maskedText_power.Focus();
+                maskedText_power.Text = "0.00";
+                return;
             }
             if (!numeric_count.Value.ToString().Equals(""))
             {
@@ -152,6 +159,7 @@ namespace CEMSApp.Equipment
             if (flag)
             {
                 MessageBox.Show("数据添加成功！");
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
@@ -159,5 +167,6 @@ namespace CEMSApp.Equipment
                 MessageBox.Show("数据添加失败，请检查网络连接！");
             }
         }
+
     }
 }
