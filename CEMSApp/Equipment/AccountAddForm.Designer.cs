@@ -74,10 +74,10 @@
             this.text_upload3D = new System.Windows.Forms.TextBox();
             this.button_upload3D = new System.Windows.Forms.Button();
             this.maskedText_value = new System.Windows.Forms.TextBox();
+            this.maskedText_power = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.ok = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
-            this.maskedText_power = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_electromotor)).BeginInit();
@@ -616,6 +616,14 @@
             this.maskedText_value.TabIndex = 8;
             this.maskedText_value.Text = "0.00";
             // 
+            // maskedText_power
+            // 
+            this.maskedText_power.Location = new System.Drawing.Point(103, 291);
+            this.maskedText_power.Name = "maskedText_power";
+            this.maskedText_power.Size = new System.Drawing.Size(100, 21);
+            this.maskedText_power.TabIndex = 9;
+            this.maskedText_power.Text = "0.00";
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -649,14 +657,6 @@
             this.cancel.Text = "取消";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
-            // 
-            // maskedText_power
-            // 
-            this.maskedText_power.Location = new System.Drawing.Point(103, 291);
-            this.maskedText_power.Name = "maskedText_power";
-            this.maskedText_power.Size = new System.Drawing.Size(100, 21);
-            this.maskedText_power.TabIndex = 9;
-            this.maskedText_power.Text = "0.00";
             // 
             // AccountAddForm
             // 

@@ -38,6 +38,8 @@
     <Reference Include="log4net">
       <HintPath>..\dll\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="SourceGrid">
       <HintPath>..\dll\SourceGrid.dll</HintPath>
     </Reference>
@@ -45,6 +47,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cemsDataSet_equipment.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cemsDataSet_equipment.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ChildForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +80,12 @@
     </Compile>
     <Compile Include="Equipment\AccountForm.Designer.cs">
       <DependentUpon>AccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Equipment\AccountReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equipment\AccountReportForm.Designer.cs">
+      <DependentUpon>AccountReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
@@ -96,6 +110,12 @@
     <EmbeddedResource Include="Equipment\AccountForm.resx">
       <DependentUpon>AccountForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Equipment\AccountReportForm.resx">
+      <DependentUpon>AccountReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Equipment\equipment.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +133,17 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="cemsDataSet_equipment.xsc">
+      <DependentUpon>cemsDataSet_equipment.xsd</DependentUpon>
+    </None>
+    <None Include="cemsDataSet_equipment.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>cemsDataSet_equipment.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="cemsDataSet_equipment.xss">
+      <DependentUpon>cemsDataSet_equipment.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -114,6 +114,7 @@
             this.report_Button.Size = new System.Drawing.Size(36, 37);
             this.report_Button.Text = "报表";
             this.report_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.report_Button.Click += new System.EventHandler(this.report_Button_Click);
             // 
             // closeButton
             // 

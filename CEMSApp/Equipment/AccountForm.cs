@@ -254,6 +254,12 @@ namespace CEMSApp.Equipment
             this.Close();
         }
 
+        private void report_Button_Click(object sender, EventArgs e)
+        {
+            AccountReportForm ar = new AccountReportForm();
+            ar.ShowDialog();
+        }
+
     }
     /// <summary>
     /// 右键控制项
