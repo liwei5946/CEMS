@@ -260,6 +260,12 @@ namespace CEMSApp.Equipment
             ar.ShowDialog();
         }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Account3DViewerForm a3d = new Account3DViewerForm();
+            a3d.ShowDialog();
+        }
+
     }
     /// <summary>
     /// 右键控制项
