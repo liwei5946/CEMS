@@ -148,7 +148,8 @@ namespace CEMSApp.Equipment
         public void BindSourceGrid(SourceGrid.Grid grid, DataTable data)
         {
             byte[] imagebytes = null;
-            int[] ColumnWidth = new int[] { 40, 80, 100, 64 };
+            byte[] objBytes = null;
+            int[] ColumnWidth = new int[] { 40, 80, 100, 64, 80 };
             PopupMenu menuController = new PopupMenu();
             if (grid.RowsCount > 0)
             {
@@ -160,7 +161,7 @@ namespace CEMSApp.Equipment
             grid.Selection.EnableMultiSelection = false; //行不允许多选
             grid.EnableSort = false; //不允许排序
             grid.BorderStyle = BorderStyle.FixedSingle;
-            grid.ColumnsCount = 4;
+            grid.ColumnsCount = 5;
             grid.FixedRows = 1;
             BuildGridColumnWidth(grid, ColumnWidth);
             grid.Rows.Insert(0);
@@ -168,6 +169,14 @@ namespace CEMSApp.Equipment
             grid[0, 1] = new SourceGrid.Cells.ColumnHeader("资产编号");
             grid[0, 2] = new SourceGrid.Cells.ColumnHeader("设备名称");
             grid[0, 3] = new SourceGrid.Cells.ColumnHeader("设备图片");
+            grid[0, 4] = new SourceGrid.Cells.ColumnHeader("三维模型");
+
+            grid[0, 0].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+            grid[0, 1].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+            grid[0, 2].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+            grid[0, 3].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+            grid[0, 4].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+
             //grid[0, 3].Column.Grid.EnableSort = false;
             
             for (int i = 1; i < data.Rows.Count + 1; i++)
@@ -188,6 +197,10 @@ namespace CEMSApp.Equipment
                 //pb.Image = img;
                 grid[i, 3] = new SourceGrid.Cells.Image(img);
 
+                //设置obj浏览
+                grid[i, 4] = new SourceGrid.Cells.Button("三维预览");
+                grid[i, 4].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+                grid[i, 4].Controller.AddController(new objButtonClickController()); //单击按钮事件
                 //设置单元格不可编辑
                 grid[i, 0].Editor.EnableEdit = false;
                 grid[i, 1].Editor.EnableEdit = false;
@@ -296,5 +309,21 @@ namespace CEMSApp.Equipment
         {
             //TODO Your code here
         }
+    }
+    /// <summary>
+    /// 单击单元格中按钮事件
+    /// </summary>
+    public class objButtonClickController : SourceGrid.Cells.Controllers.ControllerBase
+    {
+        public override void OnClick(SourceGrid.CellContext sender, EventArgs e)
+        {
+            base.OnClick(sender, e);
+            //object val = sender.Value;
+            //object val = sender.Position.Row;
+            object val = sender.Grid.GetCell(sender.Position.Row, 0);
+            if (val != null)
+                MessageBox.Show(sender.Grid, val.ToString());
+        }
+
     }
 }
