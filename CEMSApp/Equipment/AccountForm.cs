@@ -148,7 +148,7 @@ namespace CEMSApp.Equipment
         public void BindSourceGrid(SourceGrid.Grid grid, DataTable data)
         {
             byte[] imagebytes = null;
-            byte[] objBytes = null;
+            
             int[] ColumnWidth = new int[] { 40, 80, 100, 64, 80 };
             PopupMenu menuController = new PopupMenu();
             if (grid.RowsCount > 0)
@@ -275,8 +275,8 @@ namespace CEMSApp.Equipment
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            Account3DViewerForm a3d = new Account3DViewerForm();
-            a3d.ShowDialog();
+            //Account3DViewerForm a3d = new Account3DViewerForm("Test it!");
+            //a3d.ShowDialog();
         }
 
     }
@@ -317,12 +317,35 @@ namespace CEMSApp.Equipment
     {
         public override void OnClick(SourceGrid.CellContext sender, EventArgs e)
         {
+            Account acc = new Account();
             base.OnClick(sender, e);
             //object val = sender.Value;
             //object val = sender.Position.Row;
-            object val = sender.Grid.GetCell(sender.Position.Row, 0);
+            object val = sender.Grid.GetCell(sender.Position.Row, 0);//获取ID号，注意要和grid的行列坐标对应！
+            byte[] objBytes = null;
             if (val != null)
-                MessageBox.Show(sender.Grid, val.ToString());
+            {
+                DataSet ds_obj = acc.queryAccountObjById(val.ToString());
+                DataTable data = ds_obj.Tables[0];
+                //MessageBox.Show(sender.Grid, val.ToString());
+                byte[] testByte = BitConverter.GetBytes(0x00);
+                //MessageBox.Show(testByte[0].ToString());
+                //MessageBox.Show(((byte[])data.Rows[0][3])[0].ToString());
+                if ( ((byte[])data.Rows[0][3])[0] != testByte[0])
+                {
+                    objBytes = (byte[])data.Rows[0][3];
+                    Account3DViewerForm a3d = new Account3DViewerForm(objBytes);
+                    a3d.Text = data.Rows[0][0].ToString() + "-" + data.Rows[0][1].ToString() + "-" + data.Rows[0][2].ToString();
+                    a3d.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("该设备无三位模型！");
+                }
+                
+                
+            }
+                
         }
 
     }

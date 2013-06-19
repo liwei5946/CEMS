@@ -35,6 +35,15 @@ namespace BusinessLogicLayer.Equipment
             return acc.queryAccount();
         }
         /// <summary>
+        /// 根据id查询对应obj三维模型
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryAccountObjById(string id)
+        {
+            return acc.queryAccountObjById(id);
+        }
+        /// <summary>
         /// 删除制定ID的台帐信息
         /// </summary>
         /// <param name="id"></param>

@@ -105,6 +105,34 @@ namespace DataAccessLayer.Equipment
             return ds;
         }
         /// <summary>
+        /// 根据id查询对应obj三维模型
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>id,asset,eqname,three_dimensional</returns>
+        public DataSet queryAccountObjById(string id)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                string sql = string.Format("SELECT id,asset,eqname,three_dimensional FROM eq_account WHERE dr=0 AND id=" + id);
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
         /// 删除制定ID的台帐信息
         /// </summary>
         /// <param name="id"></param>

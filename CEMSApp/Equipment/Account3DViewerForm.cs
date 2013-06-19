@@ -9,13 +9,14 @@ using System.Windows.Forms;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 using System.Windows.Media;
+using System.IO;
 
 namespace CEMSApp.Equipment
 {
     public partial class Account3DViewerForm : ChildForm
     {
         WpfObjViewer.MainWindow _WpfObjViewer = null;
-        public Account3DViewerForm()
+        public Account3DViewerForm(byte[] ObjModel)
         {
             InitializeComponent();
             /*
@@ -56,10 +57,22 @@ namespace CEMSApp.Equipment
             //hv3d.ContainerFromElement(elementHost1.Child);
              * */
             elementHost1.Dock = DockStyle.Fill;
+            //MessageBox.Show(testStr);
+            
             try
             {
-                _WpfObjViewer = new WpfObjViewer.MainWindow();
-                elementHost1.Child = _WpfObjViewer;
+                if (ObjModel != null)
+                {
+                    MemoryStream ms = new MemoryStream(ObjModel);
+                    _WpfObjViewer = new WpfObjViewer.MainWindow(ms);
+                    //_WpfObjViewer.testStr = "hello world!";
+                    elementHost1.Child = _WpfObjViewer;
+                }
+                else
+                {
+                    Console.WriteLine("ObjModel is NULL!!!");
+                }
+                
             }
             catch (Exception)
             {
@@ -67,6 +80,7 @@ namespace CEMSApp.Equipment
                 throw;
             }
         }
-        public Model3D Model { get; set; }
+        public string Model { get; set; }
+        //public byte[] ObjModel { get; set; }
     }
 }
