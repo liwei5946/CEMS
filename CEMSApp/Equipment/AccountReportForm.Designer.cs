@@ -36,17 +36,18 @@
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(292, 266);
+            this.reportViewer1.Size = new System.Drawing.Size(630, 448);
             this.reportViewer1.TabIndex = 0;
             // 
-            // AccountReport
+            // AccountReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 266);
+            this.ClientSize = new System.Drawing.Size(630, 448);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "AccountReport";
+            this.Name = "AccountReportForm";
             this.Text = "设备台帐报表";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AccountReportForm_FormClosed);
             this.Load += new System.EventHandler(this.AccountReport_Load);
             this.ResumeLayout(false);
 

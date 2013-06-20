@@ -51,6 +51,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xaml" />
@@ -72,11 +74,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cemsDataSet_equipment.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>cemsDataSet_equipment.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ChildForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +116,7 @@
     <Compile Include="Equipment\AccountEditForm.Designer.cs">
       <DependentUpon>AccountEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Equipment\AccountReportModel.cs" />
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,11 +146,11 @@
     <EmbeddedResource Include="Equipment\AccountImageViewerForm.resx">
       <DependentUpon>AccountImageViewerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Equipment\accountReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Equipment\AccountReportForm.resx">
       <DependentUpon>AccountReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Equipment\equipment.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Equipment\AccountEditForm.resx">
       <DependentUpon>AccountEditForm.cs</DependentUpon>
@@ -174,17 +172,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <None Include="cemsDataSet_equipment.xsc">
-      <DependentUpon>cemsDataSet_equipment.xsd</DependentUpon>
-    </None>
-    <None Include="cemsDataSet_equipment.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>cemsDataSet_equipment.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="cemsDataSet_equipment.xss">
-      <DependentUpon>cemsDataSet_equipment.xsd</DependentUpon>
-    </None>
+    <None Include="Properties\DataSources\CEMSApp.Equipment.AccountReportModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

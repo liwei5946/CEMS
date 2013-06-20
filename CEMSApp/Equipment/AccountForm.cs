@@ -15,6 +15,7 @@ namespace CEMSApp.Equipment
     public partial class AccountForm : ChildForm
     {
         ILog log = log4net.LogManager.GetLogger(typeof(AccountForm));
+        DataSet ds_report = null;
         public AccountForm()
         {
             InitializeComponent();
@@ -82,6 +83,7 @@ namespace CEMSApp.Equipment
             //sourcegrid试验
             //BindSourceGrid(grid1, ds1.Tables[0]);
             DataSet ds_account = acc.queryAccount();
+            ds_report = ds_account;//公共DS，用于报表输出
             BindSourceGrid(grid1, ds_account.Tables[0]);
             //grid1.Selection.ActivePosition.Row
             grid1.Selection.SelectRow(1, true);
@@ -215,11 +217,12 @@ namespace CEMSApp.Equipment
                 //pb.Image = img;
                 grid[i, 3] = new SourceGrid.Cells.Image(img);
                 grid[i, 3].AddController(new imageDoubleClickController()); //双击图片放大查看
+                ms.Close();
 
                 //设置obj浏览
                 grid[i, 4] = new SourceGrid.Cells.Button("三维预览");
                 grid[i, 4].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
-                grid[i, 4].Controller.AddController(new objButtonClickController()); //单击按钮事件 
+                grid[i, 4].AddController(new objButtonClickController()); //单击按钮事件 
 
                 grid[i, 5] = new SourceGrid.Cells.Cell(data.Rows[i - 1][4], typeof(int)); //是否销帐
                 grid[i, 6] = new SourceGrid.Cells.Cell(data.Rows[i - 1][5], typeof(string));//设备型号
@@ -383,7 +386,7 @@ namespace CEMSApp.Equipment
         /// <param name="e"></param>
         private void report_Button_Click(object sender, EventArgs e)
         {
-            AccountReportForm ar = new AccountReportForm();
+            AccountReportForm ar = new AccountReportForm(ds_report);
             ar.ShowDialog();
         }
 

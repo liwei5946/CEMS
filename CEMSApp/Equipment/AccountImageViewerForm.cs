@@ -18,6 +18,7 @@ namespace CEMSApp.Equipment
             MemoryStream ms = new MemoryStream(imgBytes);
             Image img = Image.FromStream(ms);
             pictureBox1.Image = img;
+            ms.Close();
         }
     }
 }
