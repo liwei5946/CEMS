@@ -45,6 +45,7 @@ namespace CEMSApp.Equipment
                 return Value.ToString();
             }
         }
+        //窗体初始化
         private void AccountForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
@@ -103,20 +104,7 @@ namespace CEMSApp.Equipment
                 //cb.ComboBox.Items.Insert(0, new ComboBoxItem<string, string>("0", "所有"));
             }
         }
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            AccountAddForm addForm = new AccountAddForm();
-            //addForm.ShowDialog();
-            if (addForm.ShowDialog() == DialogResult.OK)
-            {
-                //重新绑定DataGridView;
-                Account acc = new Account();
-                DataSet ds_account = acc.queryAccount();
-                BindSourceGrid(grid1, ds_account.Tables[0]);
-                grid1.Selection.SelectRow(1, true);
-                grid1.Selection.FocusFirstCell(true);
-            }
-        }
+        
         /// <summary>
         /// 初始化TreeView控件
         /// </summary>
@@ -215,6 +203,11 @@ namespace CEMSApp.Equipment
             }
             grid.Refresh();
         }
+        /// <summary>
+        /// 表格列宽设置
+        /// </summary>
+        /// <param name="Grid"></param>
+        /// <param name="ColumnWidth"></param>
         public void BuildGridColumnWidth(SourceGrid.Grid Grid, int[] ColumnWidth)
         {
             for (int i = 0; i < ColumnWidth.Length; i++)
@@ -222,18 +215,36 @@ namespace CEMSApp.Equipment
                 Grid.Columns[i].Width = ColumnWidth[i];
             }
         }
-
+        /// <summary>
+        /// 修改按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void editButton_Click(object sender, EventArgs e)
         {
+            string id = grid1[grid1.Selection.ActivePosition.Row, 0].ToString();//选中行的id
+            AccountEditForm acf = new AccountEditForm(id);
             try
             {
-                 MessageBox.Show(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                if (acf.ShowDialog() == DialogResult.OK)
+                {
+                    Account acc = new Account();
+                    DataSet ds_account = acc.queryAccount();
+                    BindSourceGrid(grid1, ds_account.Tables[0]);
+                    grid1.Selection.SelectRow(1, true);
+                    grid1.Selection.FocusFirstCell(true);
+                }
+                 ///MessageBox.Show(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
             }catch(Exception mye){
                 log.Error(mye.Message);
             }
                
         }
-
+        /// <summary>
+        /// 删除按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void delButton_Click(object sender, EventArgs e)
         {
             DialogResult dr;
@@ -261,12 +272,40 @@ namespace CEMSApp.Equipment
             }
             
         }
-
+        /// <summary>
+        /// 关闭按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// 添加按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            AccountAddForm addForm = new AccountAddForm();
+            //addForm.ShowDialog();
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                //重新绑定DataGridView;
+                Account acc = new Account();
+                DataSet ds_account = acc.queryAccount();
+                BindSourceGrid(grid1, ds_account.Tables[0]);
+                grid1.Selection.SelectRow(1, true);
+                grid1.Selection.FocusFirstCell(true);
+            }
+        }
+        /// <summary>
+        /// 报表按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void report_Button_Click(object sender, EventArgs e)
         {
             AccountReportForm ar = new AccountReportForm();
@@ -311,7 +350,7 @@ namespace CEMSApp.Equipment
         }
     }
     /// <summary>
-    /// 单击单元格中按钮事件
+    /// 单击单元格中查看obj三维模型按钮事件
     /// </summary>
     public class objButtonClickController : SourceGrid.Cells.Controllers.ControllerBase
     {
@@ -331,7 +370,7 @@ namespace CEMSApp.Equipment
                 byte[] testByte = BitConverter.GetBytes(0x00);
                 //MessageBox.Show(testByte[0].ToString());
                 //MessageBox.Show(((byte[])data.Rows[0][3])[0].ToString());
-                if ( ((byte[])data.Rows[0][3])[0] != testByte[0])
+                if ( ((byte[])data.Rows[0][3])[0] != testByte[0])//是否存在三维模型
                 {
                     objBytes = (byte[])data.Rows[0][3];
                     Account3DViewerForm a3d = new Account3DViewerForm(objBytes);

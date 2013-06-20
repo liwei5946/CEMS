@@ -53,12 +53,69 @@ namespace BusinessLogicLayer.Equipment
             fs.Close();
             return imageBytes;
         }
-
+        /// <summary>
+        /// 添加台帐
+        /// </summary>
+        /// <param name="isoff"></param>
+        /// <param name="asset"></param>
+        /// <param name="eqname"></param>
+        /// <param name="model"></param>
+        /// <param name="specification"></param>
+        /// <param name="department"></param>
+        /// <param name="weight"></param>
+        /// <param name="brand"></param>
+        /// <param name="manufacturer"></param>
+        /// <param name="supplier"></param>
+        /// <param name="manu_date"></param>
+        /// <param name="produ_date"></param>
+        /// <param name="filing_date"></param>
+        /// <param name="value"></param>
+        /// <param name="count"></param>
+        /// <param name="electromotor"></param>
+        /// <param name="power"></param>
+        /// <param name="status"></param>
+        /// <param name="type"></param>
+        /// <param name="address"></param>
+        /// <param name="photo"></param>
+        /// <param name="three_dimensional"></param>
+        /// <returns></returns>
         public bool addAccount(bool isoff, string asset, string eqname, string model, string specification, int department, string weight, string brand,
             string manufacturer, string supplier, string manu_date, string produ_date, string filing_date, float value, int count, int electromotor, float power,
             int status, int type, string address, byte[] photo, byte[] three_dimensional)
         {
             return aas.addAccount(isoff, asset, eqname, model, specification, department, weight, brand, manufacturer, supplier, manu_date, produ_date, filing_date, value, count, electromotor, power, status, type, address, photo, three_dimensional);
+        }
+        /// <summary>
+        /// 修改台帐信息
+        /// </summary>
+        /// <param name="isoff"></param>
+        /// <param name="asset"></param>
+        /// <param name="eqname"></param>
+        /// <param name="model"></param>
+        /// <param name="specification"></param>
+        /// <param name="department"></param>
+        /// <param name="weight"></param>
+        /// <param name="brand"></param>
+        /// <param name="manufacturer"></param>
+        /// <param name="supplier"></param>
+        /// <param name="manu_date"></param>
+        /// <param name="produ_date"></param>
+        /// <param name="filing_date"></param>
+        /// <param name="value"></param>
+        /// <param name="count"></param>
+        /// <param name="electromotor"></param>
+        /// <param name="power"></param>
+        /// <param name="status"></param>
+        /// <param name="type"></param>
+        /// <param name="address"></param>
+        /// <param name="photo"></param>
+        /// <param name="three_dimensional"></param>
+        /// <returns></returns>
+        public bool updateAccount(bool isoff, string asset, string eqname, string model, string specification, int department, string weight, string brand,
+    string manufacturer, string supplier, string manu_date, string produ_date, string filing_date, float value, int count, int electromotor, float power,
+    int status, int type, string address, byte[] photo, byte[] three_dimensional, string id)
+        {
+            return aas.updateAccount(isoff, asset, eqname, model, specification, department, weight, brand, manufacturer, supplier, manu_date, produ_date, filing_date, value, count, electromotor, power, status, type, address, photo, three_dimensional,id);
         }
 
     }

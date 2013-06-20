@@ -12,32 +12,53 @@ using log4net;
 
 namespace CEMSApp.Equipment
 {
-    public partial class AccountAddForm : ChildForm
+    public partial class AccountEditForm : ChildForm
     {
-        ILog log = log4net.LogManager.GetLogger(typeof(AccountAddForm));
+        ILog log = log4net.LogManager.GetLogger(typeof(AccountEditForm));
         OpenFileDialog fileDialog_img = new OpenFileDialog();
         OpenFileDialog fileDialog_3d = new OpenFileDialog();
-        public AccountAddForm()
+        string accountId = "";
+        byte[] img = new byte[] { 0 };
+        byte[] threeD = new byte[] { 0 };
+
+        public AccountEditForm(string id)
         {
             InitializeComponent();
-        }
-
-        private void AccountAddForm_Load(object sender, EventArgs e)
-        {
-            DataSet ds_eqType = null, ds_department = null, ds_Status=null ;
+            accountId = id;
+            DataSet ds_eqType = null, ds_department = null, ds_Status = null;
+            DataSet ds = null;
+           // DataTable data = null;
             AccountAdd aa = new AccountAdd();
+            Account ads = new Account();
+            //初始化下拉列表用
             ds_eqType = aa.CreateDataSet_EquipmentType();
             ds_department = aa.CreateDataSet_Department();
             ds_Status = aa.CreateDataSet_Status();
-            InitComboBox(combo_eqType, ds_eqType, "id", "type_name");
-            InitComboBox(combo_depart, ds_department, "id", "departname");
-            InitComboBox(combo_status, ds_Status, "id", "status_name");
-
-        }
-
-        private void AccountAddForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
+            //获取指定id的信息
+            ds = ads.queryAccountById(id);
+            //ds2.Tables[0].Rows[0][]
+            //log.Debug("设备类型是："+ds.Tables[0].Rows[0][19].ToString());
+            InitComboBox(combo_eqType, ds_eqType, "id", "type_name",ds,"type");
+            InitComboBox(combo_depart, ds_department, "id", "departname",ds,"department");
+            InitComboBox(combo_status, ds_Status, "id", "status_name",ds ,"status");
+            text_asset.DataBindings.Add(new Binding("Text", ds.Tables[0], "asset"));
+            text_eqname.DataBindings.Add(new Binding("Text",ds.Tables[0],"eqname"));
+            text_model.DataBindings.Add(new Binding("Text", ds.Tables[0], "model"));
+            text_specification.DataBindings.Add(new Binding("Text", ds.Tables[0], "specification"));
+            text_weight.DataBindings.Add(new Binding("Text", ds.Tables[0], "weight"));
+            text_brand.DataBindings.Add(new Binding("Text", ds.Tables[0], "brand"));
+            text_manufacturer.DataBindings.Add(new Binding("Text", ds.Tables[0], "manufacturer"));
+            text_supplier.DataBindings.Add(new Binding("Text", ds.Tables[0], "supplier"));
+            maskedText_value.DataBindings.Add(new Binding("Value", ds.Tables[0], "value"));
+            numeric_count.DataBindings.Add(new Binding("Value", ds.Tables[0], "count"));
+            numeric_electromotor.DataBindings.Add(new Binding("Value", ds.Tables[0], "electromotor"));
+            maskedText_power.DataBindings.Add(new Binding("Value", ds.Tables[0], "power"));
+            dateTime_manu_date.DataBindings.Add(new Binding("Value", ds.Tables[0], "manu_date"));
+            dateTime_produ_date.DataBindings.Add(new Binding("Value", ds.Tables[0], "produ_date"));
+            dateTime_filing_date.DataBindings.Add(new Binding("Value", ds.Tables[0], "filing_date"));
+            text_address.DataBindings.Add(new Binding("Text", ds.Tables[0], "address"));
+            img = (byte[])(ds.Tables[0]).Rows[0][21];
+            threeD = (byte[])(ds.Tables[0]).Rows[0][22];
         }
 
         private void cancel_Click(object sender, EventArgs e)
@@ -48,16 +69,18 @@ namespace CEMSApp.Equipment
         /// 初始化下拉列表
         /// </summary>
         /// <param name="cb"></param>
-        /// <param name="ds"></param>
-        /// <param name="ValueMember">数据ID</param>
-        /// <param name="DisplayMember">数据显示项的列名</param>
-        private void InitComboBox(ComboBox cb, DataSet ds, string ValueMember, string DisplayMember)
+        /// <param name="ValueMember"></param>
+        /// <param name="DisplayMember"></param>
+        /// <param name="ds1">所有列表内容</param>
+        /// <param name="ds2">默认被选中的行</param>
+        private void InitComboBox(ComboBox cb, DataSet ds1, string ValueMember, string DisplayMember, DataSet ds2, string ComboType)
         {
-            if (ds != null)
+            if (ds1 != null && ds2 != null)
             {
-                cb.DataSource = ds.Tables[0];
+                cb.DataSource = ds1.Tables[0];
                 cb.DisplayMember = DisplayMember;
                 cb.ValueMember = ValueMember;
+                cb.DataBindings.Add(new Binding("SelectedValue", ds2.Tables[0], ComboType));//设置下拉框的默认值
             }
         }
 
@@ -100,8 +123,8 @@ namespace CEMSApp.Equipment
             bool flag = false;
             AccountAdd aa = new AccountAdd();
             float value,power;
-            byte[] img = new byte[] { 0 };
-            byte[] threeD = new byte[] { 0 };
+            //byte[] img = new byte[] { 0 };
+            //byte[] threeD = new byte[] { 0 };
             int count,electromotor;
             /*
             if (Util.Tools.IsFloat(maskedText_value.Text))
@@ -144,7 +167,6 @@ namespace CEMSApp.Equipment
             {
                 power = 0.00F;
             }
-
             if (!numeric_count.Value.ToString().Equals(""))
             {
                 count = Convert.ToInt32(numeric_count.Value.ToString());
@@ -165,25 +187,27 @@ namespace CEMSApp.Equipment
             {
                 img = aa.getFileBytes(fileDialog_img.FileName);
             }
+                /*
             else
             {
                 img = aa.getFileBytes("pic\\no_photo.gif");
             }
+                 */
             if (!fileDialog_3d.FileName.Equals(""))
             {
                 threeD = aa.getFileBytes(fileDialog_3d.FileName);
             }
             //flag = aa.addAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_manu_date.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, float.Parse(maskedText_value.Text), Convert.ToInt32(numeric_count.Value.ToString()), Convert.ToInt32(numeric_electromotor.Value.ToString()), float.Parse(maskedText_power.Text), Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_eqType.SelectedValue.ToString()), text_address.Text, aa.getFileBytes(fileDialog_img.FileName), aa.getFileBytes(fileDialog_3d.FileName));
-            flag = aa.addAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_manu_date.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, value, count, electromotor, power, Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_eqType.SelectedValue.ToString()), text_address.Text, img, threeD);
+            flag = aa.updateAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_manu_date.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, value, count, electromotor, power, Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_eqType.SelectedValue.ToString()), text_address.Text, img, threeD, accountId);
             if (flag)
             {
-                MessageBox.Show("数据添加成功！");
+                MessageBox.Show("数据修改成功！");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("数据添加失败，请检查网络连接！");
+                MessageBox.Show("数据修改失败，请检查网络连接！");
             }
         }
 
