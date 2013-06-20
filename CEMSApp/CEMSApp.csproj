@@ -101,6 +101,12 @@
     <Compile Include="Equipment\AccountForm.Designer.cs">
       <DependentUpon>AccountForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Equipment\AccountImageViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equipment\AccountImageViewerForm.Designer.cs">
+      <DependentUpon>AccountImageViewerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Equipment\AccountReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Equipment\AccountForm.resx">
       <DependentUpon>AccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Equipment\AccountImageViewerForm.resx">
+      <DependentUpon>AccountImageViewerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Equipment\AccountReportForm.resx">
       <DependentUpon>AccountReportForm.cs</DependentUpon>

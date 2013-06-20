@@ -44,6 +44,15 @@ namespace BusinessLogicLayer.Equipment
             return acc.queryAccountObjById(id);
         }
         /// <summary>
+        /// 根据id查询对应设备图片
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>id,asset,eqname,photo</returns>
+        public DataSet queryAccountImgById(string id)
+        {
+            return acc.queryAccountImgById(id);
+        }
+        /// <summary>
         /// 删除制定ID的台帐信息
         /// </summary>
         /// <param name="id"></param>

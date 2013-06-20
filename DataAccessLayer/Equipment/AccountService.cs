@@ -78,7 +78,7 @@ namespace DataAccessLayer.Equipment
             return ds;
         }
         /// <summary>
-        /// 查找设备台帐信息
+        /// 查找全部设备台帐信息
         /// </summary>
         /// <returns></returns>
         public DataSet queryAccount()
@@ -86,7 +86,9 @@ namespace DataAccessLayer.Equipment
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
+                
+                //string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
+                string sql = string.Format("SELECT	ea.id, ea.asset, ea.eqname, ea.photo,	ea.isoff,ea.model,	ea.specification,	d.departname,	ea.[weight],	ea.brand,	ea.manufacturer,	ea.supplier,	ea.manu_date,	ea.produ_date,	ea.filing_date,	ea.[value],	ea.[count],	ea.electromotor,	ea.[power],	es.status_name,	et.[type_name],	ea.[address],	ea.three_dimensional,	ea.parts,	ea.ts,	ea.dr  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id WHERE  ea.isoff=0 AND ea.dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -115,6 +117,34 @@ namespace DataAccessLayer.Equipment
             {
                 SqlDataAdapter sda;
                 string sql = string.Format("SELECT id,asset,eqname,three_dimensional FROM eq_account WHERE dr=0 AND id=" + id);
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
+        /// 根据id查询对应设备图片
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>id,asset,eqname,photo</returns>
+        public DataSet queryAccountImgById(string id)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0 AND id=" + id);
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
