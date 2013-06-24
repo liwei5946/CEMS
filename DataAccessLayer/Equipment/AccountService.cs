@@ -107,6 +107,34 @@ namespace DataAccessLayer.Equipment
             return ds;
         }
         /// <summary>
+        /// 查找全部已销帐设备台帐信息
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryOffAccount()
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                //string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
+                string sql = string.Format("SELECT	ea.id, ea.asset, ea.eqname,et.[type_name], d.departname,ew.off_typename,ea.[value],ea.off_value,ea.[count],ea.off_date	  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id LEFT JOIN eq_writeoff ew ON ea.off_type=ew.id WHERE  ea.isoff=1 AND ea.dr=0");
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
         /// 根据id查询对应obj三维模型
         /// </summary>
         /// <param name="id"></param>
@@ -307,5 +335,40 @@ namespace DataAccessLayer.Equipment
             }
             return ds;
         }
+        /// <summary>
+        /// 将制定ID的设备重新入账
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean reOffAccountById(string id)
+        {
+            int result = 0;
+            try
+            {
+                string sql = string.Format("UPDATE eq_account SET isoff = 0 WHERE id=" + id);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
+
 }

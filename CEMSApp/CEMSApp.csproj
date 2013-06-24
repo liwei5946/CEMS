@@ -123,6 +123,12 @@
     <Compile Include="Equipment\AccountOffForm.Designer.cs">
       <DependentUpon>AccountOffForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Equipment\OffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equipment\OffForm.Designer.cs">
+      <DependentUpon>OffForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Equipment\AccountOffForm.resx">
       <DependentUpon>AccountOffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Equipment\OffForm.resx">
+      <DependentUpon>OffForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

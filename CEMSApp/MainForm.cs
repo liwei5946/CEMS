@@ -131,9 +131,17 @@ namespace CEMSApp
             }
         }
 
-        
+        private void OffAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("OffForm"))
+            {
+                OffForm eq_offaccount = new OffForm();
+                eq_offaccount.MdiParent = this;
+                eq_offaccount.Show();
+            }
+        }
 
-        
+
 
     }
 }

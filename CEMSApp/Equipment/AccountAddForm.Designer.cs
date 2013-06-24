@@ -690,7 +690,7 @@
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
-            // AccountOffForm
+            // AccountAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -699,7 +699,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AccountOffForm";
+            this.Name = "AccountAddForm";
             this.Text = "添加新设备";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AccountAddForm_FormClosed);
             this.Load += new System.EventHandler(this.AccountAddForm_Load);

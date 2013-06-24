@@ -92,5 +92,22 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryOffType();
         }
+        /// <summary>
+        /// 查找全部已销帐设备台帐信息
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryOffAccount()
+        {
+            return acc.queryOffAccount();
+        }
+        /// <summary>
+        /// 将制定ID的设备重新入账
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean reOffAccountById(string id)
+        {
+            return acc.reOffAccountById(id);
+        }
     }
 }
