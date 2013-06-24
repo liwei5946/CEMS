@@ -111,11 +111,11 @@ namespace BusinessLogicLayer.Equipment
         /// <param name="photo"></param>
         /// <param name="three_dimensional"></param>
         /// <returns></returns>
-        public bool updateAccount(bool isoff, string asset, string eqname, string model, string specification, int department, string weight, string brand,
+        public bool updateAccount( string asset, string eqname, string model, string specification, int department, string weight, string brand,
     string manufacturer, string supplier, string manu_date, string produ_date, string filing_date, float value, int count, int electromotor, float power,
     int status, int type, string address, byte[] photo, byte[] three_dimensional, string id)
         {
-            return aas.updateAccount(isoff, asset, eqname, model, specification, department, weight, brand, manufacturer, supplier, manu_date, produ_date, filing_date, value, count, electromotor, power, status, type, address, photo, three_dimensional,id);
+            return aas.updateAccount( asset, eqname, model, specification, department, weight, brand, manufacturer, supplier, manu_date, produ_date, filing_date, value, count, electromotor, power, status, type, address, photo, three_dimensional,id);
         }
 
     }

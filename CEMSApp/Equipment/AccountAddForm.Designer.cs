@@ -73,19 +73,19 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.text_upload3D = new System.Windows.Forms.TextBox();
             this.button_upload3D = new System.Windows.Forms.Button();
+            this.maskedText_value = new System.Windows.Forms.NumericUpDown();
+            this.maskedText_power = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.ok = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
-            this.maskedText_value = new System.Windows.Forms.NumericUpDown();
-            this.maskedText_power = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_electromotor)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maskedText_value)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maskedText_power)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -620,40 +620,6 @@
             this.button_upload3D.UseVisualStyleBackColor = true;
             this.button_upload3D.Click += new System.EventHandler(this.button_upload3D_Click);
             // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.ok, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.cancel, 1, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(130, 523);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(200, 30);
-            this.tableLayoutPanel4.TabIndex = 1;
-            // 
-            // ok
-            // 
-            this.ok.Location = new System.Drawing.Point(3, 3);
-            this.ok.Name = "ok";
-            this.ok.Size = new System.Drawing.Size(75, 23);
-            this.ok.TabIndex = 0;
-            this.ok.Text = "添加";
-            this.ok.UseVisualStyleBackColor = true;
-            this.ok.Click += new System.EventHandler(this.ok_Click);
-            // 
-            // cancel
-            // 
-            this.cancel.Location = new System.Drawing.Point(103, 3);
-            this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(75, 23);
-            this.cancel.TabIndex = 1;
-            this.cancel.Text = "取消";
-            this.cancel.UseVisualStyleBackColor = true;
-            this.cancel.Click += new System.EventHandler(this.cancel_Click);
-            // 
             // maskedText_value
             // 
             this.maskedText_value.DecimalPlaces = 2;
@@ -690,7 +656,41 @@
             this.maskedText_power.Size = new System.Drawing.Size(100, 21);
             this.maskedText_power.TabIndex = 11;
             // 
-            // AccountAddForm
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.ok, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.cancel, 1, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(130, 523);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(200, 30);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // ok
+            // 
+            this.ok.Location = new System.Drawing.Point(3, 3);
+            this.ok.Name = "ok";
+            this.ok.Size = new System.Drawing.Size(75, 23);
+            this.ok.TabIndex = 0;
+            this.ok.Text = "添加";
+            this.ok.UseVisualStyleBackColor = true;
+            this.ok.Click += new System.EventHandler(this.ok_Click);
+            // 
+            // cancel
+            // 
+            this.cancel.Location = new System.Drawing.Point(103, 3);
+            this.cancel.Name = "cancel";
+            this.cancel.Size = new System.Drawing.Size(75, 23);
+            this.cancel.TabIndex = 1;
+            this.cancel.Text = "取消";
+            this.cancel.UseVisualStyleBackColor = true;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
+            // 
+            // AccountOffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -699,7 +699,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AccountAddForm";
+            this.Name = "AccountOffForm";
             this.Text = "添加新设备";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AccountAddForm_FormClosed);
             this.Load += new System.EventHandler(this.AccountAddForm_Load);
@@ -711,9 +711,9 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.maskedText_value)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maskedText_power)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

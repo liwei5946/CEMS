@@ -70,5 +70,27 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryAccountById(id);
         }
+        /// <summary>
+        /// 销帐
+        /// </summary>
+        /// <param name="isoff"></param>
+        /// <param name="off_date"></param>
+        /// <param name="off_type"></param>
+        /// <param name="off_value"></param>
+        /// <param name="off_memo"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool writeOffAccount(Boolean isoff, string off_date, int off_type, float off_value, string off_memo, string id)
+        {
+            return acc.writeOffAccount(isoff, off_date, off_type, off_value, off_memo, id);
+        }
+        /// <summary>
+        /// 查询销帐类型
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryOffType()
+        {
+            return acc.queryOffType();
+        }
     }
 }

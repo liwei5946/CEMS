@@ -14,7 +14,7 @@ namespace CEMSApp.Equipment
 {
     public partial class AccountAddForm : ChildForm
     {
-        ILog log = log4net.LogManager.GetLogger(typeof(AccountAddForm));
+        ILog log = log4net.LogManager.GetLogger(typeof(AccountOffForm));
         OpenFileDialog fileDialog_img = new OpenFileDialog();
         OpenFileDialog fileDialog_3d = new OpenFileDialog();
         public AccountAddForm()

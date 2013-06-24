@@ -34,6 +34,8 @@
             this.delButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.report_Button = new System.Windows.Forms.ToolStripButton();
+            this.writeoffButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.closeButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
@@ -57,6 +59,8 @@
             this.delButton,
             this.toolStripSeparator1,
             this.report_Button,
+            this.writeoffButton,
+            this.toolStripSeparator3,
             this.closeButton,
             this.toolStripSeparator2,
             this.toolStripLabel3,
@@ -116,6 +120,21 @@
             this.report_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.report_Button.Click += new System.EventHandler(this.report_Button_Click);
             // 
+            // writeoffButton
+            // 
+            this.writeoffButton.Image = global::CEMSApp.Properties.Resources.book_delete;
+            this.writeoffButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.writeoffButton.Name = "writeoffButton";
+            this.writeoffButton.Size = new System.Drawing.Size(36, 37);
+            this.writeoffButton.Text = "销帐";
+            this.writeoffButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.writeoffButton.Click += new System.EventHandler(this.writeoffButton_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 40);
+            // 
             // closeButton
             // 
             this.closeButton.Image = global::CEMSApp.Properties.Resources.door_in;
@@ -172,7 +191,6 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(52, 37);
             this.toolStripButton1.Text = "查询";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // panel1
             // 
@@ -200,7 +218,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(662, 12);
+            this.checkBox1.Location = new System.Drawing.Point(708, 12);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(72, 16);
             this.checkBox1.TabIndex = 2;
@@ -245,5 +263,7 @@
         private SourceGrid.Grid grid1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ToolStripButton report_Button;
+        private System.Windows.Forms.ToolStripButton writeoffButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

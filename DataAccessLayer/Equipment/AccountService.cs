@@ -224,5 +224,88 @@ namespace DataAccessLayer.Equipment
             }
             
         }
+        /// <summary>
+        /// 销帐
+        /// </summary>
+        /// <param name="isoff"></param>
+        /// <param name="off_date"></param>
+        /// <param name="off_type"></param>
+        /// <param name="off_value"></param>
+        /// <param name="off_memo"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool writeOffAccount(Boolean isoff, string off_date, int off_type, float off_value, string off_memo, string id)
+        {
+            int resault = 0;
+            string sql = string.Format("UPDATE eq_account SET isoff =@isoff,off_date = @off_date,off_type =@off_type,off_value = @off_value,off_memo = @off_memo WHERE id=" + id);
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@isoff", SqlDbType.Bit));
+                    mycom.Parameters.Add(new SqlParameter("@off_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@off_type", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@off_value", SqlDbType.Float));
+                    mycom.Parameters.Add(new SqlParameter("@off_memo", SqlDbType.NText));
+
+
+                    //给参数赋值
+                    mycom.Parameters["@isoff"].Value = isoff;
+                    mycom.Parameters["@off_date"].Value = off_date;
+                    mycom.Parameters["@off_type"].Value = off_type;
+                    mycom.Parameters["@off_value"].Value = off_value;
+                    mycom.Parameters["@off_memo"].Value = off_memo;
+
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 查询销帐类型
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryOffType()
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                string sql = string.Format("SELECT	ew.id, ew.off_typename FROM eq_writeoff ew");
+                //log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
     }
 }

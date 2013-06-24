@@ -389,11 +389,29 @@ namespace CEMSApp.Equipment
             AccountReportForm ar = new AccountReportForm(ds_report);
             ar.ShowDialog();
         }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 销帐按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void writeoffButton_Click(object sender, EventArgs e)
         {
-            //Account3DViewerForm a3d = new Account3DViewerForm("Test it!");
-            //a3d.ShowDialog();
+            //DialogResult dr;
+            //log.Debug(grid1[grid1.Selection.ActivePosition.Row, 0].Value);
+            //log.Debug(grid1[grid1.Selection.ActivePosition.Row, 1].Value);
+            //log.Debug(grid1[grid1.Selection.ActivePosition.Row, 2].Value);
+            AccountOffForm aof = new AccountOffForm(grid1[grid1.Selection.ActivePosition.Row, 0].Value.ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].Value.ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].Value.ToString());
+
+            if (aof.ShowDialog() == DialogResult.OK)
+            {
+                //重新绑定DataGridView;
+                Account acc = new Account();
+                DataSet ds_account = acc.queryAccount();
+                BindSourceGrid(grid1, ds_account.Tables[0]);
+                grid1.Selection.SelectRow(1, true);
+                grid1.Selection.FocusFirstCell(true);
+            }
+            //Account acc = new Account();
         }
 
     }

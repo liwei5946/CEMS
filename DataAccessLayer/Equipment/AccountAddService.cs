@@ -241,14 +241,14 @@ namespace DataAccessLayer.Equipment
         /// <param name="photo"></param>
         /// <param name="three_dimensional"></param>
         /// <returns></returns>
-        public bool updateAccount(bool isoff, string asset, string eqname, string model, string specification, int department, string weight, string brand,
+        public bool updateAccount(string asset, string eqname, string model, string specification, int department, string weight, string brand,
     string manufacturer, string supplier, string manu_date, string produ_date, string filing_date, float value, int count, int electromotor, float power,
     int status, int type, string address, byte[] photo, byte[] three_dimensional, string id)
         {
             int resault = 0;
             //string sql = string.Format("INSERT INTO eq_account (isoff,asset,eqname,model,specification,department,weight,brand,manufacturer,supplier,manu_date,produ_date,filing_date,value,count,electromotor,power,status,type,address,photo,three_dimensional) 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     //VALUES (,,,,,,,,,,,,,,,,,,,)");
-            string sql = string.Format("UPDATE eq_account SET	isoff = @isoff,	asset = @asset,	eqname = @eqname,	model = @model,	specification = @specification,	department = @department,	[weight] = @weight,	brand = @brand,	manufacturer = @manufacturer,	supplier = @supplier,	manu_date = @manu_date,	produ_date = @produ_date,	filing_date = @filing_date,	[value] = @value,	[count] = @count,	electromotor = @electromotor,	[power] = @power,	[status] = @status,	[type] = @type,	[address] = @address,	photo = @photo,	three_dimensional = @three_dimensional WHERE id=" + id);
+            string sql = string.Format("UPDATE eq_account SET	asset = @asset,	eqname = @eqname,	model = @model,	specification = @specification,	department = @department,	[weight] = @weight,	brand = @brand,	manufacturer = @manufacturer,	supplier = @supplier,	manu_date = @manu_date,	produ_date = @produ_date,	filing_date = @filing_date,	[value] = @value,	[count] = @count,	electromotor = @electromotor,	[power] = @power,	[status] = @status,	[type] = @type,	[address] = @address,	photo = @photo,	three_dimensional = @three_dimensional WHERE id=" + id);
             log.Debug(sql);
             try
             {
@@ -257,7 +257,7 @@ namespace DataAccessLayer.Equipment
                     conn.Open();
                     SqlCommand mycom = new SqlCommand(sql, conn);
                     //添加参数 
-                    mycom.Parameters.Add(new SqlParameter("@isoff", SqlDbType.Bit));
+                    //mycom.Parameters.Add(new SqlParameter("@isoff", SqlDbType.Bit));
                     mycom.Parameters.Add(new SqlParameter("@asset", SqlDbType.NVarChar, 50));
                     mycom.Parameters.Add(new SqlParameter("@eqname", SqlDbType.NVarChar, 50));
                     mycom.Parameters.Add(new SqlParameter("@model", SqlDbType.NVarChar, 50));
@@ -282,7 +282,7 @@ namespace DataAccessLayer.Equipment
                     mycom.Parameters.Add(new SqlParameter("@three_dimensional", SqlDbType.Image, three_dimensional.Length));
 
                     //给参数赋值
-                    mycom.Parameters["@isoff"].Value = isoff;
+                    //mycom.Parameters["@isoff"].Value = isoff;
                     mycom.Parameters["@asset"].Value = asset;
                     mycom.Parameters["@eqname"].Value = eqname;
                     mycom.Parameters["@model"].Value = model;

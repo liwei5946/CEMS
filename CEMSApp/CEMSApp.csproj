@@ -117,6 +117,12 @@
       <DependentUpon>AccountEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Equipment\AccountReportModel.cs" />
+    <Compile Include="Equipment\AccountOffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equipment\AccountOffForm.Designer.cs">
+      <DependentUpon>AccountOffForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Equipment\AccountEditForm.resx">
       <DependentUpon>AccountEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Equipment\AccountOffForm.resx">
+      <DependentUpon>AccountOffForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -236,6 +245,7 @@
     <Content Include="pic\no_photo.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\book_delete.png" />
     <None Include="Resources\chart_line.png" />
     <None Include="Resources\magnifier.png" />
   </ItemGroup>
