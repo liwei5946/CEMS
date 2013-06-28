@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using DataAccessLayer.Equipment;
+using DataAccessLayer;
 
 namespace BusinessLogicLayer.Equipment
 {
@@ -108,6 +108,28 @@ namespace BusinessLogicLayer.Equipment
         public Boolean reOffAccountById(string id)
         {
             return acc.reOffAccountById(id);
+        }
+        /// <summary>
+        /// 新增维护计划
+        /// </summary>
+        /// <param name="planAsset"></param>
+        /// <param name="eqId"></param>
+        /// <param name="startDate"></param>
+        /// <param name="overTime"></param>
+        /// <param name="memo"></param>
+        /// <returns></returns>
+        public bool addMaintainPlan(string planAsset, int eqId, string startDate, int overTime, string memo)
+        {
+            return acc.addMaintainPlan(planAsset, eqId, startDate, overTime, memo);
+        }
+        /// <summary>
+        /// 查询若干天前到今天的维护计划
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryMaintainPlanByDays(int overDays)
+        {
+            return acc.queryMaintainPlanByDays(overDays);
         }
     }
 }

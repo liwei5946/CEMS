@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using Util;
 using log4net;
 
-namespace DataAccessLayer.Equipment
+namespace DataAccessLayer
 {
     public class AccountService
     {
@@ -369,6 +369,124 @@ namespace DataAccessLayer.Equipment
             }
 
         }
+        /// <summary>
+        /// 新增维护计划
+        /// </summary>
+        /// <param name="planAsset"></param>
+        /// <param name="eqId"></param>
+        /// <param name="startDate"></param>
+        /// <param name="overTime"></param>
+        /// <param name="memo"></param>
+        /// <returns></returns>
+        public bool addMaintainPlan(string planAsset, int eqId, string startDate, int overTime, string memo)
+        {
+            int resault = 0;
+            string sql = string.Format("INSERT INTO maintain_plan(	plan_asset,	eq_id,	[start_date],	over_time,	memo)VALUES(@planAsset,@eqId,@startDate,@overTime,@memo)");
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@planAsset", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@eqId", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@startDate", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@overTime", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@memo", SqlDbType.NText));
+
+                    //给参数赋值
+                    mycom.Parameters["@planAsset"].Value = planAsset;
+                    mycom.Parameters["@eqId"].Value = eqId;
+                    mycom.Parameters["@startDate"].Value = startDate;
+                    mycom.Parameters["@overTime"].Value = overTime;
+                    mycom.Parameters["@memo"].Value = memo;
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        /// <summary>
+        /// 查询若干天前到制定日期的维护计划
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryMaintainPlanByDays(int overDays, string maintainDay)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                //GETDATE()
+                string sql = string.Format("SELECT mp.id, mp.plan_asset,ea.eqname,ea.asset, d.departname, mp.[start_date], mp.over_time, mp.memo  FROM maintain_plan mp  LEFT JOIN eq_account ea ON mp.eq_id=ea.id  LEFT JOIN department d ON d.id=ea.department WHERE mp.[start_date]>=DATEADD(DAY,-" + overDays + "," + maintainDay + ")");
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
+        /// 查询若干天前到今天的维护计划
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryMaintainPlanByDays(int overDays)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                //GETDATE()
+                string sql = string.Format("SELECT mp.id, mp.plan_asset,ea.eqname,ea.asset, d.departname, mp.[start_date], mp.over_time, mp.memo  FROM maintain_plan mp  LEFT JOIN eq_account ea ON mp.eq_id=ea.id  LEFT JOIN department d ON d.id=ea.department WHERE mp.[start_date]>=DATEADD(DAY,-" + overDays + ",GETDATE())");
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+
+
+
+
+
+
     }
 
 }

@@ -33,6 +33,7 @@
             this.editButton = new System.Windows.Forms.ToolStripButton();
             this.delButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.MaintainPlanButton = new System.Windows.Forms.ToolStripButton();
             this.report_Button = new System.Windows.Forms.ToolStripButton();
             this.writeoffButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -58,6 +59,7 @@
             this.editButton,
             this.delButton,
             this.toolStripSeparator1,
+            this.MaintainPlanButton,
             this.report_Button,
             this.writeoffButton,
             this.toolStripSeparator3,
@@ -110,13 +112,23 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
+            // MaintainPlanButton
+            // 
+            this.MaintainPlanButton.Image = global::CEMSApp.Properties.Resources.cog_edit;
+            this.MaintainPlanButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MaintainPlanButton.Name = "MaintainPlanButton";
+            this.MaintainPlanButton.Size = new System.Drawing.Size(60, 37);
+            this.MaintainPlanButton.Text = "维护计划";
+            this.MaintainPlanButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MaintainPlanButton.Click += new System.EventHandler(this.MaintainPlanButton_Click);
+            // 
             // report_Button
             // 
             this.report_Button.Image = global::CEMSApp.Properties.Resources.chart_line;
             this.report_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.report_Button.Name = "report_Button";
-            this.report_Button.Size = new System.Drawing.Size(36, 37);
-            this.report_Button.Text = "报表";
+            this.report_Button.Size = new System.Drawing.Size(60, 37);
+            this.report_Button.Text = "台帐报表";
             this.report_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.report_Button.Click += new System.EventHandler(this.report_Button_Click);
             // 
@@ -218,7 +230,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(708, 12);
+            this.checkBox1.Location = new System.Drawing.Point(731, 12);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(72, 16);
             this.checkBox1.TabIndex = 2;
@@ -265,5 +277,6 @@
         private System.Windows.Forms.ToolStripButton report_Button;
         private System.Windows.Forms.ToolStripButton writeoffButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton MaintainPlanButton;
     }
 }

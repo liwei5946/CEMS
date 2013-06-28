@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using CEMSApp.Equipment;
+using CEMSApp.Maintain;
 
 namespace CEMSApp
 {
@@ -141,7 +142,15 @@ namespace CEMSApp
             }
         }
 
-
+        private void weihujihua_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("MaintainPlanForm"))
+            {
+                MaintainPlanForm eq_MaintainPlan = new MaintainPlanForm();
+                eq_MaintainPlan.MdiParent = this;
+                eq_MaintainPlan.Show();
+            }
+        }
 
     }
 }

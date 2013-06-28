@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using DataAccessLayer.Equipment;
+using DataAccessLayer;
 using log4net;
 
 namespace BusinessLogicLayer.Equipment

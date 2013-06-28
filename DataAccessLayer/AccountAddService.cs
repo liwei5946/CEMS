@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using Util;
 using log4net;
 
-namespace DataAccessLayer.Equipment
+namespace DataAccessLayer
 {
     public class AccountAddService
     {

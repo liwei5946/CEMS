@@ -413,6 +413,28 @@ namespace CEMSApp.Equipment
             }
             //Account acc = new Account();
         }
+        /// <summary>
+        /// 维护计划按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MaintainPlanButton_Click(object sender, EventArgs e)
+        {
+            Maintain.MaintainAddForm maf = new Maintain.MaintainAddForm(grid1[grid1.Selection.ActivePosition.Row, 0].Value.ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].Value.ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].Value.ToString());
+            maf.ShowDialog();
+            /*
+            if (maf.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("OK!!!");
+                //重新绑定DataGridView;
+                //Account acc = new Account();
+                //DataSet ds_account = acc.queryAccount();
+                //BindSourceGrid(grid1, ds_account.Tables[0]);
+                //grid1.Selection.SelectRow(1, true);
+                //grid1.Selection.FocusFirstCell(true);
+            }
+             * */
+        }
 
     }
     /// <summary>
