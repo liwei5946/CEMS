@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.editButton = new System.Windows.Forms.ToolStripButton();
+            this.DelButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.reportButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.closeButton = new System.Windows.Forms.ToolStripButton();
@@ -36,10 +39,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.grid1 = new SourceGrid.Grid();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.addButton = new System.Windows.Forms.ToolStripButton();
-            this.editButton = new System.Windows.Forms.ToolStripButton();
-            this.DelButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.startPicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.queryButton = new System.Windows.Forms.Button();
@@ -50,7 +49,6 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addButton,
             this.editButton,
             this.DelButton,
             this.toolStripSeparator1,
@@ -64,13 +62,37 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // editButton
+            // 
+            this.editButton.Image = global::CEMSApp.Properties.Resources.pencil;
+            this.editButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(36, 37);
+            this.editButton.Text = "修改";
+            this.editButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            // 
+            // DelButton
+            // 
+            this.DelButton.Image = global::CEMSApp.Properties.Resources.delete1;
+            this.DelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DelButton.Name = "DelButton";
+            this.DelButton.Size = new System.Drawing.Size(36, 37);
+            this.DelButton.Text = "删除";
+            this.DelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
+            // 
             // reportButton
             // 
             this.reportButton.Image = global::CEMSApp.Properties.Resources.chart_line;
             this.reportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.reportButton.Name = "reportButton";
             this.reportButton.Size = new System.Drawing.Size(36, 37);
-            this.reportButton.Text = "报表";
+            this.reportButton.Text = "打印";
             this.reportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.reportButton.Click += new System.EventHandler(this.editButton_Click);
             // 
@@ -126,38 +148,6 @@
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "所有计划";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // addButton
-            // 
-            this.addButton.Image = global::CEMSApp.Properties.Resources.add;
-            this.addButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(36, 37);
-            this.addButton.Text = "增加";
-            this.addButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // editButton
-            // 
-            this.editButton.Image = global::CEMSApp.Properties.Resources.pencil;
-            this.editButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(36, 37);
-            this.editButton.Text = "修改";
-            this.editButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // DelButton
-            // 
-            this.DelButton.Image = global::CEMSApp.Properties.Resources.delete1;
-            this.DelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DelButton.Name = "DelButton";
-            this.DelButton.Size = new System.Drawing.Size(36, 37);
-            this.DelButton.Text = "删除";
-            this.DelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
             // startPicker
             // 
@@ -216,7 +206,6 @@
         private SourceGrid.Grid grid1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton addButton;
         private System.Windows.Forms.ToolStripButton editButton;
         private System.Windows.Forms.ToolStripButton DelButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

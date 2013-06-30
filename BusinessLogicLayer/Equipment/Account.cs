@@ -131,5 +131,18 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryMaintainPlanByDays(overDays);
         }
+        /// <summary>
+        /// 修改维护计划
+        /// </summary>
+        /// <param name="plan_asset"></param>
+        /// <param name="start_date"></param>
+        /// <param name="over_time"></param>
+        /// <param name="memo"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool updateMaintainPlanById(string plan_asset, string start_date, int over_time, string memo, string id)
+        {
+            return acc.updateMaintainPlanById(plan_asset, start_date, over_time, memo, id);
+        }
     }
 }

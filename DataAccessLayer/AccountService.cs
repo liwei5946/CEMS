@@ -434,7 +434,7 @@ namespace DataAccessLayer
             {
                 SqlDataAdapter sda;
                 //GETDATE()
-                string sql = string.Format("SELECT mp.id, mp.plan_asset,ea.eqname,ea.asset, d.departname, mp.[start_date], mp.over_time, mp.memo  FROM maintain_plan mp  LEFT JOIN eq_account ea ON mp.eq_id=ea.id  LEFT JOIN department d ON d.id=ea.department WHERE mp.[start_date]>=DATEADD(DAY,-" + overDays + "," + maintainDay + ")");
+                string sql = string.Format("SELECT mp.id, mp.plan_asset,ea.eqname,ea.asset, d.departname, mp.[start_date], mp.over_time, mp.memo  FROM maintain_plan mp  LEFT JOIN eq_account ea ON mp.eq_id=ea.id  LEFT JOIN department d ON d.id=ea.department WHERE mp.[start_date]>=DATEADD(DAY,-" + overDays + "," + maintainDay + ") AND mp.dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -463,7 +463,7 @@ namespace DataAccessLayer
             {
                 SqlDataAdapter sda;
                 //GETDATE()
-                string sql = string.Format("SELECT mp.id, mp.plan_asset,ea.eqname,ea.asset, d.departname, mp.[start_date], mp.over_time, mp.memo  FROM maintain_plan mp  LEFT JOIN eq_account ea ON mp.eq_id=ea.id  LEFT JOIN department d ON d.id=ea.department WHERE mp.[start_date]>=DATEADD(DAY,-" + overDays + ",GETDATE())");
+                string sql = string.Format("SELECT mp.id, mp.plan_asset,ea.eqname,ea.asset, d.departname, mp.[start_date], mp.over_time, mp.memo  FROM maintain_plan mp  LEFT JOIN eq_account ea ON mp.eq_id=ea.id  LEFT JOIN department d ON d.id=ea.department WHERE mp.[start_date]>=DATEADD(DAY,-" + overDays + ",GETDATE()) AND mp.dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -480,6 +480,58 @@ namespace DataAccessLayer
                 log.Error(e.Message);
             }
             return ds;
+        }
+        /// <summary>
+        /// 修改维护计划
+        /// </summary>
+        /// <param name="plan_asset"></param>
+        /// <param name="start_date"></param>
+        /// <param name="over_time"></param>
+        /// <param name="memo"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool updateMaintainPlanById(string plan_asset, string start_date, int over_time, string memo, string id)
+        {
+            int resault = 0;
+            string sql = string.Format("UPDATE maintain_plan SET plan_asset = @plan_asset,[start_date] = @start_date, over_time = @over_time,memo = @memo WHERE id=" + id);
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@plan_asset", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@start_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@over_time", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@memo", SqlDbType.NText));
+
+                    //给参数赋值
+                    mycom.Parameters["@plan_asset"].Value = plan_asset;
+                    mycom.Parameters["@start_date"].Value = start_date;
+                    mycom.Parameters["@over_time"].Value = over_time;
+                    mycom.Parameters["@memo"].Value = memo;
+
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

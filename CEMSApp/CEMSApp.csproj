@@ -153,6 +153,12 @@
     <Compile Include="Maintain\MaintainPlanForm.Designer.cs">
       <DependentUpon>MaintainPlanForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maintain\MaintainEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maintain\MaintainEditForm.Designer.cs">
+      <DependentUpon>MaintainEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChildForm.resx">
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Maintain\MaintainPlanForm.resx">
       <DependentUpon>MaintainPlanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintain\MaintainEditForm.resx">
+      <DependentUpon>MaintainEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

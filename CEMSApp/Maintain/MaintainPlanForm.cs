@@ -195,30 +195,22 @@ namespace CEMSApp.Maintain
         private void editButton_Click(object sender, EventArgs e)
         {
             string id = grid1[grid1.Selection.ActivePosition.Row, 0].ToString();//选中行的id
-            DialogResult dr;
-            Boolean flag = false;
-            //AccountEditForm acf = new AccountEditForm(id);
+            //DialogResult dr;
+            //Boolean flag = false;
+            MaintainEditForm mef = new MaintainEditForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 3].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 5].ToString(), grid1[grid1.Selection.ActivePosition.Row, 6].ToString(), grid1[grid1.Selection.ActivePosition.Row, 7].ToString());
             try
             {
                 if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
                 {
-                    dr = MessageBox.Show("您确认将编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的记录重新入账？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dr == DialogResult.Yes)
+                    //dr = mef.ShowDialog();
+                    //dr = MessageBox.Show("您确认将编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的记录重新入账？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (mef.ShowDialog() == DialogResult.OK)
                     {
                         Account acc = new Account();
-                        flag = acc.reOffAccountById(id);
-                        if (flag)
-                        {
-                            MessageBox.Show("重新入账成功！");
-                            DataSet ds_account = acc.queryOffAccount();
-                            BindSourceGrid(grid1, ds_account.Tables[0]);
-                            grid1.Selection.SelectRow(1, true);
-                            grid1.Selection.FocusFirstCell(true);
-                        }
-                        else
-                        {
-                            MessageBox.Show("重新入账失败！");
-                        }
+                        DataSet ds_MaintainPlan = acc.queryMaintainPlanByDays(365);//查询365天前到今天的维护计划信息
+                        BindSourceGrid(grid1, ds_MaintainPlan.Tables[0]);
+                        grid1.Selection.SelectRow(1, true);
+                        grid1.Selection.FocusFirstCell(true);
                     }
                     /*
                     Account acc = new Account();
@@ -260,7 +252,6 @@ namespace CEMSApp.Maintain
             grid1.Selection.SelectRow(1, true);
             grid1.Selection.FocusFirstCell(true);
         }
-
 
 
     }
