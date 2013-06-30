@@ -152,5 +152,15 @@ namespace CEMSApp
             }
         }
 
+        private void toolStripButton_maintainplan_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("MaintainPlanForm"))
+            {
+                MaintainPlanForm eq_MaintainPlan = new MaintainPlanForm();
+                eq_MaintainPlan.MdiParent = this;
+                eq_MaintainPlan.Show();
+            }
+        }
+
     }
 }

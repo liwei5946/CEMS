@@ -197,7 +197,7 @@ namespace CEMSApp.Maintain
             string id = grid1[grid1.Selection.ActivePosition.Row, 0].ToString();//选中行的id
             //DialogResult dr;
             //Boolean flag = false;
-            MaintainEditForm mef = new MaintainEditForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 3].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 5].ToString(), grid1[grid1.Selection.ActivePosition.Row, 6].ToString(), grid1[grid1.Selection.ActivePosition.Row, 7].ToString());
+            MaintainPlanEditForm mef = new MaintainPlanEditForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 3].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 5].ToString(), grid1[grid1.Selection.ActivePosition.Row, 6].ToString(), grid1[grid1.Selection.ActivePosition.Row, 7].ToString());
             try
             {
                 if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
@@ -263,7 +263,7 @@ namespace CEMSApp.Maintain
             Boolean flag = false;
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
-                dr = MessageBox.Show("您确认删除编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的维护计划？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                dr = MessageBox.Show("您确认删除编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的维护计划？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     Account acc = new Account();
@@ -281,6 +281,50 @@ namespace CEMSApp.Maintain
                     {
                         MessageBox.Show("删除失败！");
                     }
+                }
+            }
+        }
+        /// <summary>
+        /// 维护记录按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MaintainButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dr;
+            Boolean flag = false;
+            if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
+            {
+                dr = MessageBox.Show("您确认为编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的维护计划增加对应维护记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    
+                    Account acc = new Account();
+                    if (acc.hasMaintainForPlan(grid1[grid1.Selection.ActivePosition.Row, 0].ToString()))
+                    {
+                        MessageBox.Show("该维护计划已存在对应的维护记录！");
+                    }
+                    else
+                    {
+                        MaintainAddForm maf = new MaintainAddForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 3].ToString());
+                        maf.ShowDialog();
+                    }
+                    /*
+                    //flag = acc.deleteAccountById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    flag = acc.deleteMaintainPlanById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    if (flag)
+                    {
+                        MessageBox.Show("删除成功！");
+                        DataSet ds_MaintainPlan = acc.queryMaintainPlanByDays(365);//查询365天前到今天的维护计划信息
+                        BindSourceGrid(grid1, ds_MaintainPlan.Tables[0]);
+                        grid1.Selection.SelectRow(1, true);
+                        grid1.Selection.FocusFirstCell(true);
+                    }
+                    else
+                    {
+                        MessageBox.Show("删除失败！");
+                    }
+                     * */
                 }
             }
         }

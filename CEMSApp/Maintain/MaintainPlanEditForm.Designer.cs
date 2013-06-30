@@ -1,6 +1,6 @@
 ﻿namespace CEMSApp.Maintain
 {
-    partial class MaintainEditForm
+    partial class MaintainPlanEditForm
     {
         /// <summary>
         /// Required designer variable.

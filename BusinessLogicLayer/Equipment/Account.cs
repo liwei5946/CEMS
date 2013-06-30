@@ -153,5 +153,28 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.deleteMaintainPlanById(id);
         }
+        /// <summary>
+        /// 查询是否已经存在某维护计划所对应的维护记录
+        /// </summary>
+        /// <param name="planId"></param>
+        /// <returns></returns>
+        public bool hasMaintainForPlan(string planId)
+        {
+            return acc.hasMaintainForPlan(planId);
+        }
+        /// <summary>
+        /// 新增维护记录
+        /// </summary>
+        /// <param name="planId"></param>
+        /// <param name="status"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <param name="memo"></param>
+        /// <param name="principal"></param>
+        /// <returns></returns>
+        public bool addMaintain(string planId, string status, string startDate, string endDate, string memo, string principal)
+        {
+            return acc.addMaintain(planId, status, startDate, endDate, memo, principal);
+        }
     }
 }

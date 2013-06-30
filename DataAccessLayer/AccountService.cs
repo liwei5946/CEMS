@@ -567,6 +567,96 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 查询是否已经存在某维护计划所对应的维护记录
+        /// </summary>
+        /// <param name="planId"></param>
+        /// <returns></returns>
+        public bool hasMaintainForPlan(string planId)
+        {
+            bool flag = false;
+            int result = 0;
+            try
+            {
+                string sql = string.Format("SELECT COUNT(*) FROM maintain m WHERE m.dr=0 AND m.plan_id=" + planId);
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    conn.Open();
+                    result = (int)command.ExecuteScalar();
+                    conn.Close();
+                    conn.Dispose();
+                }
+                if (result > 0)
+                {
+                    flag = true;
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            return flag;
+        }
+        /// <summary>
+        /// 新增维护记录
+        /// </summary>
+        /// <param name="planId"></param>
+        /// <param name="status"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <param name="memo"></param>
+        /// <param name="principal"></param>
+        /// <returns></returns>
+        public bool addMaintain(string planId, string status, string startDate, string endDate, string memo, string principal)
+        {
+            int resault = 0;
+            string sql = string.Format("INSERT INTO maintain ([start_date],end_date,plan_id,principal,[status],memo) VALUES(@startDate,@endDate,@planId,@principal,@status,@memo)");
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@planId", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@status", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@startDate", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@endDate", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@memo", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@principal", SqlDbType.NVarChar, 50));
+
+                    //给参数赋值
+                    mycom.Parameters["@planId"].Value = planId;
+                    mycom.Parameters["@status"].Value = status;
+                    mycom.Parameters["@startDate"].Value = startDate;
+                    mycom.Parameters["@endDate"].Value = endDate;
+                    mycom.Parameters["@memo"].Value = memo;
+                    mycom.Parameters["@principal"].Value = principal;
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
 
 

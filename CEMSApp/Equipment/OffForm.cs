@@ -292,7 +292,7 @@ namespace CEMSApp.Equipment
             {
                 if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
                 {
-                    dr = MessageBox.Show("您确认将编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的记录重新入账？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    dr = MessageBox.Show("您确认将编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的记录重新入账？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dr == DialogResult.Yes)
                     {
                         Account acc = new Account();

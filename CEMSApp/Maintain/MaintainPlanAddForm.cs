@@ -12,20 +12,16 @@ using log4net;
 
 namespace CEMSApp.Maintain
 {
-    public partial class MaintainEditForm : ChildForm
+    public partial class MaintainPlanAddForm : ChildForm
     {
-        ILog log = log4net.LogManager.GetLogger(typeof(MaintainEditForm));
+        ILog log = log4net.LogManager.GetLogger(typeof(MaintainPlanAddForm));
         string globleId = "";
-        public MaintainEditForm(string id, string eq_asset, string eq_name, string plan_asset, string plan_date,string days, string memo)
+        public MaintainPlanAddForm(string id, string eq_asset, string eq_name)
         {
             InitializeComponent();
             text_asset.Text = eq_asset;
             text_eqname.Text = eq_name;
             globleId = id;
-            text_planAsset.Text = plan_asset;
-            dateTime_planDate.Text = plan_date;
-            maskedText_value.Value = Convert.ToInt32(days);
-            richTextBox_memo.Text = memo;
             //DataSet ds_offType = null;
             //Account acc = new Account();
             //ds_offType = acc.queryOffType();
@@ -63,20 +59,19 @@ namespace CEMSApp.Maintain
             {
                 value = (int)maskedText_value.Value;
             }
-            flag = acc.updateMaintainPlanById(text_planAsset.Text, dateTime_planDate.Text, Convert.ToInt32(maskedText_value.Value), richTextBox_memo.Text, globleId);
-            //flag = acc.addMaintainPlan(text_planAsset.Text, Convert.ToInt32(globleId), dateTime_planDate.Text, Convert.ToInt32(maskedText_value.Value.ToString()), richTextBox_memo.Text);
+            flag = acc.addMaintainPlan(text_planAsset.Text, Convert.ToInt32(globleId), dateTime_planDate.Text, Convert.ToInt32(maskedText_value.Value.ToString()), richTextBox_memo.Text);
             //flag = acc.writeOffAccount(true, dateTime_planDate.Text, Convert.ToInt32(combo_offType.SelectedValue.ToString()), value, richTextBox_memo.Text, globleId);
             //flag = aa.addAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_manu_date.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, float.Parse(maskedText_value.Text), Convert.ToInt32(numeric_count.Value.ToString()), Convert.ToInt32(numeric_electromotor.Value.ToString()), float.Parse(maskedText_power.Text), Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_eqType.SelectedValue.ToString()), text_address.Text, aa.getFileBytes(fileDialog_img.FileName), aa.getFileBytes(fileDialog_3d.FileName));
             //flag = aa.addAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_offDate.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, value, count, electromotor, power, Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_offType.SelectedValue.ToString()), text_address.Text, img, threeD);
             if (flag)
             {
-                MessageBox.Show("修改维护计划成功！");
+                MessageBox.Show("新增维护计划成功！");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("修改维护计划失败，请检查网络连接！");
+                MessageBox.Show("新增维护计划失败，请检查网络连接！");
             }
         }
 

@@ -32,6 +32,7 @@
             this.editButton = new System.Windows.Forms.ToolStripButton();
             this.DelButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.MaintainButton = new System.Windows.Forms.ToolStripButton();
             this.reportButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.closeButton = new System.Windows.Forms.ToolStripButton();
@@ -52,6 +53,7 @@
             this.editButton,
             this.DelButton,
             this.toolStripSeparator1,
+            this.MaintainButton,
             this.reportButton,
             this.toolStripSeparator3,
             this.closeButton,
@@ -87,15 +89,24 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
+            // MaintainButton
+            // 
+            this.MaintainButton.Image = global::CEMSApp.Properties.Resources.cog_edit;
+            this.MaintainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MaintainButton.Name = "MaintainButton";
+            this.MaintainButton.Size = new System.Drawing.Size(60, 37);
+            this.MaintainButton.Text = "维护记录";
+            this.MaintainButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MaintainButton.Click += new System.EventHandler(this.MaintainButton_Click);
+            // 
             // reportButton
             // 
             this.reportButton.Image = global::CEMSApp.Properties.Resources.chart_line;
             this.reportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.reportButton.Name = "reportButton";
-            this.reportButton.Size = new System.Drawing.Size(36, 37);
-            this.reportButton.Text = "打印";
+            this.reportButton.Size = new System.Drawing.Size(72, 37);
+            this.reportButton.Text = "打印计划单";
             this.reportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.reportButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // toolStripSeparator3
             // 
@@ -143,7 +154,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(479, 14);
+            this.checkBox1.Location = new System.Drawing.Point(563, 14);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(72, 16);
             this.checkBox1.TabIndex = 2;
@@ -152,7 +163,7 @@
             // 
             // startPicker
             // 
-            this.startPicker.Location = new System.Drawing.Point(293, 12);
+            this.startPicker.Location = new System.Drawing.Point(377, 12);
             this.startPicker.Name = "startPicker";
             this.startPicker.Size = new System.Drawing.Size(104, 21);
             this.startPicker.TabIndex = 3;
@@ -160,7 +171,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(222, 16);
+            this.label1.Location = new System.Drawing.Point(306, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 4;
@@ -168,7 +179,7 @@
             // 
             // queryButton
             // 
-            this.queryButton.Location = new System.Drawing.Point(403, 12);
+            this.queryButton.Location = new System.Drawing.Point(487, 12);
             this.queryButton.Name = "queryButton";
             this.queryButton.Size = new System.Drawing.Size(70, 21);
             this.queryButton.TabIndex = 7;
@@ -213,5 +224,6 @@
         private System.Windows.Forms.DateTimePicker startPicker;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button queryButton;
+        private System.Windows.Forms.ToolStripButton MaintainButton;
     }
 }

@@ -329,7 +329,7 @@ namespace CEMSApp.Equipment
             Boolean flag = false;
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
-                dr = MessageBox.Show("您确认删除资产编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                dr = MessageBox.Show("您确认删除资产编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     Account acc = new Account();
@@ -420,7 +420,7 @@ namespace CEMSApp.Equipment
         /// <param name="e"></param>
         private void MaintainPlanButton_Click(object sender, EventArgs e)
         {
-            Maintain.MaintainAddForm maf = new Maintain.MaintainAddForm(grid1[grid1.Selection.ActivePosition.Row, 0].Value.ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].Value.ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].Value.ToString());
+            Maintain.MaintainPlanAddForm maf = new Maintain.MaintainPlanAddForm(grid1[grid1.Selection.ActivePosition.Row, 0].Value.ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].Value.ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].Value.ToString());
             maf.ShowDialog();
             /*
             if (maf.ShowDialog() == DialogResult.OK)
