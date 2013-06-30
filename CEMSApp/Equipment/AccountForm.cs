@@ -329,7 +329,7 @@ namespace CEMSApp.Equipment
             Boolean flag = false;
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
-                dr = MessageBox.Show("您确认删除序号为" + grid1[grid1.Selection.ActivePosition.Row, 0].ToString() + "的记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                dr = MessageBox.Show("您确认删除资产编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                 {
                     Account acc = new Account();

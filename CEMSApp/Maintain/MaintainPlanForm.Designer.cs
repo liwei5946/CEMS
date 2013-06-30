@@ -80,6 +80,7 @@
             this.DelButton.Size = new System.Drawing.Size(36, 37);
             this.DelButton.Text = "删除";
             this.DelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.DelButton.Click += new System.EventHandler(this.DelButton_Click);
             // 
             // toolStripSeparator1
             // 

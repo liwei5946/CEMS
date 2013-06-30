@@ -144,5 +144,14 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.updateMaintainPlanById(plan_asset, start_date, over_time, memo, id);
         }
+        /// <summary>
+        /// 删除制定ID的维护计划信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteMaintainPlanById(string id)
+        {
+            return acc.deleteMaintainPlanById(id);
+        }
     }
 }
