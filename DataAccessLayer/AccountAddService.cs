@@ -106,7 +106,62 @@ namespace DataAccessLayer
             }
             return ds;
         }
-
+        /// <summary>
+        /// 创建repair_level的DataSet
+        /// 查找repair_level表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet CreateDataSet_RepairLevel()
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                string sql = string.Format("SELECT * FROM repair_level");
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
+        /// 创建maintain_level的DataSet
+        /// 查找maintain_level表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet CreateDataSet_MaintainLevel()
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                string sql = string.Format("SELECT * FROM maintain_level");
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
         /// <summary>
         /// 添加台帐
         /// </summary>

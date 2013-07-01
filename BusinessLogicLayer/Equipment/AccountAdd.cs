@@ -37,6 +37,24 @@ namespace BusinessLogicLayer.Equipment
         {
             return aas.CreateDataSet_Status();
         }
+         /// <summary>
+        /// 创建repair_level的DataSet
+        /// 查找repair_level表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet CreateDataSet_RepairLevel()
+        {
+            return aas.CreateDataSet_RepairLevel();
+        }
+        /// <summary>
+        /// 创建maintain_level的DataSet
+        /// 查找maintain_level表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet CreateDataSet_MaintainLevel()
+        {
+            return aas.CreateDataSet_MaintainLevel();
+        }
         /// <summary>
         /// 获取上传图片文件的byte序列
         /// </summary>

@@ -208,5 +208,23 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.deleteMaintainById(id);
         }
+        /// <summary>
+        /// 新增维修计划
+        /// </summary>
+        /// <param name="plan_asset"></param>
+        /// <param name="eq_id"></param>
+        /// <param name="start_date"></param>
+        /// <param name="over_time"></param>
+        /// <param name="stop_time"></param>
+        /// <param name="target_department"></param>
+        /// <param name="source_department"></param>
+        /// <param name="principal"></param>
+        /// <param name="memo"></param>
+        /// <param name="level_id"></param>
+        /// <returns></returns>
+        public bool addRepairPlan(string plan_asset, string eq_id, string start_date, int over_time, int stop_time, string target_department, string source_department, string principal, string memo, string level_id)
+        {
+            return acc.addRepairPlan(plan_asset, eq_id, start_date, over_time, stop_time, target_department, source_department, principal, memo, level_id);
+        }
     }
 }

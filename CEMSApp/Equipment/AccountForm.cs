@@ -157,7 +157,7 @@ namespace CEMSApp.Equipment
             BuildGridColumnWidth(grid, ColumnWidth);
             grid.Rows.Insert(0);
             grid[0, 0] = new SourceGrid.Cells.ColumnHeader("序号");
-            grid[0, 1] = new SourceGrid.Cells.ColumnHeader("资产编号");
+            grid[0, 1] = new SourceGrid.Cells.ColumnHeader("设备编号");
             grid[0, 2] = new SourceGrid.Cells.ColumnHeader("设备名称");
             grid[0, 3] = new SourceGrid.Cells.ColumnHeader("设备图片");
             grid[0, 4] = new SourceGrid.Cells.ColumnHeader("三维模型");
@@ -434,6 +434,16 @@ namespace CEMSApp.Equipment
                 //grid1.Selection.FocusFirstCell(true);
             }
              * */
+        }
+        /// <summary>
+        /// 维修计划按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MaintainButton_Click(object sender, EventArgs e)
+        {
+            RepairPlanAddForm rpaf = new RepairPlanAddForm(grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 8].ToString(), grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+            rpaf.ShowDialog();
         }
 
     }

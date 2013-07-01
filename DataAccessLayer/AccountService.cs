@@ -775,6 +775,76 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 新增维修计划
+        /// </summary>
+        /// <param name="plan_asset"></param>
+        /// <param name="eq_id"></param>
+        /// <param name="start_date"></param>
+        /// <param name="over_time"></param>
+        /// <param name="stop_time"></param>
+        /// <param name="target_department"></param>
+        /// <param name="source_department"></param>
+        /// <param name="principal"></param>
+        /// <param name="memo"></param>
+        /// <param name="level_id"></param>
+        /// <returns></returns>
+        public bool addRepairPlan(string plan_asset, string eq_id, string start_date, int over_time, int stop_time, string target_department, string source_department, string principal, string memo, string level_id)
+        {
+            int resault = 0;
+            string sql = string.Format("INSERT INTO repair_plan(	plan_asset,	eq_id,	[start_date],	over_time,	stop_time,	target_department,	source_department,	principal,	memo,	level_id) VALUES(@plan_asset,@eq_id,@start_date,@over_time,@stop_time,@target_department,@source_department,@principal,@memo,@level_id)");
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@plan_asset", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@eq_id", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@start_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@over_time", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@stop_time", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@target_department", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@source_department", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@principal", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@memo", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@level_id", SqlDbType.Int));
+
+                    //给参数赋值
+                    mycom.Parameters["@plan_asset"].Value = plan_asset;
+                    mycom.Parameters["@eq_id"].Value = eq_id;
+                    mycom.Parameters["@start_date"].Value = start_date;
+                    mycom.Parameters["@over_time"].Value = over_time;
+                    mycom.Parameters["@stop_time"].Value = stop_time;
+                    mycom.Parameters["@target_department"].Value = target_department;
+                    mycom.Parameters["@source_department"].Value = source_department;
+                    mycom.Parameters["@principal"].Value = principal;
+                    mycom.Parameters["@memo"].Value = memo;
+                    mycom.Parameters["@level_id"].Value = level_id;
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
 
 
 

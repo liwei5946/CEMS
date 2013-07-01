@@ -34,6 +34,7 @@
             this.delButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MaintainPlanButton = new System.Windows.Forms.ToolStripButton();
+            this.MaintainButton = new System.Windows.Forms.ToolStripButton();
             this.report_Button = new System.Windows.Forms.ToolStripButton();
             this.writeoffButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -60,6 +61,7 @@
             this.delButton,
             this.toolStripSeparator1,
             this.MaintainPlanButton,
+            this.MaintainButton,
             this.report_Button,
             this.writeoffButton,
             this.toolStripSeparator3,
@@ -73,7 +75,7 @@
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(803, 40);
+            this.toolStrip1.Size = new System.Drawing.Size(975, 40);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -121,6 +123,16 @@
             this.MaintainPlanButton.Text = "维护计划";
             this.MaintainPlanButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MaintainPlanButton.Click += new System.EventHandler(this.MaintainPlanButton_Click);
+            // 
+            // MaintainButton
+            // 
+            this.MaintainButton.Image = global::CEMSApp.Properties.Resources.settings;
+            this.MaintainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MaintainButton.Name = "MaintainButton";
+            this.MaintainButton.Size = new System.Drawing.Size(60, 37);
+            this.MaintainButton.Text = "维修计划";
+            this.MaintainButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MaintainButton.Click += new System.EventHandler(this.MaintainButton_Click);
             // 
             // report_Button
             // 
@@ -211,7 +223,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 40);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.panel1.Size = new System.Drawing.Size(803, 404);
+            this.panel1.Size = new System.Drawing.Size(975, 404);
             this.panel1.TabIndex = 1;
             // 
             // grid1
@@ -222,7 +234,7 @@
             this.grid1.Name = "grid1";
             this.grid1.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.grid1.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid1.Size = new System.Drawing.Size(783, 404);
+            this.grid1.Size = new System.Drawing.Size(955, 404);
             this.grid1.TabIndex = 2;
             this.grid1.TabStop = true;
             this.grid1.ToolTipText = "";
@@ -230,7 +242,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(731, 12);
+            this.checkBox1.Location = new System.Drawing.Point(863, 12);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(72, 16);
             this.checkBox1.TabIndex = 2;
@@ -241,7 +253,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 444);
+            this.ClientSize = new System.Drawing.Size(975, 444);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
@@ -278,5 +290,6 @@
         private System.Windows.Forms.ToolStripButton writeoffButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton MaintainPlanButton;
+        private System.Windows.Forms.ToolStripButton MaintainButton;
     }
 }
