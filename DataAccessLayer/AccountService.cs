@@ -686,6 +686,61 @@ namespace DataAccessLayer
             }
             return ds;
         }
+        /// <summary>
+        /// 修改维修记录
+        /// </summary>
+        /// <param name="start_date"></param>
+        /// <param name="end_date"></param>
+        /// <param name="principal"></param>
+        /// <param name="status"></param>
+        /// <param name="memo"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool updateMaintainById(string start_date, string end_date, string principal, string status, string memo, string id)
+        {
+            int resault = 0;
+            string sql = string.Format("UPDATE maintain SET	[start_date] = @start_date,	end_date = @end_date,	principal = @principal,	[status] = @status,	memo = @memo WHERE id=" + id);
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@principal", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@status", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@start_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@end_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@memo", SqlDbType.NText));
+
+                    //给参数赋值
+                    mycom.Parameters["@principal"].Value = principal;
+                    mycom.Parameters["@status"].Value = status;
+                    mycom.Parameters["@start_date"].Value = start_date;
+                    mycom.Parameters["@end_date"].Value = end_date;
+                    mycom.Parameters["@memo"].Value = memo;
+
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 

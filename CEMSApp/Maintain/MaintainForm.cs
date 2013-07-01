@@ -207,7 +207,8 @@ namespace CEMSApp.Maintain
             string id = grid1[grid1.Selection.ActivePosition.Row, 0].ToString();//选中行的id
             //DialogResult dr;
             //Boolean flag = false;
-            MaintainPlanEditForm mef = new MaintainPlanEditForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 3].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 5].ToString(), grid1[grid1.Selection.ActivePosition.Row, 6].ToString(), grid1[grid1.Selection.ActivePosition.Row, 7].ToString());
+            //MaintainPlanEditForm mef = new MaintainPlanEditForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 3].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 5].ToString(), grid1[grid1.Selection.ActivePosition.Row, 6].ToString(), grid1[grid1.Selection.ActivePosition.Row, 7].ToString());
+            MaintainEditForm mef = new MaintainEditForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 9].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 4].ToString(), grid1[grid1.Selection.ActivePosition.Row, 5].ToString(), grid1[grid1.Selection.ActivePosition.Row, 7].ToString(), grid1[grid1.Selection.ActivePosition.Row, 6].ToString(), grid1[grid1.Selection.ActivePosition.Row, 8].ToString());
             try
             {
                 if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
@@ -217,8 +218,9 @@ namespace CEMSApp.Maintain
                     if (mef.ShowDialog() == DialogResult.OK)
                     {
                         Account acc = new Account();
-                        DataSet ds_MaintainPlan = acc.queryMaintainPlanByDays(365);//查询365天前到今天的维护计划信息
-                        BindSourceGrid(grid1, ds_MaintainPlan.Tables[0]);
+                        //DataSet ds_MaintainPlan = acc.queryMaintainPlanByDays(365);//查询365天前到今天的维护计划信息
+                        DataSet ds_Maintain = acc.queryMaintainByDays(365);//查询365天到今天的维护计划信息
+                        BindSourceGrid(grid1, ds_Maintain.Tables[0]);
                         grid1.Selection.SelectRow(1, true);
                         grid1.Selection.FocusFirstCell(true);
                     }

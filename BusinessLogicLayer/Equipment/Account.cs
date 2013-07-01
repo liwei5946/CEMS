@@ -185,5 +185,19 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryMaintainByDays(overDays);
         }
+        /// <summary>
+        /// 修改维修记录
+        /// </summary>
+        /// <param name="start_date"></param>
+        /// <param name="end_date"></param>
+        /// <param name="principal"></param>
+        /// <param name="status"></param>
+        /// <param name="memo"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool updateMaintainById(string start_date, string end_date, string principal, string status, string memo, string id)
+        {
+            return acc.updateMaintainById(start_date, end_date, principal, status, memo, id);
+        }
     }
 }
