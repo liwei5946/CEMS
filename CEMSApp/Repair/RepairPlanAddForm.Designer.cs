@@ -1,4 +1,4 @@
-﻿namespace CEMSApp.Equipment
+﻿namespace CEMSApp.Repair
 {
     partial class RepairPlanAddForm
     {

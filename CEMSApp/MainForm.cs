@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using CEMSApp.Equipment;
 using CEMSApp.Maintain;
+using CEMSApp.Repair;
 
 namespace CEMSApp
 {
@@ -169,6 +170,16 @@ namespace CEMSApp
                 MaintainForm eq_Maintain = new MaintainForm();
                 eq_Maintain.MdiParent = this;
                 eq_Maintain.Show();
+            }
+        }
+
+        private void weixiujihua_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("RepairPlanForm"))
+            {
+                RepairPlanForm eq_RepairPlanForm = new RepairPlanForm();
+                eq_RepairPlanForm.MdiParent = this;
+                eq_RepairPlanForm.Show();
             }
         }
 

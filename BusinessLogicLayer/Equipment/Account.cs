@@ -226,5 +226,23 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.addRepairPlan(plan_asset, eq_id, start_date, over_time, stop_time, target_department, source_department, principal, memo, level_id);
         }
+        /// <summary>
+        /// 根据ID查询维修计划信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>rp.id,	rp.plan_asset,	ea.asset,	ea.eqname,	d.departname,	rp.level_id,	rp.[start_date],	rp.over_time,	rp.stop_time,	rp.target_department,	rp.source_department,	rp.principal,	rp.memo</returns>
+        public DataSet queryRepairPlanById(string id)
+        {
+            return acc.queryRepairPlanById(id);
+        }
+        /// <summary>
+        /// 查询若干天前到今天的维修计划
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryRepairPlanByDays(int overDays)
+        {
+            return acc.queryRepairPlanByDays(overDays);
+        }
     }
 }

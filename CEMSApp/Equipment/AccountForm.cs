@@ -442,7 +442,7 @@ namespace CEMSApp.Equipment
         /// <param name="e"></param>
         private void MaintainButton_Click(object sender, EventArgs e)
         {
-            RepairPlanAddForm rpaf = new RepairPlanAddForm(grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 8].ToString(), grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+            Repair.RepairPlanAddForm rpaf = new Repair.RepairPlanAddForm(grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 8].ToString(), grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
             rpaf.ShowDialog();
         }
 

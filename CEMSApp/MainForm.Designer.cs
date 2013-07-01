@@ -128,27 +128,27 @@
             // eqAccountMenuItem
             // 
             this.eqAccountMenuItem.Name = "eqAccountMenuItem";
-            this.eqAccountMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eqAccountMenuItem.Size = new System.Drawing.Size(148, 22);
             this.eqAccountMenuItem.Text = "设备台帐";
             this.eqAccountMenuItem.Click += new System.EventHandler(this.eqAccountMenuItem_Click);
             // 
             // 配件台帐ToolStripMenuItem
             // 
             this.配件台帐ToolStripMenuItem.Name = "配件台帐ToolStripMenuItem";
-            this.配件台帐ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.配件台帐ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.配件台帐ToolStripMenuItem.Text = "配件管理";
             // 
             // OffAccountToolStripMenuItem
             // 
             this.OffAccountToolStripMenuItem.Name = "OffAccountToolStripMenuItem";
-            this.OffAccountToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.OffAccountToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.OffAccountToolStripMenuItem.Text = "销帐登记";
             this.OffAccountToolStripMenuItem.Click += new System.EventHandler(this.OffAccountToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(145, 6);
             // 
             // 数据导入导出ToolStripMenuItem
             // 
@@ -157,7 +157,7 @@
             this.配件数据导入ToolStripMenuItem,
             this.数据导出ToolStripMenuItem});
             this.数据导入导出ToolStripMenuItem.Name = "数据导入导出ToolStripMenuItem";
-            this.数据导入导出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.数据导入导出ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.数据导入导出ToolStripMenuItem.Text = "数据导入导出";
             // 
             // 数据导入ToolStripMenuItem
@@ -193,32 +193,32 @@
             // weihujihua
             // 
             this.weihujihua.Name = "weihujihua";
-            this.weihujihua.Size = new System.Drawing.Size(152, 22);
+            this.weihujihua.Size = new System.Drawing.Size(148, 22);
             this.weihujihua.Text = "维护计划";
             this.weihujihua.Click += new System.EventHandler(this.weihujihua_Click);
             // 
             // weihujilu
             // 
             this.weihujilu.Name = "weihujilu";
-            this.weihujilu.Size = new System.Drawing.Size(152, 22);
+            this.weihujilu.Size = new System.Drawing.Size(148, 22);
             this.weihujilu.Text = "维护历史记录";
             this.weihujilu.Click += new System.EventHandler(this.weihujilu_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(145, 6);
             // 
             // 点检管理ToolStripMenuItem
             // 
             this.点检管理ToolStripMenuItem.Name = "点检管理ToolStripMenuItem";
-            this.点检管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.点检管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.点检管理ToolStripMenuItem.Text = "点检管理";
             // 
             // 点检记录ToolStripMenuItem
             // 
             this.点检记录ToolStripMenuItem.Name = "点检记录ToolStripMenuItem";
-            this.点检记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.点检记录ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.点检记录ToolStripMenuItem.Text = "点检记录";
             // 
             // 维修信息管理ToolStripMenuItem
@@ -235,6 +235,7 @@
             this.weixiujihua.Name = "weixiujihua";
             this.weixiujihua.Size = new System.Drawing.Size(152, 22);
             this.weixiujihua.Text = "维修计划";
+            this.weixiujihua.Click += new System.EventHandler(this.weixiujihua_Click);
             // 
             // 维修记录ToolStripMenuItem
             // 
@@ -257,30 +258,30 @@
             // 事故管理ToolStripMenuItem
             // 
             this.事故管理ToolStripMenuItem.Name = "事故管理ToolStripMenuItem";
-            this.事故管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.事故管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.事故管理ToolStripMenuItem.Text = "故障管理";
             // 
             // 事故记录ToolStripMenuItem
             // 
             this.事故记录ToolStripMenuItem.Name = "事故记录ToolStripMenuItem";
-            this.事故记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.事故记录ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.事故记录ToolStripMenuItem.Text = "故障历史记录";
             // 
             // 故障统计分析ToolStripMenuItem
             // 
             this.故障统计分析ToolStripMenuItem.Name = "故障统计分析ToolStripMenuItem";
-            this.故障统计分析ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.故障统计分析ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.故障统计分析ToolStripMenuItem.Text = "故障统计分析";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(145, 6);
             // 
             // 故障知识库ToolStripMenuItem
             // 
             this.故障知识库ToolStripMenuItem.Name = "故障知识库ToolStripMenuItem";
-            this.故障知识库ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.故障知识库ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.故障知识库ToolStripMenuItem.Text = "故障知识库";
             // 
             // 维护信息管理ToolStripMenuItem

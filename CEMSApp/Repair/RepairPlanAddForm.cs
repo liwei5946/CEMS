@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using BusinessLogicLayer.Equipment;
 using log4net;
 
-namespace CEMSApp.Equipment
+namespace CEMSApp.Repair
 {
     public partial class RepairPlanAddForm : ChildForm
     {
