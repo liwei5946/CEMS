@@ -176,5 +176,14 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.addMaintain(planId, status, startDate, endDate, memo, principal);
         }
+        /// <summary>
+        /// 查询若干天前到今天的维护记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryMaintainByDays(int overDays)
+        {
+            return acc.queryMaintainByDays(overDays);
+        }
     }
 }

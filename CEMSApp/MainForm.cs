@@ -162,5 +162,15 @@ namespace CEMSApp
             }
         }
 
+        private void weihujilu_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("MaintainForm"))
+            {
+                MaintainForm eq_Maintain = new MaintainForm();
+                eq_Maintain.MdiParent = this;
+                eq_Maintain.Show();
+            }
+        }
+
     }
 }

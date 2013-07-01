@@ -41,8 +41,7 @@
             this.数据导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维护信息管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.weihujihua = new System.Windows.Forms.ToolStripMenuItem();
-            this.维护保养ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.维护记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.weihujilu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.点检管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.点检记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -184,8 +183,7 @@
             // 
             this.维护信息管理ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.weihujihua,
-            this.维护保养ToolStripMenuItem,
-            this.维护记录ToolStripMenuItem,
+            this.weihujilu,
             this.toolStripSeparator7,
             this.点检管理ToolStripMenuItem,
             this.点检记录ToolStripMenuItem});
@@ -196,37 +194,32 @@
             // weihujihua
             // 
             this.weihujihua.Name = "weihujihua";
-            this.weihujihua.Size = new System.Drawing.Size(124, 22);
+            this.weihujihua.Size = new System.Drawing.Size(152, 22);
             this.weihujihua.Text = "维护计划";
             this.weihujihua.Click += new System.EventHandler(this.weihujihua_Click);
             // 
-            // 维护保养ToolStripMenuItem
+            // weihujilu
             // 
-            this.维护保养ToolStripMenuItem.Name = "维护保养ToolStripMenuItem";
-            this.维护保养ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.维护保养ToolStripMenuItem.Text = "维护保养";
-            // 
-            // 维护记录ToolStripMenuItem
-            // 
-            this.维护记录ToolStripMenuItem.Name = "维护记录ToolStripMenuItem";
-            this.维护记录ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.维护记录ToolStripMenuItem.Text = "维护记录";
+            this.weihujilu.Name = "weihujilu";
+            this.weihujilu.Size = new System.Drawing.Size(152, 22);
+            this.weihujilu.Text = "维护历史记录";
+            this.weihujilu.Click += new System.EventHandler(this.weihujilu_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
             // 
             // 点检管理ToolStripMenuItem
             // 
             this.点检管理ToolStripMenuItem.Name = "点检管理ToolStripMenuItem";
-            this.点检管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.点检管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.点检管理ToolStripMenuItem.Text = "点检管理";
             // 
             // 点检记录ToolStripMenuItem
             // 
             this.点检记录ToolStripMenuItem.Name = "点检记录ToolStripMenuItem";
-            this.点检记录ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.点检记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.点检记录ToolStripMenuItem.Text = "点检记录";
             // 
             // 维修信息管理ToolStripMenuItem
@@ -629,7 +622,6 @@
         private System.Windows.Forms.ToolStripMenuItem 配件数据导入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 参数设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 维护保养ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 点检管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 维修记录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 事故管理ToolStripMenuItem;
@@ -652,7 +644,7 @@
         private System.Windows.Forms.ToolStripMenuItem 数据库备份ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库恢复ToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.ToolStripMenuItem 维护记录ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem weihujilu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem 点检记录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设备维修ToolStripMenuItem;

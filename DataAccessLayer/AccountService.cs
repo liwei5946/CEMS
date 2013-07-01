@@ -657,6 +657,35 @@ namespace DataAccessLayer
             }
 
         }
+        /// <summary>
+        /// 查询若干天前到今天的维护记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryMaintainByDays(int overDays)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                //GETDATE()
+                string sql = string.Format("SELECT	m.id,m.[start_date],m.end_date,	m.principal,m.[status],	m.memo,mp.plan_asset,mp.[start_date],mp.over_time,ea.asset,ea.eqname,d.departname FROM	maintain m	LEFT JOIN maintain_plan mp ON m.plan_id=mp.id	LEFT JOIN eq_account ea ON mp.eq_id=ea.id	LEFT JOIN department d ON ea.department=d.id WHERE m.[start_date]>=DATEADD(DAY,-" + overDays + ",GETDATE()) AND m.dr=0");
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
 
 
 
