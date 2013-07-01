@@ -32,7 +32,7 @@
             this.editButton = new System.Windows.Forms.ToolStripButton();
             this.DelButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.MaintainButton = new System.Windows.Forms.ToolStripButton();
+            this.RepairButton = new System.Windows.Forms.ToolStripButton();
             this.reportButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.closeButton = new System.Windows.Forms.ToolStripButton();
@@ -53,7 +53,7 @@
             this.editButton,
             this.DelButton,
             this.toolStripSeparator1,
-            this.MaintainButton,
+            this.RepairButton,
             this.reportButton,
             this.toolStripSeparator3,
             this.closeButton,
@@ -89,15 +89,15 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
-            // MaintainButton
+            // RepairButton
             // 
-            this.MaintainButton.Image = global::CEMSApp.Properties.Resources.cog_edit;
-            this.MaintainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MaintainButton.Name = "MaintainButton";
-            this.MaintainButton.Size = new System.Drawing.Size(60, 37);
-            this.MaintainButton.Text = "维护记录";
-            this.MaintainButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MaintainButton.Click += new System.EventHandler(this.MaintainButton_Click);
+            this.RepairButton.Image = global::CEMSApp.Properties.Resources.settings;
+            this.RepairButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RepairButton.Name = "RepairButton";
+            this.RepairButton.Size = new System.Drawing.Size(60, 37);
+            this.RepairButton.Text = "执行维修";
+            this.RepairButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.RepairButton.Click += new System.EventHandler(this.MaintainButton_Click);
             // 
             // reportButton
             // 
@@ -224,6 +224,6 @@
         private System.Windows.Forms.DateTimePicker startPicker;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button queryButton;
-        private System.Windows.Forms.ToolStripButton MaintainButton;
+        private System.Windows.Forms.ToolStripButton RepairButton;
     }
 }

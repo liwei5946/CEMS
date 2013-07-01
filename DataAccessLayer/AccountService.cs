@@ -853,7 +853,7 @@ namespace DataAccessLayer
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT	rp.id,	rp.plan_asset,	ea.asset,	ea.eqname,	d.departname,	r.level_name,	rp.[start_date],	rp.over_time,	rp.stop_time,d1.departname AS tdep,	d2.departname AS sdep,	rp.principal,	rp.memo FROM	repair_plan rp LEFT JOIN eq_account ea ON rp.eq_id=ea.id LEFT JOIN department d ON ea.department=d.id LEFT JOIN department d1 ON rp.target_department=d1.id LEFT JOIN department d2 ON rp.source_department =d2.id LEFT JOIN repair_level r ON rp.level_id=r.id WHERE rp.dr=0 AND rp.id=" + id);
+                string sql = string.Format("SELECT	rp.id,	rp.plan_asset,	ea.asset,ea.eqname,d.departname,	rp.[start_date],	rp.over_time,	rp.stop_time,	rp.target_department,	rp.source_department,	rp.principal,	rp.memo,	rp.level_id FROM	repair_plan rp LEFT JOIN eq_account ea ON rp.eq_id=ea.id LEFT JOIN department d ON ea.department=d.id WHERE rp.dr=0 AND rp.id=" + id);
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -900,6 +900,76 @@ namespace DataAccessLayer
             }
             return ds;
         }
+        /// <summary>
+        /// 修改维修计划
+        /// </summary>
+        /// <param name="plan_asset"></param>
+        /// <param name="eq_id"></param>
+        /// <param name="start_date"></param>
+        /// <param name="over_time"></param>
+        /// <param name="stop_time"></param>
+        /// <param name="target_department"></param>
+        /// <param name="source_department"></param>
+        /// <param name="principal"></param>
+        /// <param name="memo"></param>
+        /// <param name="level_id"></param>
+        /// <returns></returns>
+        public bool updateRepairPlan(string id,string plan_asset, string start_date, int over_time, int stop_time, string target_department, string source_department, string principal, string memo, string level_id)
+        {
+            int resault = 0;
+            string sql = string.Format("UPDATE repair_plan SET	plan_asset = @plan_asset,	[start_date] = @start_date,	over_time = @over_time,	stop_time = @stop_time,	target_department = @target_department,	source_department = @source_department,	principal = @principal,	memo = @memo,	level_id = @level_id WHERE id=" + id);
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@plan_asset", SqlDbType.NVarChar, 50));
+                    //mycom.Parameters.Add(new SqlParameter("@eq_id", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@start_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@over_time", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@stop_time", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@target_department", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@source_department", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@principal", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@memo", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@level_id", SqlDbType.Int));
+
+                    //给参数赋值
+                    mycom.Parameters["@plan_asset"].Value = plan_asset;
+                    //mycom.Parameters["@eq_id"].Value = eq_id;
+                    mycom.Parameters["@start_date"].Value = start_date;
+                    mycom.Parameters["@over_time"].Value = over_time;
+                    mycom.Parameters["@stop_time"].Value = stop_time;
+                    mycom.Parameters["@target_department"].Value = target_department;
+                    mycom.Parameters["@source_department"].Value = source_department;
+                    mycom.Parameters["@principal"].Value = principal;
+                    mycom.Parameters["@memo"].Value = memo;
+                    mycom.Parameters["@level_id"].Value = level_id;
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
 
 
 

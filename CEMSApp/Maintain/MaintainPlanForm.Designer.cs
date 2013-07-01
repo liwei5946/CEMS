@@ -95,7 +95,7 @@
             this.MaintainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MaintainButton.Name = "MaintainButton";
             this.MaintainButton.Size = new System.Drawing.Size(60, 37);
-            this.MaintainButton.Text = "维护记录";
+            this.MaintainButton.Text = "执行维护";
             this.MaintainButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MaintainButton.Click += new System.EventHandler(this.MaintainButton_Click);
             // 
