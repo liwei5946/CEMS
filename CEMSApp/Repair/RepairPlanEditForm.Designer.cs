@@ -401,7 +401,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RepairPlanEditForm";
-            this.Text = "添加维修计划";
+            this.Text = "修改维修计划";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_repairday)).EndInit();
