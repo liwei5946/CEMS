@@ -199,5 +199,14 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.updateMaintainById(start_date, end_date, principal, status, memo, id);
         }
+        /// <summary>
+        /// 删除制定ID的维护记录信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteMaintainById(string id)
+        {
+            return acc.deleteMaintainById(id);
+        }
     }
 }
