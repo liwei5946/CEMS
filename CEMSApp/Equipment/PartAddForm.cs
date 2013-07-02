@@ -90,17 +90,26 @@ namespace CEMSApp.Equipment
             byte[] img = new byte[] { 0 };
             byte[] threeD = new byte[] { 0 };
 
-            if (!fileDialog_img.FileName.Equals(""))
+            try
             {
-                img = aa.getFileBytes(fileDialog_img.FileName);
+                if (!fileDialog_img.FileName.Equals(""))
+                {
+                    img = aa.getFileBytes(fileDialog_img.FileName);
+                }
+                else
+                {
+                    img = aa.getFileBytes("pic\\no_photo.jpg");
+                }
+                if (!fileDialog_3d.FileName.Equals(""))
+                {
+                    threeD = aa.getFileBytes(fileDialog_3d.FileName);
+                }
             }
-            else
+            catch (Exception mye)
             {
-                img = aa.getFileBytes("pic\\no_photo.gif");
-            }
-            if (!fileDialog_3d.FileName.Equals(""))
-            {
-                threeD = aa.getFileBytes(fileDialog_3d.FileName);
+                MessageBox.Show("图像或三维文件读取失败，请取消文件的只读属性！", "文件读取错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.Error(mye.Message);
+                return;
             }
             flag = aa.addPart(globleId, text_partasset.Text, text_partname.Text, text_partmaterial.Text, text_partweight.Text, globleStandard, img, threeD);
             //flag = aa.addAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_manu_date.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, float.Parse(maskedText_value.Text), Convert.ToInt32(numeric_count.Value.ToString()), Convert.ToInt32(numeric_electromotor.Value.ToString()), float.Parse(maskedText_power.Text), Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_eqType.SelectedValue.ToString()), text_address.Text, aa.getFileBytes(fileDialog_img.FileName), aa.getFileBytes(fileDialog_3d.FileName));

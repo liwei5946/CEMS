@@ -368,9 +368,6 @@
     <None Include="Resources\pencil.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="pic\no_photo.gif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\plugin_edit.png" />
     <None Include="Resources\plugin_add.png" />
     <None Include="Resources\book_delete.png" />
@@ -381,6 +378,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="pic\no_photo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
