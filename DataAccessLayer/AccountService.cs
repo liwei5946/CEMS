@@ -1050,10 +1050,10 @@ namespace DataAccessLayer
         /// <param name="memo_after"></param>
         /// <param name="memo_record"></param>
         /// <returns></returns>
-        public bool addRepair(string repair_asset, string plan_id, string start_date, string end_date, string stop_time, string target_department, string source_department, string repair_group, string principal, string memo_before, string memo_after, string memo_record)
+        public bool addRepair(string repair_asset, string plan_id, string start_date, string end_date, string stop_time, string target_department, string source_department, string repair_group, string principal, string memo_before, string memo_after, string memo_record,string repair_level)
         {
             int resault = 0;
-            string sql = string.Format("INSERT INTO repair(	repair_asset,	plan_id,	[start_date],	end_date,	stop_time,	target_department,	source_department,	repair_group,	principal,	memo_before,	memo_after,	memo_record) VALUES (@repair_asset,	@plan_id,	@start_date,	@end_date,	@stop_time,	@target_department,	@source_department,	@repair_group,	@principal,	@memo_before,	@memo_after,	@memo_record)");
+            string sql = string.Format("INSERT INTO repair(	repair_asset,	plan_id,	[start_date],	end_date,	stop_time,	target_department,	source_department,	repair_group,	principal,	memo_before,	memo_after,	memo_record,repair_level) VALUES (@repair_asset,	@plan_id,	@start_date,	@end_date,	@stop_time,	@target_department,	@source_department,	@repair_group,	@principal,	@memo_before,	@memo_after,	@memo_record,@repair_level)");
             log.Debug(sql);
             try
             {
@@ -1074,6 +1074,7 @@ namespace DataAccessLayer
                     mycom.Parameters.Add(new SqlParameter("@memo_before", SqlDbType.NText));
                     mycom.Parameters.Add(new SqlParameter("@memo_after", SqlDbType.NText));
                     mycom.Parameters.Add(new SqlParameter("@memo_record", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@repair_level", SqlDbType.Int));
 
                     //给参数赋值
                     mycom.Parameters["@repair_asset"].Value = repair_asset;
@@ -1088,6 +1089,7 @@ namespace DataAccessLayer
                     mycom.Parameters["@memo_before"].Value = memo_before;
                     mycom.Parameters["@memo_after"].Value = memo_after;
                     mycom.Parameters["@memo_record"].Value = memo_record;
+                    mycom.Parameters["@repair_level"].Value = repair_level;
                     //执行添加语句 
                     resault = mycom.ExecuteNonQuery();
                     log.Debug(resault);

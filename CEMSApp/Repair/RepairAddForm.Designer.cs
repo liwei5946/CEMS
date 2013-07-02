@@ -360,7 +360,7 @@
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label19.AutoSize = true;
             this.label19.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label19.Location = new System.Drawing.Point(57, 0);
+            this.label19.Location = new System.Drawing.Point(56, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(101, 36);
             this.label19.TabIndex = 0;
@@ -372,7 +372,7 @@
             this.richText_before.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richText_before.Location = new System.Drawing.Point(12, 39);
             this.richText_before.Name = "richText_before";
-            this.richText_before.Size = new System.Drawing.Size(191, 198);
+            this.richText_before.Size = new System.Drawing.Size(189, 198);
             this.richText_before.TabIndex = 7;
             this.richText_before.Text = "";
             // 
@@ -418,7 +418,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 202F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 199F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
             this.tableLayoutPanel2.Controls.Add(this.richText_before, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.richText_record, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.richText_after, 5, 1);
@@ -436,7 +436,7 @@
             // richText_record
             // 
             this.richText_record.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richText_record.Location = new System.Drawing.Point(221, 39);
+            this.richText_record.Location = new System.Drawing.Point(219, 39);
             this.richText_record.Name = "richText_record";
             this.richText_record.Size = new System.Drawing.Size(196, 198);
             this.richText_record.TabIndex = 7;
@@ -445,9 +445,9 @@
             // richText_after
             // 
             this.richText_after.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richText_after.Location = new System.Drawing.Point(433, 39);
+            this.richText_after.Location = new System.Drawing.Point(431, 39);
             this.richText_after.Name = "richText_after";
-            this.richText_after.Size = new System.Drawing.Size(194, 198);
+            this.richText_after.Size = new System.Drawing.Size(196, 198);
             this.richText_after.TabIndex = 7;
             this.richText_after.Text = "";
             // 
@@ -456,7 +456,7 @@
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label12.AutoSize = true;
             this.label12.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label12.Location = new System.Drawing.Point(286, 0);
+            this.label12.Location = new System.Drawing.Point(284, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 36);
             this.label12.TabIndex = 0;
@@ -468,7 +468,7 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label13.AutoSize = true;
             this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label13.Location = new System.Drawing.Point(479, 0);
+            this.label13.Location = new System.Drawing.Point(478, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(101, 36);
             this.label13.TabIndex = 0;

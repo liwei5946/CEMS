@@ -296,9 +296,9 @@ namespace BusinessLogicLayer.Equipment
         /// <param name="memo_after"></param>
         /// <param name="memo_record"></param>
         /// <returns></returns>
-        public bool addRepair(string repair_asset, string plan_id, string start_date, string end_date, string stop_time, string target_department, string source_department, string repair_group, string principal, string memo_before, string memo_after, string memo_record)
+        public bool addRepair(string repair_asset, string plan_id, string start_date, string end_date, string stop_time, string target_department, string source_department, string repair_group, string principal, string memo_before, string memo_after, string memo_record, string repair_level)
         {
-            return acc.addRepair(repair_asset, plan_id, start_date, end_date, stop_time, target_department, source_department, repair_group, principal, memo_before, memo_after, memo_record); 
+            return acc.addRepair(repair_asset, plan_id, start_date, end_date, stop_time, target_department, source_department, repair_group, principal, memo_before, memo_after, memo_record, repair_level); 
         }
 
     }
