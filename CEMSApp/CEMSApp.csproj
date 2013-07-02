@@ -129,6 +129,12 @@
     <Compile Include="Equipment\OffForm.Designer.cs">
       <DependentUpon>OffForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Equipment\PartAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equipment\PartAddForm.Designer.cs">
+      <DependentUpon>PartAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Equipment\OffForm.resx">
       <DependentUpon>OffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Equipment\PartAddForm.resx">
+      <DependentUpon>PartAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -362,6 +371,8 @@
     <Content Include="pic\no_photo.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\plugin_edit.png" />
+    <None Include="Resources\plugin_add.png" />
     <None Include="Resources\book_delete.png" />
     <None Include="Resources\chart_line.png" />
     <None Include="Resources\magnifier.png" />

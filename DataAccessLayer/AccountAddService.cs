@@ -271,6 +271,92 @@ namespace DataAccessLayer
             
         }
         /// <summary>
+        /// 添加配件
+        /// </summary>
+        /// <param name="eq_id"></param>
+        /// <param name="part_asset"></param>
+        /// <param name="part_name"></param>
+        /// <param name="material"></param>
+        /// <param name="part_weight"></param>
+        /// <param name="standard"></param>
+        /// <param name="part_photo"></param>
+        /// <param name="part_3d"></param>
+        /// <returns></returns>
+        public bool addPart(string eq_id,	string part_asset,	string part_name,	string material,	string part_weight,	bool standard,    byte[] part_photo,	byte[] part_3d)
+        {
+            int resault = 0;
+            //string sql = string.Format("INSERT INTO eq_account (isoff,asset,eqname,model,specification,department,weight,brand,manufacturer,supplier,manu_date,produ_date,filing_date,value,count,electromotor,power,status,type,address,photo,three_dimensional) VALUES (@isoff,@asset,@eqname,@model,@specification,@department,@weight,@brand,@manufacturer,@supplier,@manu_date,@produ_date,@filing_date,@value,@count,@electromotor,@power,@status,@type,@address,@photo,@three_dimensional)");
+            string sql = "INSERT INTO part_account "
+           + "( "
+           + "	eq_id, "
+           + "	part_asset, "
+           + "	part_name, "
+           + "	material, "
+           + "	part_weight, "
+           + "	[standard], "
+           + "	part_photo, "
+           + "	part_3d "
+           + ") "
+           + "VALUES "
+           + "( "
+           + "	@eq_id, "
+           + "	@part_asset, "
+           + "	@part_name, "
+           + "	@material, "
+           + "	@part_weight, "
+           + "	@standard, "
+           + "	@part_photo, "
+           + "	@part_3d "
+           + ")";
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@eq_id", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@part_asset", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@part_name", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@material", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@part_weight", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@standard", SqlDbType.Bit));
+                    mycom.Parameters.Add(new SqlParameter("@part_photo", SqlDbType.Image, part_photo.Length));
+                    mycom.Parameters.Add(new SqlParameter("@part_3d", SqlDbType.Image, part_3d.Length));
+
+                    //给参数赋值
+                    mycom.Parameters["@eq_id"].Value = eq_id;
+                    mycom.Parameters["@part_asset"].Value = part_asset;
+                    mycom.Parameters["@part_name"].Value = part_name;
+                    mycom.Parameters["@material"].Value = material;
+                    mycom.Parameters["@part_weight"].Value = part_weight;
+                    mycom.Parameters["@standard"].Value = standard;
+                    mycom.Parameters["@part_photo"].Value = part_photo;
+                    mycom.Parameters["@part_3d"].Value = part_3d;
+                    
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        /// <summary>
         /// 修改台帐信息
         /// </summary>
         /// <param name="isoff"></param>

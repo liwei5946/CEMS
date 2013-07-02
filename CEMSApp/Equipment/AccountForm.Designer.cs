@@ -29,26 +29,27 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.addButton = new System.Windows.Forms.ToolStripButton();
-            this.editButton = new System.Windows.Forms.ToolStripButton();
-            this.delButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.MaintainPlanButton = new System.Windows.Forms.ToolStripButton();
-            this.MaintainButton = new System.Windows.Forms.ToolStripButton();
-            this.report_Button = new System.Windows.Forms.ToolStripButton();
-            this.writeoffButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.closeButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.depart_ComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.equ_ComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grid1 = new SourceGrid.Grid();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.addButton = new System.Windows.Forms.ToolStripButton();
+            this.editButton = new System.Windows.Forms.ToolStripButton();
+            this.delButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_tianjiapeijian = new System.Windows.Forms.ToolStripButton();
+            this.MaintainPlanButton = new System.Windows.Forms.ToolStripButton();
+            this.MaintainButton = new System.Windows.Forms.ToolStripButton();
+            this.report_Button = new System.Windows.Forms.ToolStripButton();
+            this.writeoffButton = new System.Windows.Forms.ToolStripButton();
+            this.closeButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             this.editButton,
             this.delButton,
             this.toolStripSeparator1,
+            this.toolStripButton_tianjiapeijian,
             this.MaintainPlanButton,
             this.MaintainButton,
             this.report_Button,
@@ -79,95 +81,15 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // addButton
-            // 
-            this.addButton.Image = global::CEMSApp.Properties.Resources.add;
-            this.addButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(36, 37);
-            this.addButton.Text = "增加";
-            this.addButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // editButton
-            // 
-            this.editButton.Image = global::CEMSApp.Properties.Resources.pencil;
-            this.editButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(36, 37);
-            this.editButton.Text = "修改";
-            this.editButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.editButton.Click += new System.EventHandler(this.editButton_Click);
-            // 
-            // delButton
-            // 
-            this.delButton.Image = global::CEMSApp.Properties.Resources.delete1;
-            this.delButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.delButton.Name = "delButton";
-            this.delButton.Size = new System.Drawing.Size(36, 37);
-            this.delButton.Text = "删除";
-            this.delButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.delButton.Click += new System.EventHandler(this.delButton_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
-            // MaintainPlanButton
-            // 
-            this.MaintainPlanButton.Image = global::CEMSApp.Properties.Resources.cog_edit;
-            this.MaintainPlanButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MaintainPlanButton.Name = "MaintainPlanButton";
-            this.MaintainPlanButton.Size = new System.Drawing.Size(60, 37);
-            this.MaintainPlanButton.Text = "维护计划";
-            this.MaintainPlanButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MaintainPlanButton.Click += new System.EventHandler(this.MaintainPlanButton_Click);
-            // 
-            // MaintainButton
-            // 
-            this.MaintainButton.Image = global::CEMSApp.Properties.Resources.settings;
-            this.MaintainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MaintainButton.Name = "MaintainButton";
-            this.MaintainButton.Size = new System.Drawing.Size(60, 37);
-            this.MaintainButton.Text = "维修计划";
-            this.MaintainButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MaintainButton.Click += new System.EventHandler(this.MaintainButton_Click);
-            // 
-            // report_Button
-            // 
-            this.report_Button.Image = global::CEMSApp.Properties.Resources.chart_line;
-            this.report_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.report_Button.Name = "report_Button";
-            this.report_Button.Size = new System.Drawing.Size(60, 37);
-            this.report_Button.Text = "台帐报表";
-            this.report_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.report_Button.Click += new System.EventHandler(this.report_Button_Click);
-            // 
-            // writeoffButton
-            // 
-            this.writeoffButton.Image = global::CEMSApp.Properties.Resources.book_delete;
-            this.writeoffButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.writeoffButton.Name = "writeoffButton";
-            this.writeoffButton.Size = new System.Drawing.Size(36, 37);
-            this.writeoffButton.Text = "销帐";
-            this.writeoffButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.writeoffButton.Click += new System.EventHandler(this.writeoffButton_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 40);
-            // 
-            // closeButton
-            // 
-            this.closeButton.Image = global::CEMSApp.Properties.Resources.door_in;
-            this.closeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(36, 37);
-            this.closeButton.Text = "关闭";
-            this.closeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // toolStripSeparator2
             // 
@@ -208,14 +130,6 @@
             this.equ_ComboBox.Name = "equ_ComboBox";
             this.equ_ComboBox.Size = new System.Drawing.Size(121, 40);
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = global::CEMSApp.Properties.Resources.magnifier;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(52, 37);
-            this.toolStripButton1.Text = "查询";
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.grid1);
@@ -248,6 +162,104 @@
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "所有设备";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // addButton
+            // 
+            this.addButton.Image = global::CEMSApp.Properties.Resources.add;
+            this.addButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(36, 37);
+            this.addButton.Text = "增加";
+            this.addButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // editButton
+            // 
+            this.editButton.Image = global::CEMSApp.Properties.Resources.pencil;
+            this.editButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(36, 37);
+            this.editButton.Text = "修改";
+            this.editButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            // 
+            // delButton
+            // 
+            this.delButton.Image = global::CEMSApp.Properties.Resources.delete1;
+            this.delButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.delButton.Name = "delButton";
+            this.delButton.Size = new System.Drawing.Size(36, 37);
+            this.delButton.Text = "删除";
+            this.delButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            // 
+            // toolStripButton_tianjiapeijian
+            // 
+            this.toolStripButton_tianjiapeijian.Image = global::CEMSApp.Properties.Resources.plugin_add;
+            this.toolStripButton_tianjiapeijian.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_tianjiapeijian.Name = "toolStripButton_tianjiapeijian";
+            this.toolStripButton_tianjiapeijian.Size = new System.Drawing.Size(60, 37);
+            this.toolStripButton_tianjiapeijian.Text = "添加配件";
+            this.toolStripButton_tianjiapeijian.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_tianjiapeijian.Click += new System.EventHandler(this.toolStripButton_tianjiapeijian_Click);
+            // 
+            // MaintainPlanButton
+            // 
+            this.MaintainPlanButton.Image = global::CEMSApp.Properties.Resources.cog_edit;
+            this.MaintainPlanButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MaintainPlanButton.Name = "MaintainPlanButton";
+            this.MaintainPlanButton.Size = new System.Drawing.Size(60, 37);
+            this.MaintainPlanButton.Text = "维护计划";
+            this.MaintainPlanButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MaintainPlanButton.Click += new System.EventHandler(this.MaintainPlanButton_Click);
+            // 
+            // MaintainButton
+            // 
+            this.MaintainButton.Image = global::CEMSApp.Properties.Resources.settings;
+            this.MaintainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MaintainButton.Name = "MaintainButton";
+            this.MaintainButton.Size = new System.Drawing.Size(60, 37);
+            this.MaintainButton.Text = "维修计划";
+            this.MaintainButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MaintainButton.Click += new System.EventHandler(this.MaintainButton_Click);
+            // 
+            // report_Button
+            // 
+            this.report_Button.Image = global::CEMSApp.Properties.Resources.chart_line;
+            this.report_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.report_Button.Name = "report_Button";
+            this.report_Button.Size = new System.Drawing.Size(60, 37);
+            this.report_Button.Text = "台帐报表";
+            this.report_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.report_Button.Click += new System.EventHandler(this.report_Button_Click);
+            // 
+            // writeoffButton
+            // 
+            this.writeoffButton.Image = global::CEMSApp.Properties.Resources.book_delete;
+            this.writeoffButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.writeoffButton.Name = "writeoffButton";
+            this.writeoffButton.Size = new System.Drawing.Size(60, 37);
+            this.writeoffButton.Text = "设备销帐";
+            this.writeoffButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.writeoffButton.Click += new System.EventHandler(this.writeoffButton_Click);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Image = global::CEMSApp.Properties.Resources.door_in;
+            this.closeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(36, 37);
+            this.closeButton.Text = "关闭";
+            this.closeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::CEMSApp.Properties.Resources.magnifier;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(52, 37);
+            this.toolStripButton1.Text = "查询";
             // 
             // AccountForm
             // 
@@ -291,5 +303,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton MaintainPlanButton;
         private System.Windows.Forms.ToolStripButton MaintainButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton_tianjiapeijian;
     }
 }

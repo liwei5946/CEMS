@@ -167,7 +167,7 @@ namespace CEMSApp.Equipment
             }
             else
             {
-                img = aa.getFileBytes("pic\\no_photo.gif");
+                img = aa.getFileBytes("pic\\no_photo.jpg");
             }
             if (!fileDialog_3d.FileName.Equals(""))
             {

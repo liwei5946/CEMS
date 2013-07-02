@@ -135,6 +135,22 @@ namespace BusinessLogicLayer.Equipment
         {
             return aas.updateAccount( asset, eqname, model, specification, department, weight, brand, manufacturer, supplier, manu_date, produ_date, filing_date, value, count, electromotor, power, status, type, address, photo, three_dimensional,id);
         }
+        /// <summary>
+        /// 添加配件
+        /// </summary>
+        /// <param name="eq_id"></param>
+        /// <param name="part_asset"></param>
+        /// <param name="part_name"></param>
+        /// <param name="material"></param>
+        /// <param name="part_weight"></param>
+        /// <param name="standard"></param>
+        /// <param name="part_photo"></param>
+        /// <param name="part_3d"></param>
+        /// <returns></returns>
+        public bool addPart(string eq_id, string part_asset, string part_name, string material, string part_weight, bool standard, byte[] part_photo, byte[] part_3d)
+        {
+            return aas.addPart(eq_id, part_asset, part_name, material, part_weight, standard, part_photo, part_3d);
+        }
 
     }
 }

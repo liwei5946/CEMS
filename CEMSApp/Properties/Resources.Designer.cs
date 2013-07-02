@@ -130,6 +130,20 @@ namespace CEMSApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap plugin_add {
+            get {
+                object obj = ResourceManager.GetObject("plugin_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap plugin_edit {
+            get {
+                object obj = ResourceManager.GetObject("plugin_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap settings {
             get {
                 object obj = ResourceManager.GetObject("settings", resourceCulture);

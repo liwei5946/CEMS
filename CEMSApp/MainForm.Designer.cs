@@ -193,32 +193,32 @@
             // weihujihua
             // 
             this.weihujihua.Name = "weihujihua";
-            this.weihujihua.Size = new System.Drawing.Size(152, 22);
+            this.weihujihua.Size = new System.Drawing.Size(148, 22);
             this.weihujihua.Text = "维护计划";
             this.weihujihua.Click += new System.EventHandler(this.weihujihua_Click);
             // 
             // weihujilu
             // 
             this.weihujilu.Name = "weihujilu";
-            this.weihujilu.Size = new System.Drawing.Size(152, 22);
+            this.weihujilu.Size = new System.Drawing.Size(148, 22);
             this.weihujilu.Text = "维护历史记录";
             this.weihujilu.Click += new System.EventHandler(this.weihujilu_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(145, 6);
             // 
             // 点检管理ToolStripMenuItem
             // 
             this.点检管理ToolStripMenuItem.Name = "点检管理ToolStripMenuItem";
-            this.点检管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.点检管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.点检管理ToolStripMenuItem.Text = "点检管理";
             // 
             // 点检记录ToolStripMenuItem
             // 
             this.点检记录ToolStripMenuItem.Name = "点检记录ToolStripMenuItem";
-            this.点检记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.点检记录ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.点检记录ToolStripMenuItem.Text = "点检记录";
             // 
             // 维修信息管理ToolStripMenuItem
@@ -233,14 +233,14 @@
             // weixiujihua
             // 
             this.weixiujihua.Name = "weixiujihua";
-            this.weixiujihua.Size = new System.Drawing.Size(152, 22);
+            this.weixiujihua.Size = new System.Drawing.Size(148, 22);
             this.weixiujihua.Text = "维修计划";
             this.weixiujihua.Click += new System.EventHandler(this.weixiujihua_Click);
             // 
             // weixiujilu
             // 
             this.weixiujilu.Name = "weixiujilu";
-            this.weixiujilu.Size = new System.Drawing.Size(152, 22);
+            this.weixiujilu.Size = new System.Drawing.Size(148, 22);
             this.weixiujilu.Text = "维修历史记录";
             this.weixiujilu.Click += new System.EventHandler(this.weixiujilu_Click);
             // 
@@ -454,7 +454,7 @@
             // 
             // toolStripButton6
             // 
-            this.toolStripButton6.Image = global::CEMSApp.Properties.Resources.table_gear;
+            this.toolStripButton6.Image = global::CEMSApp.Properties.Resources.plugin_edit;
             this.toolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";

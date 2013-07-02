@@ -68,7 +68,7 @@ namespace CEMSApp.Equipment
             }
             grid1.AutoSizeCells();
              * */
-
+            int a = DateTime.Now.Millisecond;
             //处理department treeview显示
             DataSet ds1 = null, ds2 = null;
             Account acc = new Account();
@@ -83,11 +83,15 @@ namespace CEMSApp.Equipment
             //sourcegrid试验
             //BindSourceGrid(grid1, ds1.Tables[0]);
             DataSet ds_account = acc.queryAccount();
+            int b = DateTime.Now.Millisecond;
             ds_report = ds_account;//公共DS，用于报表输出
             BindSourceGrid(grid1, ds_account.Tables[0]);
             //grid1.Selection.ActivePosition.Row
             grid1.Selection.SelectRow(1, true);
             grid1.Selection.FocusFirstCell(true);
+            int c = DateTime.Now.Millisecond;
+            log.Debug("查询时间："+ (b-a));
+            log.Debug("显示时间：" + (c - b));
         }
         /// <summary>
         /// 初始化下拉列表
@@ -215,7 +219,10 @@ namespace CEMSApp.Equipment
                 MemoryStream ms = new MemoryStream(imagebytes);
                 Image img = Image.FromStream(ms);
                 //pb.Image = img;
-                grid[i, 3] = new SourceGrid.Cells.Image(img);
+                //Graphics graphics = Graphics.FromImage(img);
+                //graphics.DrawImage(img, new Rectangle(0, 0, 64, 48));
+                grid[i, 3] = new SourceGrid.Cells.Image(img.GetThumbnailImage(64, 48, null, IntPtr.Zero));//生成缩略图
+                //grid[i, 3] = new SourceGrid.Cells.Image(img);
                 grid[i, 3].AddController(new imageDoubleClickController()); //双击图片放大查看
                 ms.Close();
 
@@ -444,6 +451,16 @@ namespace CEMSApp.Equipment
         {
             Repair.RepairPlanAddForm rpaf = new Repair.RepairPlanAddForm(grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 8].ToString(), grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
             rpaf.ShowDialog();
+        }
+        /// <summary>
+        /// 增加配件信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButton_tianjiapeijian_Click(object sender, EventArgs e)
+        {
+            PartAddForm paf = new PartAddForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString());
+            paf.ShowDialog();
         }
 
     }
