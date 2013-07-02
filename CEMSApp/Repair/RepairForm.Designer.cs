@@ -1,6 +1,6 @@
 ﻿namespace CEMSApp.Repair
 {
-    partial class RepairPlanForm
+    partial class RepairForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,6 @@
             this.editButton = new System.Windows.Forms.ToolStripButton();
             this.DelButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.RepairButton = new System.Windows.Forms.ToolStripButton();
             this.reportButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.closeButton = new System.Windows.Forms.ToolStripButton();
@@ -53,7 +52,6 @@
             this.editButton,
             this.DelButton,
             this.toolStripSeparator1,
-            this.RepairButton,
             this.reportButton,
             this.toolStripSeparator3,
             this.closeButton,
@@ -89,23 +87,13 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
-            // RepairButton
-            // 
-            this.RepairButton.Image = global::CEMSApp.Properties.Resources.settings;
-            this.RepairButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.RepairButton.Name = "RepairButton";
-            this.RepairButton.Size = new System.Drawing.Size(60, 37);
-            this.RepairButton.Text = "执行维修";
-            this.RepairButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.RepairButton.Click += new System.EventHandler(this.MaintainButton_Click);
-            // 
             // reportButton
             // 
             this.reportButton.Image = global::CEMSApp.Properties.Resources.chart_line;
             this.reportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.reportButton.Name = "reportButton";
             this.reportButton.Size = new System.Drawing.Size(72, 37);
-            this.reportButton.Text = "维修任务单";
+            this.reportButton.Text = "维修记录单";
             this.reportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator3
@@ -186,7 +174,7 @@
             this.queryButton.Text = "查询";
             this.queryButton.UseVisualStyleBackColor = true;
             // 
-            // RepairPlanForm
+            // RepairForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -197,7 +185,7 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "RepairPlanForm";
+            this.Name = "RepairForm";
             this.Text = "维修计划";
             this.Load += new System.EventHandler(this.MaintainPlanForm_Load);
             this.toolStrip1.ResumeLayout(false);
@@ -224,6 +212,5 @@
         private System.Windows.Forms.DateTimePicker startPicker;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button queryButton;
-        private System.Windows.Forms.ToolStripButton RepairButton;
     }
 }

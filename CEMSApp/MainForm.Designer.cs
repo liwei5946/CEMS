@@ -47,7 +47,7 @@
             this.点检记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.weixiujihua = new System.Windows.Forms.ToolStripMenuItem();
-            this.维修记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.weixiujilu = new System.Windows.Forms.ToolStripMenuItem();
             this.故障管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.事故管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.事故记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,20 +75,20 @@
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton_maintainplan = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip_repair = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.systemTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.usernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.userrightLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_maintainplan = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.MainMenu.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -193,39 +193,39 @@
             // weihujihua
             // 
             this.weihujihua.Name = "weihujihua";
-            this.weihujihua.Size = new System.Drawing.Size(148, 22);
+            this.weihujihua.Size = new System.Drawing.Size(152, 22);
             this.weihujihua.Text = "维护计划";
             this.weihujihua.Click += new System.EventHandler(this.weihujihua_Click);
             // 
             // weihujilu
             // 
             this.weihujilu.Name = "weihujilu";
-            this.weihujilu.Size = new System.Drawing.Size(148, 22);
+            this.weihujilu.Size = new System.Drawing.Size(152, 22);
             this.weihujilu.Text = "维护历史记录";
             this.weihujilu.Click += new System.EventHandler(this.weihujilu_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
             // 
             // 点检管理ToolStripMenuItem
             // 
             this.点检管理ToolStripMenuItem.Name = "点检管理ToolStripMenuItem";
-            this.点检管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.点检管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.点检管理ToolStripMenuItem.Text = "点检管理";
             // 
             // 点检记录ToolStripMenuItem
             // 
             this.点检记录ToolStripMenuItem.Name = "点检记录ToolStripMenuItem";
-            this.点检记录ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.点检记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.点检记录ToolStripMenuItem.Text = "点检记录";
             // 
             // 维修信息管理ToolStripMenuItem
             // 
             this.维修信息管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.weixiujihua,
-            this.维修记录ToolStripMenuItem});
+            this.weixiujilu});
             this.维修信息管理ToolStripMenuItem.Name = "维修信息管理ToolStripMenuItem";
             this.维修信息管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.维修信息管理ToolStripMenuItem.Text = "维修管理";
@@ -237,11 +237,12 @@
             this.weixiujihua.Text = "维修计划";
             this.weixiujihua.Click += new System.EventHandler(this.weixiujihua_Click);
             // 
-            // 维修记录ToolStripMenuItem
+            // weixiujilu
             // 
-            this.维修记录ToolStripMenuItem.Name = "维修记录ToolStripMenuItem";
-            this.维修记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.维修记录ToolStripMenuItem.Text = "维修历史记录";
+            this.weixiujilu.Name = "weixiujilu";
+            this.weixiujilu.Size = new System.Drawing.Size(152, 22);
+            this.weixiujilu.Text = "维修历史记录";
+            this.weixiujilu.Click += new System.EventHandler(this.weixiujilu_Click);
             // 
             // 故障管理ToolStripMenuItem
             // 
@@ -430,7 +431,7 @@
             this.toolStripButton6,
             this.toolStripSeparator8,
             this.toolStripButton_maintainplan,
-            this.toolStripButton5,
+            this.toolStrip_repair,
             this.toolStripButton3,
             this.toolStripSeparator1,
             this.toolStripButton4});
@@ -440,15 +441,79 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::CEMSApp.Properties.Resources.table_multiple;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(60, 53);
+            this.toolStripButton1.Text = "设备台帐";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.Image = global::CEMSApp.Properties.Resources.table_gear;
+            this.toolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(60, 53);
+            this.toolStripButton6.Text = "配件管理";
+            this.toolStripButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(6, 56);
             // 
+            // toolStripButton_maintainplan
+            // 
+            this.toolStripButton_maintainplan.Image = global::CEMSApp.Properties.Resources.cog_edit;
+            this.toolStripButton_maintainplan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton_maintainplan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_maintainplan.Name = "toolStripButton_maintainplan";
+            this.toolStripButton_maintainplan.Size = new System.Drawing.Size(84, 53);
+            this.toolStripButton_maintainplan.Text = "维护历史记录";
+            this.toolStripButton_maintainplan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_maintainplan.Click += new System.EventHandler(this.toolStripButton_maintainplan_Click);
+            // 
+            // toolStrip_repair
+            // 
+            this.toolStrip_repair.Image = global::CEMSApp.Properties.Resources.settings;
+            this.toolStrip_repair.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStrip_repair.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStrip_repair.Name = "toolStrip_repair";
+            this.toolStrip_repair.Size = new System.Drawing.Size(84, 53);
+            this.toolStrip_repair.Text = "维修历史记录";
+            this.toolStrip_repair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStrip_repair.Click += new System.EventHandler(this.toolStrip_repair_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Image = global::CEMSApp.Properties.Resources.link_break;
+            this.toolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(60, 53);
+            this.toolStripButton3.Text = "故障管理";
+            this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 56);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.Image = global::CEMSApp.Properties.Resources.door_in;
+            this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(60, 53);
+            this.toolStripButton4.Text = "退出系统";
+            this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // statusStrip1
             // 
@@ -491,69 +556,6 @@
             this.userrightLabel.Name = "userrightLabel";
             this.userrightLabel.Size = new System.Drawing.Size(68, 18);
             this.userrightLabel.Text = "用户角色：";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = global::CEMSApp.Properties.Resources.table_multiple;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(60, 53);
-            this.toolStripButton1.Text = "设备台帐";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.Image = global::CEMSApp.Properties.Resources.table_gear;
-            this.toolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(60, 53);
-            this.toolStripButton6.Text = "配件管理";
-            this.toolStripButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripButton_maintainplan
-            // 
-            this.toolStripButton_maintainplan.Image = global::CEMSApp.Properties.Resources.cog_edit;
-            this.toolStripButton_maintainplan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton_maintainplan.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_maintainplan.Name = "toolStripButton_maintainplan";
-            this.toolStripButton_maintainplan.Size = new System.Drawing.Size(60, 53);
-            this.toolStripButton_maintainplan.Text = "维护计划";
-            this.toolStripButton_maintainplan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton_maintainplan.Click += new System.EventHandler(this.toolStripButton_maintainplan_Click);
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.Image = global::CEMSApp.Properties.Resources.settings;
-            this.toolStripButton5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(60, 53);
-            this.toolStripButton5.Text = "维修计划";
-            this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.Image = global::CEMSApp.Properties.Resources.link_break;
-            this.toolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(60, 53);
-            this.toolStripButton3.Text = "故障管理";
-            this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.Image = global::CEMSApp.Properties.Resources.door_in;
-            this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(60, 53);
-            this.toolStripButton4.Text = "退出系统";
-            this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // MainForm
             // 
@@ -616,7 +618,7 @@
         private System.Windows.Forms.ToolStripMenuItem 数据导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 参数设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 点检管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 维修记录ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem weixiujilu;
         private System.Windows.Forms.ToolStripMenuItem 事故管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 事故记录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 故障统计分析ToolStripMenuItem;
@@ -636,7 +638,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem 数据库备份ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库恢复ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton toolStrip_repair;
         private System.Windows.Forms.ToolStripMenuItem weihujilu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem 点检记录ToolStripMenuItem;

@@ -93,7 +93,7 @@
             this.reportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.reportButton.Name = "reportButton";
             this.reportButton.Size = new System.Drawing.Size(72, 37);
-            this.reportButton.Text = "打印记录单";
+            this.reportButton.Text = "维护记录单";
             this.reportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator3

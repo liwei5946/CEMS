@@ -300,6 +300,15 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.addRepair(repair_asset, plan_id, start_date, end_date, stop_time, target_department, source_department, repair_group, principal, memo_before, memo_after, memo_record, repair_level); 
         }
+         /// <summary>
+        /// 查询若干天前到今天的维修记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryRepairByDays(int overDays)
+        {
+            return acc.queryRepairByDays(overDays);
+        }
 
     }
 }

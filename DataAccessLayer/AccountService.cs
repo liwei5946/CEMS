@@ -1110,6 +1110,59 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 查询若干天前到今天的维修记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryRepairByDays(int overDays)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                //GETDATE()
+                //string sql = string.Format("SELECT	rp.id,	rp.plan_asset,	ea.asset,	ea.eqname,	d.departname,	r.level_name,	rp.[start_date],	rp.over_time,	rp.stop_time,d1.departname AS tdep,	d2.departname AS sdep,	rp.principal,	rp.memo FROM	repair_plan rp LEFT JOIN eq_account ea ON rp.eq_id=ea.id LEFT JOIN department d ON ea.department=d.id LEFT JOIN department d1 ON rp.target_department=d1.id LEFT JOIN department d2 ON rp.source_department =d2.id LEFT JOIN repair_level r ON rp.level_id=r.id WHERE rp.dr=0 AND rp.[start_date]>=DATEADD(DAY,-" + overDays + ",GETDATE())");
+                string sql = "SELECT r.id, "
+           + "       r.repair_asset, "
+           + "       ea.asset, "
+           + "       ea.eqname, "
+           + "       d.departname, "
+           + "       rl.level_name, "
+           + "       r.[start_date], "
+           + "       r.end_date, "
+           + "       r.stop_time, "
+           + "       d2.departname  AS tdep, "
+           + "       d3.departname  AS sdep, "
+           + "       r.repair_group, "
+           + "       r.principal, "
+           + "       r.memo_before, "
+           + "       r.memo_after, "
+           + "       r.memo_record "
+           + "FROM   repair r "
+           + "       LEFT JOIN repair_plan rp ON  r.plan_id = rp.id "
+           + "       LEFT JOIN eq_account ea ON  rp.eq_id = ea.id "
+           + "       LEFT JOIN department d ON  ea.department = d.id "
+           + "       LEFT JOIN department d2 ON  r.target_department = d2.id "
+           + "       LEFT JOIN department d3 ON  r.source_department = d3.id "
+           + "       LEFT JOIN repair_level rl ON r.repair_level=rl.id "
+           + "WHERE  r.dr = 0 AND r.[start_date] >= DATEADD(DAY, -" + overDays + ", GETDATE())";
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
 
 
 

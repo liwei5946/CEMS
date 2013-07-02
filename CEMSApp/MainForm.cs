@@ -155,11 +155,19 @@ namespace CEMSApp
 
         private void toolStripButton_maintainplan_Click(object sender, EventArgs e)
         {
+            /*
             if (!showChildrenForm("MaintainPlanForm"))
             {
                 MaintainPlanForm eq_MaintainPlan = new MaintainPlanForm();
                 eq_MaintainPlan.MdiParent = this;
                 eq_MaintainPlan.Show();
+            }
+             */
+            if (!showChildrenForm("MaintainForm"))
+            {
+                MaintainForm eq_Maintain = new MaintainForm();
+                eq_Maintain.MdiParent = this;
+                eq_Maintain.Show();
             }
         }
 
@@ -180,6 +188,26 @@ namespace CEMSApp
                 RepairPlanForm eq_RepairPlanForm = new RepairPlanForm();
                 eq_RepairPlanForm.MdiParent = this;
                 eq_RepairPlanForm.Show();
+            }
+        }
+
+        private void weixiujilu_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("RepairForm"))
+            {
+                RepairForm eq_RepairForm = new RepairForm();
+                eq_RepairForm.MdiParent = this;
+                eq_RepairForm.Show();
+            }
+        }
+
+        private void toolStrip_repair_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("RepairForm"))
+            {
+                RepairForm eq_RepairForm = new RepairForm();
+                eq_RepairForm.MdiParent = this;
+                eq_RepairForm.Show();
             }
         }
 
