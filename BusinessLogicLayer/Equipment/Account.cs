@@ -262,5 +262,23 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.updateRepairPlan(id, plan_asset, start_date, over_time, stop_time, target_department, source_department, principal, memo, level_id); 
         }
+         /// <summary>
+        /// 查询是否已经存在某维修计划所对应的维修记录
+        /// </summary>
+        /// <param name="planId"></param>
+        /// <returns></returns>
+        public bool hasRepairForPlan(string planId)
+        {
+            return acc.hasRepairForPlan(planId);
+        }
+        /// <summary>
+        /// 删除指定ID的维修记录信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteRepairPlanById(string planId)
+        {
+            return acc.deleteRepairPlanById(planId);
+        }
     }
 }

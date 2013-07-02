@@ -228,38 +228,47 @@ namespace CEMSApp.Repair
         {
             DialogResult dr;
             Boolean flag = false;
+            Account acc = new Account();
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
-                dr = MessageBox.Show("您确认删除编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的维护计划？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                dr = MessageBox.Show("您确认删除编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的维修计划？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
-                    Account acc = new Account();
-                    //flag = acc.deleteAccountById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
-                    flag = acc.deleteMaintainPlanById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
-                    if (flag)
+                    if (!acc.hasRepairForPlan(grid1[grid1.Selection.ActivePosition.Row, 0].ToString()))
                     {
-                        MessageBox.Show("删除成功！");
-                        DataSet ds_MaintainPlan = acc.queryMaintainPlanByDays(365);//查询365天前到今天的维护计划信息
-                        BindSourceGrid(grid1, ds_MaintainPlan.Tables[0]);
-                        grid1.Selection.SelectRow(1, true);
-                        grid1.Selection.FocusFirstCell(true);
+
+                        //flag = acc.deleteAccountById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                        //flag = acc.deleteMaintainPlanById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                        flag = acc.deleteRepairPlanById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                        if (flag)
+                        {
+                            MessageBox.Show("删除成功！");
+                            DataSet ds_RepairPlan = acc.queryRepairPlanByDays(365);
+                            BindSourceGrid(grid1, ds_RepairPlan.Tables[0]);
+                            grid1.Selection.SelectRow(1, true);
+                            grid1.Selection.FocusFirstCell(true);
+                        }
+                        else
+                        {
+                            MessageBox.Show("删除失败！");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("删除失败！");
+                        MessageBox.Show("已存在下游数据，不允许删除！", "操作流程错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
         }
         /// <summary>
-        /// 维护记录按钮
+        /// 维修记录按钮
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void MaintainButton_Click(object sender, EventArgs e)
         {
             DialogResult dr;
-            Boolean flag = false;
+            //Boolean flag = false;
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
                 dr = MessageBox.Show("您确认为编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的维护计划增加对应维护记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

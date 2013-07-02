@@ -968,6 +968,73 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 查询是否已经存在某维修计划所对应的维修记录
+        /// </summary>
+        /// <param name="planId"></param>
+        /// <returns></returns>
+        public bool hasRepairForPlan(string planId)
+        {
+            bool flag = false;
+            int result = 0;
+            try
+            {
+                string sql = string.Format("SELECT COUNT(*) FROM repair m WHERE m.dr=0 AND m.plan_id=" + planId);
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    conn.Open();
+                    result = (int)command.ExecuteScalar();
+                    conn.Close();
+                    conn.Dispose();
+                }
+                if (result > 0)
+                {
+                    flag = true;
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            return flag;
+        }
+        /// <summary>
+        /// 删除指定ID的维修记录信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteRepairPlanById(string planId)
+        {
+            int result = 0;
+            try
+            {
+                string sql = string.Format("UPDATE repair_plan SET dr = 1 WHERE id=" + planId);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
 
 
