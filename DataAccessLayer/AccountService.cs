@@ -1034,6 +1034,81 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 新增维修记录
+        /// </summary>
+        /// <param name="repair_asset"></param>
+        /// <param name="plan_id"></param>
+        /// <param name="start_date"></param>
+        /// <param name="end_date"></param>
+        /// <param name="stop_time"></param>
+        /// <param name="target_department"></param>
+        /// <param name="source_department"></param>
+        /// <param name="repair_group"></param>
+        /// <param name="principal"></param>
+        /// <param name="memo_before"></param>
+        /// <param name="memo_after"></param>
+        /// <param name="memo_record"></param>
+        /// <returns></returns>
+        public bool addRepair(string repair_asset, string plan_id, string start_date, string end_date, string stop_time, string target_department, string source_department, string repair_group, string principal, string memo_before, string memo_after, string memo_record)
+        {
+            int resault = 0;
+            string sql = string.Format("INSERT INTO repair(	repair_asset,	plan_id,	[start_date],	end_date,	stop_time,	target_department,	source_department,	repair_group,	principal,	memo_before,	memo_after,	memo_record) VALUES (@repair_asset,	@plan_id,	@start_date,	@end_date,	@stop_time,	@target_department,	@source_department,	@repair_group,	@principal,	@memo_before,	@memo_after,	@memo_record)");
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@repair_asset", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@plan_id", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@start_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@end_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@stop_time", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@target_department", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@source_department", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@repair_group", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@principal", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@memo_before", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@memo_after", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@memo_record", SqlDbType.NText));
+
+                    //给参数赋值
+                    mycom.Parameters["@repair_asset"].Value = repair_asset;
+                    mycom.Parameters["@plan_id"].Value = plan_id;
+                    mycom.Parameters["@start_date"].Value = start_date;
+                    mycom.Parameters["@end_date"].Value = end_date;
+                    mycom.Parameters["@stop_time"].Value = stop_time;
+                    mycom.Parameters["@target_department"].Value = target_department;
+                    mycom.Parameters["@source_department"].Value = source_department;
+                    mycom.Parameters["@repair_group"].Value = repair_group;
+                    mycom.Parameters["@principal"].Value = principal;
+                    mycom.Parameters["@memo_before"].Value = memo_before;
+                    mycom.Parameters["@memo_after"].Value = memo_after;
+                    mycom.Parameters["@memo_record"].Value = memo_record;
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
 
 

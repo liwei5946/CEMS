@@ -15,14 +15,14 @@ namespace CEMSApp.Repair
     public partial class RepairAddForm : ChildForm
     {
         ILog log = log4net.LogManager.GetLogger(typeof(RepairAddForm));
-        string globalEqId="";
-        public RepairAddForm(string eqasset, string eqname, string eqdep, string eqId)
+        string globalPlanId="";
+        public RepairAddForm(string eqasset, string eqname, string eqdep, string planId)
         {
             InitializeComponent();
             text_eqasset.Text = eqasset;
             text_eqname.Text = eqname;
             text_dep.Text = eqdep;
-            globalEqId = eqId;
+            globalPlanId = planId;
             //
             DataSet ds_department1 = null, ds_department2 = null, ds_level = null;
             AccountAdd aa = new AccountAdd();
@@ -84,7 +84,7 @@ namespace CEMSApp.Repair
             //float value,power;
             //byte[] img = new byte[] { 0 };
             //byte[] threeD = new byte[] { 0 };
-            int overtime,stoptime;
+            int stoptime;
             /*
             if (Util.Tools.IsFloat(maskedText_value.Text))
             {
@@ -110,16 +110,8 @@ namespace CEMSApp.Repair
                 return;
             }
              * */
+            
 
-
-            if (!numeric_repairday.Value.ToString().Equals(""))
-            {
-                overtime = Convert.ToInt32(numeric_repairday.Value.ToString());
-            }
-            else
-            {
-                overtime = 0;
-            }
             if (!numeric_stopday.Value.ToString().Equals(""))
             {
                 stoptime = Convert.ToInt32(numeric_stopday.Value.ToString());
@@ -128,19 +120,26 @@ namespace CEMSApp.Repair
             {
                 stoptime = 0;
             }
-
-            flag = aa.addRepairPlan(text_repairasset.Text, globalEqId, dateTime_plandate.Text, overtime, stoptime,combo_targetdep.SelectedValue.ToString(),combo_sourcedep.SelectedValue.ToString(), text_fuzeren.Text, richText_memo.Text, combo_level.SelectedValue.ToString());
-            //flag = aa.addAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_manu_date.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, float.Parse(maskedText_value.Text), Convert.ToInt32(numeric_count.Value.ToString()), Convert.ToInt32(numeric_electromotor.Value.ToString()), float.Parse(maskedText_power.Text), Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_eqType.SelectedValue.ToString()), text_address.Text, aa.getFileBytes(fileDialog_img.FileName), aa.getFileBytes(fileDialog_3d.FileName));
-            //flag = aa.addAccount(false, text_eqasset.Text, text_eqname.Text, text_repairasset.Text, text_specification.Text, Convert.ToInt32(combo_sourcedep.SelectedValue.ToString()), text_fuzeren.Text, text_dep.Text, text_manufacturer.Text, text_supplier.Text, dateTime_plandate.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, value, count, electromotor, power, Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_targetdep.SelectedValue.ToString()), text_address.Text, img, threeD);
-            if (flag)
+            if (dateTime_startdate.Value <= dateTime_enddate.Value)
             {
-                MessageBox.Show("数据添加成功！");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                flag = aa.addRepair(text_repairasset.Text, globalPlanId, dateTime_startdate.Text, dateTime_enddate.Text, numeric_stopday.Value.ToString(), combo_targetdep.SelectedValue.ToString(), combo_sourcedep.SelectedValue.ToString(), text_group.Text, text_fuzeren.Text, richText_before.Text, richText_after.Text, richText_record.Text);
+                //flag = aa.addRepairPlan(text_repairasset.Text, globalEqId, dateTime_startdate.Text, overtime, stoptime,combo_targetdep.SelectedValue.ToString(),combo_sourcedep.SelectedValue.ToString(), text_fuzeren.Text, richText_before.Text, combo_level.SelectedValue.ToString());
+                //flag = aa.addAccount(false, text_asset.Text, text_eqname.Text, text_model.Text, text_specification.Text, Convert.ToInt32(combo_depart.SelectedValue.ToString()), text_weight.Text, text_brand.Text, text_manufacturer.Text, text_supplier.Text, dateTime_manu_date.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, float.Parse(maskedText_value.Text), Convert.ToInt32(numeric_count.Value.ToString()), Convert.ToInt32(numeric_electromotor.Value.ToString()), float.Parse(maskedText_power.Text), Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_eqType.SelectedValue.ToString()), text_address.Text, aa.getFileBytes(fileDialog_img.FileName), aa.getFileBytes(fileDialog_3d.FileName));
+                //flag = aa.addAccount(false, text_eqasset.Text, text_eqname.Text, text_repairasset.Text, text_specification.Text, Convert.ToInt32(combo_sourcedep.SelectedValue.ToString()), text_fuzeren.Text, text_dep.Text, text_manufacturer.Text, text_supplier.Text, dateTime_plandate.Text, dateTime_produ_date.Text, dateTime_filing_date.Text, value, count, electromotor, power, Convert.ToInt32(combo_status.SelectedValue.ToString()), Convert.ToInt32(combo_targetdep.SelectedValue.ToString()), text_address.Text, img, threeD);
+                if (flag)
+                {
+                    MessageBox.Show("数据保存成功！");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("数据保存失败，请检查网络连接！");
+                } 
             }
             else
             {
-                MessageBox.Show("数据添加失败，请检查网络连接！");
+                MessageBox.Show("起始日期不可大于结束日期！");
             }
         }
 

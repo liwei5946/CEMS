@@ -271,19 +271,22 @@ namespace CEMSApp.Repair
             //Boolean flag = false;
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
-                dr = MessageBox.Show("您确认为编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的维护计划增加对应维护记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                dr = MessageBox.Show("您确认为编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的维修计划增加对应维修记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     
                     Account acc = new Account();
-                    if (acc.hasMaintainForPlan(grid1[grid1.Selection.ActivePosition.Row, 0].ToString()))
+                    if (acc.hasRepairForPlan(grid1[grid1.Selection.ActivePosition.Row, 0].ToString()))
                     {
-                        MessageBox.Show("该维护计划已存在对应的维护记录！");
+                        //MessageBox.Show("该维修计划已存在对应的维修记录！");
+                        MessageBox.Show("该维修计划已存在对应的维修记录！", "操作流程错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
                         //MaintainAddForm maf = new MaintainAddForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 3].ToString());
                         //maf.ShowDialog();
+                        RepairAddForm raf = new RepairAddForm(grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 3].ToString(), grid1[grid1.Selection.ActivePosition.Row, 4].ToString(), grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                        raf.ShowDialog();
                     }
                     /*
                     //flag = acc.deleteAccountById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
