@@ -209,6 +209,12 @@
     <Compile Include="Repair\RepairForm.Designer.cs">
       <DependentUpon>RepairForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repair\RepairEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\RepairEditForm.Designer.cs">
+      <DependentUpon>RepairEditForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ChildForm.resx">
       <DependentUpon>ChildForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RepairForm.resx">
       <DependentUpon>RepairForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\RepairEditForm.resx">
+      <DependentUpon>RepairEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\DataSources\CEMSApp.Equipment.AccountReportModel.datasource" />

@@ -1163,6 +1163,141 @@ namespace DataAccessLayer
             }
             return ds;
         }
+        /// <summary>
+        /// 根据ID查询维修信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryRepairById(string id)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                //string sql = string.Format("SELECT	rp.id,	rp.plan_asset,	ea.asset,ea.eqname,d.departname,	rp.[start_date],	rp.over_time,	rp.stop_time,	rp.target_department,	rp.source_department,	rp.principal,	rp.memo,	rp.level_id FROM	repair_plan rp LEFT JOIN eq_account ea ON rp.eq_id=ea.id LEFT JOIN department d ON ea.department=d.id WHERE rp.dr=0 AND rp.id=" + id);
+                string sql = "SELECT "
+           + "	r.id, "
+           + "	r.repair_asset, "
+           + "	r.repair_level, "
+           + "	r.[start_date], "
+           + "	r.end_date, "
+           + "	r.stop_time, "
+           + "	r.target_department, "
+           + "	r.source_department, "
+           + "	r.repair_group, "
+           + "	r.principal, "
+           + "	r.memo_before, "
+           + "	r.memo_after, "
+           + "	r.memo_record "
+           + "FROM "
+           + "	repair r "
+           + "WHERE r.id=" + id;
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
+        /// 修改维修计划
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="repair_asset"></param>
+        /// <param name="start_date"></param>
+        /// <param name="end_date"></param>
+        /// <param name="stop_time"></param>
+        /// <param name="target_department"></param>
+        /// <param name="source_department"></param>
+        /// <param name="repair_group"></param>
+        /// <param name="principal"></param>
+        /// <param name="memo_before"></param>
+        /// <param name="memo_after"></param>
+        /// <param name="memo_record"></param>
+        /// <param name="repair_level"></param>
+        /// <returns></returns>
+        public bool updateRepair(string id, string repair_asset, string start_date, string end_date, string stop_time, string target_department, string source_department, string repair_group, string principal, string memo_before, string memo_after, string memo_record, string repair_level)
+        {
+            int resault = 0;
+            //string sql = string.Format("UPDATE repair_plan SET	plan_asset = @plan_asset,	[start_date] = @start_date,	over_time = @over_time,	stop_time = @stop_time,	target_department = @target_department,	source_department = @source_department,	principal = @principal,	memo = @memo,	level_id = @level_id WHERE id=" + id);
+            string sql = "UPDATE repair "
+           + "SET "
+           + "	repair_asset = @repair_asset, "
+           + "	[start_date] = @start_date, "
+           + "	end_date = @end_date, "
+           + "	stop_time = @stop_time, "
+           + "	target_department = @target_department, "
+           + "	source_department = @source_department, "
+           + "	repair_group = @repair_group, "
+           + "	principal = @principal, "
+           + "	memo_before = @memo_before, "
+           + "	memo_after = @memo_after, "
+           + "	memo_record = @memo_record, "
+           + "	repair_level = @repair_level "
+           + "WHERE id=" + id;
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@repair_asset", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@start_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@end_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@stop_time", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@target_department", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@source_department", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@repair_group", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@principal", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@memo_before", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@memo_after", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@memo_record", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@repair_level", SqlDbType.Int));
+
+                    //给参数赋值
+                    mycom.Parameters["@repair_asset"].Value = repair_asset;
+                    mycom.Parameters["@start_date"].Value = start_date;
+                    mycom.Parameters["@end_date"].Value = end_date;
+                    mycom.Parameters["@stop_time"].Value = stop_time;
+                    mycom.Parameters["@target_department"].Value = target_department;
+                    mycom.Parameters["@source_department"].Value = source_department;
+                    mycom.Parameters["@repair_group"].Value = repair_group;
+                    mycom.Parameters["@principal"].Value = principal;
+                    mycom.Parameters["@memo_before"].Value = memo_before;
+                    mycom.Parameters["@memo_after"].Value = memo_after;
+                    mycom.Parameters["@memo_record"].Value = memo_record;
+                    mycom.Parameters["@repair_level"].Value = repair_level;
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 

@@ -309,6 +309,36 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryRepairByDays(overDays);
         }
+        /// <summary>
+        /// 根据ID查询维修信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryRepairById(string id)
+        {
+            return acc.queryRepairById(id);
+        }
+         /// <summary>
+        /// 修改维修计划
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="repair_asset"></param>
+        /// <param name="start_date"></param>
+        /// <param name="end_date"></param>
+        /// <param name="stop_time"></param>
+        /// <param name="target_department"></param>
+        /// <param name="source_department"></param>
+        /// <param name="repair_group"></param>
+        /// <param name="principal"></param>
+        /// <param name="memo_before"></param>
+        /// <param name="memo_after"></param>
+        /// <param name="memo_record"></param>
+        /// <param name="repair_level"></param>
+        /// <returns></returns>
+        public bool updateRepair(string id, string repair_asset, string start_date, string end_date, string stop_time, string target_department, string source_department, string repair_group, string principal, string memo_before, string memo_after, string memo_record, string repair_level)
+        {
+            return acc.updateRepair(id, repair_asset, start_date, end_date, stop_time, target_department, source_department, repair_group, principal, memo_before, memo_after, memo_record, repair_level);
+        }
 
     }
 }

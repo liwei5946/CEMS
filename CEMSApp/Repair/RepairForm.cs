@@ -181,18 +181,20 @@ namespace CEMSApp.Repair
             string id = grid1[grid1.Selection.ActivePosition.Row, 0].ToString();//选中行的id
             //DialogResult dr;
             //Boolean flag = false;
-            RepairPlanEditForm mef = new RepairPlanEditForm(id);
+            //RepairPlanEditForm mef = new RepairPlanEditForm(id);
+            RepairEditForm reff = new RepairEditForm(grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 3].ToString(), grid1[grid1.Selection.ActivePosition.Row, 4].ToString(), grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
             try
             {
                 if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
                 {
                     //dr = mef.ShowDialog();
                     //dr = MessageBox.Show("您确认将编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的记录重新入账？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (mef.ShowDialog() == DialogResult.OK)
+                    if (reff.ShowDialog() == DialogResult.OK)
                     {
                         Account acc = new Account();
-                        DataSet ds_RepairPlan = acc.queryRepairPlanByDays(365);
-                        BindSourceGrid(grid1, ds_RepairPlan.Tables[0]);
+                        DataSet ds_Repair = acc.queryRepairByDays(365);
+                        //ds_report = ds_account;//公共DS，用于报表输出
+                        BindSourceGrid(grid1, ds_Repair.Tables[0]);
                         grid1.Selection.SelectRow(1, true);
                         grid1.Selection.FocusFirstCell(true);
                     }
