@@ -339,6 +339,15 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.updateRepair(id, repair_asset, start_date, end_date, stop_time, target_department, source_department, repair_group, principal, memo_before, memo_after, memo_record, repair_level);
         }
+        /// <summary>
+        /// 删除指定ID的维修信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteRepairById(string repairId)
+        {
+            return acc.deleteRepairById(repairId);
+        }
 
     }
 }

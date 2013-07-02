@@ -1002,7 +1002,7 @@ namespace DataAccessLayer
             return flag;
         }
         /// <summary>
-        /// 删除指定ID的维修记录信息
+        /// 删除指定ID的维修计划信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -1290,6 +1290,39 @@ namespace DataAccessLayer
             }
 
             if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 删除指定ID的维修信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteRepairById(string repairId)
+        {
+            int result = 0;
+            try
+            {
+                string sql = string.Format("UPDATE repair SET dr = 1 WHERE id=" + repairId);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            if (result > 0)
             {
                 return true;
             }
