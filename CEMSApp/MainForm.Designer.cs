@@ -32,7 +32,7 @@
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.设备信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eqAccountMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.配件台帐ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.peijianguanli = new System.Windows.Forms.ToolStripMenuItem();
             this.OffAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.数据导入导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,7 +117,7 @@
             // 
             this.设备信息管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eqAccountMenuItem,
-            this.配件台帐ToolStripMenuItem,
+            this.peijianguanli,
             this.OffAccountToolStripMenuItem,
             this.toolStripSeparator4,
             this.数据导入导出ToolStripMenuItem});
@@ -128,27 +128,28 @@
             // eqAccountMenuItem
             // 
             this.eqAccountMenuItem.Name = "eqAccountMenuItem";
-            this.eqAccountMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.eqAccountMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eqAccountMenuItem.Text = "设备台帐";
             this.eqAccountMenuItem.Click += new System.EventHandler(this.eqAccountMenuItem_Click);
             // 
-            // 配件台帐ToolStripMenuItem
+            // peijianguanli
             // 
-            this.配件台帐ToolStripMenuItem.Name = "配件台帐ToolStripMenuItem";
-            this.配件台帐ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.配件台帐ToolStripMenuItem.Text = "配件管理";
+            this.peijianguanli.Name = "peijianguanli";
+            this.peijianguanli.Size = new System.Drawing.Size(152, 22);
+            this.peijianguanli.Text = "配件管理";
+            this.peijianguanli.Click += new System.EventHandler(this.peijianguanli_Click);
             // 
             // OffAccountToolStripMenuItem
             // 
             this.OffAccountToolStripMenuItem.Name = "OffAccountToolStripMenuItem";
-            this.OffAccountToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.OffAccountToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.OffAccountToolStripMenuItem.Text = "销帐登记";
             this.OffAccountToolStripMenuItem.Click += new System.EventHandler(this.OffAccountToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // 数据导入导出ToolStripMenuItem
             // 
@@ -157,7 +158,7 @@
             this.配件数据导入ToolStripMenuItem,
             this.数据导出ToolStripMenuItem});
             this.数据导入导出ToolStripMenuItem.Name = "数据导入导出ToolStripMenuItem";
-            this.数据导入导出ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.数据导入导出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.数据导入导出ToolStripMenuItem.Text = "数据导入导出";
             // 
             // 数据导入ToolStripMenuItem
@@ -610,7 +611,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripStatusLabel userrightLabel;
         private System.Windows.Forms.ToolStripMenuItem eqAccountMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 配件台帐ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem peijianguanli;
         private System.Windows.Forms.ToolStripMenuItem OffAccountToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem 数据导入导出ToolStripMenuItem;

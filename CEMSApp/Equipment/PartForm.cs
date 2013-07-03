@@ -289,14 +289,15 @@ namespace CEMSApp.Equipment
         private void editButton_Click(object sender, EventArgs e)
         {
             string id = grid1[grid1.Selection.ActivePosition.Row, 0].ToString();//选中行的id
-            AccountEditForm acf = new AccountEditForm(id);
+            //AccountEditForm acf = new AccountEditForm(id);
+            PartEditForm pef = new PartEditForm(id, grid1[grid1.Selection.ActivePosition.Row, 2].ToString());
             try
             {
-                if (acf.ShowDialog() == DialogResult.OK)
+                if (pef.ShowDialog() == DialogResult.OK)
                 {
                     Account acc = new Account();
-                    DataSet ds_account = acc.queryAccount();
-                    BindSourceGrid(grid1, ds_account.Tables[0]);
+                    DataSet ds_part = acc.queryPart();
+                    BindSourceGrid(grid1, ds_part.Tables[0]);
                     grid1.Selection.SelectRow(1, true);
                     grid1.Selection.FocusFirstCell(true);
                 }

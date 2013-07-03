@@ -375,6 +375,15 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryPartImgById(id);
         }
+        /// <summary>
+        /// 根据ID查询配件信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryPartById(string id)
+        {
+            return acc.queryPartById(id);
+        }
 
     }
 }

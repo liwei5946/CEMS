@@ -223,5 +223,15 @@ namespace CEMSApp
                 eq_PartForm.Show();
             }
         }
+
+        private void peijianguanli_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("PartForm"))
+            {
+                PartForm eq_PartForm = new PartForm();
+                eq_PartForm.MdiParent = this;
+                eq_PartForm.Show();
+            }
+        }
     }
 }

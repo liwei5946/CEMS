@@ -1452,6 +1452,46 @@ namespace DataAccessLayer
             }
             return ds;
         }
+        /// <summary>
+        /// 根据ID查询配件信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryPartById(string id)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                //string sql = string.Format("SELECT	rp.id,	rp.plan_asset,	ea.asset,ea.eqname,d.departname,	rp.[start_date],	rp.over_time,	rp.stop_time,	rp.target_department,	rp.source_department,	rp.principal,	rp.memo,	rp.level_id FROM	repair_plan rp LEFT JOIN eq_account ea ON rp.eq_id=ea.id LEFT JOIN department d ON ea.department=d.id WHERE rp.dr=0 AND rp.id=" + id);
+                string sql = "SELECT "
+           + "	pa.part_asset, "
+           + "	pa.part_name, "
+           + "	pa.material, "
+           + "	pa.part_weight, "
+           + "	pa.[standard], "
+           + "	pa.part_photo, "
+           + "	pa.part_3d "
+           + "FROM "
+           + "	part_account pa "
+           + "WHERE pa.id=" + id;
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+
 
 
 
