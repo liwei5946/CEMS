@@ -338,24 +338,32 @@ namespace CEMSApp.Equipment
         {
             DialogResult dr;
             Boolean flag = false;
+            Account acc = new Account();
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
                 dr = MessageBox.Show("您确认删除资产编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
-                    Account acc = new Account();
-                    flag = acc.deleteAccountById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
-                    if (flag)
+
+                    if (!acc.hasPartForAccount(grid1[grid1.Selection.ActivePosition.Row, 0].ToString()))
                     {
-                        MessageBox.Show("删除成功！");
-                        DataSet ds_account = acc.queryAccount();
-                        BindSourceGrid(grid1, ds_account.Tables[0]);
-                        grid1.Selection.SelectRow(1, true);
-                        grid1.Selection.FocusFirstCell(true);
+                        flag = acc.deleteAccountById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                        if (flag)
+                        {
+                            MessageBox.Show("删除成功！");
+                            DataSet ds_account = acc.queryAccount();
+                            BindSourceGrid(grid1, ds_account.Tables[0]);
+                            grid1.Selection.SelectRow(1, true);
+                            grid1.Selection.FocusFirstCell(true);
+                        }
+                        else
+                        {
+                            MessageBox.Show("删除失败！");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("删除失败！");
+                        MessageBox.Show("该设备已存在关键零配件，不允许删除！ \n请先删除配件后再试。", "操作流程错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }

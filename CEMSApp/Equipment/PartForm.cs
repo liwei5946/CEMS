@@ -318,16 +318,16 @@ namespace CEMSApp.Equipment
             Boolean flag = false;
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
-                dr = MessageBox.Show("您确认删除资产编号为" + grid1[grid1.Selection.ActivePosition.Row, 1].ToString() + "的记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                dr = MessageBox.Show("您确认删除配件编号为" + grid1[grid1.Selection.ActivePosition.Row, 4].ToString() + "的记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     Account acc = new Account();
-                    flag = acc.deleteAccountById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    flag = acc.deletePartById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
                     if (flag)
                     {
                         MessageBox.Show("删除成功！");
-                        DataSet ds_account = acc.queryAccount();
-                        BindSourceGrid(grid1, ds_account.Tables[0]);
+                        DataSet ds_part = acc.queryPart();
+                        BindSourceGrid(grid1, ds_part.Tables[0]);
                         grid1.Selection.SelectRow(1, true);
                         grid1.Selection.FocusFirstCell(true);
                     }

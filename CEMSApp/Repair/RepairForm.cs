@@ -118,7 +118,7 @@ namespace CEMSApp.Repair
                 //grid[i + grid.FixedRows, j].View =SourceGridView.NormalGridView;
                 grid.Rows.Insert(i);
                 //设置行高
-                //grid.Rows.SetHeight(i, 48);
+                grid.Rows.SetHeight(i, 30);
 
                 #region 表体塞值
 

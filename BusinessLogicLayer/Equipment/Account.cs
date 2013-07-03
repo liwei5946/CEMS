@@ -384,6 +384,24 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryPartById(id);
         }
+        /// <summary>
+        /// 删除制定ID的配件信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deletePartById(string id)
+        {
+            return acc.deletePartById(id);
+        }
+        /// <summary>
+        /// 查询是否已经存在某设备所对应的配件
+        /// </summary>
+        /// <param name="planId"></param>
+        /// <returns></returns>
+        public bool hasPartForAccount(string eqId)
+        {
+            return acc.hasPartForAccount(eqId);
+        }
 
     }
 }

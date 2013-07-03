@@ -123,21 +123,23 @@ namespace DataAccessLayer
 
                 //string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
                 //string sql = string.Format("SELECT	ea.id, ea.asset, ea.eqname, ea.photo,	ea.isoff,ea.model,	ea.specification,	d.departname,	ea.[weight],	ea.brand,	ea.manufacturer,	ea.supplier,	ea.manu_date,	ea.produ_date,	ea.filing_date,	ea.[value],	ea.[count],	ea.electromotor,	ea.[power],	es.status_name,	et.[type_name],	ea.[address],	ea.three_dimensional,	ea.parts,	ea.ts,	ea.dr  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id WHERE  ea.isoff=0 AND ea.dr=0");
-                string sql = "SELECT TOP 100 "
-           + "	pa.id, "
-           + "	ea.asset, "
-           + "	ea.eqname, "
-           + "	d.departname, "
-           + "	pa.part_asset, "
-           + "	pa.part_name, "
-           + "	pa.material, "
-           + "	pa.part_weight, "
-           + "	pa.[standard] "
-           + "FROM "
-           + "	part_account pa "
-           + "	LEFT JOIN eq_account ea ON pa.eq_id=ea.id "
-           + "	LEFT JOIN department d ON ea.department=d.id "
-           + "ORDER BY pa.ts DESC";
+                string sql = "SELECT TOP 100 pa.id, "
+           + "       ea.asset, "
+           + "       ea.eqname, "
+           + "       d.departname, "
+           + "       pa.part_asset, "
+           + "       pa.part_name, "
+           + "       pa.material, "
+           + "       pa.part_weight, "
+           + "       pa.[standard] "
+           + "FROM   part_account pa "
+           + "       LEFT JOIN eq_account ea "
+           + "            ON  pa.eq_id = ea.id "
+           + "       LEFT JOIN department d "
+           + "            ON  ea.department = d.id "
+           + "WHERE pa.dr=0  "
+           + "ORDER BY "
+           + "       pa.ts DESC";
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -1490,6 +1492,75 @@ namespace DataAccessLayer
                 log.Error(e.Message);
             }
             return ds;
+        }
+        /// <summary>
+        /// 删除制定ID的配件信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deletePartById(string id)
+        {
+            int result = 0;
+            try
+            {
+                string sql = string.Format("UPDATE part_account SET dr = 1 WHERE id=" + id);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 查询是否已经存在某设备所对应的配件
+        /// </summary>
+        /// <param name="planId"></param>
+        /// <returns></returns>
+        public bool hasPartForAccount(string eqId)
+        {
+            bool flag = false;
+            int result = 0;
+            try
+            {
+                //string sql = string.Format("SELECT COUNT(*) FROM repair m WHERE m.dr=0 AND m.plan_id=" + planId);
+                string sql = "SELECT COUNT(*)  "
+           + "FROM part_account pa  "
+           + "WHERE pa.dr=0 AND pa.eq_id="+eqId;
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    conn.Open();
+                    result = (int)command.ExecuteScalar();
+                    conn.Close();
+                    conn.Dispose();
+                }
+                if (result > 0)
+                {
+                    flag = true;
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            return flag;
         }
 
 
