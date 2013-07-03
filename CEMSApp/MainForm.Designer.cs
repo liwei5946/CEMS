@@ -76,7 +76,7 @@
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_peijianguanli = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_maintainplan = new System.Windows.Forms.ToolStripButton();
             this.toolStrip_repair = new System.Windows.Forms.ToolStripButton();
@@ -428,7 +428,7 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
-            this.toolStripButton6,
+            this.toolStripButton_peijianguanli,
             this.toolStripSeparator8,
             this.toolStripButton_maintainplan,
             this.toolStrip_repair,
@@ -452,15 +452,16 @@
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // toolStripButton6
+            // toolStripButton_peijianguanli
             // 
-            this.toolStripButton6.Image = global::CEMSApp.Properties.Resources.plugin_edit;
-            this.toolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(60, 53);
-            this.toolStripButton6.Text = "配件管理";
-            this.toolStripButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_peijianguanli.Image = global::CEMSApp.Properties.Resources.plugin_edit;
+            this.toolStripButton_peijianguanli.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton_peijianguanli.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_peijianguanli.Name = "toolStripButton_peijianguanli";
+            this.toolStripButton_peijianguanli.Size = new System.Drawing.Size(60, 53);
+            this.toolStripButton_peijianguanli.Text = "配件管理";
+            this.toolStripButton_peijianguanli.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_peijianguanli.Click += new System.EventHandler(this.toolStripButton_peijianguanli_Click);
             // 
             // toolStripSeparator8
             // 
@@ -642,7 +643,7 @@
         private System.Windows.Forms.ToolStripMenuItem weihujilu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem 点检记录ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton toolStripButton_peijianguanli;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem weihujihua;
         private System.Windows.Forms.ToolStripMenuItem weixiujihua;

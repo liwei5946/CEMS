@@ -12,11 +12,11 @@ using log4net;
 
 namespace CEMSApp.Equipment
 {
-    public partial class AccountForm : ChildForm
+    public partial class PartForm : ChildForm
     {
-        ILog log = log4net.LogManager.GetLogger(typeof(AccountForm));
+        ILog log = log4net.LogManager.GetLogger(typeof(PartForm));
         DataSet ds_report = null;
-        public AccountForm()
+        public PartForm()
         {
             InitializeComponent();
         }
@@ -73,22 +73,22 @@ namespace CEMSApp.Equipment
              * */
             //int a = DateTime.Now.Millisecond;
             //处理department treeview显示
-            DataSet ds1 = null, ds2 = null;
+            //DataSet ds1 = null, ds2 = null;
             Account acc = new Account();
-            ds1 = acc.CreateDataSet_Department();
-            ds2 = acc.CreateDataSet_EquipmentType();
+            //ds1 = acc.CreateDataSet_Department();
+            //ds2 = acc.CreateDataSet_EquipmentType();
             //InitTree(tree_department, ds1, "所有部门", "id", "departname");
            // InitTree(tree_eqType, ds2, "所有设备类型", "id", "type_name");
-            InitComboBox(depart_ComboBox, ds1, "id", "departname");
-            InitComboBox(equ_ComboBox, ds2, "id", "type_name");
+            //InitComboBox(depart_ComboBox, ds1, "id", "departname");
+            //InitComboBox(equ_ComboBox, ds2, "id", "type_name");
             //equ_ComboBox.ComboBox.Items.Insert(0, new ComboBoxItem<string, string>("0", "所有"));
             //equ_ComboBox.ComboBox.Items.Add(new ComboBoxItem<string, string>("0", "所有"));
             //sourcegrid试验
             //BindSourceGrid(grid1, ds1.Tables[0]);
-            DataSet ds_account = acc.queryAccount();
+            DataSet ds_part = acc.queryPart();
             //int b = DateTime.Now.Millisecond;
-            ds_report = ds_account;//公共DS，用于报表输出
-            BindSourceGrid(grid1, ds_account.Tables[0]);
+            ds_report = ds_part;//公共DS，用于报表输出
+            BindSourceGrid(grid1, ds_part.Tables[0]);
             //grid1.Selection.ActivePosition.Row
             grid1.Selection.SelectRow(1, true);
             grid1.Selection.FocusFirstCell(true);
@@ -147,8 +147,8 @@ namespace CEMSApp.Equipment
         {
             byte[] imagebytes = null;
 
-            int[] ColumnWidth = new int[] { 40, 80, 100, 64, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80 };
-            PopupMenu menuController = new PopupMenu();
+            int[] ColumnWidth = new int[] { 40, 100, 100, 100, 100, 100, 80, 80, 80, 80, 80 };
+            //PopupMenu menuController = new PopupMenu();
             if (grid.RowsCount > 0)
             {
                 //清除原表格内容
@@ -160,45 +160,33 @@ namespace CEMSApp.Equipment
             grid.Selection.EnableMultiSelection = false; //行不允许多选
             grid.EnableSort = false; //不允许排序
             grid.BorderStyle = BorderStyle.FixedSingle;
-            grid.ColumnsCount = 23;
+            grid.ColumnsCount = 11;
             grid.FixedRows = 1;
             BuildGridColumnWidth(grid, ColumnWidth);
             grid.Rows.Insert(0);
-            grid[0, 0] = new SourceGrid.Cells.ColumnHeader("序号");
+            grid[0, 0] = new SourceGrid.Cells.ColumnHeader("配件ID");
             grid[0, 1] = new SourceGrid.Cells.ColumnHeader("设备编号");
             grid[0, 2] = new SourceGrid.Cells.ColumnHeader("设备名称");
-            grid[0, 3] = new SourceGrid.Cells.ColumnHeader("设备图片");
-            grid[0, 4] = new SourceGrid.Cells.ColumnHeader("三维模型");
-            grid[0, 5] = new SourceGrid.Cells.ColumnHeader("是否销帐");
-            grid[0, 6] = new SourceGrid.Cells.ColumnHeader("设备型号");
-            grid[0, 7] = new SourceGrid.Cells.ColumnHeader("设备规格");
-            grid[0, 8] = new SourceGrid.Cells.ColumnHeader("所属部门");
-            grid[0, 9] = new SourceGrid.Cells.ColumnHeader("设备重量");
-            grid[0, 10] = new SourceGrid.Cells.ColumnHeader("品牌");
-            grid[0, 11] = new SourceGrid.Cells.ColumnHeader("制造商");
-            grid[0, 12] = new SourceGrid.Cells.ColumnHeader("供应商");
-            grid[0, 13] = new SourceGrid.Cells.ColumnHeader("制造日期");
-            grid[0, 14] = new SourceGrid.Cells.ColumnHeader("投产日期");
-            grid[0, 15] = new SourceGrid.Cells.ColumnHeader("建档日期");
-            grid[0, 16] = new SourceGrid.Cells.ColumnHeader("设备价值");
-            grid[0, 17] = new SourceGrid.Cells.ColumnHeader("设备数量");
-            grid[0, 18] = new SourceGrid.Cells.ColumnHeader("电机数量");
-            grid[0, 19] = new SourceGrid.Cells.ColumnHeader("总功率");
-            grid[0, 20] = new SourceGrid.Cells.ColumnHeader("设备状态");
-            grid[0, 21] = new SourceGrid.Cells.ColumnHeader("设备分类");
-            grid[0, 22] = new SourceGrid.Cells.ColumnHeader("安装地点");
+            grid[0, 3] = new SourceGrid.Cells.ColumnHeader("所在部门");
+            grid[0, 4] = new SourceGrid.Cells.ColumnHeader("配件编号");
+            grid[0, 5] = new SourceGrid.Cells.ColumnHeader("配件名称");
+            grid[0, 6] = new SourceGrid.Cells.ColumnHeader("材料");
+            grid[0, 7] = new SourceGrid.Cells.ColumnHeader("重量");
+            grid[0, 8] = new SourceGrid.Cells.ColumnHeader("标准件");
+            grid[0, 9] = new SourceGrid.Cells.ColumnHeader("配件图片");
+            grid[0, 10] = new SourceGrid.Cells.ColumnHeader("三维模型");
 
             grid[0, 1].View.Font = new Font("宋体", 10, FontStyle.Bold);
 
             //隐藏列
             grid[0, 0].Column.Visible = false;
-            grid[0, 5].Column.Visible = false;
+            //grid[0, 5].Column.Visible = false;
 
             grid[0, 0].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
-            grid[0, 1].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
-            grid[0, 2].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
-            grid[0, 3].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
-            grid[0, 4].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+            //grid[0, 1].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+            //grid[0, 2].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+            //grid[0, 3].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+            //grid[0, 4].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
 
             
             //grid[0, 3].Column.Grid.EnableSort = false;
@@ -209,7 +197,7 @@ namespace CEMSApp.Equipment
                 //grid[i + grid.FixedRows, j].View =SourceGridView.NormalGridView;
                 grid.Rows.Insert(i);
                 //设置行高
-                grid.Rows.SetHeight(i, 48);
+                grid.Rows.SetHeight(i, 30);
 
                 #region 表体塞值
 
@@ -217,24 +205,32 @@ namespace CEMSApp.Equipment
                 grid[i, 0] = new SourceGrid.Cells.Cell(data.Rows[i - 1][0], typeof(int)); //id
                 grid[i, 1] = new SourceGrid.Cells.Cell(data.Rows[i - 1][1], typeof(string));//设备编号
                 grid[i, 2] = new SourceGrid.Cells.Cell(data.Rows[i - 1][2], typeof(string));//设备名称
-
-                //将图片显示在单元格中
-                imagebytes = (byte[])data.Rows[i - 1][3];
-                MemoryStream ms = new MemoryStream(imagebytes);
-                Image img = Image.FromStream(ms);
-                //pb.Image = img;
-                //Graphics graphics = Graphics.FromImage(img);
-                //graphics.DrawImage(img, new Rectangle(0, 0, 64, 48));
-                grid[i, 3] = new SourceGrid.Cells.Image(img.GetThumbnailImage(64, 48, null, IntPtr.Zero));//生成缩略图
-                //grid[i, 3] = new SourceGrid.Cells.Image(img);
-                grid[i, 3].AddController(new imageDoubleClickController()); //双击图片放大查看
-                ms.Close();
-
+                grid[i, 3] = new SourceGrid.Cells.Cell(data.Rows[i - 1][3], typeof(string)); //所在部门
+                grid[i, 4] = new SourceGrid.Cells.Cell(data.Rows[i - 1][4], typeof(string)); //配件编号
+                grid[i, 5] = new SourceGrid.Cells.Cell(data.Rows[i - 1][5], typeof(string)); //配件名称
+                grid[i, 6] = new SourceGrid.Cells.Cell(data.Rows[i - 1][6], typeof(string));//材料
+                grid[i, 7] = new SourceGrid.Cells.Cell(data.Rows[i - 1][7], typeof(string));//重量
+                //grid[i, 8] = new SourceGrid.Cells.Cell(data.Rows[i - 1][8], typeof(string));//标准件
+                //grid[i, 9] = new SourceGrid.Cells.Cell(data.Rows[i - 1][8], typeof(string));//图片预览
+                //grid[i, 10] = new SourceGrid.Cells.Cell(data.Rows[i - 1][9], typeof(string));//三维模型
+                //log.Debug("WWWWWWWWWWWWWWWWWWWWWWW" + data.Rows[i - 1][8].ToString());
+                if (data.Rows[i - 1][8].ToString() == "True")
+                {
+                    grid[i, 8] = new SourceGrid.Cells.Cell("是", typeof(string));//标准件
+                }
+                else
+                {
+                    grid[i, 8] = new SourceGrid.Cells.Cell("否", typeof(string));//标准件
+                }
+                //设置图片浏览
+                grid[i, 9] = new SourceGrid.Cells.Button("图片预览");
+                grid[i, 9].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+                grid[i, 9].AddController(new imgButtonForPartClickController()); //单击按钮事件
                 //设置obj浏览
-                grid[i, 4] = new SourceGrid.Cells.Button("三维预览");
-                grid[i, 4].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
-                grid[i, 4].AddController(new objButtonClickController()); //单击按钮事件 
-
+                grid[i, 10] = new SourceGrid.Cells.Button("三维预览");
+                grid[i, 10].View.TextAlignment = DevAge.Drawing.ContentAlignment.MiddleCenter;
+                grid[i, 10].AddController(new objButtonForPartClickController()); //单击按钮事件
+                /*
                 grid[i, 5] = new SourceGrid.Cells.Cell(data.Rows[i - 1][4], typeof(int)); //是否销帐
                 grid[i, 6] = new SourceGrid.Cells.Cell(data.Rows[i - 1][5], typeof(string));//设备型号
                 grid[i, 7] = new SourceGrid.Cells.Cell(data.Rows[i - 1][6], typeof(string));//设备规格
@@ -253,8 +249,8 @@ namespace CEMSApp.Equipment
                 grid[i, 20] = new SourceGrid.Cells.Cell(data.Rows[i - 1][19], typeof(string));//设备状态
                 grid[i, 21] = new SourceGrid.Cells.Cell(data.Rows[i - 1][20], typeof(string));//设备分类
                 grid[i, 22] = new SourceGrid.Cells.Cell(data.Rows[i - 1][21], typeof(string));//安装地点
-
-                grid[i, 5] = new SourceGrid.Cells.Cell(data.Rows[i - 1][4], typeof(int));
+                */
+                //grid[i, 5] = new SourceGrid.Cells.Cell(data.Rows[i - 1][4], typeof(int));
                 #endregion
 
                 //设置单元格不可编辑
@@ -262,32 +258,13 @@ namespace CEMSApp.Equipment
                 grid[i, 1].Editor.EnableEdit = false;
                 grid[i, 2].Editor.EnableEdit = false;
                 grid[i, 3].Editor.EnableEdit = false;
-                //grid[i, 4].Editor.EnableEdit = false;   //Obj按钮
+                grid[i, 4].Editor.EnableEdit = false; 
                 grid[i, 5].Editor.EnableEdit = false;
                 grid[i, 6].Editor.EnableEdit = false;
                 grid[i, 7].Editor.EnableEdit = false;
                 grid[i, 8].Editor.EnableEdit = false;
-                grid[i, 9].Editor.EnableEdit = false;
-                grid[i, 10].Editor.EnableEdit = false;
-                grid[i, 11].Editor.EnableEdit = false;
-                grid[i, 12].Editor.EnableEdit = false;
-                grid[i, 13].Editor.EnableEdit = false;
-                grid[i, 14].Editor.EnableEdit = false;
-                grid[i, 15].Editor.EnableEdit = false;
-                grid[i, 16].Editor.EnableEdit = false;
-                grid[i, 17].Editor.EnableEdit = false;
-                grid[i, 18].Editor.EnableEdit = false;
-                grid[i, 19].Editor.EnableEdit = false;
-                grid[i, 20].Editor.EnableEdit = false;
-                grid[i, 21].Editor.EnableEdit = false;
-                grid[i, 22].Editor.EnableEdit = false;
-
-                //为表单添加右键选项
-                //grid[i, 0].AddController(menuController);
-                //grid[i, 1].AddController(menuController);
-                //grid[i, 2].AddController(menuController);
-                //grid[i, 3].AddController(menuController);
-
+                //grid[i, 9].Editor.EnableEdit = false;
+                //grid[i, 10].Editor.EnableEdit = false;
 
             }
             grid.Refresh();
@@ -468,40 +445,11 @@ namespace CEMSApp.Equipment
         }
 
     }
+    
     /// <summary>
-    /// 右键控制项
+    /// 单击单元格中查看配件的obj三维模型按钮事件
     /// </summary>
-    public class PopupMenu : SourceGrid.Cells.Controllers.ControllerBase
-    {
-        ContextMenu menu = new ContextMenu();
-        public PopupMenu()
-        {
-            menu.MenuItems.Add("修改", new EventHandler(Menu1_Click));
-            menu.MenuItems.Add("删除", new EventHandler(Menu2_Click));
-        }
-
-        public override void OnMouseUp(SourceGrid.CellContext sender, MouseEventArgs e)
-        {
-            base.OnMouseUp(sender, e);
-
-            if (e.Button == MouseButtons.Right)
-                menu.Show(sender.Grid, new Point(e.X, e.Y));
-        }
-
-        private void Menu1_Click(object sender, EventArgs e)
-        {
-            //TODO Your code here
-            //MessageBox.Show("数据添加成功！");
-        }
-        private void Menu2_Click(object sender, EventArgs e)
-        {
-            //TODO Your code here
-        }
-    }
-    /// <summary>
-    /// 单击单元格中查看obj三维模型按钮事件
-    /// </summary>
-    public class objButtonClickController : SourceGrid.Cells.Controllers.ControllerBase
+    public class objButtonForPartClickController : SourceGrid.Cells.Controllers.ControllerBase
     {
         public override void OnClick(SourceGrid.CellContext sender, EventArgs e)
         {
@@ -513,7 +461,8 @@ namespace CEMSApp.Equipment
             byte[] objBytes = null;
             if (val != null)
             {
-                DataSet ds_obj = acc.queryAccountObjById(val.ToString());
+                //DataSet ds_obj = acc.queryAccountObjById(val.ToString());
+                DataSet ds_obj = acc.queryPartObjById(val.ToString());
                 DataTable data = ds_obj.Tables[0];
                 //MessageBox.Show(sender.Grid, val.ToString());
                 byte[] testByte = BitConverter.GetBytes(0x00);
@@ -530,29 +479,27 @@ namespace CEMSApp.Equipment
                 {
                     MessageBox.Show("该设备无三维模型！");
                 }
-                
-                
             }
-                
         }
-
     }
+
     /// <summary>
-    /// 双击查看图片事件
+    /// 查看图片按钮事件
     /// </summary>
-    public class imageDoubleClickController : SourceGrid.Cells.Controllers.ControllerBase
+    public class imgButtonForPartClickController : SourceGrid.Cells.Controllers.ControllerBase
     {
-        public override void OnDoubleClick(SourceGrid.CellContext sender, EventArgs e)
+        public override void OnClick(SourceGrid.CellContext sender, EventArgs e)
         {
             Account acc = new Account();
-            base.OnDoubleClick(sender, e);
+            base.OnClick(sender, e);
             //object val = sender.Value;
             //object val = sender.Position.Row;
             object val = sender.Grid.GetCell(sender.Position.Row, 0);//获取ID号，注意要和grid的行列坐标对应！
             byte[] imgBytes = null;
             if (val != null)
             {
-                DataSet ds_img = acc.queryAccountImgById(val.ToString());
+                //DataSet ds_img = acc.queryAccountImgById(val.ToString());
+                DataSet ds_img = acc.queryPartImgById(val.ToString());
                 DataTable data = ds_img.Tables[0];
                 //MessageBox.Show(sender.Grid, val.ToString());
                 byte[] testByte = BitConverter.GetBytes(0x00);
@@ -570,11 +517,7 @@ namespace CEMSApp.Equipment
                 {
                     MessageBox.Show("该设备无图片！");
                 }
-
-
             }
-
         }
-
     }
 }

@@ -135,6 +135,12 @@
     <Compile Include="Equipment\PartAddForm.Designer.cs">
       <DependentUpon>PartAddForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Equipment\PartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equipment\PartForm.Designer.cs">
+      <DependentUpon>PartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Equipment\PartAddForm.resx">
       <DependentUpon>PartAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Equipment\PartForm.resx">
+      <DependentUpon>PartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

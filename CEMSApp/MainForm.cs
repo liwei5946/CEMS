@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using CEMSApp.Equipment;
 using CEMSApp.Maintain;
 using CEMSApp.Repair;
+using System.Threading;
 
 namespace CEMSApp
 {
@@ -123,6 +124,7 @@ namespace CEMSApp
                 eq_account.Show();
             }
         }
+
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             if (!showChildrenForm("AccountForm"))
@@ -210,6 +212,16 @@ namespace CEMSApp
                 eq_RepairForm.Show();
             }
         }
+        //配件管理
+        private void toolStripButton_peijianguanli_Click(object sender, EventArgs e)
+        {
 
+            if (!showChildrenForm("PartForm"))
+            {
+                PartForm eq_PartForm = new PartForm();
+                eq_PartForm.MdiParent = this;
+                eq_PartForm.Show();
+            }
+        }
     }
 }

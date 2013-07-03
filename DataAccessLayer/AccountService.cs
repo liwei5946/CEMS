@@ -79,6 +79,7 @@ namespace DataAccessLayer
         }
         /// <summary>
         /// 查找全部设备台帐信息
+        /// 前100条记录
         /// </summary>
         /// <returns></returns>
         public DataSet queryAccount()
@@ -88,7 +89,55 @@ namespace DataAccessLayer
                 SqlDataAdapter sda;
                 
                 //string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
-                string sql = string.Format("SELECT	ea.id, ea.asset, ea.eqname, ea.photo,	ea.isoff,ea.model,	ea.specification,	d.departname,	ea.[weight],	ea.brand,	ea.manufacturer,	ea.supplier,	ea.manu_date,	ea.produ_date,	ea.filing_date,	ea.[value],	ea.[count],	ea.electromotor,	ea.[power],	es.status_name,	et.[type_name],	ea.[address],	ea.three_dimensional,	ea.parts,	ea.ts,	ea.dr  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id WHERE  ea.isoff=0 AND ea.dr=0");
+                //string sql = string.Format("SELECT	ea.id, ea.asset, ea.eqname, ea.photo,	ea.isoff,ea.model,	ea.specification,	d.departname,	ea.[weight],	ea.brand,	ea.manufacturer,	ea.supplier,	ea.manu_date,	ea.produ_date,	ea.filing_date,	ea.[value],	ea.[count],	ea.electromotor,	ea.[power],	es.status_name,	et.[type_name],	ea.[address],	ea.three_dimensional,	ea.parts,	ea.ts,	ea.dr  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id WHERE  ea.isoff=0 AND ea.dr=0");
+                string sql = "SELECT TOP 100 ea.id, ea.asset, ea.eqname, ea.photo,	ea.isoff,ea.model,	ea.specification,	d.departname,	ea.[weight],	ea.brand,	ea.manufacturer,	ea.supplier,	ea.manu_date,	ea.produ_date,	ea.filing_date,	ea.[value],	ea.[count],	ea.electromotor,	ea.[power],	es.status_name,	et.[type_name],	ea.[address],	ea.three_dimensional,	ea.parts,	ea.ts,	ea.dr  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id  "
+           + "WHERE  ea.isoff=0 AND ea.dr=0 "
+           + "ORDER BY ea.ts DESC";
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
+        /// 查找全部关键零配件台帐信息
+        /// 前100条记录
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryPart()
+        {
+            try
+            {
+                SqlDataAdapter sda;
+
+                //string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
+                //string sql = string.Format("SELECT	ea.id, ea.asset, ea.eqname, ea.photo,	ea.isoff,ea.model,	ea.specification,	d.departname,	ea.[weight],	ea.brand,	ea.manufacturer,	ea.supplier,	ea.manu_date,	ea.produ_date,	ea.filing_date,	ea.[value],	ea.[count],	ea.electromotor,	ea.[power],	es.status_name,	et.[type_name],	ea.[address],	ea.three_dimensional,	ea.parts,	ea.ts,	ea.dr  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id WHERE  ea.isoff=0 AND ea.dr=0");
+                string sql = "SELECT TOP 100 "
+           + "	pa.id, "
+           + "	ea.asset, "
+           + "	ea.eqname, "
+           + "	d.departname, "
+           + "	pa.part_asset, "
+           + "	pa.part_name, "
+           + "	pa.material, "
+           + "	pa.part_weight, "
+           + "	pa.[standard] "
+           + "FROM "
+           + "	part_account pa "
+           + "	LEFT JOIN eq_account ea ON pa.eq_id=ea.id "
+           + "	LEFT JOIN department d ON ea.department=d.id "
+           + "ORDER BY pa.ts DESC";
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -1330,6 +1379,78 @@ namespace DataAccessLayer
             {
                 return false;
             }
+        }
+        /// <summary>
+        /// 根据id查询对应配件的obj三维模型
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryPartObjById(string id)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                //string sql = string.Format("SELECT id,asset,eqname,three_dimensional FROM eq_account WHERE dr=0 AND id=" + id);
+                string sql = "SELECT "
+           + "	pa.id, "
+           + "	pa.part_asset, "
+           + "	pa.part_name, "
+           + "	pa.part_3d "
+           + "FROM "
+           + "	part_account pa "
+           + "WHERE pa.dr=0 AND pa.id=" + id;
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
+        /// 根据id查询对应配件图片
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>id,asset,eqname,photo</returns>
+        public DataSet queryPartImgById(string id)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                //string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0 AND id=" + id);
+                string sql = "SELECT "
+           + "	pa.id, "
+           + "	pa.part_asset, "
+           + "	pa.part_name, "
+           + "	pa.part_photo "
+           + "FROM "
+           + "	part_account pa "
+           + "WHERE pa.dr=0 AND pa.id=" + id;
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
         }
 
 

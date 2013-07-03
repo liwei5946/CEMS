@@ -348,6 +348,33 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.deleteRepairById(repairId);
         }
+        /// <summary>
+        /// 查找全部关键零配件台帐信息
+        /// 前100条记录
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryPart()
+        {
+            return acc.queryPart();
+        }
+        /// <summary>
+        /// 根据id查询对应配件的obj三维模型
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryPartObjById(string id)
+        {
+            return acc.queryPartObjById(id);
+        }
+        /// <summary>
+        /// 根据id查询对应配件图片
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>id,asset,eqname,photo</returns>
+        public DataSet queryPartImgById(string id)
+        {
+            return acc.queryPartImgById(id);
+        }
 
     }
 }
