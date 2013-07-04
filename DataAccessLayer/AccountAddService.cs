@@ -30,7 +30,35 @@ namespace DataAccessLayer
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT * FROM eq_type");
+                string sql = string.Format("SELECT * FROM eq_type WHERE dr=0");
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
+        /// 创建故障模式表的DataSet
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <returns></returns>
+        public DataSet CreateDataSet_FaultLevel()
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                string sql = string.Format("SELECT * FROM fault_level WHERE dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -59,7 +87,7 @@ namespace DataAccessLayer
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT * FROM department");
+                string sql = string.Format("SELECT * FROM department  WHERE dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -88,7 +116,7 @@ namespace DataAccessLayer
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT * FROM eq_status");
+                string sql = string.Format("SELECT * FROM eq_status WHERE dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -116,7 +144,7 @@ namespace DataAccessLayer
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT * FROM repair_level");
+                string sql = string.Format("SELECT * FROM repair_level WHERE dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -144,7 +172,7 @@ namespace DataAccessLayer
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT * FROM maintain_level");
+                string sql = string.Format("SELECT * FROM maintain_level WHERE dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -544,5 +572,119 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 添加故障信息
+        /// </summary>
+        /// <param name="eq_id"></param>
+        /// <param name="part_name"></param>
+        /// <param name="fault_level"></param>
+        /// <param name="fault_date"></param>
+        /// <param name="repair_date"></param>
+        /// <param name="repairover_date"></param>
+        /// <param name="fault_process"></param>
+        /// <param name="fault_reason"></param>
+        /// <param name="countermeasure"></param>
+        /// <param name="fault_photo"></param>
+        /// <returns></returns>
+        public bool addFault(
+           string eq_id,
+	      string  part_name,
+	      string  fault_level,
+	      string  fault_date,
+	      string  repair_date,
+	      string  repairover_date,
+	      string  fault_process,
+	      string  fault_reason,
+	     string   countermeasure,
+	      byte[]  fault_photo
+            )
+        {
+            int resault = 0;
+            //string sql = string.Format("INSERT INTO eq_account (isoff,asset,eqname,model,specification,department,weight,brand,manufacturer,supplier,manu_date,produ_date,filing_date,value,count,electromotor,power,status,type,address,photo,three_dimensional) VALUES (@isoff,@asset,@eqname,@model,@specification,@department,@weight,@brand,@manufacturer,@supplier,@manu_date,@produ_date,@filing_date,@value,@count,@electromotor,@power,@status,@type,@address,@photo,@three_dimensional)");
+            string sql = "INSERT INTO fault "
+           + "( "
+           + "	eq_id, "
+           + "	part_name, "
+           + "	fault_level, "
+           + "	fault_date, "
+           + "	repair_date, "
+           + "	repairover_date, "
+           + "	fault_process, "
+           + "	fault_reason, "
+           + "	countermeasure, "
+           + "	fault_photo "
+           + ") "
+           + "VALUES "
+           + "( "
+           + "	@eq_id, "
+           + "	@part_name, "
+           + "	@fault_level, "
+           + "	@fault_date, "
+           + "	@repair_date, "
+           + "	@repairover_date, "
+           + "	@fault_process, "
+           + "	@fault_reason, "
+           + "	@countermeasure, "
+           + "	@fault_photo "
+           + ")";
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@eq_id", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@part_name", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@fault_level", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@fault_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@repair_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@repairover_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@fault_process", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@fault_reason", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@countermeasure", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@fault_photo", SqlDbType.Image, fault_photo.Length));
+
+
+                    //给参数赋值
+                    mycom.Parameters["@eq_id"].Value = eq_id;
+                    mycom.Parameters["@part_name"].Value = part_name;
+                    mycom.Parameters["@fault_level"].Value = fault_level;
+                    mycom.Parameters["@fault_date"].Value = fault_date;
+                    mycom.Parameters["@repair_date"].Value = repair_date;
+                    mycom.Parameters["@repairover_date"].Value = repairover_date;
+                    mycom.Parameters["@fault_process"].Value = fault_process;
+                    mycom.Parameters["@fault_reason"].Value = fault_reason;
+                    mycom.Parameters["@countermeasure"].Value = countermeasure;
+                    mycom.Parameters["@fault_photo"].Value = fault_photo;
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+
+
+
+
+
     }
 }

@@ -147,6 +147,12 @@
     <Compile Include="Equipment\PartEditForm.Designer.cs">
       <DependentUpon>PartEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fault\FaultAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fault\FaultAddForm.Designer.cs">
+      <DependentUpon>FaultAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Equipment\PartEditForm.resx">
       <DependentUpon>PartEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fault\FaultAddForm.resx">
+      <DependentUpon>FaultAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -400,6 +409,7 @@
     <Content Include="pic\no_photo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\exclamation.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

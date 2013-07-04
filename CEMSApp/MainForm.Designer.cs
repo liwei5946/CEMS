@@ -89,6 +89,7 @@
             this.usernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.userrightLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.MainMenu.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -128,28 +129,28 @@
             // eqAccountMenuItem
             // 
             this.eqAccountMenuItem.Name = "eqAccountMenuItem";
-            this.eqAccountMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eqAccountMenuItem.Size = new System.Drawing.Size(148, 22);
             this.eqAccountMenuItem.Text = "设备台帐";
             this.eqAccountMenuItem.Click += new System.EventHandler(this.eqAccountMenuItem_Click);
             // 
             // peijianguanli
             // 
             this.peijianguanli.Name = "peijianguanli";
-            this.peijianguanli.Size = new System.Drawing.Size(152, 22);
+            this.peijianguanli.Size = new System.Drawing.Size(148, 22);
             this.peijianguanli.Text = "配件管理";
             this.peijianguanli.Click += new System.EventHandler(this.peijianguanli_Click);
             // 
             // OffAccountToolStripMenuItem
             // 
             this.OffAccountToolStripMenuItem.Name = "OffAccountToolStripMenuItem";
-            this.OffAccountToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.OffAccountToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.OffAccountToolStripMenuItem.Text = "销帐登记";
             this.OffAccountToolStripMenuItem.Click += new System.EventHandler(this.OffAccountToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(145, 6);
             // 
             // 数据导入导出ToolStripMenuItem
             // 
@@ -158,7 +159,7 @@
             this.配件数据导入ToolStripMenuItem,
             this.数据导出ToolStripMenuItem});
             this.数据导入导出ToolStripMenuItem.Name = "数据导入导出ToolStripMenuItem";
-            this.数据导入导出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.数据导入导出ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.数据导入导出ToolStripMenuItem.Text = "数据导入导出";
             // 
             // 数据导入ToolStripMenuItem
@@ -434,6 +435,7 @@
             this.toolStripButton_maintainplan,
             this.toolStrip_repair,
             this.toolStripButton3,
+            this.toolStripButton2,
             this.toolStripSeparator1,
             this.toolStripButton4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
@@ -497,8 +499,8 @@
             this.toolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(60, 53);
-            this.toolStripButton3.Text = "故障管理";
+            this.toolStripButton3.Size = new System.Drawing.Size(84, 53);
+            this.toolStripButton3.Text = "故障历史记录";
             this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator1
@@ -558,6 +560,16 @@
             this.userrightLabel.Name = "userrightLabel";
             this.userrightLabel.Size = new System.Drawing.Size(68, 18);
             this.userrightLabel.Text = "用户角色：";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = global::CEMSApp.Properties.Resources.exclamation;
+            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(84, 53);
+            this.toolStripButton2.Text = "事故历史记录";
+            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // MainForm
             // 
@@ -648,6 +660,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem weihujihua;
         private System.Windows.Forms.ToolStripMenuItem weixiujihua;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
 
     }
 }

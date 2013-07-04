@@ -73,14 +73,14 @@ namespace CEMSApp.Equipment
              * */
             //int a = DateTime.Now.Millisecond;
             //处理department treeview显示
-            DataSet ds1 = null, ds2 = null;
+           // DataSet ds1 = null, ds2 = null;
             Account acc = new Account();
-            ds1 = acc.CreateDataSet_Department();
-            ds2 = acc.CreateDataSet_EquipmentType();
+           // ds1 = acc.CreateDataSet_Department();
+           // ds2 = acc.CreateDataSet_EquipmentType();
             //InitTree(tree_department, ds1, "所有部门", "id", "departname");
            // InitTree(tree_eqType, ds2, "所有设备类型", "id", "type_name");
-            InitComboBox(depart_ComboBox, ds1, "id", "departname");
-            InitComboBox(equ_ComboBox, ds2, "id", "type_name");
+           // InitComboBox(depart_ComboBox, ds1, "id", "departname");
+           // InitComboBox(equ_ComboBox, ds2, "id", "type_name");
             //equ_ComboBox.ComboBox.Items.Insert(0, new ComboBoxItem<string, string>("0", "所有"));
             //equ_ComboBox.ComboBox.Items.Add(new ComboBoxItem<string, string>("0", "所有"));
             //sourcegrid试验
@@ -473,6 +473,16 @@ namespace CEMSApp.Equipment
         {
             PartAddForm paf = new PartAddForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString());
             paf.ShowDialog();
+        }
+        /// <summary>
+        /// 故障记录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void faultButton_Click(object sender, EventArgs e)
+        {
+            Fault.FaultAddForm faf = new Fault.FaultAddForm(grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 8].ToString(), grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+            faf.ShowDialog();
         }
 
     }

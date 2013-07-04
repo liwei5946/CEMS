@@ -31,7 +31,7 @@ namespace DataAccessLayer
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT * FROM department");
+                string sql = string.Format("SELECT * FROM department WHERE dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -59,7 +59,7 @@ namespace DataAccessLayer
             try
             {
                 SqlDataAdapter sda;
-                string sql = string.Format("SELECT * FROM eq_type");
+                string sql = string.Format("SELECT * FROM eq_type WHERE dr=0");
                 log.Debug(sql);
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
@@ -1562,6 +1562,7 @@ namespace DataAccessLayer
 
             return flag;
         }
+        
 
 
 

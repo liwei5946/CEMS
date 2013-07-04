@@ -173,6 +173,48 @@ namespace BusinessLogicLayer.Equipment
         {
             return aas.updatePart(part_asset, part_name, material, part_weight, standard, part_photo, part_3d, id);
         }
+        /// <summary>
+        /// 创建故障模式表的DataSet
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <returns></returns>
+        public DataSet CreateDataSet_FaultLevel()
+        {
+            return aas.CreateDataSet_FaultLevel();
+        }
+        /// <summary>
+        /// 添加故障信息
+        /// </summary>
+        /// <param name="eq_id"></param>
+        /// <param name="part_name"></param>
+        /// <param name="fault_level"></param>
+        /// <param name="fault_date"></param>
+        /// <param name="repair_date"></param>
+        /// <param name="repairover_date"></param>
+        /// <param name="fault_process"></param>
+        /// <param name="fault_reason"></param>
+        /// <param name="countermeasure"></param>
+        /// <param name="fault_photo"></param>
+        /// <returns></returns>
+        public bool addFault(
+           string eq_id,
+          string part_name,
+          string fault_level,
+          string fault_date,
+          string repair_date,
+          string repairover_date,
+          string fault_process,
+          string fault_reason,
+         string countermeasure,
+          byte[] fault_photo
+            )
+        {
+            return aas.addFault(eq_id, part_name, fault_level, fault_date, repair_date, repairover_date, fault_process, fault_reason, countermeasure, fault_photo);
+
+        }
+
+
+
 
     }
 }
