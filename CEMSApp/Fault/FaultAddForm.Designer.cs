@@ -294,7 +294,7 @@
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label19.AutoSize = true;
             this.label19.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label19.Location = new System.Drawing.Point(61, 0);
+            this.label19.Location = new System.Drawing.Point(60, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(89, 36);
             this.label19.TabIndex = 0;
@@ -306,7 +306,7 @@
             this.richText_fault_process.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richText_fault_process.Location = new System.Drawing.Point(12, 39);
             this.richText_fault_process.Name = "richText_fault_process";
-            this.richText_fault_process.Size = new System.Drawing.Size(187, 198);
+            this.richText_fault_process.Size = new System.Drawing.Size(186, 198);
             this.richText_fault_process.TabIndex = 7;
             this.richText_fault_process.Text = "";
             // 
@@ -352,7 +352,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 202F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 203F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
             this.tableLayoutPanel2.Controls.Add(this.richText_fault_process, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.richText_fault_reason, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.richText_countermeasure, 5, 1);
@@ -370,7 +370,7 @@
             // richText_fault_reason
             // 
             this.richText_fault_reason.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richText_fault_reason.Location = new System.Drawing.Point(217, 39);
+            this.richText_fault_reason.Location = new System.Drawing.Point(216, 39);
             this.richText_fault_reason.Name = "richText_fault_reason";
             this.richText_fault_reason.Size = new System.Drawing.Size(196, 198);
             this.richText_fault_reason.TabIndex = 7;
@@ -379,9 +379,9 @@
             // richText_countermeasure
             // 
             this.richText_countermeasure.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richText_countermeasure.Location = new System.Drawing.Point(429, 39);
+            this.richText_countermeasure.Location = new System.Drawing.Point(428, 39);
             this.richText_countermeasure.Name = "richText_countermeasure";
-            this.richText_countermeasure.Size = new System.Drawing.Size(198, 198);
+            this.richText_countermeasure.Size = new System.Drawing.Size(199, 198);
             this.richText_countermeasure.TabIndex = 7;
             this.richText_countermeasure.Text = "";
             // 
@@ -390,7 +390,7 @@
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label12.AutoSize = true;
             this.label12.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label12.Location = new System.Drawing.Point(282, 0);
+            this.label12.Location = new System.Drawing.Point(281, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 36);
             this.label12.TabIndex = 0;

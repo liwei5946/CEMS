@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using CEMSApp.Equipment;
 using CEMSApp.Maintain;
 using CEMSApp.Repair;
+using CEMSApp.Fault;
 using System.Threading;
 
 namespace CEMSApp
@@ -233,5 +234,30 @@ namespace CEMSApp
                 eq_PartForm.Show();
             }
         }
+        /// <summary>
+        /// 故障管理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButton_fault_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("FaultForm"))
+            {
+                FaultForm eq_FaultForm = new FaultForm();
+                eq_FaultForm.MdiParent = this;
+                eq_FaultForm.Show();
+            }
+        }
+
+        private void ToolStripMenuItem_fault_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("FaultForm"))
+            {
+                FaultForm eq_FaultForm = new FaultForm();
+                eq_FaultForm.MdiParent = this;
+                eq_FaultForm.Show();
+            }
+        }
+
     }
 }

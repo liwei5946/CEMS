@@ -402,6 +402,14 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.hasPartForAccount(eqId);
         }
+        /// <summary>
+        /// 查找全部故障信息
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryFault()
+        {
+            return acc.queryFault();
+        }
 
     }
 }

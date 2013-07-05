@@ -186,7 +186,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "RepairForm";
-            this.Text = "维修计划";
+            this.Text = "维修记录管理";
             this.Load += new System.EventHandler(this.MaintainPlanForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

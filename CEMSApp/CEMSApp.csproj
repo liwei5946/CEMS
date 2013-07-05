@@ -153,6 +153,12 @@
     <Compile Include="Fault\FaultAddForm.Designer.cs">
       <DependentUpon>FaultAddForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fault\FaultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fault\FaultForm.Designer.cs">
+      <DependentUpon>FaultForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fault\FaultAddForm.resx">
       <DependentUpon>FaultAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fault\FaultForm.resx">
+      <DependentUpon>FaultForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

@@ -1559,8 +1559,55 @@ namespace DataAccessLayer
             {
                 log.Error(e.Message);
             }
-
             return flag;
+        }
+        /// <summary>
+        /// 查找全部故障信息
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryFault()
+        {
+            try
+            {
+                SqlDataAdapter sda;
+
+                //string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
+                //string sql = string.Format("SELECT	ea.id, ea.asset, ea.eqname, ea.photo,	ea.isoff,ea.model,	ea.specification,	d.departname,	ea.[weight],	ea.brand,	ea.manufacturer,	ea.supplier,	ea.manu_date,	ea.produ_date,	ea.filing_date,	ea.[value],	ea.[count],	ea.electromotor,	ea.[power],	es.status_name,	et.[type_name],	ea.[address],	ea.three_dimensional,	ea.parts,	ea.ts,	ea.dr  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id WHERE  ea.isoff=0 AND ea.dr=0");
+                string sql = "SELECT "
+                   + "	f.id, "
+                   + "	ea.asset, "
+                   + "	ea.eqname, "
+                   + "	d.departname, "
+                   + "	f.part_name, "
+                   + "	fl.level_name, "
+                   + "	f.fault_date, "
+                   + "	f.repair_date, "
+                   + "	f.repairover_date, "
+                   + "	f.fault_process, "
+                   + "	f.fault_reason, "
+                   + "	f.countermeasure "
+                   + "FROM "
+                   + "	fault f "
+                   + "	LEFT JOIN eq_account ea ON f.eq_id=ea.id "
+                   + "	LEFT JOIN department d ON ea.department=d.id "
+                   + "	LEFT JOIN fault_level fl ON f.fault_level=fl.id "
+                   + "WHERE f.dr=0 ORDER BY f.ts DESC";
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
         }
         
 
