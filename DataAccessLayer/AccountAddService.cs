@@ -853,6 +853,83 @@ namespace DataAccessLayer
             }
 
         }
+        /// <summary>
+        /// 修改知识库
+        /// </summary>
+        /// <param name="eq_name"></param>
+        /// <param name="part_name"></param>
+        /// <param name="fault_level"></param>
+        /// <param name="fault_process"></param>
+        /// <param name="fault_reason"></param>
+        /// <param name="countermeasure"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool updateKnowledge(
+              string eq_name,
+	            string    part_name,
+	            string    fault_level,
+	            string    fault_process,
+	            string    fault_reason,
+                string countermeasure,
+                    string id)
+        {
+            int resault = 0;
+            //string sql = string.Format("INSERT INTO eq_account (isoff,asset,eqname,model,specification,department,weight,brand,manufacturer,supplier,manu_date,produ_date,filing_date,value,count,electromotor,power,status,type,address,photo,three_dimensional) 
+            //VALUES (,,,,,,,,,,,,,,,,,,,)");
+            //string sql = string.Format("UPDATE eq_account SET	asset = @asset,	eqname = @eqname,	model = @model,	specification = @specification,	department = @department,	[weight] = @weight,	brand = @brand,	manufacturer = @manufacturer,	supplier = @supplier,	manu_date = @manu_date,	produ_date = @produ_date,	filing_date = @filing_date,	[value] = @value,	[count] = @count,	electromotor = @electromotor,	[power] = @power,	[status] = @status,	[type] = @type,	[address] = @address,	photo = @photo,	three_dimensional = @three_dimensional WHERE id=" + id);
+            string sql = "UPDATE fault_knowledge "
+               + "SET "
+               + "	eq_name = @eq_name, "
+               + "	part_name = @part_name, "
+               + "	fault_level = @fault_level, "
+               + "	fault_process = @fault_process, "
+               + "	fault_reason = @fault_reason, "
+               + "	countermeasure = @countermeasure "
+               + "WHERE id=" + id;
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@eq_name", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@part_name", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@fault_level", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@fault_process", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@fault_reason", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@countermeasure", SqlDbType.NText));
+
+                    //给参数赋值
+                    mycom.Parameters["@eq_name"].Value = eq_name;
+                    mycom.Parameters["@part_name"].Value = part_name;
+                    mycom.Parameters["@fault_level"].Value = fault_level;
+                    mycom.Parameters["@fault_process"].Value = fault_process;
+                    mycom.Parameters["@fault_reason"].Value = fault_reason;
+                    mycom.Parameters["@countermeasure"].Value = countermeasure;
+
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 
