@@ -1759,12 +1759,13 @@ namespace DataAccessLayer
                    + "	fk.id, "
                    + "	fk.eq_name, "
                    + "	fk.part_name, "
-                   + "	fk.fault_level, "
+                   + "	fl.level_name, "
                    + "	fk.fault_process, "
                    + "	fk.fault_reason, "
                    + "	fk.countermeasure "
                    + "FROM "
                    + "	fault_knowledge fk "
+                   + "	LEFT JOIN fault_level fl ON fk.fault_level=fl.id "
                    + "WHERE fk.dr=0 "
                    + "ORDER BY fk.ts DESC";
                 log.Debug(sql);

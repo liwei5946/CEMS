@@ -15,7 +15,7 @@ namespace CEMSApp.Fault
     public partial class KnowledgeForm : ChildForm
     {
         ILog log = log4net.LogManager.GetLogger(typeof(KnowledgeForm));
-        DataSet ds_report = null;
+        //DataSet ds_report = null;
         public KnowledgeForm()
         {
             InitializeComponent();
@@ -55,9 +55,9 @@ namespace CEMSApp.Fault
             this.WindowState = FormWindowState.Maximized;
             //数据格
             Account acc = new Account();
-            DataSet ds_fault = acc.queryFault();
-            ds_report = ds_fault;//公共DS，用于报表输出
-            BindSourceGrid(grid1, ds_fault.Tables[0]);
+            DataSet ds_kl = acc.queryKnowledge();
+            //ds_report = ds_fault;//公共DS，用于报表输出
+            BindSourceGrid(grid1, ds_kl.Tables[0]);
             grid1.Selection.SelectRow(1, true);
             grid1.Selection.FocusFirstCell(true);
             Cursor.Current = cr;//将光标置回原来状态 
@@ -78,30 +78,7 @@ namespace CEMSApp.Fault
                 cb.ComboBox.ValueMember = ValueMember;
             }
         }
-        
-        /// <summary>
-        /// 初始化TreeView控件
-        /// </summary>
-        /// <param name="tv"></param>
-        /// <param name="ds"></param>
-        /// <param name="rootText"></param>
-        /// <param name="tnName"></param>
-        /// <param name="tnText"></param>
-        private void InitTree(TreeView tv, DataSet ds, string rootText, string tnName, string tnText)
-        {
-            tv.Nodes.Clear();
-            TreeNode tn = new TreeNode(rootText);
-            tv.Nodes.Add(tn);
-            DataView dv = new DataView(ds.Tables[0]);//将DataTable存到DataView中，以便于筛选数据
-            foreach (DataRowView drv in dv)
-            {
-                tn = new TreeNode();
-                tn.Name = drv[tnName].ToString();//节点的name值，一般为数据库的id值
-                tn.Text = drv[tnText].ToString();//节点的Text，节点的文本显示
-                tv.Nodes[0].Nodes.Add(tn);
-            }
-            tv.ExpandAll();
-        }
+
         /// <summary>
         /// 为SourceGrid绑定数据源
         /// </summary>
@@ -111,7 +88,7 @@ namespace CEMSApp.Fault
         {
             //byte[] imagebytes = null;
 
-            int[] ColumnWidth = new int[] { 40, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            int[] ColumnWidth = new int[] { 40, 100, 100, 100, 240, 240, 240 };
             //PopupMenu menuController = new PopupMenu();
             if (grid.RowsCount > 0)
             {
@@ -124,22 +101,17 @@ namespace CEMSApp.Fault
             grid.Selection.EnableMultiSelection = false; //行不允许多选
             //grid.EnableSort = false; //不允许排序
             grid.BorderStyle = BorderStyle.FixedSingle;
-            grid.ColumnsCount = 12;
+            grid.ColumnsCount = 7;
             grid.FixedRows = 1;
             BuildGridColumnWidth(grid, ColumnWidth);
             grid.Rows.Insert(0);
             grid[0, 0] = new SourceGrid.Cells.ColumnHeader("故障ID");
-            grid[0, 1] = new SourceGrid.Cells.ColumnHeader("设备编号");
-            grid[0, 2] = new SourceGrid.Cells.ColumnHeader("设备名称");
-            grid[0, 3] = new SourceGrid.Cells.ColumnHeader("所在部门");
-            grid[0, 4] = new SourceGrid.Cells.ColumnHeader("零部件名称");
-            grid[0, 5] = new SourceGrid.Cells.ColumnHeader("故障模式");
-            grid[0, 6] = new SourceGrid.Cells.ColumnHeader("故障发生时间");
-            grid[0, 7] = new SourceGrid.Cells.ColumnHeader("开始维修时间");
-            grid[0, 8] = new SourceGrid.Cells.ColumnHeader("修复完成时间");
-            grid[0, 9] = new SourceGrid.Cells.ColumnHeader("故障现象描述");
-            grid[0, 10] = new SourceGrid.Cells.ColumnHeader("故障原因");
-            grid[0, 11] = new SourceGrid.Cells.ColumnHeader("故障解决方法");
+            grid[0, 1] = new SourceGrid.Cells.ColumnHeader("设备名称");
+            grid[0, 2] = new SourceGrid.Cells.ColumnHeader("零部件名称");
+            grid[0, 3] = new SourceGrid.Cells.ColumnHeader("故障模式");
+            grid[0, 4] = new SourceGrid.Cells.ColumnHeader("故障现象");
+            grid[0, 5] = new SourceGrid.Cells.ColumnHeader("故障原因");
+            grid[0, 6] = new SourceGrid.Cells.ColumnHeader("解决方法");
 
             grid[0, 1].View.Font = new Font("宋体", 10, FontStyle.Bold);
 
@@ -168,17 +140,12 @@ namespace CEMSApp.Fault
 
                 //表体塞值
                 grid[i, 0] = new SourceGrid.Cells.Cell(data.Rows[i - 1][0], typeof(int)); //id
-                grid[i, 1] = new SourceGrid.Cells.Cell(data.Rows[i - 1][1], typeof(string));//设备编号
-                grid[i, 2] = new SourceGrid.Cells.Cell(data.Rows[i - 1][2], typeof(string));//设备名称
-                grid[i, 3] = new SourceGrid.Cells.Cell(data.Rows[i - 1][3], typeof(string)); //所在部门
-                grid[i, 4] = new SourceGrid.Cells.Cell(data.Rows[i - 1][4], typeof(string)); //零部件名称
-                grid[i, 5] = new SourceGrid.Cells.Cell(data.Rows[i - 1][5], typeof(string)); //故障模式
-                grid[i, 6] = new SourceGrid.Cells.Cell(data.Rows[i - 1][6], typeof(DateTime));//故障发生时间
-                grid[i, 7] = new SourceGrid.Cells.Cell(data.Rows[i - 1][7], typeof(DateTime));//开始维修时间
-                grid[i, 8] = new SourceGrid.Cells.Cell(data.Rows[i - 1][8], typeof(DateTime));//修复完成时间
-                grid[i, 9] = new SourceGrid.Cells.Cell(data.Rows[i - 1][9], typeof(string));//故障现象描述
-                grid[i, 10] = new SourceGrid.Cells.Cell(data.Rows[i - 1][10], typeof(string));//故障原因
-                grid[i, 11] = new SourceGrid.Cells.Cell(data.Rows[i - 1][11], typeof(string));//故障解决方法
+                grid[i, 1] = new SourceGrid.Cells.Cell(data.Rows[i - 1][1], typeof(string));//设备名称
+                grid[i, 2] = new SourceGrid.Cells.Cell(data.Rows[i - 1][2], typeof(string));//零部件名称
+                grid[i, 3] = new SourceGrid.Cells.Cell(data.Rows[i - 1][3], typeof(string)); //故障模式
+                grid[i, 4] = new SourceGrid.Cells.Cell(data.Rows[i - 1][4], typeof(string)); //故障现象
+                grid[i, 5] = new SourceGrid.Cells.Cell(data.Rows[i - 1][5], typeof(string)); //故障原因
+                grid[i, 6] = new SourceGrid.Cells.Cell(data.Rows[i - 1][6], typeof(string));//解决方法
 
                 //设置图片浏览
                 //grid[i, 9] = new SourceGrid.Cells.Button("图片预览");
@@ -219,11 +186,6 @@ namespace CEMSApp.Fault
                 grid[i, 4].Editor.EnableEdit = false; 
                 grid[i, 5].Editor.EnableEdit = false;
                 grid[i, 6].Editor.EnableEdit = false;
-                grid[i, 7].Editor.EnableEdit = false;
-                grid[i, 8].Editor.EnableEdit = false;
-                grid[i, 9].Editor.EnableEdit = false;
-                grid[i, 10].Editor.EnableEdit = false;
-                grid[i, 11].Editor.EnableEdit = false;
 
             }
             grid.Refresh();
