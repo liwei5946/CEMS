@@ -1741,7 +1741,6 @@ namespace DataAccessLayer
             {
                 return false;
             }
-
         }
         /// <summary>
         /// 查找全部故障知识库
@@ -1865,6 +1864,39 @@ namespace DataAccessLayer
                 log.Error(e.Message);
             }
             return ds;
+        }
+        /// <summary>
+        /// 删除制定ID的故障知识库信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteKnowledgeById(string id)
+        {
+            int result = 0;
+            try
+            {
+                string sql = string.Format("UPDATE fault_knowledge SET dr = 1 WHERE id=" + id);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         
 

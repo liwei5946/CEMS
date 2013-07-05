@@ -239,16 +239,17 @@ namespace CEMSApp.Fault
             Boolean flag = false;
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
-                dr = MessageBox.Show("您确认删除此条故障记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                dr = MessageBox.Show("您确认删除此条故障知识库记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     Account acc = new Account();
-                    flag = acc.deleteFaultById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    //flag = acc.deleteFaultById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    flag = acc.deleteKnowledgeById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
                     if (flag)
                     {
                         MessageBox.Show("删除成功！");
-                        DataSet ds_fault = acc.queryFault();
-                        BindSourceGrid(grid1, ds_fault.Tables[0]);
+                        DataSet ds_kl = acc.queryKnowledge();
+                        BindSourceGrid(grid1, ds_kl.Tables[0]);
                         grid1.Selection.SelectRow(1, true);
                         grid1.Selection.FocusFirstCell(true);
                     }

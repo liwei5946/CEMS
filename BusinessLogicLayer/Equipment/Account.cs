@@ -463,6 +463,15 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryKnowledgeByIdForEdit(id);
         }
+        /// <summary>
+        /// 删除制定ID的故障知识库信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteKnowledgeById(string id)
+        {
+            return acc.deleteKnowledgeById(id);
+        }
 
 
     }
