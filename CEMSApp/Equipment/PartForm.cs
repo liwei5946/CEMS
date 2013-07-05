@@ -145,7 +145,7 @@ namespace CEMSApp.Equipment
         /// <param name="data"></param>
         public void BindSourceGrid(SourceGrid.Grid grid, DataTable data)
         {
-            byte[] imagebytes = null;
+            //byte[] imagebytes = null;
 
             int[] ColumnWidth = new int[] { 40, 100, 100, 100, 100, 100, 80, 80, 80, 80, 80 };
             //PopupMenu menuController = new PopupMenu();

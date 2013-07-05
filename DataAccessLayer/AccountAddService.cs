@@ -678,6 +678,97 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 修改故障信息
+        /// </summary>
+        /// <param name="part_name"></param>
+        /// <param name="fault_level"></param>
+        /// <param name="fault_date"></param>
+        /// <param name="repair_date"></param>
+        /// <param name="repairover_date"></param>
+        /// <param name="fault_process"></param>
+        /// <param name="fault_reason"></param>
+        /// <param name="countermeasure"></param>
+        /// <param name="fault_photo"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool updateFault(
+              string part_name,
+	         string   fault_level,
+	         string   fault_date ,
+	         string   repair_date ,
+	         string   repairover_date ,
+	         string   fault_process ,
+	          string  fault_reason ,
+	         string   countermeasure ,
+	        byte[] fault_photo , 
+                    string id)
+        {
+            int resault = 0;
+            //string sql = string.Format("INSERT INTO eq_account (isoff,asset,eqname,model,specification,department,weight,brand,manufacturer,supplier,manu_date,produ_date,filing_date,value,count,electromotor,power,status,type,address,photo,three_dimensional) 
+            //VALUES (,,,,,,,,,,,,,,,,,,,)");
+            //string sql = string.Format("UPDATE eq_account SET	asset = @asset,	eqname = @eqname,	model = @model,	specification = @specification,	department = @department,	[weight] = @weight,	brand = @brand,	manufacturer = @manufacturer,	supplier = @supplier,	manu_date = @manu_date,	produ_date = @produ_date,	filing_date = @filing_date,	[value] = @value,	[count] = @count,	electromotor = @electromotor,	[power] = @power,	[status] = @status,	[type] = @type,	[address] = @address,	photo = @photo,	three_dimensional = @three_dimensional WHERE id=" + id);
+            string sql = "UPDATE fault "
+               + "SET "
+               + "	part_name = @part_name, "
+               + "	fault_level = @fault_level, "
+               + "	fault_date = @fault_date, "
+               + "	repair_date = @repair_date, "
+               + "	repairover_date = @repairover_date, "
+               + "	fault_process = @fault_process, "
+               + "	fault_reason = @fault_reason, "
+               + "	countermeasure = @countermeasure, "
+               + "	fault_photo = @fault_photo "
+               + "WHERE id=" + id;
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@part_name", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@fault_level", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@fault_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@repair_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@repairover_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@fault_process", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@fault_reason", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@countermeasure", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@fault_photo", SqlDbType.Image, fault_photo.Length));
+
+                    //给参数赋值
+                    mycom.Parameters["@part_name"].Value = part_name;
+                    mycom.Parameters["@fault_level"].Value = fault_level;
+                    mycom.Parameters["@fault_date"].Value = fault_date;
+                    mycom.Parameters["@repair_date"].Value = repair_date;
+                    mycom.Parameters["@repairover_date"].Value = repairover_date;
+                    mycom.Parameters["@fault_process"].Value = fault_process;
+                    mycom.Parameters["@fault_reason"].Value = fault_reason;
+                    mycom.Parameters["@countermeasure"].Value = countermeasure;
+                    mycom.Parameters["@fault_photo"].Value = fault_photo;
+
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 

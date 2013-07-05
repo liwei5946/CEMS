@@ -212,6 +212,34 @@ namespace BusinessLogicLayer.Equipment
             return aas.addFault(eq_id, part_name, fault_level, fault_date, repair_date, repairover_date, fault_process, fault_reason, countermeasure, fault_photo);
 
         }
+        /// <summary>
+        /// 修改故障信息
+        /// </summary>
+        /// <param name="part_name"></param>
+        /// <param name="fault_level"></param>
+        /// <param name="fault_date"></param>
+        /// <param name="repair_date"></param>
+        /// <param name="repairover_date"></param>
+        /// <param name="fault_process"></param>
+        /// <param name="fault_reason"></param>
+        /// <param name="countermeasure"></param>
+        /// <param name="fault_photo"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool updateFault(
+              string part_name,
+             string fault_level,
+             string fault_date,
+             string repair_date,
+             string repairover_date,
+             string fault_process,
+              string fault_reason,
+             string countermeasure,
+            byte[] fault_photo,
+                    string id)
+        {
+            return aas.updateFault(part_name, fault_level, fault_date, repair_date, repairover_date, fault_process, fault_reason, countermeasure, fault_photo, id);
+        }
 
 
 

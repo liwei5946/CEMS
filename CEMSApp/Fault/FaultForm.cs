@@ -248,15 +248,15 @@ namespace CEMSApp.Fault
         private void editButton_Click(object sender, EventArgs e)
         {
             string id = grid1[grid1.Selection.ActivePosition.Row, 0].ToString();//选中行的id
-            //AccountEditForm acf = new AccountEditForm(id);
+            FaultEditForm fef = new FaultEditForm(id);
             //PartEditForm pef = new PartEditForm(id, grid1[grid1.Selection.ActivePosition.Row, 2].ToString());
             try
             {
-                //if (pef.ShowDialog() == DialogResult.OK)
+                if (fef.ShowDialog() == DialogResult.OK)
                 {
                     Account acc = new Account();
-                    DataSet ds_part = acc.queryPart();
-                    BindSourceGrid(grid1, ds_part.Tables[0]);
+                    DataSet ds_fault = acc.queryFault();
+                    BindSourceGrid(grid1, ds_fault.Tables[0]);
                     grid1.Selection.SelectRow(1, true);
                     grid1.Selection.FocusFirstCell(true);
                 }
