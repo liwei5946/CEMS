@@ -769,6 +769,90 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 添加知识库
+        /// </summary>
+        /// <param name="eq_name"></param>
+        /// <param name="part_name"></param>
+        /// <param name="fault_level"></param>
+        /// <param name="fault_process"></param>
+        /// <param name="fault_reason"></param>
+        /// <param name="countermeasure"></param>
+        /// <returns></returns>
+        public bool addKnowledge(
+          string  eq_name,
+	       string part_name,
+	       string fault_level,
+	       string fault_process,
+	       string fault_reason,
+           string countermeasure)
+        {
+            int resault = 0;
+            //string sql = string.Format("INSERT INTO eq_account (isoff,asset,eqname,model,specification,department,weight,brand,manufacturer,supplier,manu_date,produ_date,filing_date,value,count,electromotor,power,status,type,address,photo,three_dimensional) VALUES (@isoff,@asset,@eqname,@model,@specification,@department,@weight,@brand,@manufacturer,@supplier,@manu_date,@produ_date,@filing_date,@value,@count,@electromotor,@power,@status,@type,@address,@photo,@three_dimensional)");
+            string sql = "INSERT INTO fault_knowledge "
+               + "( "
+               + "	eq_name, "
+               + "	part_name, "
+               + "	fault_level, "
+               + "	fault_process, "
+               + "	fault_reason, "
+               + "	countermeasure "
+               + ") "
+               + "VALUES "
+               + "( "
+               + "	@eq_name, "
+               + "	@part_name, "
+               + "	@fault_level, "
+               + "	@fault_process, "
+               + "	@fault_reason, "
+               + "	@countermeasure "
+               + ")";
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@eq_name", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@part_name", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@fault_level", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@fault_process", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@fault_reason", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@countermeasure", SqlDbType.NText));
+
+
+                    //给参数赋值
+                    mycom.Parameters["@eq_name"].Value = eq_name;
+                    mycom.Parameters["@part_name"].Value = part_name;
+                    mycom.Parameters["@fault_level"].Value = fault_level;
+                    mycom.Parameters["@fault_process"].Value = fault_process;
+                    mycom.Parameters["@fault_reason"].Value = fault_reason;
+                    mycom.Parameters["@countermeasure"].Value = countermeasure;
+
+
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
 
 

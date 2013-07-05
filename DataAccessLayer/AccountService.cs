@@ -1743,6 +1743,47 @@ namespace DataAccessLayer
             }
 
         }
+        /// <summary>
+        /// 查找全部故障知识库
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryKnowledge()
+        {
+            try
+            {
+                SqlDataAdapter sda;
+
+                //string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
+                //string sql = string.Format("SELECT	ea.id, ea.asset, ea.eqname, ea.photo,	ea.isoff,ea.model,	ea.specification,	d.departname,	ea.[weight],	ea.brand,	ea.manufacturer,	ea.supplier,	ea.manu_date,	ea.produ_date,	ea.filing_date,	ea.[value],	ea.[count],	ea.electromotor,	ea.[power],	es.status_name,	et.[type_name],	ea.[address],	ea.three_dimensional,	ea.parts,	ea.ts,	ea.dr  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id WHERE  ea.isoff=0 AND ea.dr=0");
+                string sql = "SELECT "
+                   + "	fk.id, "
+                   + "	fk.eq_name, "
+                   + "	fk.part_name, "
+                   + "	fk.fault_level, "
+                   + "	fk.fault_process, "
+                   + "	fk.fault_reason, "
+                   + "	fk.countermeasure "
+                   + "FROM "
+                   + "	fault_knowledge fk "
+                   + "WHERE fk.dr=0 "
+                   + "ORDER BY fk.ts DESC";
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
         
 
 

@@ -259,5 +259,16 @@ namespace CEMSApp
             }
         }
 
+        private void guzhangzhishiku_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("KnowledgeForm"))
+            {
+                KnowledgeForm eq_KnowledgeForm = new KnowledgeForm();
+                eq_KnowledgeForm.MdiParent = this;
+                eq_KnowledgeForm.Show();
+            }
+        }
+
+
     }
 }

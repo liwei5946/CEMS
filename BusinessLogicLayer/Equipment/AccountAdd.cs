@@ -240,6 +240,26 @@ namespace BusinessLogicLayer.Equipment
         {
             return aas.updateFault(part_name, fault_level, fault_date, repair_date, repairover_date, fault_process, fault_reason, countermeasure, fault_photo, id);
         }
+        /// <summary>
+        /// 添加知识库
+        /// </summary>
+        /// <param name="eq_name"></param>
+        /// <param name="part_name"></param>
+        /// <param name="fault_level"></param>
+        /// <param name="fault_process"></param>
+        /// <param name="fault_reason"></param>
+        /// <param name="countermeasure"></param>
+        /// <returns></returns>
+        public bool addKnowledge(
+          string eq_name,
+           string part_name,
+           string fault_level,
+           string fault_process,
+           string fault_reason,
+           string countermeasure)
+        {
+            return aas.addKnowledge(eq_name, part_name, fault_level, fault_process, fault_reason, countermeasure);
+        }
 
 
 

@@ -52,7 +52,7 @@
             this.ToolStripMenuItem_fault = new System.Windows.Forms.ToolStripMenuItem();
             this.故障统计分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.故障知识库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guzhangzhishiku = new System.Windows.Forms.ToolStripMenuItem();
             this.事故管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.事故记录管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维护信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -254,7 +254,7 @@
             this.ToolStripMenuItem_fault,
             this.故障统计分析ToolStripMenuItem,
             this.toolStripSeparator5,
-            this.故障知识库ToolStripMenuItem});
+            this.guzhangzhishiku});
             this.故障管理ToolStripMenuItem.Name = "故障管理ToolStripMenuItem";
             this.故障管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.故障管理ToolStripMenuItem.Text = "故障管理";
@@ -277,11 +277,12 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
-            // 故障知识库ToolStripMenuItem
+            // guzhangzhishiku
             // 
-            this.故障知识库ToolStripMenuItem.Name = "故障知识库ToolStripMenuItem";
-            this.故障知识库ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.故障知识库ToolStripMenuItem.Text = "故障知识库";
+            this.guzhangzhishiku.Name = "guzhangzhishiku";
+            this.guzhangzhishiku.Size = new System.Drawing.Size(152, 22);
+            this.guzhangzhishiku.Text = "故障知识库";
+            this.guzhangzhishiku.Click += new System.EventHandler(this.guzhangzhishiku_Click);
             // 
             // 事故管理ToolStripMenuItem1
             // 
@@ -647,7 +648,7 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_fault;
         private System.Windows.Forms.ToolStripMenuItem 故障统计分析ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem 故障知识库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem guzhangzhishiku;
         private System.Windows.Forms.ToolStripMenuItem 部门分类统计ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设备分类统计ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 配件分类统计ToolStripMenuItem;

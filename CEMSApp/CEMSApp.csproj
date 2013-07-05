@@ -171,6 +171,18 @@
     <Compile Include="Fault\FaultEditForm.Designer.cs">
       <DependentUpon>FaultEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fault\KnowledgeAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fault\KnowledgeAddForm.Designer.cs">
+      <DependentUpon>KnowledgeAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fault\KnowledgeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fault\KnowledgeForm.Designer.cs">
+      <DependentUpon>KnowledgeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +319,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fault\FaultEditForm.resx">
       <DependentUpon>FaultEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fault\KnowledgeAddForm.resx">
+      <DependentUpon>KnowledgeAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fault\KnowledgeForm.resx">
+      <DependentUpon>KnowledgeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

@@ -437,6 +437,14 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.deleteFaultById(id);
         }
+         /// <summary>
+        /// 查找全部故障知识库
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryKnowledge()
+        {
+            return acc.queryKnowledge();
+        }
 
 
     }
