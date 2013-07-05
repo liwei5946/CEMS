@@ -428,6 +428,16 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryFaultById(id);
         }
+        /// <summary>
+        /// 删除制定ID的故障信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteFaultById(string id)
+        {
+            return acc.deleteFaultById(id);
+        }
+
 
     }
 }
