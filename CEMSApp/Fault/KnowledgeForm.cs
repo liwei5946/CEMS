@@ -367,8 +367,8 @@ namespace CEMSApp.Fault
 
         private void toolStripButton_view_Click(object sender, EventArgs e)
         {
-            FaultViewForm fvf = new FaultViewForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
-            fvf.ShowDialog();
+            KnowledgeViewForm kvf = new KnowledgeViewForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+            kvf.ShowDialog();
         }
 
 

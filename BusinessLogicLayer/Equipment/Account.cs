@@ -445,6 +445,15 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryKnowledge();
         }
+        /// <summary>
+        /// 查找指定ID故障知识
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryKnowledgeById(string id)
+        {
+            return acc.queryKnowledgeById(id);
+        }
 
 
     }
