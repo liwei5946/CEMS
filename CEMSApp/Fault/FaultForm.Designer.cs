@@ -32,6 +32,7 @@
             this.editButton = new System.Windows.Forms.ToolStripButton();
             this.delButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton_view = new System.Windows.Forms.ToolStripButton();
             this.report_Button = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -49,6 +50,7 @@
             this.editButton,
             this.delButton,
             this.toolStripSeparator1,
+            this.toolStripButton_view,
             this.report_Button,
             this.toolStripSeparator3,
             this.toolStripButton1,
@@ -84,6 +86,16 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
+            // 
+            // toolStripButton_view
+            // 
+            this.toolStripButton_view.Image = global::CEMSApp.Properties.Resources.table_multiple;
+            this.toolStripButton_view.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_view.Name = "toolStripButton_view";
+            this.toolStripButton_view.Size = new System.Drawing.Size(60, 37);
+            this.toolStripButton_view.Text = "查看详情";
+            this.toolStripButton_view.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_view.Click += new System.EventHandler(this.toolStripButton_view_Click);
             // 
             // report_Button
             // 
@@ -178,5 +190,6 @@
         private SourceGrid.Grid grid1;
         private System.Windows.Forms.ToolStripButton report_Button;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolStripButton_view;
     }
 }
