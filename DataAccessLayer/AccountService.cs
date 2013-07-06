@@ -2140,14 +2140,14 @@ namespace DataAccessLayer
         /// <param name="colName"></param>
         /// <param name="updateValue"></param>
         /// <returns></returns>
-        public bool updateInfomation(string id, string tableName, string colName, int updateValue)
+        public bool updateInfomation(string id, string tableName, string colName, string updateValue)
         {
             int resault = 0;
             //string sql = string.Format("UPDATE repair_plan SET	plan_asset = @plan_asset,	[start_date] = @start_date,	over_time = @over_time,	stop_time = @stop_time,	target_department = @target_department,	source_department = @source_department,	principal = @principal,	memo = @memo,	level_id = @level_id WHERE id=" + id);
             string sql = "UPDATE  " + tableName
-               + "SET "
+               + " SET "
                + colName + " = @updateValue "
-               + "WHERE id=" + id;
+               + " WHERE id=" + id;
             log.Debug(sql);
             try
             {

@@ -292,9 +292,48 @@ namespace CEMSApp
 
         private void bumenguanli_Click(object sender, EventArgs e)
         {
-            if (!showChildrenForm("DepartmentForm"))
+            
+            
+        }
+
+        private void shebeizhuangtai_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("EqstatusForm"))
             {
-                DepartmentForm eq_form = new DepartmentForm();
+                EqstatusForm eq_form = new EqstatusForm();
+                eq_form.MdiParent = this;
+                eq_form.Show();
+            }
+            
+        }
+
+        private void shebeileixing_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("EqtypeForm"))
+            {
+                EqtypeForm eq_form = new EqtypeForm();
+                eq_form.MdiParent = this;
+                eq_form.Show();
+            }
+            
+        }
+
+        private void guzhangmoshi_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("FaultLevelForm"))
+            {
+                FaultLevelForm eq_form = new FaultLevelForm();
+                eq_form.MdiParent = this;
+                eq_form.Show();
+            }
+            
+        }
+
+        private void weixiudengji_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("RepairLevelForm"))
+            {
+                RepairLevelForm eq_form = new RepairLevelForm();
                 eq_form.MdiParent = this;
                 eq_form.Show();
             }

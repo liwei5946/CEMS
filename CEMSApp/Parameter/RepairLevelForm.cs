@@ -20,11 +20,11 @@ namespace CEMSApp.Parameter
     /// 4.修改“添加按钮”回传刷新代码，添加窗体实例化代码
     /// 5.修改“删除按钮”回传刷新代码
     /// </summary>
-    public partial class DepartmentForm : ChildForm
+    public partial class RepairLevelForm : ChildForm
     {
-        ILog log = log4net.LogManager.GetLogger(typeof(DepartmentForm));
+        ILog log = log4net.LogManager.GetLogger(typeof(RepairLevelForm));
         //DataSet ds_report = null;
-        public DepartmentForm()
+        public RepairLevelForm()
         {
             InitializeComponent();
         }
@@ -37,11 +37,89 @@ namespace CEMSApp.Parameter
             //this.WindowState = FormWindowState.Maximized;
             //数据格
             Account acc = new Account();
-            DataSet ds = acc.queryInfomation("department");
-            BindSourceGrid(grid1, ds.Tables[0],"部门名称");
+            DataSet ds = acc.queryInfomation("repair_level");
+            BindSourceGrid(grid1, ds.Tables[0],"维修等级");
             grid1.Selection.SelectRow(1, true);
             grid1.Selection.FocusFirstCell(true);
             Cursor.Current = cr;//将光标置回原来状态 
+        }
+        /// <summary>
+        /// 添加按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            RepairLevelAddForm addForm = new RepairLevelAddForm();
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                //重新绑定DataGridView;
+                Account acc = new Account();
+                DataSet ds = acc.queryInfomation("repair_level");
+                BindSourceGrid(grid1, ds.Tables[0], "维修等级");
+                grid1.Selection.SelectRow(1, true);
+                grid1.Selection.FocusFirstCell(true);
+            }
+        }
+        /// <summary>
+        /// 修改按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            string id = grid1[grid1.Selection.ActivePosition.Row, 0].ToString();//选中行的id
+            RepairLevelEditForm editForm = new RepairLevelEditForm(id);
+            try
+            {
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    Account acc = new Account();
+                    DataSet ds = acc.queryInfomation("repair_level");
+                    BindSourceGrid(grid1, ds.Tables[0], "维修等级");
+                    grid1.Selection.SelectRow(1, true);
+                    grid1.Selection.FocusFirstCell(true);
+                }
+                ///MessageBox.Show(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+            }
+            catch (Exception mye)
+            {
+                log.Error(mye.Message);
+            }
+
+        }
+        /// <summary>
+        /// 删除按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void delButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dr;
+            Boolean flag = false;
+            if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
+            {
+                dr = MessageBox.Show("您确认删除此条记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    Account acc = new Account();
+                    //flag = acc.deleteFaultById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    flag = acc.deleteInfomation(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), "repair_level");
+                    if (flag)
+                    {
+                        MessageBox.Show("删除成功！");
+                        DataSet ds = acc.queryInfomation("repair_level");
+                        BindSourceGrid(grid1, ds.Tables[0], "维修等级");
+                        grid1.Selection.SelectRow(1, true);
+                        grid1.Selection.FocusFirstCell(true);
+                    }
+                    else
+                    {
+                        MessageBox.Show("删除失败！");
+                    }
+                }
+            }
+
         }
         /// <summary>
         /// 为SourceGrid绑定数据源
@@ -107,64 +185,7 @@ namespace CEMSApp.Parameter
                 Grid.Columns[i].Width = ColumnWidth[i];
             }
         }
-        /// <summary>
-        /// 修改按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void editButton_Click(object sender, EventArgs e)
-        {
-            string id = grid1[grid1.Selection.ActivePosition.Row, 0].ToString();//选中行的id
-            DepartmentEditForm editForm = new DepartmentEditForm(id);
-            try
-            {
-                if (editForm.ShowDialog() == DialogResult.OK)
-                {
-                    Account acc = new Account();
-                    DataSet ds = acc.queryInfomation("department");
-                    BindSourceGrid(grid1, ds.Tables[0], "部门名称");
-                    grid1.Selection.SelectRow(1, true);
-                    grid1.Selection.FocusFirstCell(true);
-                }
-                 ///MessageBox.Show(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
-            }catch(Exception mye){
-                log.Error(mye.Message);
-            }
-               
-        }
-        /// <summary>
-        /// 删除按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void delButton_Click(object sender, EventArgs e)
-        {
-            DialogResult dr;
-            Boolean flag = false;
-            if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
-            {
-                dr = MessageBox.Show("您确认删除此条记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes)
-                {
-                    Account acc = new Account();
-                    //flag = acc.deleteFaultById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
-                    flag = acc.deleteInfomation(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), "department");
-                    if (flag)
-                    {
-                        MessageBox.Show("删除成功！");
-                        DataSet ds = acc.queryInfomation("department");
-                        BindSourceGrid(grid1, ds.Tables[0], "部门名称");
-                        grid1.Selection.SelectRow(1, true);
-                        grid1.Selection.FocusFirstCell(true);
-                    }
-                    else
-                    {
-                        MessageBox.Show("删除失败！");
-                    }
-                }
-            }
-            
-        }
+        
         /// <summary>
         /// 关闭按钮
         /// </summary>
@@ -173,25 +194,6 @@ namespace CEMSApp.Parameter
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        /// <summary>
-        /// 添加按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            DepartmentAddForm addForm = new DepartmentAddForm();
-            if (addForm.ShowDialog() == DialogResult.OK)
-            {
-                //重新绑定DataGridView;
-                Account acc = new Account();
-                DataSet ds = acc.queryInfomation("department");
-                BindSourceGrid(grid1, ds.Tables[0], "部门名称");
-                grid1.Selection.SelectRow(1, true);
-                grid1.Selection.FocusFirstCell(true);
-            }
         }
 
     }

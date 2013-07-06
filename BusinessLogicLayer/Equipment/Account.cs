@@ -539,7 +539,7 @@ namespace BusinessLogicLayer.Equipment
         /// <param name="colName"></param>
         /// <param name="updateValue"></param>
         /// <returns></returns>
-        public bool updateInfomation(string id, string tableName, string colName, int updateValue)
+        public bool updateInfomation(string id, string tableName, string colName, string updateValue)
         {
             return acc.updateInfomation(id, tableName, colName, updateValue);
         }
