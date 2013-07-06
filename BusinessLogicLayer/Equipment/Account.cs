@@ -480,6 +480,15 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryTrouble();
         }
+        /// <summary>
+        /// 查找指定ID故障信息(含图片信息)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryTroubleByIdIncludeImage(string id)
+        {
+            return acc.queryTroubleByIdIncludeImage(id);
+        }
 
 
     }

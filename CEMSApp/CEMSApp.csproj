@@ -207,6 +207,12 @@
     <Compile Include="Fault\TroubleForm.Designer.cs">
       <DependentUpon>TroubleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fault\TroubleEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fault\TroubleEditForm.Designer.cs">
+      <DependentUpon>TroubleEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fault\TroubleForm.resx">
       <DependentUpon>TroubleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fault\TroubleEditForm.resx">
+      <DependentUpon>TroubleEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

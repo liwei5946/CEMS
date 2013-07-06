@@ -1016,6 +1016,90 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 修改事故信息
+        /// </summary>
+        /// <param name="trouble_date"></param>
+        /// <param name="process"></param>
+        /// <param name="reason"></param>
+        /// <param name="lose"></param>
+        /// <param name="solve"></param>
+        /// <param name="photo"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool updateTrouble(
+              string trouble_date ,
+	            string process ,
+	              string reason ,
+	              string lose ,
+                  string solve,
+	            byte[]  photo ,
+                    string id)
+        {
+            int resault = 0;
+            //string sql = string.Format("INSERT INTO eq_account (isoff,asset,eqname,model,specification,department,weight,brand,manufacturer,supplier,manu_date,produ_date,filing_date,value,count,electromotor,power,status,type,address,photo,three_dimensional) 
+            //VALUES (,,,,,,,,,,,,,,,,,,,)");
+            //string sql = string.Format("UPDATE eq_account SET	asset = @asset,	eqname = @eqname,	model = @model,	specification = @specification,	department = @department,	[weight] = @weight,	brand = @brand,	manufacturer = @manufacturer,	supplier = @supplier,	manu_date = @manu_date,	produ_date = @produ_date,	filing_date = @filing_date,	[value] = @value,	[count] = @count,	electromotor = @electromotor,	[power] = @power,	[status] = @status,	[type] = @type,	[address] = @address,	photo = @photo,	three_dimensional = @three_dimensional WHERE id=" + id);
+            string sql = "UPDATE trouble "
+               + "SET "
+               + "	trouble_date = @trouble_date, "
+               + "	process = @process, "
+               + "	reason = @reason, "
+               + "	lose = @lose, "
+               + "	solve = @solve, "
+               + "	photo = @photo "
+               + "WHERE id=" + id;
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    /*
+                     	trouble_date ,
+	                    process ,
+	                    reason ,
+	                    lose ,
+	                    solve ,
+	                    photo 
+                     */
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@trouble_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@process", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@reason", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@lose", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@solve", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@photo", SqlDbType.Image, photo.Length));
+
+                    //给参数赋值
+                    mycom.Parameters["@trouble_date"].Value = trouble_date;
+                    mycom.Parameters["@process"].Value = process;
+                    mycom.Parameters["@reason"].Value = reason;
+                    mycom.Parameters["@lose"].Value = lose;
+                    mycom.Parameters["@solve"].Value = solve;
+                    mycom.Parameters["@photo"].Value = photo;
+
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 

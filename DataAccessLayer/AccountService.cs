@@ -1943,6 +1943,47 @@ namespace DataAccessLayer
             }
             return ds;
         }
+        /// <summary>
+        /// 查找指定ID故障信息(含图片信息)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet queryTroubleByIdIncludeImage(string id)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+
+                //string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
+                //string sql = string.Format("SELECT	ea.id, ea.asset, ea.eqname, ea.photo,	ea.isoff,ea.model,	ea.specification,	d.departname,	ea.[weight],	ea.brand,	ea.manufacturer,	ea.supplier,	ea.manu_date,	ea.produ_date,	ea.filing_date,	ea.[value],	ea.[count],	ea.electromotor,	ea.[power],	es.status_name,	et.[type_name],	ea.[address],	ea.three_dimensional,	ea.parts,	ea.ts,	ea.dr  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id WHERE  ea.isoff=0 AND ea.dr=0");
+                string sql = "SELECT "
+                   + "	t.id, "
+                   + "	t.trouble_date, "
+                   + "	t.process, "
+                   + "	t.reason, "
+                   + "	t.lose, "
+                   + "	t.solve, "
+                   + "	t.photo "
+                   + "FROM "
+                   + "	trouble t "
+                   + "WHERE t.id=" + id;
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
         
 
 
