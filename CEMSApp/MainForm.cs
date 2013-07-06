@@ -269,6 +269,27 @@ namespace CEMSApp
             }
         }
 
+        private void toolStripButton_trouble_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("TroubleForm"))
+            {
+                TroubleForm eq_TroubleForm = new TroubleForm();
+                eq_TroubleForm.MdiParent = this;
+                eq_TroubleForm.Show();
+            }
+        }
+
+        private void shiguguanli_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("TroubleForm"))
+            {
+                TroubleForm eq_TroubleForm = new TroubleForm();
+                eq_TroubleForm.MdiParent = this;
+                eq_TroubleForm.Show();
+            }
+        }
+
+
 
     }
 }

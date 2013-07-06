@@ -53,8 +53,7 @@
             this.故障统计分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.guzhangzhishiku = new System.Windows.Forms.ToolStripMenuItem();
-            this.事故管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.事故记录管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shiguguanli = new System.Windows.Forms.ToolStripMenuItem();
             this.维护信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.部门分类统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设备分类统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,7 +102,7 @@
             this.维护信息管理ToolStripMenuItem1,
             this.维修信息管理ToolStripMenuItem,
             this.故障管理ToolStripMenuItem,
-            this.事故管理ToolStripMenuItem1,
+            this.shiguguanli,
             this.维护信息管理ToolStripMenuItem,
             this.查询报表ToolStripMenuItem,
             this.参数设置ToolStripMenuItem,
@@ -262,41 +261,34 @@
             // ToolStripMenuItem_fault
             // 
             this.ToolStripMenuItem_fault.Name = "ToolStripMenuItem_fault";
-            this.ToolStripMenuItem_fault.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItem_fault.Size = new System.Drawing.Size(148, 22);
             this.ToolStripMenuItem_fault.Text = "故障记录管理";
             this.ToolStripMenuItem_fault.Click += new System.EventHandler(this.ToolStripMenuItem_fault_Click);
             // 
             // 故障统计分析ToolStripMenuItem
             // 
             this.故障统计分析ToolStripMenuItem.Name = "故障统计分析ToolStripMenuItem";
-            this.故障统计分析ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.故障统计分析ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.故障统计分析ToolStripMenuItem.Text = "故障统计分析";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(145, 6);
             // 
             // guzhangzhishiku
             // 
             this.guzhangzhishiku.Name = "guzhangzhishiku";
-            this.guzhangzhishiku.Size = new System.Drawing.Size(152, 22);
+            this.guzhangzhishiku.Size = new System.Drawing.Size(148, 22);
             this.guzhangzhishiku.Text = "故障知识库";
             this.guzhangzhishiku.Click += new System.EventHandler(this.guzhangzhishiku_Click);
             // 
-            // 事故管理ToolStripMenuItem1
+            // shiguguanli
             // 
-            this.事故管理ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.事故记录管理ToolStripMenuItem});
-            this.事故管理ToolStripMenuItem1.Name = "事故管理ToolStripMenuItem1";
-            this.事故管理ToolStripMenuItem1.Size = new System.Drawing.Size(68, 21);
-            this.事故管理ToolStripMenuItem1.Text = "事故管理";
-            // 
-            // 事故记录管理ToolStripMenuItem
-            // 
-            this.事故记录管理ToolStripMenuItem.Name = "事故记录管理ToolStripMenuItem";
-            this.事故记录管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.事故记录管理ToolStripMenuItem.Text = "事故记录管理";
+            this.shiguguanli.Name = "shiguguanli";
+            this.shiguguanli.Size = new System.Drawing.Size(68, 21);
+            this.shiguguanli.Text = "事故管理";
+            this.shiguguanli.Click += new System.EventHandler(this.shiguguanli_Click);
             // 
             // 维护信息管理ToolStripMenuItem
             // 
@@ -524,6 +516,7 @@
             this.toolStripButton_trouble.Size = new System.Drawing.Size(84, 53);
             this.toolStripButton_trouble.Text = "事故记录管理";
             this.toolStripButton_trouble.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_trouble.Click += new System.EventHandler(this.toolStripButton_trouble_Click);
             // 
             // toolStripSeparator1
             // 
@@ -672,8 +665,7 @@
         private System.Windows.Forms.ToolStripMenuItem weihujihua;
         private System.Windows.Forms.ToolStripMenuItem weixiujihua;
         private System.Windows.Forms.ToolStripButton toolStripButton_trouble;
-        private System.Windows.Forms.ToolStripMenuItem 事故管理ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 事故记录管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shiguguanli;
 
     }
 }

@@ -472,6 +472,14 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.deleteKnowledgeById(id);
         }
+        /// <summary>
+        /// 查找全部事故信息
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryTrouble()
+        {
+            return acc.queryTrouble();
+        }
 
 
     }
