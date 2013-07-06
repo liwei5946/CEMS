@@ -268,16 +268,17 @@ namespace CEMSApp.Fault
             Boolean flag = false;
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
-                dr = MessageBox.Show("您确认删除此条故障记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                dr = MessageBox.Show("您确认删除此条事故记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     Account acc = new Account();
-                    flag = acc.deleteFaultById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    //flag = acc.deleteFaultById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    flag = acc.deleteTroubleById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
                     if (flag)
                     {
                         MessageBox.Show("删除成功！");
-                        DataSet ds_fault = acc.queryFault();
-                        BindSourceGrid(grid1, ds_fault.Tables[0]);
+                        DataSet ds_trouble = acc.queryTrouble();
+                        BindSourceGrid(grid1, ds_trouble.Tables[0]);
                         grid1.Selection.SelectRow(1, true);
                         grid1.Selection.FocusFirstCell(true);
                     }
@@ -397,8 +398,8 @@ namespace CEMSApp.Fault
 
         private void toolStripButton_view_Click(object sender, EventArgs e)
         {
-            FaultViewForm fvf = new FaultViewForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
-            fvf.ShowDialog();
+            TroubleViewForm tvf = new TroubleViewForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString());
+            tvf.ShowDialog();
         }
 
     }

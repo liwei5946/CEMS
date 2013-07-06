@@ -1984,6 +1984,39 @@ namespace DataAccessLayer
             }
             return ds;
         }
+        /// <summary>
+        /// 删除制定ID的事故信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteTroubleById(string id)
+        {
+            int result = 0;
+            try
+            {
+                string sql = string.Format("UPDATE trouble SET dr = 1 WHERE id=" + id);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         
 
 

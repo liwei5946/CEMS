@@ -100,5 +100,21 @@ namespace CEMSApp.Fault
 
         }
 
+        private void button_uploadImg_Click(object sender, EventArgs e)
+        {
+            fileDialog_img.InitialDirectory = "d://";       // 默认打开的路径，可更改
+            fileDialog_img.Filter = "图像文件 (*.jpg)|*.jpg";
+            fileDialog_img.FilterIndex = 1;
+            fileDialog_img.RestoreDirectory = true;
+            if (fileDialog_img.ShowDialog() == DialogResult.OK)
+            {
+                text_uploadImg.Text = fileDialog_img.FileName;
+            }
+            else
+            {
+                text_uploadImg.Text = "";
+            } 
+        }
+
     }
 }

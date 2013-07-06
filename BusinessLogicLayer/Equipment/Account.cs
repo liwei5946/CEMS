@@ -489,6 +489,15 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.queryTroubleByIdIncludeImage(id);
         }
+        /// <summary>
+        /// 删除制定ID的事故信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteTroubleById(string id)
+        {
+            return acc.deleteTroubleById(id);
+        }
 
 
     }
