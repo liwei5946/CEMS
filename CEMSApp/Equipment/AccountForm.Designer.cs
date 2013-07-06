@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.grid1 = new SourceGrid.Grid();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.addButton = new System.Windows.Forms.ToolStripButton();
             this.editButton = new System.Windows.Forms.ToolStripButton();
             this.delButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_tianjiapeijian = new System.Windows.Forms.ToolStripButton();
             this.MaintainPlanButton = new System.Windows.Forms.ToolStripButton();
             this.MaintainButton = new System.Windows.Forms.ToolStripButton();
             this.faultButton = new System.Windows.Forms.ToolStripButton();
             this.troubleButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.writeoffButton = new System.Windows.Forms.ToolStripButton();
             this.report_Button = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.closeButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.grid1 = new SourceGrid.Grid();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -75,49 +75,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(1057, 40);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 40);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 40);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.grid1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 40);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.panel1.Size = new System.Drawing.Size(1057, 404);
-            this.panel1.TabIndex = 1;
-            // 
-            // grid1
-            // 
-            this.grid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid1.EnableSort = true;
-            this.grid1.Location = new System.Drawing.Point(10, 0);
-            this.grid1.Name = "grid1";
-            this.grid1.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.grid1.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid1.Size = new System.Drawing.Size(1037, 404);
-            this.grid1.TabIndex = 2;
-            this.grid1.TabStop = true;
-            this.grid1.ToolTipText = "";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 40);
             // 
             // addButton
             // 
@@ -148,6 +105,11 @@
             this.delButton.Text = "删除";
             this.delButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
             // toolStripButton_tianjiapeijian
             // 
@@ -197,6 +159,12 @@
             this.troubleButton.Size = new System.Drawing.Size(60, 37);
             this.troubleButton.Text = "记录事故";
             this.troubleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.troubleButton.Click += new System.EventHandler(this.troubleButton_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 40);
             // 
             // writeoffButton
             // 
@@ -227,6 +195,11 @@
             this.toolStripButton1.Text = "查询";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 40);
+            // 
             // closeButton
             // 
             this.closeButton.Image = global::CEMSApp.Properties.Resources.door_in;
@@ -236,6 +209,34 @@
             this.closeButton.Text = "关闭";
             this.closeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 40);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.grid1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 40);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.panel1.Size = new System.Drawing.Size(1057, 404);
+            this.panel1.TabIndex = 1;
+            // 
+            // grid1
+            // 
+            this.grid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid1.EnableSort = true;
+            this.grid1.Location = new System.Drawing.Point(10, 0);
+            this.grid1.Name = "grid1";
+            this.grid1.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.grid1.SelectionMode = SourceGrid.GridSelectionMode.Cell;
+            this.grid1.Size = new System.Drawing.Size(1037, 404);
+            this.grid1.TabIndex = 2;
+            this.grid1.TabStop = true;
+            this.grid1.ToolTipText = "";
             // 
             // AccountForm
             // 

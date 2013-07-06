@@ -484,6 +484,16 @@ namespace CEMSApp.Equipment
             Fault.FaultAddForm faf = new Fault.FaultAddForm(grid1[grid1.Selection.ActivePosition.Row, 1].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString(), grid1[grid1.Selection.ActivePosition.Row, 8].ToString(), grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
             faf.ShowDialog();
         }
+        /// <summary>
+        /// 事故记录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void troubleButton_Click(object sender, EventArgs e)
+        {
+            Fault.TroubleAddForm taf = new Fault.TroubleAddForm(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), grid1[grid1.Selection.ActivePosition.Row, 2].ToString());
+            taf.ShowDialog();
+        }
 
     }
     /// <summary>

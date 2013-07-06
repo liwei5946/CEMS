@@ -930,6 +930,92 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 添加事故信息
+        /// </summary>
+        /// <param name="eq_id"></param>
+        /// <param name="trouble_date"></param>
+        /// <param name="process"></param>
+        /// <param name="reason"></param>
+        /// <param name="lose"></param>
+        /// <param name="solve"></param>
+        /// <param name="photo"></param>
+        /// <returns></returns>
+        public bool addTrouble(
+           string eq_id,
+	       string trouble_date,
+	       string process,
+	       string reason,
+	       string lose,
+           string solve,
+	       byte[] photo
+            )
+        {
+            int resault = 0;
+            //string sql = string.Format("INSERT INTO eq_account (isoff,asset,eqname,model,specification,department,weight,brand,manufacturer,supplier,manu_date,produ_date,filing_date,value,count,electromotor,power,status,type,address,photo,three_dimensional) VALUES (@isoff,@asset,@eqname,@model,@specification,@department,@weight,@brand,@manufacturer,@supplier,@manu_date,@produ_date,@filing_date,@value,@count,@electromotor,@power,@status,@type,@address,@photo,@three_dimensional)");
+            string sql = "INSERT INTO trouble "
+               + "( "
+               + "	eq_id, "
+               + "	trouble_date, "
+               + "	process, "
+               + "	reason, "
+               + "	lose, "
+               + "	solve, "
+               + "	photo "
+               + ") "
+               + "VALUES "
+               + "( "
+               + "	@eq_id, "
+               + "	@trouble_date, "
+               + "	@process, "
+               + "	@reason, "
+               + "	@lose, "
+               + "	@solve, "
+               + "	@photo "
+               + ")";
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                      //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@eq_id", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@trouble_date", SqlDbType.DateTime));
+                    mycom.Parameters.Add(new SqlParameter("@process", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@reason", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@lose", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@solve", SqlDbType.NText));
+                    mycom.Parameters.Add(new SqlParameter("@photo", SqlDbType.Image, photo.Length));
+                    //给参数赋值
+                    mycom.Parameters["@eq_id"].Value = eq_id;
+                    mycom.Parameters["@trouble_date"].Value = trouble_date;
+                    mycom.Parameters["@process"].Value = process;
+                    mycom.Parameters["@reason"].Value = reason;
+                    mycom.Parameters["@lose"].Value = lose;
+                    mycom.Parameters["@solve"].Value = solve;
+                    mycom.Parameters["@photo"].Value = photo;
+
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 
