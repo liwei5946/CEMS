@@ -2017,6 +2017,170 @@ namespace DataAccessLayer
                 return false;
             }
         }
+        /// <summary>
+        /// 添加信息
+        /// 参数设置模块的通用添加方法
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="colName"></param>
+        /// <param name="insValue"></param>
+        /// <returns></returns>
+        public bool addInfomation(string tableName, string colName, string insValue)
+        {
+            int resault = 0;
+            string sql = "INSERT INTO " + tableName
+               + "( "
+               + colName
+               + " ) "
+               + "VALUES "
+               + "( "
+               + "	@insValue "
+               + ")";
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@insValue", SqlDbType.NVarChar, 50));
+                    //给参数赋值
+                    mycom.Parameters["@insValue"].Value = insValue;
+
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 删除信息
+        /// 参数设置模块的通用删除方法
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteInfomation(string id,string tableName)
+        {
+            int result = 0;
+            try
+            {
+                string sql = string.Format("UPDATE " + tableName + " SET dr = 1 WHERE id=" + id);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 查询信息
+        /// 参数设置模块的通用查询方法
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <returns></returns>
+        public DataSet queryInfomation(string tableName)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+                string sql = string.Format("SELECT * FROM " + tableName + " WHERE dr=0");
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
+        /// 修改信息
+        /// 参数设置模块的通用修改方法
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tableName"></param>
+        /// <param name="colName"></param>
+        /// <param name="updateValue"></param>
+        /// <returns></returns>
+        public bool updateInfomation(string id, string tableName, string colName, int updateValue)
+        {
+            int resault = 0;
+            //string sql = string.Format("UPDATE repair_plan SET	plan_asset = @plan_asset,	[start_date] = @start_date,	over_time = @over_time,	stop_time = @stop_time,	target_department = @target_department,	source_department = @source_department,	principal = @principal,	memo = @memo,	level_id = @level_id WHERE id=" + id);
+            string sql = "UPDATE  " + tableName
+               + "SET "
+               + colName + " = @updateValue "
+               + "WHERE id=" + id;
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@updateValue", SqlDbType.NVarChar, 50));
+                    //给参数赋值
+                    mycom.Parameters["@updateValue"].Value = updateValue;
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
         
 
 

@@ -10,6 +10,7 @@ using CEMSApp.Equipment;
 using CEMSApp.Maintain;
 using CEMSApp.Repair;
 using CEMSApp.Fault;
+using CEMSApp.Parameter;
 using System.Threading;
 
 namespace CEMSApp
@@ -287,6 +288,17 @@ namespace CEMSApp
                 eq_TroubleForm.MdiParent = this;
                 eq_TroubleForm.Show();
             }
+        }
+
+        private void bumenguanli_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("DepartmentForm"))
+            {
+                DepartmentForm eq_form = new DepartmentForm();
+                eq_form.MdiParent = this;
+                eq_form.Show();
+            }
+            
         }
 
 

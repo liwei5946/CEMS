@@ -54,17 +54,13 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.guzhangzhishiku = new System.Windows.Forms.ToolStripMenuItem();
             this.shiguguanli = new System.Windows.Forms.ToolStripMenuItem();
-            this.维护信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.部门分类统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.设备分类统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.配件分类统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.费用统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查询报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.部门管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bumenguanli = new System.Windows.Forms.ToolStripMenuItem();
             this.设备类型管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.配件类型管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.故障类型管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保养等级管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.维修等级管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_SystemManage = new System.Windows.Forms.ToolStripMenuItem();
             this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,8 +99,6 @@
             this.维修信息管理ToolStripMenuItem,
             this.故障管理ToolStripMenuItem,
             this.shiguguanli,
-            this.维护信息管理ToolStripMenuItem,
-            this.查询报表ToolStripMenuItem,
             this.参数设置ToolStripMenuItem,
             this.ToolStripMenuItem_SystemManage,
             this.帮助ToolStripMenuItem});
@@ -290,81 +284,55 @@
             this.shiguguanli.Text = "事故管理";
             this.shiguguanli.Click += new System.EventHandler(this.shiguguanli_Click);
             // 
-            // 维护信息管理ToolStripMenuItem
-            // 
-            this.维护信息管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.部门分类统计ToolStripMenuItem,
-            this.设备分类统计ToolStripMenuItem,
-            this.配件分类统计ToolStripMenuItem,
-            this.费用统计ToolStripMenuItem});
-            this.维护信息管理ToolStripMenuItem.Name = "维护信息管理ToolStripMenuItem";
-            this.维护信息管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.维护信息管理ToolStripMenuItem.Text = "统计报表";
-            // 
-            // 部门分类统计ToolStripMenuItem
-            // 
-            this.部门分类统计ToolStripMenuItem.Name = "部门分类统计ToolStripMenuItem";
-            this.部门分类统计ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.部门分类统计ToolStripMenuItem.Text = "部门分类统计";
-            // 
-            // 设备分类统计ToolStripMenuItem
-            // 
-            this.设备分类统计ToolStripMenuItem.Name = "设备分类统计ToolStripMenuItem";
-            this.设备分类统计ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.设备分类统计ToolStripMenuItem.Text = "设备分类统计";
-            // 
-            // 配件分类统计ToolStripMenuItem
-            // 
-            this.配件分类统计ToolStripMenuItem.Name = "配件分类统计ToolStripMenuItem";
-            this.配件分类统计ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.配件分类统计ToolStripMenuItem.Text = "配件分类统计";
-            // 
-            // 费用统计ToolStripMenuItem
-            // 
-            this.费用统计ToolStripMenuItem.Name = "费用统计ToolStripMenuItem";
-            this.费用统计ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.费用统计ToolStripMenuItem.Text = "费用统计";
-            // 
-            // 查询报表ToolStripMenuItem
-            // 
-            this.查询报表ToolStripMenuItem.Name = "查询报表ToolStripMenuItem";
-            this.查询报表ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.查询报表ToolStripMenuItem.Text = "综合查询";
-            // 
             // 参数设置ToolStripMenuItem
             // 
             this.参数设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.部门管理ToolStripMenuItem,
+            this.bumenguanli,
             this.设备类型管理ToolStripMenuItem,
             this.配件类型管理ToolStripMenuItem,
-            this.故障类型管理ToolStripMenuItem});
+            this.故障类型管理ToolStripMenuItem,
+            this.保养等级管理ToolStripMenuItem,
+            this.维修等级管理ToolStripMenuItem});
             this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
             this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.参数设置ToolStripMenuItem.Text = "参数设置";
             // 
-            // 部门管理ToolStripMenuItem
+            // bumenguanli
             // 
-            this.部门管理ToolStripMenuItem.Name = "部门管理ToolStripMenuItem";
-            this.部门管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.部门管理ToolStripMenuItem.Text = "部门管理";
+            this.bumenguanli.Name = "bumenguanli";
+            this.bumenguanli.Size = new System.Drawing.Size(152, 22);
+            this.bumenguanli.Text = "部门管理";
+            this.bumenguanli.Click += new System.EventHandler(this.bumenguanli_Click);
             // 
             // 设备类型管理ToolStripMenuItem
             // 
             this.设备类型管理ToolStripMenuItem.Name = "设备类型管理ToolStripMenuItem";
-            this.设备类型管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.设备类型管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.设备类型管理ToolStripMenuItem.Text = "设备类型管理";
             // 
             // 配件类型管理ToolStripMenuItem
             // 
             this.配件类型管理ToolStripMenuItem.Name = "配件类型管理ToolStripMenuItem";
-            this.配件类型管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.配件类型管理ToolStripMenuItem.Text = "配件类型管理";
+            this.配件类型管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.配件类型管理ToolStripMenuItem.Text = "设备状态管理";
             // 
             // 故障类型管理ToolStripMenuItem
             // 
             this.故障类型管理ToolStripMenuItem.Name = "故障类型管理ToolStripMenuItem";
-            this.故障类型管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.故障类型管理ToolStripMenuItem.Text = "故障类型管理";
+            this.故障类型管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.故障类型管理ToolStripMenuItem.Text = "故障模式管理";
+            // 
+            // 保养等级管理ToolStripMenuItem
+            // 
+            this.保养等级管理ToolStripMenuItem.Name = "保养等级管理ToolStripMenuItem";
+            this.保养等级管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保养等级管理ToolStripMenuItem.Text = "保养等级管理";
+            // 
+            // 维修等级管理ToolStripMenuItem
+            // 
+            this.维修等级管理ToolStripMenuItem.Name = "维修等级管理ToolStripMenuItem";
+            this.维修等级管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.维修等级管理ToolStripMenuItem.Text = "维修等级管理";
             // 
             // ToolStripMenuItem_SystemManage
             // 
@@ -378,7 +346,7 @@
             // 用户管理ToolStripMenuItem
             // 
             this.用户管理ToolStripMenuItem.Name = "用户管理ToolStripMenuItem";
-            this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.用户管理ToolStripMenuItem.Text = "用户管理";
             // 
             // 数据库设置ToolStripMenuItem
@@ -389,7 +357,7 @@
             this.数据库备份ToolStripMenuItem,
             this.数据库恢复ToolStripMenuItem});
             this.数据库设置ToolStripMenuItem.Name = "数据库设置ToolStripMenuItem";
-            this.数据库设置ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.数据库设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.数据库设置ToolStripMenuItem.Text = "数据库设置";
             // 
             // 数据库接口ToolStripMenuItem
@@ -580,6 +548,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::CEMSApp.Properties.Resources.bg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(779, 542);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -607,11 +577,9 @@
 
         private System.Windows.Forms.MenuStrip MainMenu;
         private System.Windows.Forms.ToolStripMenuItem 设备信息管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 维护信息管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 维护信息管理ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 维修信息管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 故障管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 查询报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_SystemManage;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
@@ -642,11 +610,7 @@
         private System.Windows.Forms.ToolStripMenuItem 故障统计分析ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem guzhangzhishiku;
-        private System.Windows.Forms.ToolStripMenuItem 部门分类统计ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 设备分类统计ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 配件分类统计ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 费用统计ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 部门管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bumenguanli;
         private System.Windows.Forms.ToolStripMenuItem 设备类型管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 配件类型管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 故障类型管理ToolStripMenuItem;
@@ -666,6 +630,8 @@
         private System.Windows.Forms.ToolStripMenuItem weixiujihua;
         private System.Windows.Forms.ToolStripButton toolStripButton_trouble;
         private System.Windows.Forms.ToolStripMenuItem shiguguanli;
+        private System.Windows.Forms.ToolStripMenuItem 保养等级管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 维修等级管理ToolStripMenuItem;
 
     }
 }

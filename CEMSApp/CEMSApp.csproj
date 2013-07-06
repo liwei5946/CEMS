@@ -267,6 +267,42 @@
     <Compile Include="Maintain\MaintainEditForm.Designer.cs">
       <DependentUpon>MaintainEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Parameter\DepartmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameter\DepartmentForm.Designer.cs">
+      <DependentUpon>DepartmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parameter\DepartmentAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameter\DepartmentAddForm.Designer.cs">
+      <DependentUpon>DepartmentAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parameter\EqtypeAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameter\EqtypeAddForm.Designer.cs">
+      <DependentUpon>EqtypeAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parameter\EqstatusAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameter\EqstatusAddForm.Designer.cs">
+      <DependentUpon>EqstatusAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parameter\FaultLevelAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameter\FaultLevelAddForm.Designer.cs">
+      <DependentUpon>FaultLevelAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parameter\RepairLevelAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameter\RepairLevelAddForm.Designer.cs">
+      <DependentUpon>RepairLevelAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repair\RepairPlanForm.cs">
@@ -404,6 +440,24 @@
     <EmbeddedResource Include="Maintain\MaintainEditForm.resx">
       <DependentUpon>MaintainEditForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Parameter\DepartmentForm.resx">
+      <DependentUpon>DepartmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameter\DepartmentAddForm.resx">
+      <DependentUpon>DepartmentAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameter\EqtypeAddForm.resx">
+      <DependentUpon>EqtypeAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameter\EqstatusAddForm.resx">
+      <DependentUpon>EqstatusAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameter\FaultLevelAddForm.resx">
+      <DependentUpon>FaultLevelAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameter\RepairLevelAddForm.resx">
+      <DependentUpon>RepairLevelAddForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -508,6 +562,7 @@
     <Content Include="pic\no_photo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\bg.jpg" />
     <None Include="Resources\exclamation.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

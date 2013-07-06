@@ -498,6 +498,51 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.deleteTroubleById(id);
         }
+        /// <summary>
+        /// 添加信息
+        /// 参数设置模块的通用添加方法
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="colName"></param>
+        /// <param name="insValue"></param>
+        /// <returns></returns>
+        public bool addInfomation(string tableName, string colName, string insValue)
+        {
+            return acc.addInfomation(tableName, colName, insValue);
+        }
+        /// <summary>
+        /// 删除信息
+        /// 参数设置模块的通用删除方法
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Boolean deleteInfomation(string id, string tableName)
+        {
+            return acc.deleteInfomation(id, tableName);
+        }
+        /// <summary>
+        /// 查询信息
+        /// 参数设置模块的通用查询方法
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <returns></returns>
+        public DataSet queryInfomation(string tableName)
+        {
+            return acc.queryInfomation(tableName);
+        }
+        /// <summary>
+        /// 修改信息
+        /// 参数设置模块的通用修改方法
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tableName"></param>
+        /// <param name="colName"></param>
+        /// <param name="updateValue"></param>
+        /// <returns></returns>
+        public bool updateInfomation(string id, string tableName, string colName, int updateValue)
+        {
+            return acc.updateInfomation(id, tableName, colName, updateValue);
+        }
 
 
     }
