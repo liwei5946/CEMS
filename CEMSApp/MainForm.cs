@@ -354,6 +354,16 @@ namespace CEMSApp
             }
         }
 
+        private void yonghuguanli_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("UserForm"))
+            {
+                UserForm cpf = new UserForm();
+                cpf.MdiParent = this;
+                cpf.Show();
+            }
+        }
+
 
 
     }

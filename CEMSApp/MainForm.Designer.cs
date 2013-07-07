@@ -351,6 +351,7 @@
             this.yonghuguanli.Name = "yonghuguanli";
             this.yonghuguanli.Size = new System.Drawing.Size(152, 22);
             this.yonghuguanli.Text = "用户管理";
+            this.yonghuguanli.Click += new System.EventHandler(this.yonghuguanli_Click);
             // 
             // shujukushezhi
             // 
