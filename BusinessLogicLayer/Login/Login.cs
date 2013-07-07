@@ -48,5 +48,18 @@ namespace BusinessLogicLayer.Login
         {
             return ls.updatePasswordByUsername(username, MD5Hashing.HashString(password));
         }
+        /// <summary>
+        /// 备份数据库
+        /// </summary>
+        public bool BackupDataBase(string path, string filename)
+        {
+            return ls.BackupDataBase(path,filename);
+        }
+
+
+
+
+
+
     }
 }

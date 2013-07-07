@@ -13,6 +13,8 @@ using CEMSApp.Fault;
 using CEMSApp.Parameter;
 using CEMSApp.Login;
 using System.Threading;
+using BusinessLogicLayer;
+using Util;
 
 namespace CEMSApp
 {
@@ -361,6 +363,46 @@ namespace CEMSApp
                 UserForm cpf = new UserForm();
                 cpf.MdiParent = this;
                 cpf.Show();
+            }
+        }
+        /// <summary>
+        /// 数据库备份
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void shujukubeifen_Click(object sender, EventArgs e)
+        {
+            BusinessLogicLayer.Login.Login login = new BusinessLogicLayer.Login.Login();
+            //login.BackupDataBase();
+            //"d:\\cemsdb\\cems.mdf"
+            string path = "", filename = "";
+            DialogResult dr;
+            Boolean flag = false;
+            FolderBrowserDialog fb = new FolderBrowserDialog();
+            string date = DateTime.Now.ToString("yyyyMMdd");
+            dr = MessageBox.Show("您确认备份数据库吗？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                if (fb.ShowDialog() == DialogResult.OK)
+                {
+                    Cursor cr = Cursor.Current;
+                    Cursor.Current = Cursors.WaitCursor;//将光标置为等待状态
+
+                    path = fb.SelectedPath;
+                    filename = "\\cems-" + date+"-" + Util.Tools.Number(6)+".mdf";
+                    flag = login.BackupDataBase(path, filename);
+
+                    Cursor.Current = cr;//将光标置回原来状态 
+
+                    if (flag)
+                    {
+                        MessageBox.Show("数据库已成功备份至" + path + filename, "操作成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("数据库备份失败！", "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 

@@ -20,6 +20,10 @@ namespace DataAccessLayer.Login
         //private readonly string dboOwner = ConfigurationManager.ConnectionStrings["DataBaseOwner"].ToString();
         private readonly string connString = ConfigAppSettings.getDBConnString();
         private readonly string dboOwner = ConfigAppSettings.getDBOwner();
+        private readonly string basename = ConfigAppSettings.GetValue("basename");
+        //private readonly string ip = ConfigAppSettings.GetValue("ipaddress");
+        //private readonly string username = ConfigAppSettings.GetValue("user");
+        //private readonly string pwd = ConfigAppSettings.GetValue("password");
         #endregion
         /// <summary>
         /// 判断能否登录
@@ -131,6 +135,255 @@ namespace DataAccessLayer.Login
             {
                 return false;
             }
+        }
+        /////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// 数据库连接字符串
+        /// </summary>
+        // string ConnectionString = string.Format("Data Source=({0});User id={1};Password={2}; Initial Catalog=master",UserHelper.sql.servername,UserHelper.sql.uid,UserHelper.sql.password);
+        //string ConnectionString = "Data Source=(local);User id=sa;Password=123; Initial Catalog=master";
+
+        //string ConnectionString = string.Format("Data Source={0};Initial Catalog=master;Persist Security Info=True;User ID={1};Password={2}", UserHelper.sql.servername, UserHelper.sql.uid, UserHelper.sql.password);
+        /// <summary>
+        /// SQL操作语句/存储过程
+        /// </summary>
+        public string StrSQL;
+
+        /// <summary>
+        /// 实例化一个数据库连接对象
+        /// </summary>
+        private SqlConnection Conn;
+
+        /// <summary>
+        /// 实例化一个新的数据库操作对象Comm
+        /// </summary>
+        private SqlCommand Comm;
+
+        /// <summary>
+        /// 要操作的数据库名称
+        /// </summary>
+        public string DataBaseName;
+
+        /// <summary>
+        /// 数据库文件完整地址
+        /// </summary>
+        public string DataBase_MDF;
+
+        /// <summary>
+        /// 数据库日志文件完整地址
+        /// </summary>
+        public string DataBase_LDF;
+
+        /// <summary>
+        /// 备份文件名
+        /// </summary>
+        public string DataBaseOfBackupName;
+
+        /// <summary>
+        /// 备份文件路径
+        /// </summary>
+        public string DataBaseOfBackupPath;
+
+        /// <summary>
+        /// 执行创建/修改数据库和表的操作
+        /// </summary>
+        public void DataBaseAndTableControl()
+        {
+            try
+            {
+                Conn = new SqlConnection(connString);
+                Conn.Open();
+
+                Comm = new SqlCommand();
+                Comm.Connection = Conn;
+                Comm.CommandText = StrSQL;
+                Comm.CommandType = CommandType.Text;
+                Comm.ExecuteNonQuery();
+                //MyMessageBox.Show("数据库操作成功！", "信息提示");
+            }
+            catch (Exception ex)
+            {
+                //MyMessageBox.Show(ex.Message, "信息提示");
+                log.Error(ex.Message);
+            }
+            finally
+            {
+                Conn.Close();
+            }
+        }
+
+        /// <summary>
+        /// 附加数据库
+        /// </summary>
+        public void AddDataBase()
+        {
+            try
+            {
+                Conn = new SqlConnection(connString);
+                Conn.Open();
+                Comm = new SqlCommand();
+                Comm.Connection = Conn;
+                Comm.CommandText = @"sp_attach_db";
+                Comm.Parameters.Add(new SqlParameter("@dbname", SqlDbType.NVarChar));
+                Comm.Parameters["@dbname"].Value = DataBaseName;
+                Comm.Parameters.Add(new SqlParameter("@filename1", SqlDbType.NVarChar));
+                Comm.Parameters["@filename1"].Value = DataBase_MDF;
+                Comm.Parameters.Add(new SqlParameter("@filename2", SqlDbType.NVarChar));
+                Comm.Parameters["@filename2"].Value = DataBase_LDF;
+                Comm.CommandType = CommandType.StoredProcedure;
+                Comm.ExecuteNonQuery();
+
+                //MyMessageBox.Show("附加数据库成功", "信息提示");
+            }
+            catch (Exception ex)
+            {
+                //MyMessageBox.Show(ex.Message, "信息提示");
+                log.Error(ex.Message);
+            }
+            finally
+            {
+                Conn.Close();
+            }
+        }
+
+        /// <summary>
+        /// 分离数据库
+        /// </summary>
+        public void DeleteDataBase()
+        {
+            try
+            {
+                Conn = new SqlConnection(connString);
+                Conn.Open();
+
+                Comm = new SqlCommand();
+                Comm.Connection = Conn;
+                Comm.CommandText = @"sp_detach_db";
+
+                Comm.Parameters.Add(new SqlParameter(@"dbname", SqlDbType.NVarChar));
+                Comm.Parameters[@"dbname"].Value = DataBaseName;
+
+                Comm.CommandType = CommandType.StoredProcedure;
+                Comm.ExecuteNonQuery();
+
+                //MyMessageBox.Show("分离数据库成功", "信息提示");
+            }
+            catch (Exception ex)
+            {
+                //MyMessageBox.Show(ex.Message, "信息提示");
+                log.Error(ex.Message);
+            }
+            finally
+            {
+                Conn.Close();
+            }
+        }
+
+        /// <summary>
+        /// 备份数据库
+        /// </summary>
+        public bool BackupDataBase(string path,string filename)
+        {
+            bool flag = false;
+            try
+            {
+                Conn = new SqlConnection(connString);
+                Conn.Open();
+
+                Comm = new SqlCommand();
+                Comm.Connection = Conn;
+                Comm.CommandText = "use master;backup database @dbname to disk = @backupname;";
+
+                Comm.Parameters.Add(new SqlParameter("@dbname", SqlDbType.NVarChar));
+                //Comm.Parameters["@dbname"].Value = DataBaseName;
+                Comm.Parameters["@dbname"].Value = basename;
+                Comm.Parameters.Add(new SqlParameter("@backupname", SqlDbType.NVarChar));
+                //Comm.Parameters["@backupname"].Value = @DataBaseOfBackupPath + @DataBaseOfBackupName;
+                Comm.Parameters["@backupname"].Value = path + filename;
+
+                Comm.CommandType = CommandType.Text;
+                Comm.ExecuteNonQuery();
+
+                //MyMessageBox.Show("备份数据库成功", "信息提示");
+                flag = true;
+            }
+            catch (Exception ex)
+            {
+                //MyMessageBox.Show(ex.Message, "信息提示");
+                log.Error(ex.Message);
+            }
+            finally
+            {
+                Conn.Close();
+            }
+            return flag;
+        }
+
+        /// <summary>
+        /// 还原数据库
+        /// </summary>
+        public void ReplaceDataBase()
+        {
+            try
+            {
+                string BackupFile = @DataBaseOfBackupPath + @DataBaseOfBackupName;
+                Conn = new SqlConnection(connString);
+                Conn.Open();
+
+                Comm = new SqlCommand();
+                Comm.Connection = Conn;
+                Comm.CommandText = "use master;restore database @DataBaseName From disk = @BackupFile with replace;";
+
+                Comm.Parameters.Add(new SqlParameter(@"DataBaseName", SqlDbType.NVarChar));
+                Comm.Parameters[@"DataBaseName"].Value = DataBaseName;
+                Comm.Parameters.Add(new SqlParameter(@"BackupFile", SqlDbType.NVarChar));
+                Comm.Parameters[@"BackupFile"].Value = BackupFile;
+
+                Comm.CommandType = CommandType.Text;
+                Comm.ExecuteNonQuery();
+
+                //MyMessageBox.Show("还原数据库成功", "信息提示");
+            }
+            catch (Exception ex)
+            {
+                //MyMessageBox.Show(ex.Message, "信息提示");
+                log.Error(ex.Message);
+            }
+            finally
+            {
+                Conn.Close();
+            }
+        }
+
+        /// <summary>
+        /// 获取所以的数据库
+        /// </summary>
+        /// <returns>数据库</returns>
+        public List<string> getDatabase()
+        {
+
+            List<string> datas = new List<string>();
+            string sql = "select name from sysdatabases ";
+            try
+            {
+                Conn = new SqlConnection(connString);
+                Conn.Open();
+                Comm = new SqlCommand(sql, Conn);
+                SqlDataReader reader = Comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    datas.Add(reader[0].ToString());
+                }
+                reader.Close();
+
+                Conn.Close();
+
+            }
+            catch (Exception)
+            {
+                throw new Exception("数据库连接失败，请检查信息是否正确。");
+            }
+            return datas;
         }
 
 

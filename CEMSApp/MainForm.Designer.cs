@@ -64,8 +64,8 @@
             this.xiugaimima = new System.Windows.Forms.ToolStripMenuItem();
             this.yonghuguanli = new System.Windows.Forms.ToolStripMenuItem();
             this.shujukushezhi = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据库恢复ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shujukubeifen = new System.Windows.Forms.ToolStripMenuItem();
+            this.shujukuhuifu = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -356,23 +356,24 @@
             // shujukushezhi
             // 
             this.shujukushezhi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.数据库备份ToolStripMenuItem,
-            this.数据库恢复ToolStripMenuItem});
+            this.shujukubeifen,
+            this.shujukuhuifu});
             this.shujukushezhi.Name = "shujukushezhi";
             this.shujukushezhi.Size = new System.Drawing.Size(152, 22);
             this.shujukushezhi.Text = "数据库设置";
             // 
-            // 数据库备份ToolStripMenuItem
+            // shujukubeifen
             // 
-            this.数据库备份ToolStripMenuItem.Name = "数据库备份ToolStripMenuItem";
-            this.数据库备份ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.数据库备份ToolStripMenuItem.Text = "数据库备份";
+            this.shujukubeifen.Name = "shujukubeifen";
+            this.shujukubeifen.Size = new System.Drawing.Size(152, 22);
+            this.shujukubeifen.Text = "数据库备份";
+            this.shujukubeifen.Click += new System.EventHandler(this.shujukubeifen_Click);
             // 
-            // 数据库恢复ToolStripMenuItem
+            // shujukuhuifu
             // 
-            this.数据库恢复ToolStripMenuItem.Name = "数据库恢复ToolStripMenuItem";
-            this.数据库恢复ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.数据库恢复ToolStripMenuItem.Text = "数据库恢复";
+            this.shujukuhuifu.Name = "shujukuhuifu";
+            this.shujukuhuifu.Size = new System.Drawing.Size(152, 22);
+            this.shujukuhuifu.Text = "数据库恢复";
             // 
             // 帮助ToolStripMenuItem
             // 
@@ -607,8 +608,8 @@
         private System.Windows.Forms.ToolStripMenuItem guzhangmoshi;
         private System.Windows.Forms.ToolStripMenuItem yonghuguanli;
         private System.Windows.Forms.ToolStripMenuItem shujukushezhi;
-        private System.Windows.Forms.ToolStripMenuItem 数据库备份ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 数据库恢复ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shujukubeifen;
+        private System.Windows.Forms.ToolStripMenuItem shujukuhuifu;
         private System.Windows.Forms.ToolStripButton toolStrip_repair;
         private System.Windows.Forms.ToolStripMenuItem weihujilu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
