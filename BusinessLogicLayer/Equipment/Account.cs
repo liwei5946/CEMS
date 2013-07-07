@@ -543,6 +543,14 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.updateInfomation(id, tableName, colName, updateValue);
         }
+        /// <summary>
+        /// 查找全部用户信息
+        /// </summary>
+        /// <returns></returns>
+        public DataSet queryUsers()
+        {
+            return acc.queryUsers();
+        }
 
 
     }
