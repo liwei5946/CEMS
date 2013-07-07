@@ -369,7 +369,6 @@ namespace DataAccessLayer
             {
                 return false;
             }
-
         }
         /// <summary>
         /// 销帐
@@ -2322,7 +2321,181 @@ namespace DataAccessLayer
             {
                 return false;
             }
+        }
+        /// <summary>
+        /// 修改用户信息
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="realname"></param>
+        /// <param name="userright"></param>
+        /// <param name="oldusername"></param>
+        /// <returns></returns>
+        public bool updateUserByUsername(string username, string realname, int userright, string oldusername)
+        {
+            int resault = 0;
+            //string sql = string.Format("UPDATE maintain_plan SET plan_asset = @plan_asset,[start_date] = @start_date, over_time = @over_time,memo = @memo WHERE id=" + id);
+            string sql = "UPDATE sys_sys "
+               + "SET "
+               + "	username = @username, "
+               + "	realname = @realname, "
+               + "	userright = @userright "
+               + "WHERE username=@oldusername";
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@username", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@realname", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@userright", SqlDbType.Int));
+                    mycom.Parameters.Add(new SqlParameter("@oldusername", SqlDbType.NVarChar, 50));
 
+                    //给参数赋值
+                    mycom.Parameters["@username"].Value = username;
+                    mycom.Parameters["@realname"].Value = realname;
+                    mycom.Parameters["@userright"].Value = userright;
+                    mycom.Parameters["@oldusername"].Value = oldusername;
+
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 查询指定有用户名信息
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public DataSet queryUserByUsername(string username)
+        {
+            try
+            {
+                SqlDataAdapter sda;
+
+                //string sql = string.Format("SELECT id,asset,eqname,photo FROM eq_account WHERE dr=0");
+                //string sql = string.Format("SELECT	ea.id, ea.asset, ea.eqname, ea.photo,	ea.isoff,ea.model,	ea.specification,	d.departname,	ea.[weight],	ea.brand,	ea.manufacturer,	ea.supplier,	ea.manu_date,	ea.produ_date,	ea.filing_date,	ea.[value],	ea.[count],	ea.electromotor,	ea.[power],	es.status_name,	et.[type_name],	ea.[address],	ea.three_dimensional,	ea.parts,	ea.ts,	ea.dr  FROM	eq_account ea LEFT JOIN department d ON ea.department=d.id LEFT JOIN eq_status es ON ea.[status]=es.id LEFT JOIN eq_type et ON ea.[type]=et.id WHERE  ea.isoff=0 AND ea.dr=0");
+                string sql = "SELECT "
+                   + "	ss.username, "
+                   + "	ss.realname, "
+                   + "	ss.userright "
+                   + "FROM "
+                   + "	sys_sys ss "
+                   + "WHERE ss.username='" + username + "'";
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    sda = new SqlDataAdapter(sql, conn);
+                    ds = new DataSet();
+                    sda.Fill(ds);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            return ds;
+        }
+        /// <summary>
+        /// 删除用户信息
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public Boolean deleteUserByUsername(string username)
+        {
+            int result = 0;
+            try
+            {
+                string sql = string.Format("UPDATE sys_sys SET dr = 1 WHERE username='" + username + "'");
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 初始化用户密码
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool updatePasswordForInit(string username, string password)
+        {
+            int resault = 0;
+            //string sql = string.Format("UPDATE maintain_plan SET plan_asset = @plan_asset,[start_date] = @start_date, over_time = @over_time,memo = @memo WHERE id=" + id);
+            string sql = "UPDATE sys_sys "
+               + "SET "
+               + "	[password] = @password "
+               + "WHERE username=@username";
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@username", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@password", SqlDbType.NVarChar, 50));
+                    //给参数赋值
+                    mycom.Parameters["@username"].Value = username;
+                    mycom.Parameters["@password"].Value = password;
+
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

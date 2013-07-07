@@ -33,6 +33,7 @@
             this.editButton = new System.Windows.Forms.ToolStripButton();
             this.delButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.chongzhimima = new System.Windows.Forms.ToolStripButton();
             this.closeButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -48,6 +49,7 @@
             this.editButton,
             this.delButton,
             this.toolStripSeparator1,
+            this.chongzhimima,
             this.closeButton,
             this.toolStripSeparator2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -90,6 +92,16 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
+            // 
+            // chongzhimima
+            // 
+            this.chongzhimima.Image = global::CEMSApp.Properties.Resources.key_go;
+            this.chongzhimima.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.chongzhimima.Name = "chongzhimima";
+            this.chongzhimima.Size = new System.Drawing.Size(60, 37);
+            this.chongzhimima.Text = "重置密码";
+            this.chongzhimima.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.chongzhimima.Click += new System.EventHandler(this.chongzhimima_Click);
             // 
             // closeButton
             // 
@@ -159,5 +171,6 @@
         private System.Windows.Forms.Panel panel1;
         private SourceGrid.Grid grid1;
         private System.Windows.Forms.ToolStripButton addButton;
+        private System.Windows.Forms.ToolStripButton chongzhimima;
     }
 }

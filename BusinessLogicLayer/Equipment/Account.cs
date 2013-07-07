@@ -578,6 +578,46 @@ namespace BusinessLogicLayer.Equipment
         {
             return acc.addUser(username, MD5Hashing.HashString(password), realname, userright);
         }
+        /// <summary>
+        /// 查询指定有用户名信息
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public DataSet queryUserByUsername(string username)
+        {
+            return acc.queryUserByUsername(username);
+        }
+         /// <summary>
+        /// 修改用户信息
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="realname"></param>
+        /// <param name="userright"></param>
+        /// <param name="oldusername"></param>
+        /// <returns></returns>
+        public bool updateUserByUsername(string username, string realname, int userright, string oldusername)
+        {
+            return acc.updateUserByUsername(username, realname, userright, oldusername);
+        }
+        /// <summary>
+        /// 删除用户信息
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public Boolean deleteUserByUsername(string username)
+        {
+            return acc.deleteUserByUsername(username);
+        }
+        /// <summary>
+        /// 初始化用户密码
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool updatePasswordForInit(string username, string password)
+        {
+            return acc.updatePasswordForInit(username, MD5Hashing.HashString(password));
+        }
 
 
     }

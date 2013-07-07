@@ -126,11 +126,10 @@ namespace CEMSApp.Login
         private void editButton_Click(object sender, EventArgs e)
         {
             string id = grid1[grid1.Selection.ActivePosition.Row, 0].ToString();//选中行的id
-            //KnowledgeEditForm kef = new KnowledgeEditForm(id);
-            //PartEditForm pef = new PartEditForm(id, grid1[grid1.Selection.ActivePosition.Row, 2].ToString());
+            UserEditForm kef = new UserEditForm(id);
             try
             {
-                //if (kef.ShowDialog() == DialogResult.OK)
+                if (kef.ShowDialog() == DialogResult.OK)
                 {
                     Account acc = new Account();
                     DataSet ds = acc.queryUsers();
@@ -157,12 +156,13 @@ namespace CEMSApp.Login
             Boolean flag = false;
             if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
             {
-                dr = MessageBox.Show("您确认删除此条故障知识库记录？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                dr = MessageBox.Show("您确认删除用户\"" + grid1[grid1.Selection.ActivePosition.Row, 0].ToString() + "\"？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     Account acc = new Account();
                     //flag = acc.deleteFaultById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
-                    flag = acc.deleteKnowledgeById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    //flag = acc.deleteKnowledgeById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    flag = acc.deleteUserByUsername(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
                     if (flag)
                     {
                         MessageBox.Show("删除成功！");
@@ -205,6 +205,31 @@ namespace CEMSApp.Login
                 BindSourceGrid(grid1, ds.Tables[0]);
                 grid1.Selection.SelectRow(1, true);
                 grid1.Selection.FocusFirstCell(true);
+            }
+        }
+
+        private void chongzhimima_Click(object sender, EventArgs e)
+        {
+            DialogResult dr;
+            Boolean flag = false;
+            if (grid1[grid1.Selection.ActivePosition.Row, 0] != null)
+            {
+                dr = MessageBox.Show("您确认将用户\"" + grid1[grid1.Selection.ActivePosition.Row, 0].ToString() + "\"的密码重置为初始密码\"123456\"吗？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    Account acc = new Account();
+                    //flag = acc.deleteFaultById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    //flag = acc.deleteKnowledgeById(grid1[grid1.Selection.ActivePosition.Row, 0].ToString());
+                    flag = acc.updatePasswordForInit(grid1[grid1.Selection.ActivePosition.Row, 0].ToString(), "123456");
+                    if (flag)
+                    {
+                        MessageBox.Show("密码重置成功！");
+                    }
+                    else
+                    {
+                        MessageBox.Show("密码重置失败！");
+                    }
+                }
             }
         }
 

@@ -116,6 +116,13 @@ namespace CEMSApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap key_go {
+            get {
+                object obj = ResourceManager.GetObject("key_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap link_break {
             get {
                 object obj = ResourceManager.GetObject("link_break", resourceCulture);
