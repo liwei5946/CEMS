@@ -322,27 +322,30 @@ namespace DataAccessLayer.Login
         /// <summary>
         /// 还原数据库
         /// </summary>
-        public void ReplaceDataBase()
+        public bool ReplaceDataBase(string fullFilename)
         {
+            bool flag = false;
             try
             {
-                string BackupFile = @DataBaseOfBackupPath + @DataBaseOfBackupName;
+                //string BackupFile = @DataBaseOfBackupPath + @DataBaseOfBackupName;
                 Conn = new SqlConnection(connString);
                 Conn.Open();
 
                 Comm = new SqlCommand();
                 Comm.Connection = Conn;
                 Comm.CommandText = "use master;restore database @DataBaseName From disk = @BackupFile with replace;";
-
+                
                 Comm.Parameters.Add(new SqlParameter(@"DataBaseName", SqlDbType.NVarChar));
-                Comm.Parameters[@"DataBaseName"].Value = DataBaseName;
+                //Comm.Parameters[@"DataBaseName"].Value = DataBaseName;
+                Comm.Parameters[@"DataBaseName"].Value = basename;
                 Comm.Parameters.Add(new SqlParameter(@"BackupFile", SqlDbType.NVarChar));
-                Comm.Parameters[@"BackupFile"].Value = BackupFile;
+                Comm.Parameters[@"BackupFile"].Value = fullFilename;
 
                 Comm.CommandType = CommandType.Text;
                 Comm.ExecuteNonQuery();
 
                 //MyMessageBox.Show("还原数据库成功", "信息提示");
+                flag = true;
             }
             catch (Exception ex)
             {
@@ -353,6 +356,7 @@ namespace DataAccessLayer.Login
             {
                 Conn.Close();
             }
+            return flag;
         }
 
         /// <summary>

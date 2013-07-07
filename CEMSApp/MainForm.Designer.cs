@@ -374,6 +374,7 @@
             this.shujukuhuifu.Name = "shujukuhuifu";
             this.shujukuhuifu.Size = new System.Drawing.Size(152, 22);
             this.shujukuhuifu.Text = "数据库恢复";
+            this.shujukuhuifu.Click += new System.EventHandler(this.shujukuhuifu_Click);
             // 
             // 帮助ToolStripMenuItem
             // 

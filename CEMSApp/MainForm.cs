@@ -110,11 +110,13 @@ namespace CEMSApp
                 canshushezhi.Visible = false;//参数设置菜单不可见
                 yonghuguanli.Visible = false;//用户管理菜单不可见
                 shujukushezhi.Visible = false;//数据库设置菜单不可见
+                
                 userrightLabel.Text += "普通用户";
             }
             else
             {
                 userrightLabel.Text += "管理员";
+                shujukuhuifu.Visible = false;//暂不提供数据库恢复功能
             }
             
         }
@@ -379,6 +381,7 @@ namespace CEMSApp
             DialogResult dr;
             Boolean flag = false;
             FolderBrowserDialog fb = new FolderBrowserDialog();
+            fb.Description = "请选择备份文件存放路径";
             string date = DateTime.Now.ToString("yyyyMMdd");
             dr = MessageBox.Show("您确认备份数据库吗？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
@@ -401,6 +404,43 @@ namespace CEMSApp
                     else
                     {
                         MessageBox.Show("数据库备份失败！", "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void shujukuhuifu_Click(object sender, EventArgs e)
+        {
+            BusinessLogicLayer.Login.Login login = new BusinessLogicLayer.Login.Login();
+            DialogResult dr;
+            Boolean flag = false;
+            string filename = "";
+            OpenFileDialog open = new OpenFileDialog();
+            open.Title = "请选择数据库备份文件";
+            open.InitialDirectory = "d://";       // 默认打开的路径，可更改
+            open.Filter = "MDF数据库文件 (*.mdf)|*.mdf";
+            open.FilterIndex = 1;
+            open.RestoreDirectory = true;
+            open.Multiselect = false;
+
+            dr = MessageBox.Show("您确认恢复数据库吗？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    filename = open.FileName;
+                    Cursor cr = Cursor.Current;
+                    Cursor.Current = Cursors.WaitCursor;//将光标置为等待状态
+                    flag = login.ReplaceDataBase(filename);
+                    Cursor.Current = cr;//将光标置回原来状态 
+
+                    if (flag)
+                    {
+                        MessageBox.Show("数据库已成功还原", "操作成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("数据库还原失败！", "操作失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

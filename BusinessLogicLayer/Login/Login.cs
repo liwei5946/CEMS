@@ -55,6 +55,13 @@ namespace BusinessLogicLayer.Login
         {
             return ls.BackupDataBase(path,filename);
         }
+        /// <summary>
+        /// 还原数据库
+        /// </summary>
+        public bool ReplaceDataBase(string fullFilename)
+        {
+            return ReplaceDataBase(fullFilename);
+        }
 
 
 
