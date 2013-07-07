@@ -54,17 +54,16 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.guzhangzhishiku = new System.Windows.Forms.ToolStripMenuItem();
             this.shiguguanli = new System.Windows.Forms.ToolStripMenuItem();
-            this.参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.canshushezhi = new System.Windows.Forms.ToolStripMenuItem();
             this.bumenguanli = new System.Windows.Forms.ToolStripMenuItem();
             this.shebeileixing = new System.Windows.Forms.ToolStripMenuItem();
             this.shebeizhuangtai = new System.Windows.Forms.ToolStripMenuItem();
             this.guzhangmoshi = new System.Windows.Forms.ToolStripMenuItem();
             this.weixiudengji = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_SystemManage = new System.Windows.Forms.ToolStripMenuItem();
-            this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据库设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据库接口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.xiugaimima = new System.Windows.Forms.ToolStripMenuItem();
+            this.yonghuguanli = new System.Windows.Forms.ToolStripMenuItem();
+            this.shujukushezhi = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库恢复ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,7 +97,7 @@
             this.维修信息管理ToolStripMenuItem,
             this.故障管理ToolStripMenuItem,
             this.shiguguanli,
-            this.参数设置ToolStripMenuItem,
+            this.canshushezhi,
             this.ToolStripMenuItem_SystemManage,
             this.帮助ToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
@@ -283,17 +282,17 @@
             this.shiguguanli.Text = "事故管理";
             this.shiguguanli.Click += new System.EventHandler(this.shiguguanli_Click);
             // 
-            // 参数设置ToolStripMenuItem
+            // canshushezhi
             // 
-            this.参数设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.canshushezhi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bumenguanli,
             this.shebeileixing,
             this.shebeizhuangtai,
             this.guzhangmoshi,
             this.weixiudengji});
-            this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
-            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.参数设置ToolStripMenuItem.Text = "参数设置";
+            this.canshushezhi.Name = "canshushezhi";
+            this.canshushezhi.Size = new System.Drawing.Size(68, 21);
+            this.canshushezhi.Text = "参数设置";
             // 
             // bumenguanli
             // 
@@ -333,39 +332,33 @@
             // ToolStripMenuItem_SystemManage
             // 
             this.ToolStripMenuItem_SystemManage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.用户管理ToolStripMenuItem,
-            this.数据库设置ToolStripMenuItem});
+            this.xiugaimima,
+            this.yonghuguanli,
+            this.shujukushezhi});
             this.ToolStripMenuItem_SystemManage.Name = "ToolStripMenuItem_SystemManage";
             this.ToolStripMenuItem_SystemManage.Size = new System.Drawing.Size(68, 21);
             this.ToolStripMenuItem_SystemManage.Text = "系统管理";
             // 
-            // 用户管理ToolStripMenuItem
+            // xiugaimima
             // 
-            this.用户管理ToolStripMenuItem.Name = "用户管理ToolStripMenuItem";
-            this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.用户管理ToolStripMenuItem.Text = "用户管理";
+            this.xiugaimima.Name = "xiugaimima";
+            this.xiugaimima.Size = new System.Drawing.Size(136, 22);
+            this.xiugaimima.Text = "修改密码";
             // 
-            // 数据库设置ToolStripMenuItem
+            // yonghuguanli
             // 
-            this.数据库设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.数据库接口ToolStripMenuItem,
-            this.toolStripSeparator6,
+            this.yonghuguanli.Name = "yonghuguanli";
+            this.yonghuguanli.Size = new System.Drawing.Size(136, 22);
+            this.yonghuguanli.Text = "用户管理";
+            // 
+            // shujukushezhi
+            // 
+            this.shujukushezhi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.数据库备份ToolStripMenuItem,
             this.数据库恢复ToolStripMenuItem});
-            this.数据库设置ToolStripMenuItem.Name = "数据库设置ToolStripMenuItem";
-            this.数据库设置ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.数据库设置ToolStripMenuItem.Text = "数据库设置";
-            // 
-            // 数据库接口ToolStripMenuItem
-            // 
-            this.数据库接口ToolStripMenuItem.Name = "数据库接口ToolStripMenuItem";
-            this.数据库接口ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.数据库接口ToolStripMenuItem.Text = "数据库接口";
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(133, 6);
+            this.shujukushezhi.Name = "shujukushezhi";
+            this.shujukushezhi.Size = new System.Drawing.Size(136, 22);
+            this.shujukushezhi.Text = "数据库设置";
             // 
             // 数据库备份ToolStripMenuItem
             // 
@@ -599,7 +592,7 @@
         private System.Windows.Forms.ToolStripMenuItem 数据导入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 配件数据导入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据导出ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 参数设置ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem canshushezhi;
         private System.Windows.Forms.ToolStripMenuItem 点检管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem weixiujilu;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_fault;
@@ -610,10 +603,8 @@
         private System.Windows.Forms.ToolStripMenuItem shebeileixing;
         private System.Windows.Forms.ToolStripMenuItem shebeizhuangtai;
         private System.Windows.Forms.ToolStripMenuItem guzhangmoshi;
-        private System.Windows.Forms.ToolStripMenuItem 用户管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 数据库设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 数据库接口ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem yonghuguanli;
+        private System.Windows.Forms.ToolStripMenuItem shujukushezhi;
         private System.Windows.Forms.ToolStripMenuItem 数据库备份ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库恢复ToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStrip_repair;
@@ -627,6 +618,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton_trouble;
         private System.Windows.Forms.ToolStripMenuItem shiguguanli;
         private System.Windows.Forms.ToolStripMenuItem weixiudengji;
+        private System.Windows.Forms.ToolStripMenuItem xiugaimima;
 
     }
 }

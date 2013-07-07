@@ -103,7 +103,10 @@ namespace CEMSApp
             if (userRight == 0)
             {
                 //普通用户，不显示“系统设置”菜单
-                MainMenu.Items[6].Visible = false;
+                //MainMenu.Items[6].Visible = false;
+                canshushezhi.Visible = false;//参数设置菜单不可见
+                yonghuguanli.Visible = false;//用户管理菜单不可见
+                shujukushezhi.Visible = false;//数据库设置菜单不可见
                 userrightLabel.Text += "普通用户";
             }
             else
