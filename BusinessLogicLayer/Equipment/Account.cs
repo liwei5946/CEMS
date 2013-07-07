@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using DataAccessLayer;
+using Util;
 
 namespace BusinessLogicLayer.Equipment
 {
@@ -550,6 +551,32 @@ namespace BusinessLogicLayer.Equipment
         public DataSet queryUsers()
         {
             return acc.queryUsers();
+        }
+        /// <summary>
+        /// 判断是否已有重名的用户名存在
+        /// </summary>
+        /// <param name="username">用户名</param>
+        /// <returns></returns>
+        public bool hasSameUsername(string username)
+        {
+            return acc.hasSameUsername(username);
+        }
+        /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="realname"></param>
+        /// <param name="userright"></param>
+        /// <returns></returns>
+        public bool addUser(
+            string username,
+               string password,
+               string realname,
+               int userright
+            )
+        {
+            return acc.addUser(username, MD5Hashing.HashString(password), realname, userright);
         }
 
 

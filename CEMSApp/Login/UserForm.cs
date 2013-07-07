@@ -133,8 +133,8 @@ namespace CEMSApp.Login
                 //if (kef.ShowDialog() == DialogResult.OK)
                 {
                     Account acc = new Account();
-                    DataSet ds_kl = acc.queryKnowledge();
-                    BindSourceGrid(grid1, ds_kl.Tables[0]);
+                    DataSet ds = acc.queryUsers();
+                    BindSourceGrid(grid1, ds.Tables[0]);
                     grid1.Selection.SelectRow(1, true);
                     grid1.Selection.FocusFirstCell(true);
                 }
@@ -166,8 +166,8 @@ namespace CEMSApp.Login
                     if (flag)
                     {
                         MessageBox.Show("删除成功！");
-                        DataSet ds_kl = acc.queryKnowledge();
-                        BindSourceGrid(grid1, ds_kl.Tables[0]);
+                        DataSet ds = acc.queryUsers();
+                        BindSourceGrid(grid1, ds.Tables[0]);
                         grid1.Selection.SelectRow(1, true);
                         grid1.Selection.FocusFirstCell(true);
                     }
@@ -196,13 +196,13 @@ namespace CEMSApp.Login
         /// <param name="e"></param>
         private void addButton_Click(object sender, EventArgs e)
         {
-            //KnowledgeAddForm kaf = new KnowledgeAddForm();
-            //if (kaf.ShowDialog() == DialogResult.OK)
+            UserAddForm uaf = new UserAddForm();
+            if (uaf.ShowDialog() == DialogResult.OK)
             {
                 //重新绑定DataGridView;
                 Account acc = new Account();
-                DataSet ds_kl = acc.queryKnowledge();
-                BindSourceGrid(grid1, ds_kl.Tables[0]);
+                DataSet ds = acc.queryUsers();
+                BindSourceGrid(grid1, ds.Tables[0]);
                 grid1.Selection.SelectRow(1, true);
                 grid1.Selection.FocusFirstCell(true);
             }

@@ -2216,6 +2216,114 @@ namespace DataAccessLayer
             }
             return ds;
         }
+        /// <summary>
+        /// 判断是否已有重名的用户名存在
+        /// </summary>
+        /// <param name="username">用户名</param>
+        /// <returns></returns>
+        public bool hasSameUsername(string username)
+        {
+            bool flag = false;
+            int result = 0;
+            log.Debug(dboOwner);
+            log.Debug(connString);
+            try
+            {
+                //string sql = string.Format("SELECT COUNT(*) FROM sys_sys WHERE sys_sys.username='{0}' AND sys_sys.password='{1}'", username, password);
+                string sql = "SELECT COUNT(*)  "
+                   + " FROM sys_sys ss  "
+                   + " WHERE ss.username='"+username+"' "
+                   + " AND ss.dr=0";
+                log.Debug(sql);
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    conn.Open();
+                    result = (int)command.ExecuteScalar();
+                    conn.Close();
+                    conn.Dispose();
+                }
+                if (result > 0)
+                {
+                    flag = true;
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            return flag;
+        }
+        /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="realname"></param>
+        /// <param name="userright"></param>
+        /// <returns></returns>
+        public bool addUser(
+            string username,
+	           string password,
+	           string realname,
+	           int userright
+            )
+        {
+            int resault = 0;
+            //string sql = string.Format("INSERT INTO maintain_plan(	plan_asset,	eq_id,	[start_date],	over_time,	memo)VALUES(@planAsset,@eqId,@startDate,@overTime,@memo)");
+            string sql = "INSERT INTO sys_sys "
+               + "( "
+               + "	username, "
+               + "	[password], "
+               + "	realname, "
+               + "	userright "
+               + ") "
+               + "VALUES "
+               + "( "
+               + "	@username, "
+               + "	@password, "
+               + "	@realname, "
+               + "	@userright "
+               + ")";
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@username", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@password", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@realname", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@userright", SqlDbType.Int));
+                    //给参数赋值
+                    mycom.Parameters["@username"].Value = username;
+                    mycom.Parameters["@password"].Value = password;
+                    mycom.Parameters["@realname"].Value = realname;
+                    mycom.Parameters["@userright"].Value = userright;
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
 
         

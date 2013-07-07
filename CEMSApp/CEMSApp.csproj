@@ -225,6 +225,12 @@
     <Compile Include="Login\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\UserAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\UserAddForm.Designer.cs">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -484,6 +490,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\UserAddForm.resx">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
