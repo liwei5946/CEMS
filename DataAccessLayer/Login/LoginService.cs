@@ -85,5 +85,56 @@ namespace DataAccessLayer.Login
             }
             return result;
         }
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool updatePasswordByUsername(string username, string password)
+        {
+            int resault = 0;
+            //string sql = string.Format("UPDATE maintain SET	[start_date] = @start_date,	end_date = @end_date,	principal = @principal,	[status] = @status,	memo = @memo WHERE id=" + id);
+            string sql = "UPDATE sys_sys "
+               + "SET "
+               + "	[password] = @password "
+               + " WHERE username = @username ";
+            log.Debug(sql);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    SqlCommand mycom = new SqlCommand(sql, conn);
+                    //添加参数 
+                    mycom.Parameters.Add(new SqlParameter("@username", SqlDbType.NVarChar, 50));
+                    mycom.Parameters.Add(new SqlParameter("@password", SqlDbType.NVarChar, 50));
+                    //给参数赋值
+                    mycom.Parameters["@username"].Value = username;
+                    mycom.Parameters["@password"].Value = password;
+                    //执行添加语句 
+                    resault = mycom.ExecuteNonQuery();
+                    log.Debug(resault);
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+            }
+
+            if (resault > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+
     }
 }

@@ -219,6 +219,12 @@
     <Compile Include="Fault\TroubleViewForm.Designer.cs">
       <DependentUpon>TroubleViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\ChangePasswordForm.Designer.cs">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -469,6 +475,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fault\TroubleViewForm.resx">
       <DependentUpon>TroubleViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

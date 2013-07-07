@@ -13,6 +13,12 @@ namespace BusinessLogicLayer.Login
     {
         ILog log = log4net.LogManager.GetLogger(typeof(Login));
         LoginService ls = new LoginService();
+        /// <summary>
+        /// 判断是否登录成功
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool isLogin(string username, string password)
         {
             bool flag = false;
@@ -20,12 +26,27 @@ namespace BusinessLogicLayer.Login
             log.Debug("登录状态：" + flag);
             return flag;
         }
+        /// <summary>
+        /// 获取用户权限
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public int getUserRight(string username)
         {
             int result = 0;
             result = ls.getUserRight(username);
             log.Debug("用户" + username + "权限为：" + result);
             return result;
+        }
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool updatePasswordByUsername(string username, string password)
+        {
+            return ls.updatePasswordByUsername(username, MD5Hashing.HashString(password));
         }
     }
 }

@@ -11,6 +11,7 @@ using CEMSApp.Maintain;
 using CEMSApp.Repair;
 using CEMSApp.Fault;
 using CEMSApp.Parameter;
+using CEMSApp.Login;
 using System.Threading;
 
 namespace CEMSApp
@@ -341,6 +342,16 @@ namespace CEMSApp
                 eq_form.Show();
             }
             
+        }
+
+        private void xiugaimima_Click(object sender, EventArgs e)
+        {
+            if (!showChildrenForm("ChangePasswordForm"))
+            {
+                ChangePasswordForm cpf = new ChangePasswordForm(username);
+                cpf.MdiParent = this;
+                cpf.Show();
+            }
         }
 
 

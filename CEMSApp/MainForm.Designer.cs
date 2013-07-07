@@ -297,35 +297,35 @@
             // bumenguanli
             // 
             this.bumenguanli.Name = "bumenguanli";
-            this.bumenguanli.Size = new System.Drawing.Size(152, 22);
+            this.bumenguanli.Size = new System.Drawing.Size(148, 22);
             this.bumenguanli.Text = "部门管理";
             this.bumenguanli.Click += new System.EventHandler(this.bumenguanli_Click);
             // 
             // shebeileixing
             // 
             this.shebeileixing.Name = "shebeileixing";
-            this.shebeileixing.Size = new System.Drawing.Size(152, 22);
+            this.shebeileixing.Size = new System.Drawing.Size(148, 22);
             this.shebeileixing.Text = "设备类型管理";
             this.shebeileixing.Click += new System.EventHandler(this.shebeileixing_Click);
             // 
             // shebeizhuangtai
             // 
             this.shebeizhuangtai.Name = "shebeizhuangtai";
-            this.shebeizhuangtai.Size = new System.Drawing.Size(152, 22);
+            this.shebeizhuangtai.Size = new System.Drawing.Size(148, 22);
             this.shebeizhuangtai.Text = "设备状态管理";
             this.shebeizhuangtai.Click += new System.EventHandler(this.shebeizhuangtai_Click);
             // 
             // guzhangmoshi
             // 
             this.guzhangmoshi.Name = "guzhangmoshi";
-            this.guzhangmoshi.Size = new System.Drawing.Size(152, 22);
+            this.guzhangmoshi.Size = new System.Drawing.Size(148, 22);
             this.guzhangmoshi.Text = "故障模式管理";
             this.guzhangmoshi.Click += new System.EventHandler(this.guzhangmoshi_Click);
             // 
             // weixiudengji
             // 
             this.weixiudengji.Name = "weixiudengji";
-            this.weixiudengji.Size = new System.Drawing.Size(152, 22);
+            this.weixiudengji.Size = new System.Drawing.Size(148, 22);
             this.weixiudengji.Text = "维修等级管理";
             this.weixiudengji.Click += new System.EventHandler(this.weixiudengji_Click);
             // 
@@ -342,13 +342,14 @@
             // xiugaimima
             // 
             this.xiugaimima.Name = "xiugaimima";
-            this.xiugaimima.Size = new System.Drawing.Size(136, 22);
+            this.xiugaimima.Size = new System.Drawing.Size(152, 22);
             this.xiugaimima.Text = "修改密码";
+            this.xiugaimima.Click += new System.EventHandler(this.xiugaimima_Click);
             // 
             // yonghuguanli
             // 
             this.yonghuguanli.Name = "yonghuguanli";
-            this.yonghuguanli.Size = new System.Drawing.Size(136, 22);
+            this.yonghuguanli.Size = new System.Drawing.Size(152, 22);
             this.yonghuguanli.Text = "用户管理";
             // 
             // shujukushezhi
@@ -357,7 +358,7 @@
             this.数据库备份ToolStripMenuItem,
             this.数据库恢复ToolStripMenuItem});
             this.shujukushezhi.Name = "shujukushezhi";
-            this.shujukushezhi.Size = new System.Drawing.Size(136, 22);
+            this.shujukushezhi.Size = new System.Drawing.Size(152, 22);
             this.shujukushezhi.Text = "数据库设置";
             // 
             // 数据库备份ToolStripMenuItem
